@@ -6,7 +6,6 @@ import 'package:bili_plus/utils/num_utils.dart';
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../font_icon/bilibili_icons.dart';
 
