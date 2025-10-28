@@ -1,4 +1,3 @@
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/pages/live_room/controller.dart';
 import 'package:bili_plus/plugin/pl_player/controller.dart';
 import 'package:bili_plus/plugin/pl_player/models/video_fit_type.dart';
@@ -9,6 +8,8 @@ import 'package:bili_plus/utils/storage_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+
+import '../../../font_icon/bilibili_icons.dart';
 
 class BottomControl extends StatelessWidget {
   const BottomControl({
@@ -68,12 +69,8 @@ class BottomControl extends StatelessWidget {
             return ComBtn(
               tooltip: "${enableShowLiveDanmaku ? '关闭' : '开启'}弹幕",
               icon: enableShowLiveDanmaku
-                  ? const Icon(size: 18, CustomIcons.dm_on, color: Colors.white)
-                  : const Icon(
-                      size: 18,
-                      CustomIcons.dm_off,
-                      color: Colors.white,
-                    ),
+                  ? Icon(size: 18, BiliBiliIcons.dm_on, color: Colors.white)
+                  : Icon(size: 18, BiliBiliIcons.dm_off, color: Colors.white),
               onTap: () {
                 final newVal = !enableShowLiveDanmaku;
                 plPlayerController.enableShowDanmaku.value = newVal;

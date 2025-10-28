@@ -849,4 +849,10 @@ static IconData list_sort_positive_line = const IconData(0xebc1, fontFamily: _kF
 static IconData next_fill100 = const IconData(0xebc3, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   /// watch_later 图标
 static IconData watch_later = const IconData(0xe818, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// dm_off 图标
+static IconData dm_off = const IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// dm_on 图标
+static IconData dm_on = const IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// dm_settings 图标
+static IconData dm_settings = const IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

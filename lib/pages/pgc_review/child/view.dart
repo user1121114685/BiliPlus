@@ -1,5 +1,4 @@
 import 'package:bili_plus/common/skeleton/video_reply.dart';
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
 import 'package:bili_plus/common/widgets/dialog/dialog.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
@@ -16,7 +15,6 @@ import 'package:bili_plus/utils/extension.dart';
 import 'package:bili_plus/utils/num_utils.dart';
 import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../font_icon/bilibili_icons.dart';
@@ -242,14 +240,14 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
                             ],
                             ...List.generate(5, (index) {
                               if (index <= item.score - 1) {
-                                return const Icon(
-                                  CustomIcons.star_favorite_solid,
+                                return Icon(
+                                  BiliBiliIcons.star_favorite_fill500,
                                   size: 13,
                                   color: Color(0xFFFFAD35),
                                 );
                               }
-                              return const Icon(
-                                CustomIcons.star_favorite_line,
+                              return Icon(
+                                BiliBiliIcons.star_favorite_line500,
                                 size: 14,
                                 color: Colors.grey,
                               );

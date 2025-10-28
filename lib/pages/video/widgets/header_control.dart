@@ -4,7 +4,6 @@ import 'dart:math';
 
 import 'package:bili_plus/common/constants.dart';
 import 'package:bili_plus/common/widgets/button/icon_button.dart';
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
 import 'package:bili_plus/common/widgets/dialog/report.dart';
 import 'package:bili_plus/common/widgets/marquee.dart';
@@ -523,7 +522,7 @@ class HeaderControlState extends State<HeaderControl> {
                   Get.back();
                   showDanmakuPool();
                 },
-                leading: const Icon(CustomIcons.dm_on, size: 20),
+                leading: Icon(BiliBiliIcons.dm_on, size: 20),
                 title: const Text('弹幕列表', style: titleStyle),
               ),
               ListTile(
@@ -532,7 +531,7 @@ class HeaderControlState extends State<HeaderControl> {
                   Get.back();
                   showSetDanmaku();
                 },
-                leading: const Icon(CustomIcons.dm_settings, size: 20),
+                leading: Icon(BiliBiliIcons.dm_settings, size: 20),
                 title: const Text('弹幕设置', style: titleStyle),
               ),
               ListTile(
@@ -1999,8 +1998,8 @@ class HeaderControlState extends State<HeaderControl> {
                         }
                       },
                       icon: extra.isLike
-                          ? const Icon(CustomIcons.player_dm_tip_like_solid)
-                          : const Icon(CustomIcons.player_dm_tip_like),
+                          ? Icon(BiliBiliIcons.hand_thumbsup_fill500)
+                          : Icon(BiliBiliIcons.hand_thumbsup_line500),
                     ),
                     if (extra.like > 0)
                       Positioned(
@@ -2024,7 +2023,7 @@ class HeaderControlState extends State<HeaderControl> {
                     extra.id,
                     plPlayerController.cid!,
                   ).then((_) => item.expired = true),
-                  icon: const Icon(CustomIcons.player_dm_tip_recall),
+                  icon: Icon(BiliBiliIcons.arrow_undo_line500),
                 )
               else
                 iconButton(
@@ -2033,7 +2032,7 @@ class HeaderControlState extends State<HeaderControl> {
                     extra: extra,
                     ctr: plPlayerController,
                   ),
-                  icon: const Icon(CustomIcons.player_dm_tip_back),
+                  icon: Icon(BiliBiliIcons.warning_report_triangle_line500),
                 ),
             ],
           ),
@@ -2317,14 +2316,14 @@ class HeaderControlState extends State<HeaderControl> {
                         }
                       },
                       icon: enableShowDanmaku
-                          ? const Icon(
+                          ? Icon(
                               size: 20,
-                              CustomIcons.dm_on,
+                              BiliBiliIcons.dm_on,
                               color: Colors.white,
                             )
-                          : const Icon(
+                          : Icon(
                               size: 20,
-                              CustomIcons.dm_off,
+                              BiliBiliIcons.dm_off,
                               color: Colors.white,
                             ),
                     );

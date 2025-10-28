@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/models/common/settings_type.dart';
 import 'package:bili_plus/models/common/video/subtitle_pref_type.dart';
 import 'package:bili_plus/pages/main/controller.dart';
@@ -21,11 +21,11 @@ import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 List<SettingsModel> get playSettings => [
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '弹幕开关',
     subtitle: '是否展示弹幕',
-    leading: Icon(CustomIcons.dm_settings),
+    leading: Icon(BiliBiliIcons.danmu_setting_line500),
     setKey: SettingBoxKey.enableShowDanmaku,
     defaultVal: true,
   ),
@@ -230,11 +230,11 @@ List<SettingsModel> get playSettings => [
         }
       },
     ),
-    const SettingsModel(
+    SettingsModel(
       settingsType: SettingsType.sw1tch,
       title: '画中画不加载弹幕',
       subtitle: '当弹幕开关开启时，小窗屏蔽弹幕以获得较好的体验',
-      leading: Icon(CustomIcons.dm_off),
+      leading: Icon(BiliBiliIcons.dm_off),
       setKey: SettingBoxKey.pipNoDanmaku,
       defaultVal: false,
     ),

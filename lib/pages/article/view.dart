@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:bili_plus/common/widgets/badge.dart';
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/refresh_indicator.dart';
 import 'package:bili_plus/models/common/badge_type.dart';
@@ -24,7 +23,6 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:html/parser.dart' as parser;
 
@@ -597,7 +595,7 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
                       Expanded(
                         child: textIconButton(
                           text: '分享',
-                          icon: CustomIcons.share_node,
+                          icon: BiliBiliIcons.arrow_share_line500,
                           stat: null,
                           onPressed: () => Utils.shareText(controller.url),
                         ),

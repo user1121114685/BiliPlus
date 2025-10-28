@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:bili_plus/common/widgets/badge.dart';
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/marquee.dart';
 import 'package:bili_plus/common/widgets/refresh_indicator.dart';
@@ -275,7 +274,7 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
                         // ),
                         Expanded(
                           child: textIconButton(
-                            icon: CustomIcons.share_node,
+                            icon: BiliBiliIcons.arrow_share_line500,
                             text: '分享',
                             onPressed: () =>
                                 Utils.shareText(controller.shareUrl),

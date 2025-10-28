@@ -1,9 +1,10 @@
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/http/pgc.dart';
 import 'package:bili_plus/utils/accounts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+
+import '../../../font_icon/bilibili_icons.dart';
 
 class PgcReviewPostPanel extends StatefulWidget {
   const PgcReviewPostPanel({
@@ -87,13 +88,13 @@ class _PgcReviewPostPanelState extends State<PgcReviewPostPanel> {
                 children: List.generate(5, (index) {
                   return Obx(
                     () => index <= _score.value - 1
-                        ? const Icon(
-                            CustomIcons.star_favorite_solid,
+                        ? Icon(
+                            BiliBiliIcons.star_favorite_line500,
                             size: 50,
                             color: Color(0xFFFFAD35),
                           )
-                        : const Icon(
-                            CustomIcons.star_favorite_line,
+                        : Icon(
+                            BiliBiliIcons.star_favorite_line500,
                             size: 50,
                             color: Colors.grey,
                           ),

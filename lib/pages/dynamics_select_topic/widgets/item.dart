@@ -1,7 +1,8 @@
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/models_new/dynamic/dyn_topic_top/topic_item.dart';
 import 'package:bili_plus/utils/num_utils.dart';
 import 'package:flutter/material.dart';
+
+import '../../../font_icon/bilibili_icons.dart';
 
 class DynTopicItem extends StatelessWidget {
   const DynTopicItem({super.key, required this.item, required this.onTap});
@@ -19,11 +20,11 @@ class DynTopicItem extends StatelessWidget {
         title: Text.rich(
           TextSpan(
             children: [
-              const WidgetSpan(
+              WidgetSpan(
                 alignment: PlaceholderAlignment.middle,
                 child: Padding(
                   padding: EdgeInsets.only(right: 5),
-                  child: Icon(CustomIcons.topic_tag, size: 18),
+                  child: Icon(BiliBiliIcons.brandtv_topic_line500, size: 18),
                 ),
               ),
               TextSpan(text: item.name, style: const TextStyle(fontSize: 14)),

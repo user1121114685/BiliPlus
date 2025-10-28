@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/refresh_indicator.dart';
 import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/constants.dart';
@@ -16,7 +15,6 @@ import 'package:bili_plus/utils/num_utils.dart';
 import 'package:bili_plus/utils/request_utils.dart';
 import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 
 class DynamicDetailPage extends StatefulWidget {
@@ -284,7 +282,7 @@ class _DynamicDetailPageState extends CommonDynPageState<DynamicDetailPage> {
                       ),
                       Expanded(
                         child: textIconButton(
-                          icon: CustomIcons.share_node,
+                          icon: BiliBiliIcons.arrow_share_line500,
                           text: '分享',
                           stat: null,
                           onPressed: () => Utils.shareText(

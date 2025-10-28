@@ -5,7 +5,6 @@ import 'dart:ui';
 
 import 'package:auto_orientation/auto_orientation.dart';
 import 'package:bili_plus/common/constants.dart';
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/interactiveviewer_gallery/hero_dialog_route.dart';
 import 'package:bili_plus/common/widgets/keep_alive_wrapper.dart';
@@ -1435,8 +1434,8 @@ class _VideoDetailPageVState extends State<VideoDetailPageV>
                         icon: Icon(
                           size: 22,
                           enableShowDanmaku
-                              ? CustomIcons.dm_on
-                              : CustomIcons.dm_off,
+                              ? BiliBiliIcons.dm_on
+                              : BiliBiliIcons.dm_off,
                           color: enableShowDanmaku
                               ? themeData.colorScheme.secondary
                               : themeData.colorScheme.outline,

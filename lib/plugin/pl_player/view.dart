@@ -4,7 +4,6 @@ import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:bili_plus/common/constants.dart';
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/gesture/immediate_tap_gesture_recognizer.dart';
 import 'package:bili_plus/common/widgets/gesture/mouse_interactive_viewer.dart';
 import 'package:bili_plus/common/widgets/loading_widget.dart';
@@ -2198,14 +2197,14 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
                   children: [
                     _dmActionItem(
                       extra.isLike
-                          ? const Icon(
+                          ? Icon(
                               size: 20,
-                              CustomIcons.player_dm_tip_like_solid,
+                              BiliBiliIcons.hand_thumbsup_fill500,
                               color: Colors.white,
                             )
-                          : const Icon(
+                          : Icon(
                               size: 20,
-                              CustomIcons.player_dm_tip_like,
+                              BiliBiliIcons.hand_thumbsup_line500,
                               color: Colors.white,
                             ),
                       onTap: () => HeaderControl.likeDanmaku(
@@ -2229,18 +2228,18 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
                 ),
 
                 _dmActionItem(
-                  const Icon(
+                  Icon(
                     size: 19,
-                    CustomIcons.player_dm_tip_copy,
+                    BiliBiliIcons.copy_line500,
                     color: Colors.white,
                   ),
                   onTap: () => Utils.copyText(item.content.text),
                 ),
                 if (item.content.selfSend)
                   _dmActionItem(
-                    const Icon(
+                    Icon(
                       size: 20,
-                      CustomIcons.player_dm_tip_recall,
+                      BiliBiliIcons.arrow_undo_line500,
                       color: Colors.white,
                     ),
                     onTap: () => HeaderControl.deleteDanmaku(
@@ -2250,9 +2249,9 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
                   )
                 else
                   _dmActionItem(
-                    const Icon(
+                    Icon(
                       size: 20,
-                      CustomIcons.player_dm_tip_back,
+                      BiliBiliIcons.warning_report_triangle_line500,
                       color: Colors.white,
                     ),
                     onTap: () => HeaderControl.reportDanmaku(
@@ -2284,17 +2283,17 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
                   onTap: () => Get.toNamed('/member?mid=${extra.mid}'),
                 ),
                 _dmActionItem(
-                  const Icon(
+                  Icon(
                     size: 19,
-                    CustomIcons.player_dm_tip_copy,
+                    BiliBiliIcons.copy_line500,
                     color: Colors.white,
                   ),
                   onTap: () => Utils.copyText(item.content.text),
                 ),
                 _dmActionItem(
-                  const Icon(
+                  Icon(
                     size: 20,
-                    CustomIcons.player_dm_tip_back,
+                    BiliBiliIcons.warning_report_triangle_line500,
                     color: Colors.white,
                   ),
                   onTap: () => HeaderControl.reportLiveDanmaku(

@@ -1,7 +1,6 @@
-// 内容
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/image/custom_grid_view.dart';
 import 'package:bili_plus/common/widgets/text/text.dart' as custom_text;
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/models/dynamics/result.dart';
 import 'package:bili_plus/pages/dynamics/widgets/rich_node_panel.dart';
 import 'package:bili_plus/utils/page_utils.dart';
@@ -50,7 +49,7 @@ Widget content(
                       padding: const EdgeInsets.only(right: 4),
                       child: Icon(
                         size: 18,
-                        CustomIcons.topic_tag,
+                        BiliBiliIcons.brandtv_topic_line500,
                         color: theme.colorScheme.primary,
                       ),
                     ),

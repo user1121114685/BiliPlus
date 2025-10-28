@@ -1,4 +1,3 @@
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
 import 'package:bili_plus/common/widgets/dynamic_sliver_appbar_medium.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
@@ -59,7 +58,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
             SmartDialog.showToast('账号未登录');
           }
         },
-        icon: const Icon(CustomIcons.topic_tag, size: 20),
+        icon: Icon(BiliBiliIcons.brandtv_topic_line500, size: 20),
         label: const Text('参与话题'),
       ),
       body: refreshIndicator(

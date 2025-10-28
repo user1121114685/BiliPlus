@@ -3,7 +3,6 @@ import 'dart:math';
 import 'dart:ui';
 
 import 'package:bili_plus/common/widgets/button/icon_button.dart';
-import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/keep_alive_wrapper.dart';
 import 'package:bili_plus/common/widgets/scroll_physics.dart';
@@ -36,6 +35,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:screen_brightness_platform_interface/screen_brightness_platform_interface.dart';
+
+import '../../font_icon/bilibili_icons.dart';
 
 class LiveRoomPage extends StatefulWidget {
   const LiveRoomPage({super.key});
@@ -721,14 +722,14 @@ class _LiveRoomPageState extends State<LiveRoomPage>
                         }
                       },
                       icon: enableShowLiveDanmaku
-                          ? const Icon(
+                          ? Icon(
                               size: 22,
-                              CustomIcons.dm_on,
+                              BiliBiliIcons.dm_on,
                               color: Color(0xFFEEEEEE),
                             )
-                          : const Icon(
+                          : Icon(
                               size: 22,
-                              CustomIcons.dm_off,
+                              BiliBiliIcons.dm_off,
                               color: Color(0xFFEEEEEE),
                             ),
                     ),
