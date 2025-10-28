@@ -36,11 +36,11 @@ jobs:
       - name: Prepare Upload
         run: |
           npm install --global create-dmg
-          create-dmg build/macos/Build/Products/Release/BiliPlus.app
+          create-dmg build/macos/Build/Products/Release/biliplus.app
         continue-on-error: true
 
       - name: Rename DMG
-        run: mv BiliPlus*.dmg BiliPlus_macos_${{ env.version }}.dmg
+        run: mv biliplus*.dmg BiliPlus_macos_${{ env.version }}.dmg
 
       - name: Release
         if: ${{ github.event.inputs.tag != '' }}

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:bili_plus/common/constants.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/interactiveviewer_gallery/hero_dialog_route.dart';
@@ -57,6 +56,7 @@ import 'package:floating/floating.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
+import 'package:flutter_auto_orientation/flutter_auto_orientation.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:screen_brightness_platform_interface/screen_brightness_platform_interface.dart';
@@ -342,7 +342,7 @@ class _VideoDetailPageVState extends State<VideoDetailPageV>
       pgcIntroController.canelTimer();
     }
     if (!videoDetailController.horizontalScreen) {
-      AutoOrientation.portraitUpMode();
+      FlutterAutoOrientation.portraitUpMode();
     }
     shutdownTimerService.handleWaitingFinished();
     if (!videoDetailController.plPlayerController.isCloseAll) {

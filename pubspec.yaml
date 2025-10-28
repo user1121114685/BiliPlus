@@ -116,10 +116,8 @@ dependencies:
   flutter_volume_controller: ^1.3.3
   wakelock_plus: ^1.2.8
   # universal_platform: ^1.1.0
-  auto_orientation:
-    git:
-      url: https://github.com/bggRGjQaUbCoE/auto_orientation.git
-      ref: master
+  # 安卓 ios 屏幕旋转
+  flutter_auto_orientation: ^1.0.0-beta.1
   protobuf: ^5.0.0
   # animations: ^2.0.11
 

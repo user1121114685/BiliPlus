@@ -34,6 +34,13 @@ class RadioWidgetState<T> extends State<RadioWidget<T>> with RadioClient<T> {
   @override
   bool get tristate => widget.tristate;
 
+  bool get enabled {
+    // 如果当前未选中且支持三态，可点按切到 null
+    if (!checked && tristate) return true;
+    // 否则只有“已选中”才允许再次点按（用于取消选中）
+    return checked;
+  }
+
   @override
   void dispose() {
     registry = null;

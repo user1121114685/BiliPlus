@@ -70,7 +70,7 @@ jobs:
           printf "复制文件...\n"
           cp -r ../build/linux/x64/release/bundle/* opt/BiliPlus
           cp -r ../assets/linux/DEBIAN .
-          cp ../assets/linux/BiliPlus.desktop usr/share/applications
+          cp ../assets/linux/biliplus.desktop usr/share/applications
           cp ../assets/images/logo/logo.png usr/share/icons/hicolor/512x512/apps/BiliPlus.png
 
           printf "修改控制文件...\n"

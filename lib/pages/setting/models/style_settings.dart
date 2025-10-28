@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:bili_plus/common/widgets/custom_toast.dart';
 import 'package:bili_plus/common/widgets/dialog/dialog.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
@@ -31,6 +30,7 @@ import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_auto_orientation/flutter_auto_orientation.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -65,7 +65,7 @@ List<SettingsModel> get styleSettings => [
       if (value) {
         autoScreen();
       } else {
-        AutoOrientation.portraitUpMode();
+        FlutterAutoOrientation.portraitUpMode();
       }
     },
   ),

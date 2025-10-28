@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:bili_plus/utils/utils.dart';
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_auto_orientation/flutter_auto_orientation.dart';
 
 bool _isDesktopFullScreen = false;
 
@@ -38,7 +38,7 @@ Future<void> exitDesktopFullscreen() async {
 //横屏
 Future<void> landscape() async {
   try {
-    await AutoOrientation.landscapeAutoMode(forceSensor: true);
+    await FlutterAutoOrientation.landscapeAutoMode(forceSensor: true);
   } catch (_) {
     if (kDebugMode) rethrow;
   }
@@ -64,7 +64,7 @@ Future<void> autoScreen() async {
 }
 
 Future<void> fullAutoModeForceSensor() async {
-  await AutoOrientation.fullAutoMode(forceSensor: true);
+  await FlutterAutoOrientation.fullAutoMode(forceSensor: true);
 }
 
 bool _showStatusBar = true;
