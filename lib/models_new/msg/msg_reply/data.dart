@@ -1,5 +1,5 @@
-import 'package:PiliPlus/models_new/msg/msg_reply/cursor.dart';
-import 'package:PiliPlus/models_new/msg/msg_reply/item.dart';
+import 'package:bili_plus/models_new/msg/msg_reply/cursor.dart';
+import 'package:bili_plus/models_new/msg/msg_reply/item.dart';
 
 class MsgReplyData {
   Cursor? cursor;

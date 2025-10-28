@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models/model_avatar.dart';
+import 'package:bili_plus/models/model_avatar.dart';
 
 class Card {
   String? mid;
@@ -27,9 +27,7 @@ class Card {
     attention: json['attention'] as int?,
     official: json['Official'] == null
         ? null
-        : BaseOfficialVerify.fromJson(
-            json['Official'] as Map<String, dynamic>,
-          ),
+        : BaseOfficialVerify.fromJson(json['Official'] as Map<String, dynamic>),
     vip: json['vip'] == null
         ? null
         : Vip.fromJson(json['vip'] as Map<String, dynamic>),

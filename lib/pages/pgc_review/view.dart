@@ -1,17 +1,13 @@
-import 'package:PiliPlus/models/common/pgc_review_type.dart';
-import 'package:PiliPlus/pages/pgc_review/child/controller.dart';
-import 'package:PiliPlus/pages/pgc_review/child/view.dart';
-import 'package:PiliPlus/pages/pgc_review/post/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models/common/pgc_review_type.dart';
+import 'package:bili_plus/pages/pgc_review/child/controller.dart';
+import 'package:bili_plus/pages/pgc_review/child/view.dart';
+import 'package:bili_plus/pages/pgc_review/post/view.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PgcReviewPage extends StatefulWidget {
-  const PgcReviewPage({
-    super.key,
-    required this.name,
-    required this.mediaId,
-  });
+  const PgcReviewPage({super.key, required this.name, required this.mediaId});
 
   final String name;
   final dynamic mediaId;
@@ -64,9 +60,7 @@ class _PgcReviewPageState extends State<PgcReviewPage>
               labelColor: theme.colorScheme.onSecondaryContainer,
               unselectedLabelColor: theme.colorScheme.outline,
               labelStyle:
-                  TabBarTheme.of(
-                    context,
-                  ).labelStyle?.copyWith(fontSize: 13) ??
+                  TabBarTheme.of(context).labelStyle?.copyWith(fontSize: 13) ??
                   const TextStyle(fontSize: 13),
               dividerColor: Colors.transparent,
               tabs: PgcReviewType.values
@@ -116,10 +110,7 @@ class _PgcReviewPageState extends State<PgcReviewPage>
                   children: [
                     ListTile(
                       dense: true,
-                      title: const Text(
-                        '写短评',
-                        style: TextStyle(fontSize: 14),
-                      ),
+                      title: const Text('写短评', style: TextStyle(fontSize: 14)),
                       onTap: () {
                         Get.back();
                         showModalBottomSheet(
@@ -137,10 +128,7 @@ class _PgcReviewPageState extends State<PgcReviewPage>
                     ),
                     ListTile(
                       dense: true,
-                      title: const Text(
-                        '写长评',
-                        style: TextStyle(fontSize: 14),
-                      ),
+                      title: const Text('写长评', style: TextStyle(fontSize: 14)),
                       onTap: () => Get
                         ..back()
                         ..toNamed(

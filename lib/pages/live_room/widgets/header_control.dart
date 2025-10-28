@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/widgets/common_btn.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/plugin/pl_player/widgets/common_btn.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:floating/floating.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,11 +34,7 @@ class LiveHeaderControl extends StatelessWidget {
       child = Text(
         title!,
         maxLines: 1,
-        style: const TextStyle(
-          fontSize: 15,
-          height: 1,
-          color: Colors.white,
-        ),
+        style: const TextStyle(fontSize: 15, height: 1, color: Colors.white),
       );
       if (isFullScreen && upName != null) {
         child = Column(
@@ -87,29 +83,27 @@ class LiveHeaderControl extends StatelessWidget {
             ),
             onTap: onSendDanmaku,
           ),
-          Obx(
-            () {
-              final onlyPlayAudio = plPlayerController.onlyPlayAudio.value;
-              return ComBtn(
-                tooltip: '仅播放音频',
-                onTap: () {
-                  plPlayerController.onlyPlayAudio.value = !onlyPlayAudio;
-                  onPlayAudio();
-                },
-                icon: onlyPlayAudio
-                    ? const Icon(
-                        size: 18,
-                        MdiIcons.musicCircle,
-                        color: Colors.white,
-                      )
-                    : const Icon(
-                        size: 18,
-                        MdiIcons.musicCircleOutline,
-                        color: Colors.white,
-                      ),
-              );
-            },
-          ),
+          Obx(() {
+            final onlyPlayAudio = plPlayerController.onlyPlayAudio.value;
+            return ComBtn(
+              tooltip: '仅播放音频',
+              onTap: () {
+                plPlayerController.onlyPlayAudio.value = !onlyPlayAudio;
+                onPlayAudio();
+              },
+              icon: onlyPlayAudio
+                  ? const Icon(
+                      size: 18,
+                      MdiIcons.musicCircle,
+                      color: Colors.white,
+                    )
+                  : const Icon(
+                      size: 18,
+                      MdiIcons.musicCircleOutline,
+                      color: Colors.white,
+                    ),
+            );
+          }),
           if (Platform.isAndroid || Utils.isDesktop)
             ComBtn(
               tooltip: '画中画',
@@ -133,11 +127,7 @@ class LiveHeaderControl extends StatelessWidget {
           ComBtn(
             tooltip: '定时关闭',
             onTap: () => PageUtils.scheduleExit(context, isFullScreen, true),
-            icon: const Icon(
-              size: 18,
-              Icons.schedule,
-              color: Colors.white,
-            ),
+            icon: const Icon(size: 18, Icons.schedule, color: Colors.white),
           ),
         ],
       ),

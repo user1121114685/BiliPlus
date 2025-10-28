@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/http/msg.dart';
-import 'package:PiliPlus/models/dynamics/vote_model.dart';
-import 'package:PiliPlus/models_new/upload_bfs/data.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/http/msg.dart';
+import 'package:bili_plus/models/dynamics/vote_model.dart';
+import 'package:bili_plus/models_new/upload_bfs/data.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';

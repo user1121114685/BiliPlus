@@ -1,19 +1,17 @@
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart'
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart'
     show KeywordBlockingItem;
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/search/widgets/search_text.dart';
-import 'package:PiliPlus/pages/whisper_block/controller.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/search/widgets/search_text.dart';
+import 'package:bili_plus/pages/whisper_block/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show LengthLimitingTextInputFormatter;
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class WhisperBlockPage extends StatefulWidget {
-  const WhisperBlockPage({
-    super.key,
-  });
+  const WhisperBlockPage({super.key});
 
   @override
   State<WhisperBlockPage> createState() => _WhisperBlockPageState();
@@ -133,10 +131,7 @@ class _WhisperBlockPageState extends State<WhisperBlockPage> {
                       ),
                       child: const Row(
                         mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.add, size: 22),
-                          Text('添加'),
-                        ],
+                        children: [Icon(Icons.add, size: 22), Text('添加')],
                       ),
                     ),
                     const Spacer(flex: 2),
@@ -176,10 +171,7 @@ class _WhisperBlockPageState extends State<WhisperBlockPage> {
                 children: [
                   const Text(
                     '添加消息屏蔽词',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
                   ),
                   GestureDetector(
                     onTap: Get.back,

@@ -1,5 +1,5 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/skeleton.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/skeleton.dart';
 import 'package:flutter/material.dart';
 
 class VideoCardVSkeleton extends StatelessWidget {
@@ -49,11 +49,7 @@ class VideoCardVSkeleton extends StatelessWidget {
                   margin: const EdgeInsets.only(bottom: 5),
                   color: color,
                 ),
-                Container(
-                  width: 75,
-                  height: 13,
-                  color: color,
-                ),
+                Container(width: 75, height: 13, color: color),
               ],
             ),
           ),

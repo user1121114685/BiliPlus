@@ -1,7 +1,7 @@
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_mention/item.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_mention/item.dart';
+import 'package:bili_plus/utils/num_utils.dart';
 import 'package:flutter/material.dart';
 
 class DynMentionItem extends StatelessWidget {
@@ -29,10 +29,7 @@ class DynMentionItem extends StatelessWidget {
           height: 42,
           type: ImageType.avatar,
         ),
-        title: Text(
-          item.name!,
-          style: const TextStyle(fontSize: 14),
-        ),
+        title: Text(item.name!, style: const TextStyle(fontSize: 14)),
         subtitle: Text(
           '${NumUtils.numFormat(item.fans)}粉丝',
           style: TextStyle(color: Theme.of(context).colorScheme.outline),

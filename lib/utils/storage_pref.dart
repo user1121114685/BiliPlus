@@ -1,35 +1,35 @@
 import 'dart:io';
 import 'dart:math' show pow, sqrt;
 
-import 'package:PiliPlus/common/widgets/pair.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamic_badge_mode.dart';
-import 'package:PiliPlus/models/common/dynamic/up_panel_position.dart';
-import 'package:PiliPlus/models/common/member/tab_type.dart';
-import 'package:PiliPlus/models/common/msg/msg_unread_type.dart';
-import 'package:PiliPlus/models/common/sponsor_block/segment_type.dart';
-import 'package:PiliPlus/models/common/sponsor_block/skip_type.dart';
-import 'package:PiliPlus/models/common/super_resolution_type.dart';
-import 'package:PiliPlus/models/common/theme/theme_type.dart';
-import 'package:PiliPlus/models/common/video/audio_quality.dart';
-import 'package:PiliPlus/models/common/video/cdn_type.dart';
-import 'package:PiliPlus/models/common/video/live_quality.dart';
-import 'package:PiliPlus/models/common/video/subtitle_pref_type.dart';
-import 'package:PiliPlus/models/common/video/video_decode_type.dart';
-import 'package:PiliPlus/models/common/video/video_quality.dart';
-import 'package:PiliPlus/models/user/danmaku_rule.dart';
-import 'package:PiliPlus/models/user/info.dart';
-import 'package:PiliPlus/plugin/pl_player/models/bottom_progress_behavior.dart';
-import 'package:PiliPlus/plugin/pl_player/models/fullscreen_mode.dart';
-import 'package:PiliPlus/plugin/pl_player/models/hwdec_type.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_repeat.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/login_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/pair.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/models/common/dynamic/dynamic_badge_mode.dart';
+import 'package:bili_plus/models/common/dynamic/up_panel_position.dart';
+import 'package:bili_plus/models/common/member/tab_type.dart';
+import 'package:bili_plus/models/common/msg/msg_unread_type.dart';
+import 'package:bili_plus/models/common/sponsor_block/segment_type.dart';
+import 'package:bili_plus/models/common/sponsor_block/skip_type.dart';
+import 'package:bili_plus/models/common/super_resolution_type.dart';
+import 'package:bili_plus/models/common/theme/theme_type.dart';
+import 'package:bili_plus/models/common/video/audio_quality.dart';
+import 'package:bili_plus/models/common/video/cdn_type.dart';
+import 'package:bili_plus/models/common/video/live_quality.dart';
+import 'package:bili_plus/models/common/video/subtitle_pref_type.dart';
+import 'package:bili_plus/models/common/video/video_decode_type.dart';
+import 'package:bili_plus/models/common/video/video_quality.dart';
+import 'package:bili_plus/models/user/danmaku_rule.dart';
+import 'package:bili_plus/models/user/info.dart';
+import 'package:bili_plus/plugin/pl_player/models/bottom_progress_behavior.dart';
+import 'package:bili_plus/plugin/pl_player/models/fullscreen_mode.dart';
+import 'package:bili_plus/plugin/pl_player/models/hwdec_type.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_repeat.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/login_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:hive/hive.dart';
@@ -124,13 +124,11 @@ abstract class Pref {
     if (list == null) {
       return SegmentType.values.map((i) => i.color).toList();
     }
-    return SegmentType.values.map(
-      (item) {
-        final String e = list[item.index];
-        final color = e.isNotEmpty ? int.tryParse('FF$e', radix: 16) : null;
-        return color != null ? Color(color) : item.color;
-      },
-    ).toList();
+    return SegmentType.values.map((item) {
+      final String e = list[item.index];
+      final color = e.isNotEmpty ? int.tryParse('FF$e', radix: 16) : null;
+      return color != null ? Color(color) : item.color;
+    }).toList();
   }
 
   static bool get hiddenSettingUnlocked =>

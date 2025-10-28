@@ -1,13 +1,13 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/space_opus.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space_opus/item.dart';
-import 'package:PiliPlus/pages/member_opus/controller.dart';
-import 'package:PiliPlus/pages/member_opus/widgets/space_opus_item.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/waterfall.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/space_opus.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space_opus/item.dart';
+import 'package:bili_plus/pages/member_opus/controller.dart';
+import 'package:bili_plus/pages/member_opus/widgets/space_opus_item.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/waterfall.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waterfall_flow/waterfall_flow.dart'
@@ -32,10 +32,7 @@ class MemberOpus extends StatefulWidget {
 class _MemberOpusState extends State<MemberOpus>
     with AutomaticKeepAliveClientMixin {
   late final _controller = Get.put(
-    MemberOpusController(
-      mid: widget.mid,
-      heroTag: widget.heroTag,
-    ),
+    MemberOpusController(mid: widget.mid, heroTag: widget.heroTag),
     tag: widget.heroTag,
   );
 
@@ -107,12 +104,10 @@ class _MemberOpusState extends State<MemberOpus>
                 },
               ),
               icon: const Icon(size: 20, Icons.sort),
-              label: Obx(
-                () {
-                  final type = _controller.type.value;
-                  return Text(type.text ?? type.tabName!);
-                },
-              ),
+              label: Obx(() {
+                final type = _controller.type.value;
+                return Text(type.text ?? type.tabName!);
+              }),
             ),
           ),
       ],
@@ -139,18 +134,15 @@ class _MemberOpusState extends State<MemberOpus>
         response?.isNotEmpty == true
             ? SliverWaterfallFlow(
                 gridDelegate: gridDelegate,
-                delegate: SliverChildBuilderDelegate(
-                  (_, index) {
-                    if (index == response.length - 1) {
-                      _controller.onLoadMore();
-                    }
-                    return SpaceOpusItem(
-                      item: response[index],
-                      maxWidth: _maxWidth,
-                    );
-                  },
-                  childCount: response!.length,
-                ),
+                delegate: SliverChildBuilderDelegate((_, index) {
+                  if (index == response.length - 1) {
+                    _controller.onLoadMore();
+                  }
+                  return SpaceOpusItem(
+                    item: response[index],
+                    maxWidth: _maxWidth,
+                  );
+                }, childCount: response!.length),
               )
             : HttpError(onReload: _controller.onReload),
       Error(:var errMsg) => HttpError(

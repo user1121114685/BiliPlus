@@ -1,15 +1,15 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/models/common/home_tab_type.dart';
-import 'package:PiliPlus/pages/common/common_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/models/common/home_tab_type.dart';
+import 'package:bili_plus/pages/common/common_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

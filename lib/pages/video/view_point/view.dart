@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/progress_bar/segment_progress_bar.dart';
-import 'package:PiliPlus/pages/common/slide/common_slide_page.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/progress_bar/segment_progress_bar.dart';
+import 'package:bili_plus/pages/common/slide/common_slide_page.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -44,10 +44,7 @@ class _ViewPointsPageState extends State<ViewPointsPage>
         title: const Text('分段信息'),
         toolbarHeight: 45,
         actions: [
-          const Text(
-            '分段进度条 ',
-            style: TextStyle(fontSize: 16),
-          ),
+          const Text('分段进度条 ', style: TextStyle(fontSize: 16)),
           Obx(
             () => Transform.scale(
               alignment: Alignment.centerLeft,
@@ -144,11 +141,7 @@ class _ViewPointsPageState extends State<ViewPointsPage>
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NetworkImgLayer(
-                src: segment.url,
-                width: 140.8,
-                height: 88,
-              ),
+              NetworkImgLayer(src: segment.url, width: 140.8, height: 88),
               const SizedBox(width: 10),
               Expanded(
                 child: Column(

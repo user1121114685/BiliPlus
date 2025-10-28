@@ -1,6 +1,3 @@
-import com.android.build.gradle.internal.api.ApkVariantOutputImpl
-import org.jetbrains.kotlin.konan.properties.Properties
-
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -9,65 +6,35 @@ plugins {
 }
 
 android {
-    namespace = "com.example.piliplus"
+    namespace = "shaoxia.xyz.biliplus"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = JavaVersion.VERSION_11.toString()
     }
 
     defaultConfig {
-        applicationId = "com.example.piliplus"
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "shaoxia.xyz.biliplus"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
-    packagingOptions.jniLibs.useLegacyPackaging = true
-
-    val keyProperties = Properties().also {
-        val properties = rootProject.file("key.properties")
-        if (properties.exists())
-            it.load(properties.inputStream())
-    }
-
-    val config = keyProperties.getProperty("storeFile")?.let {
-        signingConfigs.create("release") {
-            storeFile = file(it)
-            storePassword = keyProperties.getProperty("storePassword")
-            keyAlias = keyProperties.getProperty("keyAlias")
-            keyPassword = keyProperties.getProperty("keyPassword")
-            enableV1Signing = true
-            enableV2Signing = true
-        }
-    }
-
     buildTypes {
-        all {
-            signingConfig = config ?: signingConfigs["debug"]
-        }
         release {
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-        debug {
-            applicationIdSuffix = ".debug"
-        }
-    }
-
-    applicationVariants.all {
-        val variant = this
-        variant.outputs.forEach { output ->
-            (output as ApkVariantOutputImpl).versionCodeOverride = flutter.versionCode
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
 }

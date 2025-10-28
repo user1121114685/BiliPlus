@@ -1,13 +1,13 @@
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/video_card/video_card_h.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/member/search_type.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/dynamic_panel.dart';
-import 'package:PiliPlus/pages/member_search/child/controller.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/waterfall.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/video_card/video_card_h.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/member/search_type.dart';
+import 'package:bili_plus/pages/dynamics/widgets/dynamic_panel.dart';
+import 'package:bili_plus/pages/member_search/child/controller.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/waterfall.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waterfall_flow/waterfall_flow.dart'
@@ -80,9 +80,7 @@ class _MemberSearchChildPageState extends State<MemberSearchChildPage>
                         if (index == response.length - 1) {
                           _controller.onLoadMore();
                         }
-                        return VideoCardH(
-                          videoItem: response[index],
-                        );
+                        return VideoCardH(videoItem: response[index]);
                       },
                       itemCount: response!.length,
                     ),
@@ -90,18 +88,15 @@ class _MemberSearchChildPageState extends State<MemberSearchChildPage>
                       GlobalData().dynamicsWaterfallFlow
                           ? SliverWaterfallFlow(
                               gridDelegate: dynGridDelegate,
-                              delegate: SliverChildBuilderDelegate(
-                                (_, index) {
-                                  if (index == response.length - 1) {
-                                    _controller.onLoadMore();
-                                  }
-                                  return DynamicPanel(
-                                    item: response[index],
-                                    maxWidth: maxWidth,
-                                  );
-                                },
-                                childCount: response!.length,
-                              ),
+                              delegate: SliverChildBuilderDelegate((_, index) {
+                                if (index == response.length - 1) {
+                                  _controller.onLoadMore();
+                                }
+                                return DynamicPanel(
+                                  item: response[index],
+                                  maxWidth: maxWidth,
+                                );
+                              }, childCount: response!.length),
                             )
                           : SliverList.builder(
                               itemBuilder: (context, index) {

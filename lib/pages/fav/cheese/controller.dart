@@ -1,9 +1,9 @@
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space_cheese/data.dart';
-import 'package:PiliPlus/models_new/space/space_cheese/item.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/utils/accounts.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space_cheese/data.dart';
+import 'package:bili_plus/models_new/space/space_cheese/item.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/utils/accounts.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 class FavCheeseController

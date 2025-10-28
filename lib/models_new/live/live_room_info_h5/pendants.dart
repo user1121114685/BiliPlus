@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/live/live_room_info_h5/frame.dart';
+import 'package:bili_plus/models_new/live/live_room_info_h5/frame.dart';
 
 class Pendants {
   Frame? frame;

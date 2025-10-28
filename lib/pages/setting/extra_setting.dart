@@ -1,4 +1,4 @@
-import 'package:PiliPlus/pages/setting/models/extra_settings.dart';
+import 'package:bili_plus/pages/setting/models/extra_settings.dart';
 import 'package:flutter/material.dart';
 
 class ExtraSetting extends StatefulWidget {

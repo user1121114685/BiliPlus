@@ -1,15 +1,11 @@
-import 'package:PiliPlus/models_new/emote/emote.dart';
+import 'package:bili_plus/models_new/emote/emote.dart';
 
 class Package {
   String? url;
   int? type;
   List<Emote>? emote;
 
-  Package({
-    this.url,
-    this.type,
-    this.emote,
-  });
+  Package({this.url, this.type, this.emote});
 
   factory Package.fromJson(Map<String, dynamic> json) => Package(
     url: json['url'] as String?,

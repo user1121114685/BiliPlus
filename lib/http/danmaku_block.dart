@@ -1,7 +1,7 @@
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/models/user/danmaku_block.dart';
-import 'package:PiliPlus/utils/accounts.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/models/user/danmaku_block.dart';
+import 'package:bili_plus/utils/accounts.dart';
 import 'package:dio/dio.dart';
 
 class DanmakuFilterHttp {
@@ -13,29 +13,20 @@ class DanmakuFilterHttp {
         'data': DanmakuBlockDataModel.fromJson(res.data['data']),
       };
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
   static Future danmakuFilterDel({required int ids}) async {
     var res = await Request().post(
       Api.danmakuFilterDel,
-      data: {
-        'ids': ids,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'ids': ids, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
       return {'status': true};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
@@ -45,23 +36,13 @@ class DanmakuFilterHttp {
   }) async {
     var res = await Request().post(
       Api.danmakuFilterAdd,
-      data: {
-        'type': type,
-        'filter': filter,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'type': type, 'filter': filter, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-        'data': SimpleRule.fromJson(res.data['data']),
-      };
+      return {'status': true, 'data': SimpleRule.fromJson(res.data['data'])};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 }

@@ -1,26 +1,26 @@
-import 'package:PiliPlus/common/skeleton/video_card_h.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/custom_sliver_persistent_header_delegate.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/member/info.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/models_new/video/video_detail/episode.dart';
-import 'package:PiliPlus/pages/member_video/widgets/video_card_h_member_video.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/controller.dart';
-import 'package:PiliPlus/pages/video/member/controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/skeleton/video_card_h.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/member/info.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/models_new/video/video_detail/episode.dart';
+import 'package:bili_plus/pages/member_video/widgets/video_card_h_member_video.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/controller.dart';
+import 'package:bili_plus/pages/video/member/controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -71,9 +71,7 @@ class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Obx(
-      () => _buildUserPage(theme, _controller.userState.value),
-    );
+    return Obx(() => _buildUserPage(theme, _controller.userState.value));
   }
 
   Widget _buildUserPage(ThemeData theme, LoadingState userState) {
@@ -145,15 +143,13 @@ class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Obx(
-                () {
-                  final count = _controller.count.value;
-                  return Text(
-                    count != -1 ? '共$count视频' : '',
-                    style: const TextStyle(fontSize: 13),
-                  );
-                },
-              ),
+              Obx(() {
+                final count = _controller.count.value;
+                return Text(
+                  count != -1 ? '共$count视频' : '',
+                  style: const TextStyle(fontSize: 13),
+                );
+              }),
               SizedBox(
                 height: 35,
                 child: TextButton.icon(
@@ -388,19 +384,14 @@ class _HorizontalMemberPageState extends State<HorizontalMemberPage> {
       onTap: onTap,
       child: Text(
         '$num$title',
-        style: TextStyle(
-          fontSize: 14,
-          color: theme.colorScheme.outline,
-        ),
+        style: TextStyle(fontSize: 14, color: theme.colorScheme.outline),
       ),
     );
   }
 
   Widget _buildAvatar(String face) => GestureDetector(
     onTap: () {
-      PageUtils.imageView(
-        imgList: [SourceModel(url: face)],
-      );
+      PageUtils.imageView(imgList: [SourceModel(url: face)]);
     },
     child: NetworkImgLayer(
       src: face,

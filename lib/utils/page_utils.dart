@@ -1,31 +1,31 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/interactiveviewer_gallery/hero_dialog_route.dart';
-import 'package:PiliPlus/common/widgets/interactiveviewer_gallery/interactiveviewer_gallery.dart';
-import 'package:PiliPlus/grpc/im.dart';
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/video/video_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/episode.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/result.dart';
-import 'package:PiliPlus/pages/common/common_intro_controller.dart';
-import 'package:PiliPlus/pages/contact/view.dart';
-import 'package:PiliPlus/pages/fav_panel/view.dart';
-import 'package:PiliPlus/pages/share/view.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/widgets/menu_row.dart';
-import 'package:PiliPlus/services/shutdown_timer_service.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/url_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/interactiveviewer_gallery/hero_dialog_route.dart';
+import 'package:bili_plus/common/widgets/interactiveviewer_gallery/interactiveviewer_gallery.dart';
+import 'package:bili_plus/grpc/im.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/video/video_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/episode.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/result.dart';
+import 'package:bili_plus/pages/common/common_intro_controller.dart';
+import 'package:bili_plus/pages/contact/view.dart';
+import 'package:bili_plus/pages/fav_panel/view.dart';
+import 'package:bili_plus/pages/share/view.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/widgets/menu_row.dart';
+import 'package:bili_plus/services/shutdown_timer_service.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/url_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:floating/floating.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
@@ -76,9 +76,9 @@ abstract class PageUtils {
         ),
       );
     } else if (context.mounted) {
-      UserModel? userModel = await Navigator.of(context).push(
-        GetPageRoute(page: () => const ContactPage()),
-      );
+      UserModel? userModel = await Navigator.of(
+        context,
+      ).push(GetPageRoute(page: () => const ContactPage()));
       if (userModel != null) {
         selectedIndex = 0;
         userList.add(userModel);
@@ -291,20 +291,11 @@ abstract class PageUtils {
       if (data.basic?.commentType == 12) {
         toDupNamed(
           '/articlePage',
-          parameters: {
-            'id': id,
-            'type': 'opus',
-          },
+          parameters: {'id': id, 'type': 'opus'},
           off: off,
         );
       } else {
-        toDupNamed(
-          '/dynamicDetail',
-          arguments: {
-            'item': data,
-          },
-          off: off,
-        );
+        toDupNamed('/dynamicDetail', arguments: {'item': data}, off: off);
       }
     } else {
       res.toast();
@@ -332,10 +323,7 @@ abstract class PageUtils {
           expand: false,
           snapSizes: const [0.7],
           builder: (BuildContext context, ScrollController scrollController) {
-            return FavPanel(
-              ctr: ctr,
-              scrollController: scrollController,
-            );
+            return FavPanel(ctr: ctr, scrollController: scrollController);
           },
         );
       },
@@ -377,18 +365,10 @@ abstract class PageUtils {
       if (item.basic?.commentType == 12) {
         toDupNamed(
           '/articlePage',
-          parameters: {
-            'id': item.idStr,
-            'type': 'opus',
-          },
+          parameters: {'id': item.idStr, 'type': 'opus'},
         );
       } else {
-        toDupNamed(
-          '/dynamicDetail',
-          arguments: {
-            'item': item,
-          },
-        );
+        toDupNamed('/dynamicDetail', arguments: {'item': item});
       }
     }
 
@@ -419,10 +399,7 @@ abstract class PageUtils {
             }
           }
           // redirectUrl from jumpUrl
-          if (await UrlUtils.parseRedirectUrl(
-                archive.jumpUrl.http2https,
-                false,
-              )
+          if (await UrlUtils.parseRedirectUrl(archive.jumpUrl.http2https, false)
               case final redirectUrl?) {
             if (viewPgcFromUri(redirectUrl)) {
               return;
@@ -435,11 +412,7 @@ abstract class PageUtils {
           String cover = archive.cover!;
           int? cid = await SearchHttp.ab2c(bvid: bvid);
           if (cid != null) {
-            toVideoPage(
-              bvid: bvid,
-              cid: cid,
-              cover: cover,
-            );
+            toVideoPage(bvid: bvid, cid: cid, cover: cover);
           }
         } catch (err) {
           SmartDialog.showToast(err.toString());
@@ -450,10 +423,7 @@ abstract class PageUtils {
       case 'DYNAMIC_TYPE_ARTICLE':
         toDupNamed(
           '/articlePage',
-          parameters: {
-            'id': item.idStr,
-            'type': 'opus',
-          },
+          parameters: {'id': item.idStr, 'type': 'opus'},
         );
         break;
 
@@ -494,12 +464,7 @@ abstract class PageUtils {
         String cover = ugcSeason.cover!;
         int? cid = await SearchHttp.ab2c(bvid: bvid);
         if (cid != null) {
-          toVideoPage(
-            aid: aid,
-            bvid: bvid,
-            cid: cid,
-            cover: cover,
-          );
+          toVideoPage(aid: aid, bvid: bvid, cid: cid, cover: cover);
         }
         break;
 
@@ -580,10 +545,7 @@ abstract class PageUtils {
     );
   }
 
-  static void inAppWebview(
-    String url, {
-    bool off = false,
-  }) {
+  static void inAppWebview(String url, {bool off = false}) {
     if (Pref.openInBrowser) {
       launchURL(url);
     } else {
@@ -629,13 +591,7 @@ abstract class PageUtils {
       }
     } else {
       if (off) {
-        Get.offNamed(
-          '/webview',
-          parameters: {
-            'url': url,
-            ...?parameters,
-          },
-        );
+        Get.offNamed('/webview', parameters: {'url': url, ...?parameters});
       } else {
         PiliScheme.routePushFromUrl(url, parameters: parameters);
       }
@@ -684,19 +640,13 @@ abstract class PageUtils {
           begin: begin,
           end: Offset.zero,
         ).chain(CurveTween(curve: Curves.easeInOut));
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
+        return SlideTransition(position: animation.drive(tween), child: child);
       },
       routeSettings: RouteSettings(arguments: Get.arguments),
     );
   }
 
-  static void toLiveRoom(
-    int? roomId, {
-    bool off = false,
-  }) {
+  static void toLiveRoom(int? roomId, {bool off = false}) {
     if (roomId == null) {
       return;
     }
@@ -823,10 +773,7 @@ abstract class PageUtils {
             epId: episode.epId,
             cover: episode.cover,
             progress: progress == null ? null : int.tryParse(progress),
-            extraArguments: {
-              'pgcApi': true,
-              'pgcItem': data,
-            },
+            extraArguments: {'pgcApi': true, 'pgcItem': data},
           );
         }
 
@@ -872,9 +819,7 @@ abstract class PageUtils {
             pgcType: data.type,
             cover: episode.cover,
             progress: progress == null ? null : int.tryParse(progress),
-            extraArguments: {
-              'pgcItem': data,
-            },
+            extraArguments: {'pgcItem': data},
           );
           return;
         } else {
@@ -925,9 +870,7 @@ abstract class PageUtils {
             seasonId: data.seasonId,
             epId: episode.id,
             cover: episode.cover,
-            extraArguments: {
-              'pgcItem': data,
-            },
+            extraArguments: {'pgcItem': data},
           );
         } else {
           SmartDialog.showToast('资源加载失败');

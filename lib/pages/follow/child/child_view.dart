@@ -1,15 +1,15 @@
-import 'package:PiliPlus/common/skeleton/msg_feed_top.dart';
-import 'package:PiliPlus/common/widgets/button/more_btn.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/follow_order_type.dart';
-import 'package:PiliPlus/models_new/follow/list.dart';
-import 'package:PiliPlus/pages/follow/child/child_controller.dart';
-import 'package:PiliPlus/pages/follow/controller.dart';
-import 'package:PiliPlus/pages/follow/widgets/follow_item.dart';
-import 'package:PiliPlus/pages/share/view.dart' show UserModel;
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/skeleton/msg_feed_top.dart';
+import 'package:bili_plus/common/widgets/button/more_btn.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/follow_order_type.dart';
+import 'package:bili_plus/models_new/follow/list.dart';
+import 'package:bili_plus/pages/follow/child/child_controller.dart';
+import 'package:bili_plus/pages/follow/controller.dart';
+import 'package:bili_plus/pages/follow/widgets/follow_item.dart';
+import 'package:bili_plus/pages/share/view.dart' show UserModel;
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,9 +45,7 @@ class _FollowChildPageState extends State<FollowChildPage>
     super.build(context);
     final colorScheme = ColorScheme.of(context);
     final padding = MediaQuery.viewPaddingOf(context);
-    Widget sliver = Obx(
-      () => _buildBody(_followController.loadingState.value),
-    );
+    Widget sliver = Obx(() => _buildBody(_followController.loadingState.value));
     if (_followController.loadSameFollow) {
       sliver = SliverMainAxisGroup(
         slivers: [
@@ -187,9 +185,7 @@ class _FollowChildPageState extends State<FollowChildPage>
                       ),
                       child: Text(
                         '全部关注',
-                        style: TextStyle(
-                          color: colorScheme.onSurfaceVariant,
-                        ),
+                        style: TextStyle(color: colorScheme.onSurfaceVariant),
                       ),
                     ),
                   ),

@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models_new/space/space_article/item.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models_new/space/space_article/item.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class MemberArticleItem extends StatelessWidget {
@@ -76,11 +76,7 @@ class MemberArticleItem extends StatelessWidget {
                     ],
                     Text(
                       '${item.publishTimeText}',
-                      style: TextStyle(
-                        fontSize: 12,
-                        height: 1,
-                        color: outline,
-                      ),
+                      style: TextStyle(fontSize: 12, height: 1, color: outline),
                     ),
                     const SizedBox(height: 3),
                     Row(

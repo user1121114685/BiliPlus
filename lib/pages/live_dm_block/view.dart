@@ -1,14 +1,14 @@
-import 'package:PiliPlus/common/widgets/custom_sliver_persistent_header_delegate.dart';
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/common/widgets/keep_alive_wrapper.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/models/common/live_dm_silent_type.dart';
-import 'package:PiliPlus/models_new/live/live_dm_block/shield_user_list.dart';
-import 'package:PiliPlus/pages/live_dm_block/controller.dart';
-import 'package:PiliPlus/pages/search/widgets/search_text.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/common/widgets/keep_alive_wrapper.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/models/common/live_dm_silent_type.dart';
+import 'package:bili_plus/models_new/live/live_dm_block/shield_user_list.dart';
+import 'package:bili_plus/pages/live_dm_block/controller.dart';
+import 'package:bili_plus/pages/search/widgets/search_text.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -177,19 +177,17 @@ class _LiveDmBlockPageState extends State<LiveDmBlockPage> {
       child: Wrap(
         spacing: 12,
         runSpacing: 12,
-        children: list.indexed.map(
-          (e) {
-            final item = e.$2;
-            return SearchText(
-              text: item is ShieldUserList ? item.uname! : item as String,
-              onTap: (value) => showConfirmDialog(
-                context: context,
-                title: '确定删除该规则？',
-                onConfirm: () => _controller.onRemove(e.$1, item),
-              ),
-            );
-          },
-        ).toList(),
+        children: list.indexed.map((e) {
+          final item = e.$2;
+          return SearchText(
+            text: item is ShieldUserList ? item.uname! : item as String,
+            onTap: (value) => showConfirmDialog(
+              context: context,
+              title: '确定删除该规则？',
+              onConfirm: () => _controller.onRemove(e.$1, item),
+            ),
+          );
+        }).toList(),
       ),
     );
   }
@@ -197,58 +195,51 @@ class _LiveDmBlockPageState extends State<LiveDmBlockPage> {
   List<Widget> _buildHeader(ThemeData theme) {
     return [
       const SizedBox(height: 6),
-      Obx(
-        () {
-          final isEnable = _controller.isEnable.value;
-          return Row(
-            spacing: 10,
-            children: [
-              Text('屏蔽${isEnable ? '已' : '未'}开启'),
-              Transform.scale(
-                scale: .8,
-                child: Switch(
-                  value: isEnable,
-                  onChanged: _controller.setEnable,
-                ),
-              ),
-            ],
-          );
-        },
-      ),
+      Obx(() {
+        final isEnable = _controller.isEnable.value;
+        return Row(
+          spacing: 10,
+          children: [
+            Text('屏蔽${isEnable ? '已' : '未'}开启'),
+            Transform.scale(
+              scale: .8,
+              child: Switch(value: isEnable, onChanged: _controller.setEnable),
+            ),
+          ],
+        );
+      }),
       const SizedBox(height: 6),
-      Obx(
-        () {
-          final level = _controller.level.value;
-          return Row(
-            children: [
-              const Text('用户等级'),
-              Slider(
-                min: 0,
-                max: 60,
-                // ignore: deprecated_member_use
-                year2023: true,
-                inactiveColor: theme.colorScheme.onInverseSurface,
-                padding: const EdgeInsets.only(left: 20, right: 25),
-                value: level.toDouble(),
-                onChangeStart: (value) => _controller.oldLevel = level,
-                onChanged: (value) =>
-                    _controller.level.value = value.round().clamp(0, 60),
-                onChangeEnd: (value) {
-                  if (_controller.oldLevel != level) {
-                    _controller.setSilent(
-                      LiveDmSilentType.level,
-                      level,
-                      onError: () =>
-                          _controller.level.value = _controller.oldLevel ?? 0,
-                    );
-                  }
-                },
-              ),
-              Text('$level 以下'),
-            ],
-          );
-        },
-      ),
+      Obx(() {
+        final level = _controller.level.value;
+        return Row(
+          children: [
+            const Text('用户等级'),
+            Slider(
+              min: 0,
+              max: 60,
+              // ignore: deprecated_member_use
+              year2023: true,
+              inactiveColor: theme.colorScheme.onInverseSurface,
+              padding: const EdgeInsets.only(left: 20, right: 25),
+              value: level.toDouble(),
+              onChangeStart: (value) => _controller.oldLevel = level,
+              onChanged: (value) =>
+                  _controller.level.value = value.round().clamp(0, 60),
+              onChangeEnd: (value) {
+                if (_controller.oldLevel != level) {
+                  _controller.setSilent(
+                    LiveDmSilentType.level,
+                    level,
+                    onError: () =>
+                        _controller.level.value = _controller.oldLevel ?? 0,
+                  );
+                }
+              },
+            ),
+            Text('$level 以下'),
+          ],
+        );
+      }),
       const SizedBox(height: 20),
       Row(
         spacing: 16,
@@ -342,10 +333,7 @@ class _LiveDmBlockPageState extends State<LiveDmBlockPage> {
         spacing: 5,
         children: [
           top,
-          Text(
-            name,
-            style: TextStyle(color: color),
-          ),
+          Text(name, style: TextStyle(color: color)),
         ],
       ),
     );

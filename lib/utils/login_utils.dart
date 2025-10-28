@@ -1,27 +1,27 @@
 import 'dart:async' show FutureOr;
 import 'dart:io' show Platform;
 
-import 'package:PiliPlus/grpc/grpc_req.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/main.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamics_type.dart';
-import 'package:PiliPlus/models/common/home_tab_type.dart';
-import 'package:PiliPlus/models/user/info.dart';
-import 'package:PiliPlus/models/user/stat.dart';
-import 'package:PiliPlus/pages/dynamics/controller.dart';
-import 'package:PiliPlus/pages/dynamics_tab/controller.dart';
-import 'package:PiliPlus/pages/live/controller.dart';
-import 'package:PiliPlus/pages/main/controller.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/pages/pgc/controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/grpc/grpc_req.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/main.dart';
+import 'package:bili_plus/models/common/dynamic/dynamics_type.dart';
+import 'package:bili_plus/models/common/home_tab_type.dart';
+import 'package:bili_plus/models/user/info.dart';
+import 'package:bili_plus/models/user/stat.dart';
+import 'package:bili_plus/pages/dynamics/controller.dart';
+import 'package:bili_plus/pages/dynamics_tab/controller.dart';
+import 'package:bili_plus/pages/live/controller.dart';
+import 'package:bili_plus/pages/main/controller.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/pages/pgc/controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart' as web;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -39,9 +39,7 @@ abstract class LoginUtils {
     return Future.wait(
       cookies.map(
         (cookie) => webManager.setCookie(
-          url: web.WebUri(
-            '${isWindows ? 'https://' : ''} ${cookie.domain}',
-          ),
+          url: web.WebUri('${isWindows ? 'https://' : ''} ${cookie.domain}'),
           name: cookie.name,
           value: cookie.value,
           path: cookie.path ?? '/',

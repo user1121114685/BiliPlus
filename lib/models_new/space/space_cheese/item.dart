@@ -1,4 +1,4 @@
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/utils/extension.dart';
 
 class SpaceCheeseItem {
   bool? cooperated;

@@ -17,8 +17,8 @@ library;
 import 'dart:math';
 import 'dart:ui' as ui show TextHeightBehavior;
 
-import 'package:PiliPlus/common/widgets/text/paragraph.dart';
-import 'package:PiliPlus/common/widgets/text/rich_text.dart';
+import 'package:bili_plus/common/widgets/text/paragraph.dart';
+import 'package:bili_plus/common/widgets/text/rich_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide RichText;
 import 'package:flutter/rendering.dart' hide RenderParagraph;
@@ -758,9 +758,7 @@ class _SelectableTextContainerDelegate
           assert(selectables[index].value.selectionRects.isNotEmpty);
           final bool selectionAtStartOfSelectable = selectables[index]
               .boundingBoxes[0]
-              .overlaps(
-                selectables[index].value.selectionRects[0],
-              );
+              .overlaps(selectables[index].value.selectionRects[0]);
           int startIndex = 0;
           if (lastNextIndex != null && selectionAtStartOfSelectable) {
             startIndex = lastNextIndex + 1;

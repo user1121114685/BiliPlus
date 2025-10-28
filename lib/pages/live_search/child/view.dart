@@ -1,14 +1,14 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/msg_feed_top.dart';
-import 'package:PiliPlus/common/skeleton/video_card_v.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/live_search_type.dart';
-import 'package:PiliPlus/pages/live_search/child/controller.dart';
-import 'package:PiliPlus/pages/live_search/widgets/live_search_room.dart';
-import 'package:PiliPlus/pages/live_search/widgets/live_search_user.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/msg_feed_top.dart';
+import 'package:bili_plus/common/skeleton/video_card_v.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/live_search_type.dart';
+import 'package:bili_plus/pages/live_search/child/controller.dart';
+import 'package:bili_plus/pages/live_search/widgets/live_search_room.dart';
+import 'package:bili_plus/pages/live_search/widgets/live_search_user.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -95,9 +95,7 @@ class _LiveSearchChildPageState extends State<LiveSearchChildPage>
                         if (index == response.length - 1) {
                           _controller.onLoadMore();
                         }
-                        return LiveCardVSearch(
-                          item: response[index],
-                        );
+                        return LiveCardVSearch(item: response[index]);
                       },
                       itemCount: response!.length,
                     ),
@@ -107,9 +105,7 @@ class _LiveSearchChildPageState extends State<LiveSearchChildPage>
                         if (index == response.length - 1) {
                           _controller.onLoadMore();
                         }
-                        return LiveSearchUserItem(
-                          item: response[index],
-                        );
+                        return LiveSearchUserItem(item: response[index]);
                       },
                       itemCount: response!.length,
                     ),

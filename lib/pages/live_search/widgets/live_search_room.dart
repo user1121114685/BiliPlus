@@ -1,27 +1,21 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models_new/live/live_search/room_item.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models_new/live/live_search/room_item.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 // 视频卡片 - 垂直布局
 class LiveCardVSearch extends StatelessWidget {
   final LiveSearchRoomItemModel item;
 
-  const LiveCardVSearch({
-    super.key,
-    required this.item,
-  });
+  const LiveCardVSearch({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
-    void onLongPress() => imageSaveDialog(
-      title: item.title,
-      cover: item.cover,
-    );
+    void onLongPress() => imageSaveDialog(title: item.title, cover: item.cover);
     return Card(
       clipBehavior: Clip.hardEdge,
       child: InkWell(
@@ -66,9 +60,7 @@ class LiveCardVSearch extends StatelessWidget {
               child: Text(
                 '${item.title}',
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  letterSpacing: 0.3,
-                ),
+                style: const TextStyle(letterSpacing: 0.3),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -87,10 +79,7 @@ class LiveCardVSearch extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
-          colors: <Color>[
-            Colors.transparent,
-            Colors.black54,
-          ],
+          colors: <Color>[Colors.transparent, Colors.black54],
           tileMode: TileMode.mirror,
         ),
       ),

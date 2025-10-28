@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/fav/fav_folder/list.dart';
-import 'package:PiliPlus/pages/fav/video/controller.dart';
-import 'package:PiliPlus/pages/fav/video/widgets/item.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/fav/fav_folder/list.dart';
+import 'package:bili_plus/pages/fav/video/controller.dart';
+import 'package:bili_plus/pages/fav/video/widgets/item.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,9 +37,7 @@ class _FavVideoPageState extends State<FavVideoPage>
               top: 7,
               bottom: 100 + MediaQuery.viewPaddingOf(context).bottom,
             ),
-            sliver: Obx(
-              () => _buildBody(_favController.loadingState.value),
-            ),
+            sliver: Obx(() => _buildBody(_favController.loadingState.value)),
           ),
         ],
       ),

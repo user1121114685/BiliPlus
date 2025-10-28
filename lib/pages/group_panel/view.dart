@@ -1,9 +1,9 @@
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/models/member/tags.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/models/member/tags.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -133,10 +133,7 @@ class _GroupPanelState extends State<GroupPanel> {
           title: const Text('设置关注分组'),
         ),
         Expanded(child: _buildBody),
-        Divider(
-          height: 1,
-          color: theme.disabledColor.withValues(alpha: 0.08),
-        ),
+        Divider(height: 1, color: theme.disabledColor.withValues(alpha: 0.08)),
         Padding(
           padding: EdgeInsets.only(
             left: 20,

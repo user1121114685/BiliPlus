@@ -1,7 +1,7 @@
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -81,10 +81,7 @@ class _FontSizeSelectPageState extends State<FontSizeSelectPage> {
                     ),
                   ),
                   const SizedBox(width: 5),
-                  const Text(
-                    '大',
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  const Text('大', style: TextStyle(fontSize: 20)),
                 ],
               ),
             ),

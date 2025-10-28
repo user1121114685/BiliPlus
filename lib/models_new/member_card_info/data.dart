@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/member_card_info/card.dart';
+import 'package:bili_plus/models_new/member_card_info/card.dart';
 
 class MemberCardInfoData {
   Card? card;

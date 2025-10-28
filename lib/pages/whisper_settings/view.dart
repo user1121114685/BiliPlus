@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart'
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart'
     show IMSettingType, Setting;
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/whisper_block/view.dart';
-import 'package:PiliPlus/pages/whisper_settings/controller.dart';
-import 'package:PiliPlus/pages/whisper_settings/widgets/item.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/whisper_block/view.dart';
+import 'package:bili_plus/pages/whisper_settings/controller.dart';
+import 'package:bili_plus/pages/whisper_settings/widgets/item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -35,9 +35,7 @@ class _WhisperSettingsPageState extends State<WhisperSettingsPage> {
     final ThemeData theme = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: Obx(() => Text(_controller.title.value)),
-      ),
+      appBar: AppBar(title: Obx(() => Text(_controller.title.value))),
       body: Obx(() => _buildBody(theme, _controller.loadingState.value)),
     );
   }
@@ -86,46 +84,44 @@ class _WhisperSettingsPageState extends State<WhisperSettingsPage> {
             contentPadding: const EdgeInsets.symmetric(vertical: 12),
             content: Column(
               mainAxisSize: MainAxisSize.min,
-              children: item.redirect.windowSelect.item.map(
-                (e) {
-                  if (e.selected) {
-                    selected ??= e.text;
-                  }
-                  return ListTile(
-                    dense: true,
-                    onTap: () async {
-                      if (!e.selected) {
-                        Get.back();
-                        for (var j in item.redirect.windowSelect.item) {
-                          j.selected = false;
-                        }
-                        item.redirect.selectedSummary = e.text;
-                        e.selected = true;
-                        _controller.loadingState.refresh();
-                        PbMap<int, Setting> settings = PbMap<int, Setting>(
-                          response.keyFieldType,
-                          response.valueFieldType,
-                        )..[key] = item;
-                        final res = await _controller.onSet(settings);
-                        if (!res) {
-                          for (var j in item.redirect.windowSelect.item) {
-                            j.selected = j.text == selected;
-                          }
-                          item.redirect.selectedSummary = selected!;
-                          _controller.loadingState.refresh();
-                        }
+              children: item.redirect.windowSelect.item.map((e) {
+                if (e.selected) {
+                  selected ??= e.text;
+                }
+                return ListTile(
+                  dense: true,
+                  onTap: () async {
+                    if (!e.selected) {
+                      Get.back();
+                      for (var j in item.redirect.windowSelect.item) {
+                        j.selected = false;
                       }
-                    },
-                    title: Text(
-                      e.text,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: e.selected ? theme.colorScheme.primary : null,
-                      ),
+                      item.redirect.selectedSummary = e.text;
+                      e.selected = true;
+                      _controller.loadingState.refresh();
+                      PbMap<int, Setting> settings = PbMap<int, Setting>(
+                        response.keyFieldType,
+                        response.valueFieldType,
+                      )..[key] = item;
+                      final res = await _controller.onSet(settings);
+                      if (!res) {
+                        for (var j in item.redirect.windowSelect.item) {
+                          j.selected = j.text == selected;
+                        }
+                        item.redirect.selectedSummary = selected!;
+                        _controller.loadingState.refresh();
+                      }
+                    }
+                  },
+                  title: Text(
+                    e.text,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: e.selected ? theme.colorScheme.primary : null,
                     ),
-                  );
-                },
-              ).toList(),
+                  ),
+                );
+              }).toList(),
             ),
           );
         },

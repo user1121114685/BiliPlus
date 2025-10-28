@@ -1,4 +1,4 @@
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 
 Widget videoTabBarView({

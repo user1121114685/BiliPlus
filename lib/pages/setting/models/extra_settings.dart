@@ -1,39 +1,39 @@
 import 'dart:io';
 import 'dart:math' show pi, max;
 
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/common/widgets/image/custom_grid_view.dart'
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/common/widgets/image/custom_grid_view.dart'
     show CustomGridView, ImageModel;
-import 'package:PiliPlus/common/widgets/pendant_avatar.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/grpc/reply.dart';
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/models/common/audio_normalization.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamics_type.dart';
-import 'package:PiliPlus/models/common/member/tab_type.dart';
-import 'package:PiliPlus/models/common/reply/reply_sort_type.dart';
-import 'package:PiliPlus/models/common/settings_type.dart';
-import 'package:PiliPlus/models/common/sponsor_block/skip_type.dart';
-import 'package:PiliPlus/models/common/super_resolution_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/common/slide/common_slide_page.dart';
-import 'package:PiliPlus/pages/home/controller.dart';
-import 'package:PiliPlus/pages/hot/controller.dart';
-import 'package:PiliPlus/pages/main/controller.dart';
-import 'package:PiliPlus/pages/setting/models/model.dart';
-import 'package:PiliPlus/pages/setting/widgets/select_dialog.dart';
-import 'package:PiliPlus/pages/setting/widgets/slide_dialog.dart';
-import 'package:PiliPlus/pages/video/reply/widgets/reply_item_grpc.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/cache_manage.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/update.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/pendant_avatar.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/grpc/reply.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/models/common/audio_normalization.dart';
+import 'package:bili_plus/models/common/dynamic/dynamics_type.dart';
+import 'package:bili_plus/models/common/member/tab_type.dart';
+import 'package:bili_plus/models/common/reply/reply_sort_type.dart';
+import 'package:bili_plus/models/common/settings_type.dart';
+import 'package:bili_plus/models/common/sponsor_block/skip_type.dart';
+import 'package:bili_plus/models/common/super_resolution_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/common/slide/common_slide_page.dart';
+import 'package:bili_plus/pages/home/controller.dart';
+import 'package:bili_plus/pages/hot/controller.dart';
+import 'package:bili_plus/pages/main/controller.dart';
+import 'package:bili_plus/pages/setting/models/model.dart';
+import 'package:bili_plus/pages/setting/widgets/select_dialog.dart';
+import 'package:bili_plus/pages/setting/widgets/slide_dialog.dart';
+import 'package:bili_plus/pages/video/reply/widgets/reply_item_grpc.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/cache_manage.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/update.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -622,10 +622,7 @@ List<SettingsModel> get extraSettings => [
     leading: Stack(
       clipBehavior: Clip.none,
       alignment: Alignment.center,
-      children: [
-        Icon(Icons.shield_outlined),
-        Icon(Icons.reply, size: 14),
-      ],
+      children: [Icon(Icons.shield_outlined), Icon(Icons.reply, size: 14)],
     ),
     setKey: SettingBoxKey.enableCommAntifraud,
     defaultVal: false,
@@ -634,10 +631,7 @@ List<SettingsModel> get extraSettings => [
     settingsType: SettingsType.sw1tch,
     title: '使用「哔哩发评反诈」检查评论',
     subtitle: '仅对Android生效',
-    leading: Icon(
-      FontAwesomeIcons.b,
-      size: 22,
-    ),
+    leading: Icon(FontAwesomeIcons.b, size: 22),
     setKey: SettingBoxKey.biliSendCommAntifraud,
     defaultVal: false,
   ),
@@ -1220,10 +1214,7 @@ Future<void> audioNormalization(
               spacing: 16,
               children: [
                 const Text('等同于 --lavfi-complex="[aid1] 参数 [ao]"'),
-                TextField(
-                  autofocus: true,
-                  onChanged: (value) => param = value,
-                ),
+                TextField(autofocus: true, onChanged: (value) => param = value),
               ],
             ),
             actions: [
@@ -1231,9 +1222,7 @@ Future<void> audioNormalization(
                 onPressed: Get.back,
                 child: Text(
                   '取消',
-                  style: TextStyle(
-                    color: ColorScheme.of(context).outline,
-                  ),
+                  style: TextStyle(color: ColorScheme.of(context).outline),
                 ),
               ),
               TextButton(

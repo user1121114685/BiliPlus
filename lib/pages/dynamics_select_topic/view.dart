@@ -1,25 +1,22 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/draggable_sheet/draggable_scrollable_sheet_topic.dart'
+import 'package:bili_plus/common/widgets/draggable_sheet/draggable_scrollable_sheet_topic.dart'
     as topic_sheet;
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_top/topic_item.dart';
-import 'package:PiliPlus/pages/dynamics_select_topic/controller.dart';
-import 'package:PiliPlus/pages/dynamics_select_topic/widgets/item.dart';
-import 'package:PiliPlus/pages/search/controller.dart' show DebounceStreamState;
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_top/topic_item.dart';
+import 'package:bili_plus/pages/dynamics_select_topic/controller.dart';
+import 'package:bili_plus/pages/dynamics_select_topic/widgets/item.dart';
+import 'package:bili_plus/pages/search/controller.dart'
+    show DebounceStreamState;
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 
 class SelectTopicPanel extends StatefulWidget {
-  const SelectTopicPanel({
-    super.key,
-    this.scrollController,
-    this.callback,
-  });
+  const SelectTopicPanel({super.key, this.scrollController, this.callback});
 
   final ScrollController? scrollController;
   final ValueChanged<double>? callback;

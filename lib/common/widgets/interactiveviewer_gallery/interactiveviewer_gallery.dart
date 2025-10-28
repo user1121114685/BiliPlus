@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:PiliPlus/common/widgets/interactiveviewer_gallery/interactive_viewer_boundary.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/interactiveviewer_gallery/interactive_viewer_boundary.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
@@ -393,13 +393,10 @@ class _InteractiveviewerGalleryState extends State<InteractiveviewerGallery>
       matrix.row3.w,
     ]);
 
-    _animation =
-        Matrix4Tween(
-          begin: _transformationController.value,
-          end: matrix,
-        ).animate(
-          CurveTween(curve: Curves.easeOut).animate(_animationController),
-        );
+    _animation = Matrix4Tween(
+      begin: _transformationController.value,
+      end: matrix,
+    ).animate(CurveTween(curve: Curves.easeOut).animate(_animationController));
     _animationController
         .forward(from: 0)
         .whenComplete(() => _onScaleChanged(targetScale));
@@ -435,10 +432,7 @@ class _InteractiveviewerGalleryState extends State<InteractiveviewerGallery>
               ListTile(
                 onTap: () {
                   Get.back();
-                  ImageUtils.downloadImg(
-                    this.context,
-                    [item.url],
-                  );
+                  ImageUtils.downloadImg(this.context, [item.url]);
                 },
                 dense: true,
                 title: const Text('保存图片', style: TextStyle(fontSize: 14)),

@@ -1,12 +1,12 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/dyn/ink_well.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_reserve/data.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/vote.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/dyn/ink_well.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_reserve/data.dart';
+import 'package:bili_plus/pages/dynamics/widgets/vote.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/num_utils.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' hide InkWell;
@@ -37,17 +37,10 @@ Widget addWidget(
               ? null
               : () => PiliScheme.routePushFromUrl(ugc.jumpUrl!),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 8,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Row(
               children: [
-                NetworkImgLayer(
-                  width: 120,
-                  height: 75,
-                  src: ugc.cover,
-                ),
+                NetworkImgLayer(width: 120, height: 75, src: ugc.cover),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Column(
@@ -102,13 +95,9 @@ Widget addWidget(
                             ),
                             children: [
                               if (reserve.desc1?.text?.isNotEmpty == true)
-                                TextSpan(
-                                  text: reserve.desc1!.text,
-                                ),
+                                TextSpan(text: reserve.desc1!.text),
                               if (reserve.desc2?.text?.isNotEmpty == true)
-                                TextSpan(
-                                  text: '    ${reserve.desc2!.text}',
-                                ),
+                                TextSpan(text: '    ${reserve.desc2!.text}'),
                               if (reserve.desc3?.text?.isNotEmpty == true) ...[
                                 const TextSpan(text: '\n'),
                                 WidgetSpan(
@@ -167,15 +156,11 @@ Widget addWidget(
                                   )
                                 : null,
                             visualDensity: VisualDensity.compact,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
                           onPressed: canJump
-                              ? () => PiliScheme.routePushFromUrl(
-                                  btn.jumpUrl!,
-                                )
+                              ? () => PiliScheme.routePushFromUrl(btn.jumpUrl!)
                               : btn.disable == 1
                               ? null
                               : () async {
@@ -195,9 +180,7 @@ Widget addWidget(
                                       (context as Element?)?.markNeedsBuild();
                                     }
                                   } else {
-                                    SmartDialog.showToast(
-                                      res['msg'],
-                                    );
+                                    SmartDialog.showToast(res['msg']);
                                   }
                                 },
                           child: Text(
@@ -377,9 +360,7 @@ Widget addWidget(
                                 Radius.circular(6),
                               ),
                             ),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
                             visualDensity: const VisualDensity(
                               horizontal: -2,
                               vertical: -3,
@@ -411,10 +392,7 @@ Widget addWidget(
                 : null,
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 8,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Row(
               children: [
                 Container(
@@ -422,9 +400,7 @@ Widget addWidget(
                     color: floor == 1
                         ? theme.colorScheme.surface
                         : theme.dividerColor.withValues(alpha: 0.08),
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(8),
-                    ),
+                    borderRadius: const BorderRadius.all(Radius.circular(8)),
                   ),
                   width: 70,
                   height: 50,
@@ -534,9 +510,8 @@ Widget addWidget(
                 if (content.button?.jumpUrl?.isNotEmpty == true) ...[
                   const SizedBox(width: 10),
                   FilledButton.tonal(
-                    onPressed: () => PiliScheme.routePushFromUrl(
-                      content.button!.jumpUrl!,
-                    ),
+                    onPressed: () =>
+                        PiliScheme.routePushFromUrl(content.button!.jumpUrl!),
                     style: FilledButton.styleFrom(
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(6)),
@@ -690,13 +665,11 @@ Widget addWidget(
   } catch (e) {
     return Padding(
       padding: const EdgeInsets.all(12),
-      child: SelectableText(
-        '''
+      child: SelectableText('''
 additional panel error
 id: $idStr
 type: $type
-err: $e''',
-      ),
+err: $e'''),
     );
   }
 }

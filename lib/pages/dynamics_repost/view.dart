@@ -1,16 +1,16 @@
-import 'package:PiliPlus/common/widgets/draggable_sheet/draggable_scrollable_sheet_dyn.dart'
+import 'package:bili_plus/common/widgets/draggable_sheet/draggable_scrollable_sheet_dyn.dart'
     show DraggableScrollableSheet;
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/text_field/text_field.dart';
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/models/common/publish_panel_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/common/publish/common_rich_text_pub_page.dart';
-import 'package:PiliPlus/pages/dynamics_mention/controller.dart';
-import 'package:PiliPlus/pages/emote/controller.dart';
-import 'package:PiliPlus/pages/emote/view.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/text_field/text_field.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/models/common/publish_panel_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/common/publish/common_rich_text_pub_page.dart';
+import 'package:bili_plus/pages/dynamics_mention/controller.dart';
+import 'package:bili_plus/pages/emote/controller.dart';
+import 'package:bili_plus/pages/emote/view.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/request_utils.dart';
 import 'package:flutter/material.dart' hide DraggableScrollableSheet, TextField;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -145,10 +145,7 @@ class _RepostPanelState extends CommonRichTextPubPageState<RepostPanel> {
           : DecoratedBox(
               decoration: BoxDecoration(
                 border: Border(
-                  left: BorderSide(
-                    width: 2,
-                    color: theme.colorScheme.primary,
-                  ),
+                  left: BorderSide(width: 2, color: theme.colorScheme.primary),
                 ),
               ),
               child: _buildEditPlaceHolder(theme),
@@ -168,12 +165,7 @@ class _RepostPanelState extends CommonRichTextPubPageState<RepostPanel> {
       child: Row(
         children: [
           if (_pic != null) ...[
-            NetworkImgLayer(
-              radius: 6,
-              width: 40,
-              height: 40,
-              src: _pic,
-            ),
+            NetworkImgLayer(radius: 6, width: 40, height: 40, src: _pic),
             const SizedBox(width: 10),
           ],
           Expanded(
@@ -189,11 +181,7 @@ class _RepostPanelState extends CommonRichTextPubPageState<RepostPanel> {
                       fontSize: 13,
                     ),
                   ),
-                Text(
-                  _text,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                Text(_text, maxLines: 2, overflow: TextOverflow.ellipsis),
               ],
             ),
           ),
@@ -338,29 +326,17 @@ class _RepostPanelState extends CommonRichTextPubPageState<RepostPanel> {
 
   Widget get _buildToolbar => Padding(
     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-    child: Row(
-      spacing: 16,
-      children: [
-        emojiBtn,
-        atBtn,
-      ],
-    ),
+    child: Row(spacing: 16, children: [emojiBtn, atBtn]),
   );
 
   List<Widget> _biuldDismiss(ThemeData theme) => [
     const SizedBox(height: 10),
-    Divider(
-      height: 1,
-      color: theme.colorScheme.outline.withValues(alpha: 0.1),
-    ),
+    Divider(height: 1, color: theme.colorScheme.outline.withValues(alpha: 0.1)),
     ListTile(
       dense: true,
       onTap: Get.back,
       title: Center(
-        child: Text(
-          '取消',
-          style: TextStyle(color: theme.colorScheme.outline),
-        ),
+        child: Text('取消', style: TextStyle(color: theme.colorScheme.outline)),
       ),
     ),
     SizedBox(height: 10 + MediaQuery.viewPaddingOf(context).bottom),
@@ -379,29 +355,23 @@ class _RepostPanelState extends CommonRichTextPubPageState<RepostPanel> {
           "biz_id": item.modules.moduleAuthor!.mid.toString(),
         },
         {"raw_text": ":", "type": 1, "biz_id": ""},
-        ...item.modules.moduleDynamic!.desc!.richTextNodes!.map(
-          (e) {
-            int type;
-            String bizId;
-            switch (e.type) {
-              case 'RICH_TEXT_NODE_TYPE_EMOJI':
-                type = 9;
-                bizId = '';
-              case 'RICH_TEXT_NODE_TYPE_AT':
-                type = 2;
-                bizId = e.rid ?? '';
-              case 'RICH_TEXT_NODE_TYPE_TEXT':
-              default:
-                type = 1;
-                bizId = '';
-            }
-            return {
-              "raw_text": e.origText,
-              "type": type,
-              "biz_id": bizId,
-            };
-          },
-        ),
+        ...item.modules.moduleDynamic!.desc!.richTextNodes!.map((e) {
+          int type;
+          String bizId;
+          switch (e.type) {
+            case 'RICH_TEXT_NODE_TYPE_EMOJI':
+              type = 9;
+              bizId = '';
+            case 'RICH_TEXT_NODE_TYPE_AT':
+              type = 2;
+              bizId = e.rid ?? '';
+            case 'RICH_TEXT_NODE_TYPE_TEXT':
+            default:
+              type = 1;
+              bizId = '';
+          }
+          return {"raw_text": e.origText, "type": type, "biz_id": bizId};
+        }),
       ];
     } catch (_) {
       return null;
@@ -435,10 +405,7 @@ class _RepostPanelState extends CommonRichTextPubPageState<RepostPanel> {
       widget.callback?.call();
       var id = result['data']?['dyn_id'];
       RequestUtils.insertCreatedDyn(id);
-      RequestUtils.checkCreatedDyn(
-        id: id,
-        dynText: editController.rawText,
-      );
+      RequestUtils.checkCreatedDyn(id: id, dynText: editController.rawText);
     } else {
       SmartDialog.showToast(result['msg']);
     }

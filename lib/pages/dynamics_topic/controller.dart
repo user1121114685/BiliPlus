@@ -1,13 +1,13 @@
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_feed/item.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_feed/topic_card_list.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_feed/topic_sort_by_conf.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_top/top_details.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_feed/item.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_feed/topic_card_list.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_feed/topic_sort_by_conf.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_top/top_details.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
@@ -80,11 +80,7 @@ class DynTopicController
 
   @override
   Future<LoadingState<TopicCardList?>> customGetData() =>
-      DynamicsHttp.topicFeed(
-        topicId: topicId,
-        offset: offset,
-        sortBy: sortBy,
-      );
+      DynamicsHttp.topicFeed(topicId: topicId, offset: offset, sortBy: sortBy);
 
   void onSort(int sortBy) {
     this.sortBy = sortBy;

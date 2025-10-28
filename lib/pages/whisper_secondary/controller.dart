@@ -1,16 +1,14 @@
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart'
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart'
     show Offset, Session, SessionPageType, SessionSecondaryReply, ThreeDotItem;
-import 'package:PiliPlus/grpc/im.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/common/common_whisper_controller.dart';
+import 'package:bili_plus/grpc/im.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/common/common_whisper_controller.dart';
 import 'package:get/get.dart';
 import 'package:protobuf/protobuf.dart' show PbMap;
 
 class WhisperSecController
     extends CommonWhisperController<SessionSecondaryReply> {
-  WhisperSecController({
-    required this.sessionPageType,
-  });
+  WhisperSecController({required this.sessionPageType});
 
   PbMap<int, Offset>? offset;
   @override
@@ -52,8 +50,5 @@ class WhisperSecController
 
   @override
   Future<LoadingState<SessionSecondaryReply>> customGetData() =>
-      ImGrpc.sessionSecondary(
-        offset: offset,
-        pageType: sessionPageType,
-      );
+      ImGrpc.sessionSecondary(offset: offset, pageType: sessionPageType);
 }

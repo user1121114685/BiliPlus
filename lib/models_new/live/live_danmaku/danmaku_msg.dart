@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/live/live_danmaku/live_emote.dart';
+import 'package:bili_plus/models_new/live/live_danmaku/live_emote.dart';
 
 class DanmakuMsg {
   late String name;

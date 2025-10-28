@@ -1,15 +1,15 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/list_tile.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/search/search_trending/list.dart';
-import 'package:PiliPlus/pages/search_trending/controller.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
+import 'package:bili_plus/common/widgets/list_tile.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/search/search_trending/list.dart';
+import 'package:bili_plus/pages/search_trending/controller.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/image_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide ListTile;
@@ -67,48 +67,39 @@ class _SearchTrendingPageState extends State<SearchTrendingPage> {
       resizeToAvoidBottomInset: false,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
-        child: Obx(
-          () {
-            final scrollRatio = _scrollRatio.value;
-            final flag = maxWidth > width || scrollRatio >= 0.5;
-            return AppBar(
-              title: Opacity(
-                opacity: scrollRatio,
-                child: Text(
-                  'bilibili热搜',
-                  style: TextStyle(
-                    color: flag ? null : Colors.white,
+        child: Obx(() {
+          final scrollRatio = _scrollRatio.value;
+          final flag = maxWidth > width || scrollRatio >= 0.5;
+          return AppBar(
+            title: Opacity(
+              opacity: scrollRatio,
+              child: Text(
+                'bilibili热搜',
+                style: TextStyle(color: flag ? null : Colors.white),
+              ),
+            ),
+            backgroundColor: theme.colorScheme.surface.withValues(
+              alpha: scrollRatio,
+            ),
+            foregroundColor: flag ? null : Colors.white,
+            systemOverlayStyle: flag
+                ? null
+                : const SystemUiOverlayStyle(
+                    statusBarBrightness: Brightness.dark,
+                    statusBarIconBrightness: Brightness.light,
                   ),
-                ),
-              ),
-              backgroundColor: theme.colorScheme.surface.withValues(
-                alpha: scrollRatio,
-              ),
-              foregroundColor: flag ? null : Colors.white,
-              systemOverlayStyle: flag
-                  ? null
-                  : const SystemUiOverlayStyle(
-                      statusBarBrightness: Brightness.dark,
-                      statusBarIconBrightness: Brightness.light,
+            shape: scrollRatio == 1
+                ? Border(
+                    bottom: BorderSide(
+                      color: theme.colorScheme.outline.withValues(alpha: 0.1),
                     ),
-              shape: scrollRatio == 1
-                  ? Border(
-                      bottom: BorderSide(
-                        color: theme.colorScheme.outline.withValues(
-                          alpha: 0.1,
-                        ),
-                      ),
-                    )
-                  : null,
-            );
-          },
-        ),
+                  )
+                : null,
+          );
+        }),
       ),
       body: Padding(
-        padding: EdgeInsets.only(
-          left: padding.left,
-          right: padding.right,
-        ),
+        padding: EdgeInsets.only(left: padding.left, right: padding.right),
         child: Center(
           child: SizedBox(
             width: width,
@@ -162,9 +153,7 @@ class _SearchTrendingPageState extends State<SearchTrendingPage> {
                     dense: true,
                     onTap: () => Get.toNamed(
                       '/searchResult',
-                      parameters: {
-                        'keyword': item.keyword!,
-                      },
+                      parameters: {'keyword': item.keyword!},
                     ),
                     leading: index < _controller.topCount
                         ? const Icon(

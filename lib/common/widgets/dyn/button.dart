@@ -13,7 +13,7 @@ library;
 
 import 'dart:math' as math;
 
-import 'package:PiliPlus/common/widgets/dyn/ink_well.dart';
+import 'package:bili_plus/common/widgets/dyn/ink_well.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide InkWell;
 import 'package:flutter/rendering.dart';
@@ -206,9 +206,7 @@ abstract class ButtonStyleButton extends StatefulWidget {
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(
-        FlagProperty('enabled', value: enabled, ifFalse: 'disabled'),
-      )
+      ..add(FlagProperty('enabled', value: enabled, ifFalse: 'disabled'))
       ..add(
         DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null),
       )

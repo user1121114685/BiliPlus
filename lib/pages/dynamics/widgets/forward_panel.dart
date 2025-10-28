@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/widgets/dyn/ink_well.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/dyn_content.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/module_panel.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/dyn/ink_well.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/dynamics/widgets/dyn_content.dart';
+import 'package:bili_plus/pages/dynamics/widgets/module_panel.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart' hide InkWell;
 import 'package:get/get.dart';
 
@@ -89,11 +89,7 @@ Widget forwardPanel(
         return;
     }
     if (cover != null) {
-      imageSaveDialog(
-        title: title,
-        cover: cover,
-        bvid: bvid,
-      );
+      imageSaveDialog(title: title, cover: cover, bvid: bvid);
     }
   }
 

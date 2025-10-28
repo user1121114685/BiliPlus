@@ -1,4 +1,4 @@
-import 'package:PiliPlus/common/skeleton/skeleton.dart';
+import 'package:bili_plus/common/skeleton/skeleton.dart';
 import 'package:flutter/material.dart';
 
 class VideoReplySkeleton extends StatelessWidget {
@@ -15,18 +15,10 @@ class VideoReplySkeleton extends StatelessWidget {
             child: Row(
               children: [
                 ClipOval(
-                  child: Container(
-                    width: 34,
-                    height: 34,
-                    color: bgColor,
-                  ),
+                  child: Container(width: 34, height: 34, color: bgColor),
                 ),
                 const SizedBox(width: 12),
-                Container(
-                  width: 80,
-                  height: 13,
-                  color: bgColor,
-                ),
+                Container(width: 80, height: 13, color: bgColor),
               ],
             ),
           ),

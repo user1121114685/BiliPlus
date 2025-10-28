@@ -1,15 +1,11 @@
-import 'package:PiliPlus/models_new/emote/meta.dart';
+import 'package:bili_plus/models_new/emote/meta.dart';
 
 class Emote {
   String? text;
   String? url;
   Meta? meta;
 
-  Emote({
-    this.text,
-    this.url,
-    this.meta,
-  });
+  Emote({this.text, this.url, this.meta});
 
   factory Emote.fromJson(Map<String, dynamic> json) => Emote(
     text: json['text'] as String?,

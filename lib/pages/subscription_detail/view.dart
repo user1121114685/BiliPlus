@@ -1,14 +1,14 @@
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/sub/sub/list.dart';
-import 'package:PiliPlus/models_new/sub/sub_detail/media.dart';
-import 'package:PiliPlus/pages/subscription_detail/controller.dart';
-import 'package:PiliPlus/pages/subscription_detail/widget/sub_video_card.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/sub/sub/list.dart';
+import 'package:bili_plus/models_new/sub/sub_detail/media.dart';
+import 'package:bili_plus/pages/subscription_detail/controller.dart';
+import 'package:bili_plus/pages/subscription_detail/widget/sub_video_card.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,11 +25,7 @@ class SubDetailPage extends StatefulWidget {
   }) {
     Get.toNamed(
       '/subDetail',
-      arguments: {
-        'id': id,
-        'subInfo': subInfo,
-        'heroTag': heroTag,
-      },
+      arguments: {'id': id, 'subInfo': subInfo, 'heroTag': heroTag},
     );
   }
 }
@@ -81,9 +77,7 @@ class _SubDetailPageState extends State<SubDetailPage> with GridMixin {
                   if (index == response.length - 1) {
                     _subDetailController.onLoadMore();
                   }
-                  return SubVideoCardH(
-                    videoItem: response[index],
-                  );
+                  return SubVideoCardH(videoItem: response[index]);
                 },
                 itemCount: response!.length,
               )
@@ -116,16 +110,9 @@ class _SubDetailPageState extends State<SubDetailPage> with GridMixin {
       fontSize: 12.5,
       color: theme.colorScheme.outline,
     );
-    Widget cover = NetworkImgLayer(
-      width: 176,
-      height: 110,
-      src: info.cover,
-    );
+    Widget cover = NetworkImgLayer(width: 176, height: 110, src: info.cover);
     if (_subDetailController.heroTag != null) {
-      cover = Hero(
-        tag: _subDetailController.heroTag!,
-        child: cover,
-      );
+      cover = Hero(tag: _subDetailController.heroTag!, child: cover);
     }
     return SliverAppBar.medium(
       expandedHeight: kToolbarHeight + 132,
@@ -139,10 +126,7 @@ class _SubDetailPageState extends State<SubDetailPage> with GridMixin {
             overflow: TextOverflow.ellipsis,
             style: theme.textTheme.titleMedium,
           ),
-          Text(
-            '共${info.mediaCount}条视频',
-            style: theme.textTheme.labelMedium,
-          ),
+          Text('共${info.mediaCount}条视频', style: theme.textTheme.labelMedium),
         ],
       ),
       flexibleSpace: FlexibleSpaceBar(

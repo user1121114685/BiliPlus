@@ -1,13 +1,13 @@
-import 'package:PiliPlus/models/common/member/contribute_type.dart';
-import 'package:PiliPlus/models_new/space/space/tab2.dart';
-import 'package:PiliPlus/pages/member_article/view.dart';
-import 'package:PiliPlus/pages/member_audio/view.dart';
-import 'package:PiliPlus/pages/member_comic/view.dart';
-import 'package:PiliPlus/pages/member_contribute/controller.dart';
-import 'package:PiliPlus/pages/member_opus/view.dart';
-import 'package:PiliPlus/pages/member_season_series/view.dart';
-import 'package:PiliPlus/pages/member_video/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models/common/member/contribute_type.dart';
+import 'package:bili_plus/models_new/space/space/tab2.dart';
+import 'package:bili_plus/pages/member_article/view.dart';
+import 'package:bili_plus/pages/member_audio/view.dart';
+import 'package:bili_plus/pages/member_comic/view.dart';
+import 'package:bili_plus/pages/member_contribute/controller.dart';
+import 'package:bili_plus/pages/member_opus/view.dart';
+import 'package:bili_plus/pages/member_season_series/view.dart';
+import 'package:bili_plus/pages/member_video/view.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,9 +49,7 @@ class _MemberContributeState extends State<MemberContribute>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TabBar(
-                overlayColor: const WidgetStatePropertyAll(
-                  Colors.transparent,
-                ),
+                overlayColor: const WidgetStatePropertyAll(Colors.transparent),
                 splashFactory: NoSplash.splashFactory,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 isScrollable: true,
@@ -106,23 +104,14 @@ class _MemberContributeState extends State<MemberContribute>
         mid: widget.mid,
         title: item.title,
       ),
-      'article' => MemberArticle(
-        heroTag: widget.heroTag,
-        mid: widget.mid,
-      ),
+      'article' => MemberArticle(heroTag: widget.heroTag, mid: widget.mid),
       'opus' => MemberOpus(
         isSingle: _controller.tabs == null,
         heroTag: widget.heroTag,
         mid: widget.mid,
       ),
-      'audio' => MemberAudio(
-        heroTag: widget.heroTag,
-        mid: widget.mid,
-      ),
-      'comic' => MemberComic(
-        heroTag: widget.heroTag,
-        mid: widget.mid,
-      ),
+      'audio' => MemberAudio(heroTag: widget.heroTag, mid: widget.mid),
+      'comic' => MemberComic(heroTag: widget.heroTag, mid: widget.mid),
       'season_video' => MemberVideo(
         type: ContributeType.season,
         heroTag: widget.heroTag,
@@ -137,10 +126,7 @@ class _MemberContributeState extends State<MemberContribute>
         seriesId: item.seriesId,
         title: item.title,
       ),
-      'ugcSeason' => SeasonSeriesPage(
-        mid: widget.mid,
-        heroTag: widget.heroTag,
-      ),
+      'ugcSeason' => SeasonSeriesPage(mid: widget.mid, heroTag: widget.heroTag),
       _ => Center(child: Text(item.title!)),
     };
   }

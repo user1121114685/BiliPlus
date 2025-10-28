@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/ua_type.dart';
-import 'package:PiliPlus/models/common/search/search_type.dart';
-import 'package:PiliPlus/models/search/result.dart';
-import 'package:PiliPlus/models/search/suggest.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_pub_search/data.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/result.dart';
-import 'package:PiliPlus/models_new/search/search_rcmd/data.dart';
-import 'package:PiliPlus/models_new/search/search_trending/data.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/ua_type.dart';
+import 'package:bili_plus/models/common/search/search_type.dart';
+import 'package:bili_plus/models/search/result.dart';
+import 'package:bili_plus/models/search/suggest.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_pub_search/data.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/result.dart';
+import 'package:bili_plus/models_new/search/search_rcmd/data.dart';
+import 'package:bili_plus/models_new/search/search_trending/data.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -23,11 +23,7 @@ class SearchHttp {
   static Future searchSuggest({required String term}) async {
     var res = await Request().get(
       Api.searchSuggest,
-      queryParameters: {
-        'term': term,
-        'main_ver': 'v1',
-        'highlight': term,
-      },
+      queryParameters: {'term': term, 'main_ver': 'v1', 'highlight': term},
     );
     if (res.data is String) {
       Map<String, dynamic> resultMap = json.decode(res.data);
@@ -165,10 +161,7 @@ class SearchHttp {
       'pubtime_begin_s': ?pubBegin,
       'pubtime_end_s': ?pubEnd,
     });
-    var res = await Request().get(
-      Api.searchAll,
-      queryParameters: params,
-    );
+    var res = await Request().get(Api.searchAll, queryParameters: params);
     if (res.data is! Map) {
       return const Error('没有相关数据');
     }
@@ -187,10 +180,7 @@ class SearchHttp {
   static Future<int?> ab2c({dynamic aid, dynamic bvid, int? part}) async {
     var res = await Request().get(
       Api.ab2c,
-      queryParameters: {
-        'aid': ?aid,
-        'bvid': ?bvid,
-      },
+      queryParameters: {'aid': ?aid, 'bvid': ?bvid},
     );
     if (res.data['code'] == 0) {
       if (res.data['data'] case List list) {
@@ -212,10 +202,7 @@ class SearchHttp {
   }) async {
     var res = await Request().get(
       Api.pgcInfo,
-      queryParameters: {
-        'season_id': ?seasonId,
-        'ep_id': ?epId,
-      },
+      queryParameters: {'season_id': ?seasonId, 'ep_id': ?epId},
     );
     if (res.data['code'] == 0) {
       return Success(PgcInfoModel.fromJson(res.data['result']));
@@ -230,10 +217,7 @@ class SearchHttp {
   }) async {
     var res = await Request().get(
       Api.pugvInfo,
-      queryParameters: {
-        'season_id': ?seasonId,
-        'ep_id': ?epId,
-      },
+      queryParameters: {'season_id': ?seasonId, 'ep_id': ?epId},
     );
     if (res.data['code'] == 0) {
       return Success(PgcInfoModel.fromJson(res.data['data']));
@@ -245,9 +229,7 @@ class SearchHttp {
   static Future<LoadingState> episodeInfo({dynamic epId}) async {
     var res = await Request().get(
       Api.episodeInfo,
-      queryParameters: {
-        'ep_id': ?epId,
-      },
+      queryParameters: {'ep_id': ?epId},
     );
     if (res.data['code'] == 0) {
       return Success(res.data['data']);
@@ -261,9 +243,7 @@ class SearchHttp {
   }) async {
     final res = await Request().get(
       Api.searchTrending,
-      queryParameters: {
-        'limit': limit,
-      },
+      queryParameters: {'limit': limit},
     );
     if (res.data['code'] == 0) {
       return Success(SearchTrendingData.fromJson(res.data['data']));

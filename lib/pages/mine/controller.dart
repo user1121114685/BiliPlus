@@ -1,19 +1,19 @@
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/models/common/account_type.dart';
-import 'package:PiliPlus/models/common/theme/theme_type.dart';
-import 'package:PiliPlus/models/user/info.dart';
-import 'package:PiliPlus/models/user/stat.dart';
-import 'package:PiliPlus/models_new/fav/fav_folder/data.dart';
-import 'package:PiliPlus/pages/common/common_data_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/login_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/models/common/account_type.dart';
+import 'package:bili_plus/models/common/theme/theme_type.dart';
+import 'package:bili_plus/models/user/info.dart';
+import 'package:bili_plus/models/user/stat.dart';
+import 'package:bili_plus/models_new/fav/fav_folder/data.dart';
+import 'package:bili_plus/pages/common/common_data_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/login_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -71,9 +71,7 @@ class MineController
         if (isLogin) {
           Get.toNamed(
             '/webview',
-            parameters: {
-              'url': 'https://member.bilibili.com/platform/home',
-            },
+            parameters: {'url': 'https://member.bilibili.com/platform/home'},
           );
         }
       },
@@ -144,11 +142,7 @@ class MineController
 
   @override
   Future<LoadingState<FavFolderData>> customGetData() {
-    return FavHttp.userfavFolder(
-      pn: 1,
-      ps: 20,
-      mid: accountService.mid,
-    );
+    return FavHttp.userfavFolder(pn: 1, ps: 20, mid: accountService.mid);
   }
 
   static void onChangeAnonymity() {

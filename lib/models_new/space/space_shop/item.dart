@@ -1,11 +1,11 @@
-import 'package:PiliPlus/models_new/space/space_shop/below_label.dart';
-import 'package:PiliPlus/models_new/space/space_shop/benefit_info.dart';
-import 'package:PiliPlus/models_new/space/space_shop/cover.dart';
-import 'package:PiliPlus/models_new/space/space_shop/net_price.dart';
-import 'package:PiliPlus/models_new/space/space_shop/report_params.dart';
-import 'package:PiliPlus/models_new/space/space_shop/source_desc.dart';
-import 'package:PiliPlus/models_new/space/space_shop/source_front_tag.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models_new/space/space_shop/below_label.dart';
+import 'package:bili_plus/models_new/space/space_shop/benefit_info.dart';
+import 'package:bili_plus/models_new/space/space_shop/cover.dart';
+import 'package:bili_plus/models_new/space/space_shop/net_price.dart';
+import 'package:bili_plus/models_new/space/space_shop/report_params.dart';
+import 'package:bili_plus/models_new/space/space_shop/source_desc.dart';
+import 'package:bili_plus/models_new/space/space_shop/source_front_tag.dart';
+import 'package:bili_plus/utils/extension.dart';
 
 class SpaceShopItem {
   String? contentId;

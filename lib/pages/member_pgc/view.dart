@@ -1,20 +1,16 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/pages/member_pgc/controller.dart';
-import 'package:PiliPlus/pages/member_pgc/widgets/pgc_card_v_member_pgc.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/pages/member_pgc/controller.dart';
+import 'package:bili_plus/pages/member_pgc/widgets/pgc_card_v_member_pgc.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MemberBangumi extends StatefulWidget {
-  const MemberBangumi({
-    super.key,
-    required this.heroTag,
-    required this.mid,
-  });
+  const MemberBangumi({super.key, required this.heroTag, required this.mid});
 
   final String? heroTag;
   final int mid;
@@ -29,10 +25,7 @@ class _MemberBangumiState extends State<MemberBangumi>
   bool get wantKeepAlive => true;
 
   late final _controller = Get.put(
-    MemberBangumiCtr(
-      heroTag: widget.heroTag,
-      mid: widget.mid,
-    ),
+    MemberBangumiCtr(heroTag: widget.heroTag, mid: widget.mid),
     tag: widget.heroTag,
   );
 
@@ -51,9 +44,7 @@ class _MemberBangumiState extends State<MemberBangumi>
               top: StyleString.safeSpace,
               bottom: MediaQuery.viewPaddingOf(context).bottom + 100,
             ),
-            sliver: Obx(
-              () => _buildBody(_controller.loadingState.value),
-            ),
+            sliver: Obx(() => _buildBody(_controller.loadingState.value)),
           ),
         ],
       ),
@@ -79,9 +70,7 @@ class _MemberBangumiState extends State<MemberBangumi>
                   if (index == response.length - 1) {
                     _controller.onLoadMore();
                   }
-                  return PgcCardVMemberPgc(
-                    item: response[index],
-                  );
+                  return PgcCardVMemberPgc(item: response[index]);
                 },
                 itemCount: response!.length,
               )

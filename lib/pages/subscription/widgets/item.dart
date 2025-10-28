@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models_new/sub/sub/list.dart';
-import 'package:PiliPlus/pages/subscription_detail/view.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models_new/sub/sub/list.dart';
+import 'package:bili_plus/pages/subscription_detail/view.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -12,11 +12,7 @@ import 'package:get/get.dart';
 class SubItem extends StatelessWidget {
   final SubItemModel item;
   final VoidCallback cancelSub;
-  const SubItem({
-    super.key,
-    required this.item,
-    required this.cancelSub,
-  });
+  const SubItem({super.key, required this.item, required this.cancelSub});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +22,7 @@ class SubItem extends StatelessWidget {
       21 => '合集',
       _ => '其它(${item.type})',
     };
-    void onLongPress() => imageSaveDialog(
-      title: item.title,
-      cover: item.cover,
-    );
+    void onLongPress() => imageSaveDialog(title: item.title, cover: item.cover);
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -41,10 +34,7 @@ class SubItem extends StatelessWidget {
           if (item.type == 11) {
             Get.toNamed(
               '/favDetail',
-              parameters: {
-                'mediaId': item.id!.toString(),
-                'heroTag': heroTag,
-              },
+              parameters: {'mediaId': item.id!.toString(), 'heroTag': heroTag},
             );
           } else {
             SubDetailPage.toSubDetailPage(
@@ -78,11 +68,7 @@ class SubItem extends StatelessWidget {
                             height: maxHeight,
                           ),
                         ),
-                        PBadge(
-                          right: 6,
-                          top: 6,
-                          text: type,
-                        ),
+                        PBadge(right: 6, top: 6, text: type),
                       ],
                     );
                   },
@@ -99,10 +85,7 @@ class SubItem extends StatelessWidget {
 
   Widget content(BuildContext context) {
     final theme = Theme.of(context);
-    final style = TextStyle(
-      fontSize: 13,
-      color: theme.colorScheme.outline,
-    );
+    final style = TextStyle(fontSize: 13, color: theme.colorScheme.outline);
     return Expanded(
       child: Stack(
         clipBehavior: Clip.none,
@@ -114,9 +97,7 @@ class SubItem extends StatelessWidget {
               Text(
                 item.title!,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  letterSpacing: 0.3,
-                ),
+                style: const TextStyle(letterSpacing: 0.3),
               ),
               Text(
                 'UP主: ${item.upper!.name!}',

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/grpc/audio.dart';
-import 'package:PiliPlus/grpc/bilibili/app/listener/v1.pb.dart'
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/grpc/audio.dart';
+import 'package:bili_plus/grpc/bilibili/app/listener/v1.pb.dart'
     show
         DetailItem,
         PlayURLResp,
@@ -11,26 +11,26 @@ import 'package:PiliPlus/grpc/bilibili/app/listener/v1.pb.dart'
         PlayInfo,
         ThumbUpReq_ThumbType,
         ListOrder;
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/ua_type.dart';
-import 'package:PiliPlus/pages/common/common_intro_controller.dart'
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/ua_type.dart';
+import 'package:bili_plus/pages/common/common_intro_controller.dart'
     show FavMixin;
-import 'package:PiliPlus/pages/dynamics_repost/view.dart';
-import 'package:PiliPlus/pages/main_reply/view.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/widgets/triple_mixin.dart';
-import 'package:PiliPlus/pages/video/pay_coins/view.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_repeat.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_status.dart';
-import 'package:PiliPlus/services/service_locator.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
-import 'package:PiliPlus/utils/video_utils.dart';
+import 'package:bili_plus/pages/dynamics_repost/view.dart';
+import 'package:bili_plus/pages/main_reply/view.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/widgets/triple_mixin.dart';
+import 'package:bili_plus/pages/video/pay_coins/view.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_repeat.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_status.dart';
+import 'package:bili_plus/services/service_locator.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
+import 'package:bili_plus/utils/video_utils.dart';
 import 'package:fixnum/fixnum.dart' show Int64;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -107,11 +107,7 @@ class AudioController extends GetxController
     final String? audioUrl = args['audioUrl'];
     final hasAudioUrl = audioUrl != null;
     if (hasAudioUrl) {
-      _onOpenMedia(
-        audioUrl,
-        ua: UaType.pc.ua,
-        referer: HttpString.baseUrl,
-      );
+      _onOpenMedia(audioUrl, ua: UaType.pc.ua, referer: HttpString.baseUrl);
     }
     Utils.isWiFi.then((isWiFi) {
       cacheAudioQa = isWiFi ? Pref.defaultAudioQa : Pref.defaultAudioQaCellular;
@@ -250,10 +246,7 @@ class AudioController extends GetxController
       Media(
         url,
         start: _start,
-        httpHeaders: {
-          'user-agent': ua,
-          'referer': ?referer,
-        },
+        httpHeaders: {'user-agent': ua, 'referer': ?referer},
       ),
     );
     _start = null;
@@ -461,10 +454,7 @@ class AudioController extends GetxController
             children: [
               ListTile(
                 dense: true,
-                title: const Text(
-                  '复制链接',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('复制链接', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   Utils.copyText(audioUrl);
@@ -472,10 +462,7 @@ class AudioController extends GetxController
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '其它app打开',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('其它app打开', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   PageUtils.launchURL(audioUrl);
@@ -484,10 +471,7 @@ class AudioController extends GetxController
               if (Utils.isMobile)
                 ListTile(
                   dense: true,
-                  title: const Text(
-                    '分享视频',
-                    style: TextStyle(fontSize: 14),
-                  ),
+                  title: const Text('分享视频', style: TextStyle(fontSize: 14)),
                   onTap: () {
                     Get.back();
                     if (audioItem.value case final audioItem?) {
@@ -501,10 +485,7 @@ class AudioController extends GetxController
                 ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '分享至动态',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('分享至动态', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   if (audioItem.value case final audioItem?) {
@@ -526,10 +507,7 @@ class AudioController extends GetxController
               if (isVideo)
                 ListTile(
                   dense: true,
-                  title: const Text(
-                    '分享至消息',
-                    style: TextStyle(fontSize: 14),
-                  ),
+                  title: const Text('分享至消息', style: TextStyle(fontSize: 14)),
                   onTap: () {
                     Get.back();
                     if (audioItem.value case final audioItem?) {

@@ -1,6 +1,6 @@
-import 'package:PiliPlus/pages/dynamics_create_reserve/controller.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/pages/dynamics_create_reserve/controller.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'
     show TextInputFormatter, LengthLimitingTextInputFormatter;
@@ -52,10 +52,7 @@ class _CreateReservePageState extends State<CreateReservePage> {
           Row(
             spacing: 12,
             children: [
-              SizedBox(
-                width: 65,
-                child: Text('类型', style: _leadingStyle),
-              ),
+              SizedBox(width: 65, child: Text('类型', style: _leadingStyle)),
               Obx(
                 () => PopupMenuButton(
                   requestFocus: false,
@@ -63,14 +60,8 @@ class _CreateReservePageState extends State<CreateReservePage> {
                   onSelected: (value) => _controller.subType.value = value,
                   itemBuilder: (context) {
                     return const [
-                      PopupMenuItem(
-                        value: 0,
-                        child: Text('公开直播'),
-                      ),
-                      PopupMenuItem(
-                        value: 1,
-                        child: Text('大航海直播'),
-                      ),
+                      PopupMenuItem(value: 0, child: Text('公开直播')),
+                      PopupMenuItem(value: 1, child: Text('大航海直播')),
                     ];
                   },
                   child: Text(
@@ -84,10 +75,7 @@ class _CreateReservePageState extends State<CreateReservePage> {
           Row(
             spacing: 12,
             children: [
-              SizedBox(
-                width: 65,
-                child: Text('时间', style: _leadingStyle),
-              ),
+              SizedBox(width: 65, child: Text('时间', style: _leadingStyle)),
               Expanded(
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
@@ -178,13 +166,7 @@ class _CreateReservePageState extends State<CreateReservePage> {
     return Row(
       spacing: 12,
       children: [
-        SizedBox(
-          width: 65,
-          child: Text(
-            desc,
-            style: _leadingStyle,
-          ),
-        ),
+        SizedBox(width: 65, child: Text(desc, style: _leadingStyle)),
         Expanded(
           child: TextFormField(
             key: key,

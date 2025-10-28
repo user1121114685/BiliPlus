@@ -7,13 +7,12 @@ library;
 
 import 'dart:math' as math;
 
+import 'package:bili_plus/common/widgets/text_field/editable_text.dart'
+    show EditableTextContextMenuBuilder, TextEditingValue;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart'
-    show SpellCheckResults, SpellCheckService, SuggestionSpan, TextEditingValue;
-
-import 'package:PiliPlus/common/widgets/text_field/editable_text.dart'
-    show EditableTextContextMenuBuilder;
+    show SpellCheckResults, SpellCheckService, SuggestionSpan;
 
 /// Controls how spell check is performed for text input.
 ///

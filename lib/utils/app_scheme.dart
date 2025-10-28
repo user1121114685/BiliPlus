@@ -1,23 +1,23 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/grpc/bilibili/app/listener/v1.pbenum.dart'
-    show PlaylistSource;
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/models/common/fav_type.dart';
-import 'package:PiliPlus/models/common/video/source_type.dart';
-import 'package:PiliPlus/pages/audio/view.dart';
-import 'package:PiliPlus/pages/live/view.dart';
-import 'package:PiliPlus/pages/rank/view.dart';
-import 'package:PiliPlus/pages/subscription_detail/view.dart';
-import 'package:PiliPlus/pages/video/reply_reply/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/url_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
 import 'package:app_links/app_links.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/grpc/bilibili/app/listener/v1.pbenum.dart'
+    show PlaylistSource;
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/models/common/fav_type.dart';
+import 'package:bili_plus/models/common/video/source_type.dart';
+import 'package:bili_plus/pages/audio/view.dart';
+import 'package:bili_plus/pages/live/view.dart';
+import 'package:bili_plus/pages/rank/view.dart';
+import 'package:bili_plus/pages/subscription_detail/view.dart';
+import 'package:bili_plus/pages/video/reply_reply/view.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/url_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -201,10 +201,7 @@ abstract final class PiliScheme {
             if (id != null) {
               PageUtils.toDupNamed(
                 '/articlePage',
-                parameters: {
-                  'id': id,
-                  'type': 'read',
-                },
+                parameters: {'id': id, 'type': 'read'},
                 off: off,
               );
               return true;
@@ -254,10 +251,7 @@ abstract final class PiliScheme {
             if (cvid != null) {
               PageUtils.toDupNamed(
                 '/articlePage',
-                parameters: {
-                  'id': cvid,
-                  'type': 'read',
-                },
+                parameters: {'id': cvid, 'type': 'read'},
                 off: off,
               );
               return true;
@@ -404,11 +398,7 @@ abstract final class PiliScheme {
         String? aid = IdUtils.avRegexExact.matchAsPrefix(path)?.group(1);
         String? bvid = IdUtils.bvRegexExact.matchAsPrefix(path)?.group(0);
         if (aid != null || bvid != null) {
-          videoPush(
-            aid != null ? int.parse(aid) : null,
-            bvid,
-            off: off,
-          );
+          videoPush(aid != null ? int.parse(aid) : null, bvid, off: off);
           return true;
         }
         if (!selfHandle) {
@@ -480,10 +470,7 @@ abstract final class PiliScheme {
       launchURL();
       return false;
     } else if (host.contains('space.bilibili.com')) {
-      void toType({
-        required String mid,
-        required String? type,
-      }) {
+      void toType({required String mid, required String? type}) {
         switch (type) {
           case 'follow':
             Get.toNamed('/follow?mid=$mid');
@@ -576,10 +563,7 @@ abstract final class PiliScheme {
         if (id != null) {
           PageUtils.toDupNamed(
             '/articlePage',
-            parameters: {
-              'id': id,
-              'type': 'read',
-            },
+            parameters: {'id': id, 'type': 'read'},
             off: off,
           );
           return true;
@@ -692,10 +676,7 @@ abstract final class PiliScheme {
         if (id != null) {
           PageUtils.toDupNamed(
             '/articlePage',
-            parameters: {
-              'id': id,
-              'type': 'read',
-            },
+            parameters: {'id': id, 'type': 'read'},
             off: off,
           );
           return true;
@@ -706,10 +687,7 @@ abstract final class PiliScheme {
         // if (kDebugMode) debugPrint('个人空间');
         String? mid = uriDigitRegExp.firstMatch(path)?.group(1);
         if (mid != null) {
-          PageUtils.toDupNamed(
-            '/member?mid=$mid',
-            off: off,
-          );
+          PageUtils.toDupNamed('/member?mid=$mid', off: off);
           return true;
         }
         launchURL();
@@ -732,11 +710,7 @@ abstract final class PiliScheme {
       case 'topic' || 'topic-detail':
         String? id = uri.queryParameters['topic_id'];
         if (id != null) {
-          PageUtils.toDupNamed(
-            '/dynTopic',
-            parameters: {'id': id},
-            off: off,
-          );
+          PageUtils.toDupNamed('/dynTopic', parameters: {'id': id}, off: off);
           return true;
         }
         launchURL();
@@ -801,11 +775,7 @@ abstract final class PiliScheme {
       default:
         final res = IdUtils.matchAvorBv(input: area?.split('?').first);
         if (res.isNotEmpty) {
-          videoPush(
-            res.av,
-            res.bv,
-            off: off,
-          );
+          videoPush(res.av, res.bv, off: off);
           return true;
         }
         launchURL();
@@ -827,17 +797,10 @@ abstract final class PiliScheme {
     return false;
   }
 
-  static void _toWebview(
-    String url,
-    bool off,
-    Map? parameters,
-  ) {
+  static void _toWebview(String url, bool off, Map? parameters) {
     PageUtils.toDupNamed(
       '/webview',
-      parameters: {
-        'url': url,
-        ...?parameters,
-      },
+      parameters: {'url': url, ...?parameters},
       off: off,
     );
   }

@@ -1,19 +1,19 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/progress_bar/video_progress_indicator.dart';
-import 'package:PiliPlus/common/widgets/select_mask.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models/search/result.dart';
-import 'package:PiliPlus/models_new/later/list.dart';
-import 'package:PiliPlus/pages/later/controller.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/progress_bar/video_progress_indicator.dart';
+import 'package:bili_plus/common/widgets/select_mask.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models/search/result.dart';
+import 'package:bili_plus/models_new/later/list.dart';
+import 'package:bili_plus/pages/later/controller.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
@@ -114,23 +114,11 @@ class VideoCardHLater extends StatelessWidget {
                             type: PBadgeType.error,
                           )
                         else if (videoItem.rights?.isCooperation == 1)
-                          const PBadge(
-                            text: '合作',
-                            top: 6.0,
-                            right: 6.0,
-                          )
+                          const PBadge(text: '合作', top: 6.0, right: 6.0)
                         else if (videoItem.pgcLabel != null)
-                          PBadge(
-                            text: videoItem.pgcLabel,
-                            top: 6.0,
-                            right: 6.0,
-                          )
+                          PBadge(text: videoItem.pgcLabel, top: 6.0, right: 6.0)
                         else if (type == 'ketang')
-                          const PBadge(
-                            text: '课堂',
-                            top: 6.0,
-                            right: 6.0,
-                          ),
+                          const PBadge(text: '课堂', top: 6.0, right: 6.0),
                         if (progress != null && progress != 0) ...[
                           PBadge(
                             text: progress == -1
@@ -160,10 +148,7 @@ class VideoCardHLater extends StatelessWidget {
                             type: PBadgeType.gray,
                           ),
                         Positioned.fill(
-                          child: selectMask(
-                            theme,
-                            videoItem.checked == true,
-                          ),
+                          child: selectMask(theme, videoItem.checked == true),
                         ),
                       ],
                     );
@@ -181,10 +166,7 @@ class VideoCardHLater extends StatelessWidget {
 
   Widget content(BuildContext context, ThemeData theme) {
     final isPgc = videoItem.isPgc == true && videoItem.bangumi != null;
-    Widget stat = StatWidget(
-      type: StatType.play,
-      value: videoItem.stat?.view,
-    );
+    Widget stat = StatWidget(type: StatType.play, value: videoItem.stat?.view);
     return Expanded(
       child: Stack(
         clipBehavior: Clip.none,

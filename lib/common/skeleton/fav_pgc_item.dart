@@ -1,5 +1,5 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/skeleton.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/skeleton.dart';
 import 'package:flutter/material.dart';
 
 class FavPgcItemSkeleton extends StatelessWidget {
@@ -38,23 +38,11 @@ class FavPgcItemSkeleton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    width: 175,
-                    height: 12,
-                    color: color,
-                  ),
+                  Container(width: 175, height: 12, color: color),
                   const SizedBox(height: 10),
-                  Container(
-                    width: 55,
-                    height: 11,
-                    color: color,
-                  ),
+                  Container(width: 55, height: 11, color: color),
                   const SizedBox(height: 5),
-                  Container(
-                    width: 35,
-                    height: 11,
-                    color: color,
-                  ),
+                  Container(width: 35, height: 11, color: color),
                 ],
               ),
             ),

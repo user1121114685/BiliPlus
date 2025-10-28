@@ -1,8 +1,8 @@
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/fav/fav_folder/list.dart';
-import 'package:PiliPlus/pages/fav/video/controller.dart';
-import 'package:PiliPlus/pages/fav/video/widgets/item.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/fav/fav_folder/list.dart';
+import 'package:bili_plus/pages/fav/video/controller.dart';
+import 'package:bili_plus/pages/fav/video/widgets/item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';

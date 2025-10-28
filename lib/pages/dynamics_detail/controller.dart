@@ -1,8 +1,8 @@
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/common/dyn/common_dyn_controller.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/common/dyn/common_dyn_controller.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:get/get.dart';
 
 class DynamicDetailController extends CommonDynController {

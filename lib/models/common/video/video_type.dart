@@ -1,4 +1,4 @@
-import 'package:PiliPlus/http/api.dart';
+import 'package:bili_plus/http/api.dart';
 
 enum VideoType {
   ugc(

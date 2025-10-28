@@ -1,8 +1,8 @@
-import 'package:PiliPlus/http/live.dart';
-import 'package:PiliPlus/models/common/live_dm_silent_type.dart';
-import 'package:PiliPlus/models_new/live/live_dm_block/shield_info.dart';
-import 'package:PiliPlus/models_new/live/live_dm_block/shield_rules.dart';
-import 'package:PiliPlus/models_new/live/live_dm_block/shield_user_list.dart';
+import 'package:bili_plus/http/live.dart';
+import 'package:bili_plus/models/common/live_dm_silent_type.dart';
+import 'package:bili_plus/models_new/live/live_dm_block/shield_info.dart';
+import 'package:bili_plus/models_new/live/live_dm_block/shield_rules.dart';
+import 'package:bili_plus/models_new/live/live_dm_block/shield_user_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -89,9 +89,7 @@ class LiveDmBlockController extends GetxController
             setSilent(LiveDmSilentType.rank, 1),
             setSilent(LiveDmSilentType.verify, 1),
           ]
-        : [
-            for (var e in LiveDmSilentType.values) setSilent(e, 0),
-          ];
+        : [for (var e in LiveDmSilentType.values) setSilent(e, 0)];
     var res = await Future.wait(futures);
     if (enable) {
       if (res.any((e) => e)) {
@@ -121,10 +119,7 @@ class LiveDmBlockController extends GetxController
       if (res['status']) {
         shieldUserList.insert(
           0,
-          ShieldUserList(
-            uid: res['data']['uid'],
-            uname: res['data']['uname'],
-          ),
+          ShieldUserList(uid: res['data']['uid'], uname: res['data']['uname']),
         );
       } else {
         SmartDialog.showToast(res['msg']);

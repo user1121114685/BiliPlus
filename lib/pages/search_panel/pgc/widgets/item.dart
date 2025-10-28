@@ -1,18 +1,15 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/search/result.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/search/result.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class SearchPgcItem extends StatelessWidget {
-  const SearchPgcItem({
-    super.key,
-    required this.item,
-  });
+  const SearchPgcItem({super.key, required this.item});
 
   final SearchPgcItemModel item;
 
@@ -41,11 +38,7 @@ class SearchPgcItem extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  NetworkImgLayer(
-                    width: 111,
-                    height: 148,
-                    src: item.cover,
-                  ),
+                  NetworkImgLayer(width: 111, height: 148, src: item.cover),
                   PBadge(
                     text: item.seasonTypeName,
                     top: 6.0,

@@ -1,19 +1,19 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/common/dyn/common_dyn_page.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/author_panel.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/dynamic_panel.dart';
-import 'package:PiliPlus/pages/dynamics_detail/controller.dart';
-import 'package:PiliPlus/pages/dynamics_repost/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/common/dyn/common_dyn_page.dart';
+import 'package:bili_plus/pages/dynamics/widgets/author_panel.dart';
+import 'package:bili_plus/pages/dynamics/widgets/dynamic_panel.dart';
+import 'package:bili_plus/pages/dynamics_detail/controller.dart';
+import 'package:bili_plus/pages/dynamics_repost/view.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -33,9 +33,7 @@ class _DynamicDetailPageState extends CommonDynPageState<DynamicDetailPage> {
   );
 
   @override
-  dynamic get arguments => {
-    'item': controller.dynItem,
-  };
+  dynamic get arguments => {'item': controller.dynItem};
 
   @override
   void didChangeDependencies() {
@@ -69,29 +67,21 @@ class _DynamicDetailPageState extends CommonDynPageState<DynamicDetailPage> {
   PreferredSizeWidget _buildAppBar() => AppBar(
     title: Padding(
       padding: const EdgeInsets.only(right: 12),
-      child: Obx(
-        () {
-          final showTitle = controller.showTitle.value;
-          return AnimatedOpacity(
-            opacity: showTitle ? 1 : 0,
-            duration: const Duration(milliseconds: 300),
-            child: IgnorePointer(
-              ignoring: !showTitle,
-              child: AuthorPanel(
-                item: controller.dynItem,
-                isDetail: true,
-              ),
-            ),
-          );
-        },
-      ),
+      child: Obx(() {
+        final showTitle = controller.showTitle.value;
+        return AnimatedOpacity(
+          opacity: showTitle ? 1 : 0,
+          duration: const Duration(milliseconds: 300),
+          child: IgnorePointer(
+            ignoring: !showTitle,
+            child: AuthorPanel(item: controller.dynItem, isDetail: true),
+          ),
+        );
+      }),
     ),
     actions: isPortrait
         ? null
-        : [
-            ratioWidget(maxWidth),
-            const SizedBox(width: 16),
-          ],
+        : [ratioWidget(maxWidth), const SizedBox(width: 16)],
   );
 
   Widget _buildBody(ThemeData theme) {
@@ -177,10 +167,7 @@ class _DynamicDetailPageState extends CommonDynPageState<DynamicDetailPage> {
     }
     return Stack(
       clipBehavior: Clip.none,
-      children: [
-        child,
-        _buildBottom(theme),
-      ],
+      children: [child, _buildBottom(theme)],
     );
   }
 

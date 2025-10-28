@@ -1,24 +1,22 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/common/widgets/dialog/report_member.dart';
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart';
-import 'package:PiliPlus/grpc/im.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/msg.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models_new/msg/im_user_infos/datum.dart';
-import 'package:PiliPlus/models_new/msg/msg_dnd/uid_setting.dart';
-import 'package:PiliPlus/models_new/msg/session_ss/data.dart';
-import 'package:PiliPlus/utils/accounts.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/common/widgets/dialog/report_member.dart';
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart';
+import 'package:bili_plus/grpc/im.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/msg.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models_new/msg/im_user_infos/datum.dart';
+import 'package:bili_plus/models_new/msg/msg_dnd/uid_setting.dart';
+import 'package:bili_plus/models_new/msg/session_ss/data.dart';
+import 'package:bili_plus/utils/accounts.dart';
 import 'package:fixnum/fixnum.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 class WhisperLinkSettingController extends GetxController {
-  WhisperLinkSettingController({
-    required this.talkerUid,
-  });
+  WhisperLinkSettingController({required this.talkerUid});
 
   final int talkerUid;
   RxBool isPinned = false.obs;
@@ -76,10 +74,7 @@ class WhisperLinkSettingController extends GetxController {
 
   Future<void> _setPush(bool isPush) async {
     int setting = isPush ? 1 : 0;
-    var res = await MsgHttp.setPushSs(
-      setting: setting,
-      talkerUid: talkerUid,
-    );
+    var res = await MsgHttp.setPushSs(setting: setting, talkerUid: talkerUid);
     if (res['status']) {
       sessionSs
         ..value.data.pushSetting = setting
@@ -118,11 +113,7 @@ class WhisperLinkSettingController extends GetxController {
 
   Future<void> setBlock(bool isBlocked) async {
     if (isBlocked) {
-      var res = await VideoHttp.relationMod(
-        mid: talkerUid,
-        act: 6,
-        reSrc: 11,
-      );
+      var res = await VideoHttp.relationMod(mid: talkerUid, act: 6, reSrc: 11);
       if (res['status']) {
         sessionSs
           ..value.data.followStatus = null

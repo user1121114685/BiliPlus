@@ -1,12 +1,12 @@
 import 'dart:async';
 
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/video/cdn_type.dart';
-import 'package:PiliPlus/models/common/video/video_type.dart';
-import 'package:PiliPlus/models/video/play/url.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/video_utils.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/video/cdn_type.dart';
+import 'package:bili_plus/models/common/video/video_type.dart';
+import 'package:bili_plus/models/video/play/url.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/video_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
@@ -43,22 +43,16 @@ class SelectDialog<T> extends StatelessWidget {
           groupValue: value,
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: List.generate(
-              values.length,
-              (index) {
-                final item = values[index];
-                return RadioListTile<T>(
-                  toggleable: toggleable,
-                  dense: true,
-                  value: item.$1,
-                  title: Text(
-                    item.$2,
-                    style: titleMedium,
-                  ),
-                  subtitle: subtitleBuilder?.call(context, index),
-                );
-              },
-            ),
+            children: List.generate(values.length, (index) {
+              final item = values[index];
+              return RadioListTile<T>(
+                toggleable: toggleable,
+                dense: true,
+                value: item.$1,
+                title: Text(item.$2, style: titleMedium),
+                subtitle: subtitleBuilder?.call(context, index),
+              );
+            }),
           ),
         ),
       ),
@@ -69,10 +63,7 @@ class SelectDialog<T> extends StatelessWidget {
 class CdnSelectDialog extends StatefulWidget {
   final VideoItem? sample;
 
-  const CdnSelectDialog({
-    super.key,
-    this.sample,
-  });
+  const CdnSelectDialog({super.key, this.sample});
 
   @override
   State<CdnSelectDialog> createState() => _CdnSelectDialogState();

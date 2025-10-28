@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/view_sliver_safe_area.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_top/topic_item.dart';
-import 'package:PiliPlus/pages/dynamics_select_topic/widgets/item.dart';
-import 'package:PiliPlus/pages/dynamics_topic_rcmd/controller.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/view_sliver_safe_area.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_top/topic_item.dart';
+import 'package:bili_plus/pages/dynamics_select_topic/widgets/item.dart';
+import 'package:bili_plus/pages/dynamics_topic_rcmd/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -50,10 +50,7 @@ class _DynTopicRcmdPageState extends State<DynTopicRcmdPage> {
                     item: response[index],
                     onTap: (item) => Get.toNamed(
                       '/dynTopic',
-                      parameters: {
-                        'id': item.id.toString(),
-                        'name': item.name,
-                      },
+                      parameters: {'id': item.id.toString(), 'name': item.name},
                     ),
                   );
                 },

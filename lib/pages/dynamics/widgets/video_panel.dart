@@ -1,10 +1,10 @@
 // 视频or合集
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/utils/num_utils.dart';
 import 'package:flutter/material.dart';
 
 Widget videoSeasonWidget(
@@ -80,10 +80,7 @@ Widget videoSeasonWidget(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.transparent,
-                        Colors.black54,
-                      ],
+                      colors: [Colors.transparent, Colors.black54],
                     ),
                     borderRadius: BorderRadius.vertical(
                       bottom: StyleString.imgRadius,
@@ -110,13 +107,9 @@ Widget videoSeasonWidget(
                           const SizedBox(width: 6),
                         ],
                         if (video.stat case final stat?) ...[
-                          Text(
-                            '${NumUtils.numFormat(stat.play)}次围观',
-                          ),
+                          Text('${NumUtils.numFormat(stat.play)}次围观'),
                           const SizedBox(width: 6),
-                          Text(
-                            '${NumUtils.numFormat(stat.danmu)}条弹幕',
-                          ),
+                          Text('${NumUtils.numFormat(stat.danmu)}条弹幕'),
                         ],
                         const Spacer(),
                         Image.asset(

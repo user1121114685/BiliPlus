@@ -1,4 +1,4 @@
-import 'package:PiliPlus/pages/common/multi_select/base.dart';
+import 'package:bili_plus/pages/common/multi_select/base.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,17 +30,13 @@ class MultiSelectAppBarWidget extends StatelessWidget
         title: Obx(() => Text('已选: ${ctr.checkedCount}')),
         actions: [
           TextButton(
-            style: TextButton.styleFrom(
-              visualDensity: VisualDensity.compact,
-            ),
+            style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
             onPressed: () => ctr.handleSelect(checked: true),
             child: const Text('全选'),
           ),
           ...?children,
           TextButton(
-            style: TextButton.styleFrom(
-              visualDensity: VisualDensity.compact,
-            ),
+            style: TextButton.styleFrom(visualDensity: VisualDensity.compact),
             onPressed: ctr.onRemove,
             child: Text(
               '移除',

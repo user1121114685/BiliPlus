@@ -1,16 +1,16 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models_new/sub/sub_detail/media.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models_new/sub/sub_detail/media.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 // 收藏视频卡片 - 水平布局
@@ -18,11 +18,7 @@ class SubVideoCardH extends StatelessWidget {
   final SubDetailItemModel videoItem;
   final int? searchType;
 
-  const SubVideoCardH({
-    super.key,
-    required this.videoItem,
-    this.searchType,
-  });
+  const SubVideoCardH({super.key, required this.videoItem, this.searchType});
 
   @override
   Widget build(BuildContext context) {
@@ -100,9 +96,7 @@ class SubVideoCardH extends StatelessWidget {
             child: Text(
               videoItem.title!,
               textAlign: TextAlign.start,
-              style: const TextStyle(
-                letterSpacing: 0.3,
-              ),
+              style: const TextStyle(letterSpacing: 0.3),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -118,10 +112,7 @@ class SubVideoCardH extends StatelessWidget {
           Row(
             spacing: 8,
             children: [
-              StatWidget(
-                type: StatType.play,
-                value: videoItem.cntInfo?.play,
-              ),
+              StatWidget(type: StatType.play, value: videoItem.cntInfo?.play),
               StatWidget(
                 type: StatType.danmaku,
                 value: videoItem.cntInfo?.danmaku,

@@ -1,7 +1,7 @@
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart';
-import 'package:PiliPlus/grpc/im.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart';
+import 'package:bili_plus/grpc/im.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 

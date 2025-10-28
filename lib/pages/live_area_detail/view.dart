@@ -1,13 +1,13 @@
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/live/live_area_list/area_item.dart';
-import 'package:PiliPlus/pages/live_area_detail/child/controller.dart';
-import 'package:PiliPlus/pages/live_area_detail/child/view.dart';
-import 'package:PiliPlus/pages/live_area_detail/controller.dart';
-import 'package:PiliPlus/pages/live_search/view.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/live/live_area_list/area_item.dart';
+import 'package:bili_plus/pages/live_area_detail/child/controller.dart';
+import 'package:bili_plus/pages/live_area_detail/child/view.dart';
+import 'package:bili_plus/pages/live_area_detail/controller.dart';
+import 'package:bili_plus/pages/live_search/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -202,10 +202,7 @@ class _LiveAreaDetailPageState extends State<LiveAreaDetailPage> {
                 Expanded(
                   child: GridView.builder(
                     controller: scrollController,
-                    padding: EdgeInsets.only(
-                      top: 12,
-                      bottom: bottom + 100,
-                    ),
+                    padding: EdgeInsets.only(top: 12, bottom: bottom + 100),
                     itemCount: list.length,
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(

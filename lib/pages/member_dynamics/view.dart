@@ -1,12 +1,12 @@
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/dynamic_panel.dart';
-import 'package:PiliPlus/pages/member_dynamics/controller.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/utils.dart';
-import 'package:PiliPlus/utils/waterfall.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/dynamics/widgets/dynamic_panel.dart';
+import 'package:bili_plus/pages/member_dynamics/controller.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/utils.dart';
+import 'package:bili_plus/utils/waterfall.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waterfall_flow/waterfall_flow.dart'
@@ -84,20 +84,17 @@ class _MemberDynamicsPageState extends State<MemberDynamicsPage>
             ? GlobalData().dynamicsWaterfallFlow
                   ? SliverWaterfallFlow(
                       gridDelegate: dynGridDelegate,
-                      delegate: SliverChildBuilderDelegate(
-                        (_, index) {
-                          if (index == response.length - 1) {
-                            _memberDynamicController.onLoadMore();
-                          }
-                          return DynamicPanel(
-                            item: response[index],
-                            onRemove: _memberDynamicController.onRemove,
-                            onSetTop: _memberDynamicController.onSetTop,
-                            maxWidth: maxWidth,
-                          );
-                        },
-                        childCount: response!.length,
-                      ),
+                      delegate: SliverChildBuilderDelegate((_, index) {
+                        if (index == response.length - 1) {
+                          _memberDynamicController.onLoadMore();
+                        }
+                        return DynamicPanel(
+                          item: response[index],
+                          onRemove: _memberDynamicController.onRemove,
+                          onSetTop: _memberDynamicController.onSetTop,
+                          maxWidth: maxWidth,
+                        );
+                      }, childCount: response!.length),
                     )
                   : SliverList.builder(
                       itemBuilder: (context, index) {

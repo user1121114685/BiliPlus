@@ -2,18 +2,18 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/retry_interceptor.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/accounts/account_manager/account_mgr.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/login_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
 import 'package:archive/archive.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/retry_interceptor.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/accounts/account_manager/account_mgr.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/login_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:brotli/brotli.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
@@ -131,11 +131,7 @@ class Request {
 
     late final Uri proxy;
     if (enableSystemProxy) {
-      proxy = Uri(
-        scheme: 'http',
-        host: systemProxyHost,
-        port: systemProxyPort,
-      );
+      proxy = Uri(scheme: 'http', host: systemProxyHost, port: systemProxyPort);
     }
 
     dio = Dio(options)
@@ -259,9 +255,7 @@ class Request {
     } on DioException catch (e) {
       // if (kDebugMode) debugPrint('downloadFile error: $e');
       return Response(
-        data: {
-          'message': await AccountManager.dioError(e),
-        },
+        data: {'message': await AccountManager.dioError(e)},
         statusCode: e.response?.statusCode ?? -1,
         requestOptions: e.requestOptions,
       );

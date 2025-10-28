@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/space/space/draw.dart';
+import 'package:bili_plus/models_new/space/space/draw.dart';
 
 class DrawSrc {
   int? srcType;

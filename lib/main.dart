@@ -1,27 +1,27 @@
 import 'dart:io';
 
-import 'package:PiliPlus/build_config.dart';
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/custom_toast.dart';
-import 'package:PiliPlus/common/widgets/mouse_back.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/models/common/theme/theme_color_type.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/router/app_pages.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/services/logger.dart';
-import 'package:PiliPlus/services/service_locator.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/cache_manage.dart';
-import 'package:PiliPlus/utils/calc_window_position.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/theme_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/custom_toast.dart';
+import 'package:bili_plus/common/widgets/mouse_back.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/models/common/theme/theme_color_type.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/router/app_pages.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/services/logger.dart';
+import 'package:bili_plus/services/service_locator.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/cache_manage.dart';
+import 'package:bili_plus/utils/calc_window_position.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/theme_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
+import 'package:bili_plus/build_config.dart';
 import 'package:catcher_2/catcher_2.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
@@ -58,15 +58,13 @@ void main() async {
 
   if (Utils.isMobile) {
     await Future.wait([
-      SystemChrome.setPreferredOrientations(
-        [
-          DeviceOrientation.portraitUp,
-          if (Pref.horizontalScreen) ...[
-            DeviceOrientation.landscapeLeft,
-            DeviceOrientation.landscapeRight,
-          ],
+      SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+        if (Pref.horizontalScreen) ...[
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,
         ],
-      ),
+      ]),
       setupServiceLocator(),
     ]);
   }
@@ -141,22 +139,16 @@ Commit Hash: ${BuildConfig.commitHash}''';
           enableCustomParameters: true,
         ),
       ],
-      customParameters: {
-        'BuildConfig': buildConfig,
-      },
+      customParameters: {'BuildConfig': buildConfig},
     );
 
     final Catcher2Options releaseConfig = Catcher2Options(
       SilentReportMode(),
       [
         FileHandler(await LoggerUtils.getLogsPath()),
-        ConsoleHandler(
-          enableCustomParameters: true,
-        ),
+        ConsoleHandler(enableCustomParameters: true),
       ],
-      customParameters: {
-        'BuildConfig': buildConfig,
-      },
+      customParameters: {'BuildConfig': buildConfig},
     );
 
     Catcher2(
@@ -305,10 +297,7 @@ class MyApp extends StatelessWidget {
                     }
                     return KeyEventResult.ignored;
                   },
-                  child: MouseBackDetector(
-                    onTapDown: onBack,
-                    child: child,
-                  ),
+                  child: MouseBackDetector(onTapDown: onBack, child: child),
                 );
               }
               return child;

@@ -1,9 +1,9 @@
-import 'package:PiliPlus/models/model_owner.dart';
-import 'package:PiliPlus/models/model_video.dart';
-import 'package:PiliPlus/models_new/space/space_archive/badge.dart';
-import 'package:PiliPlus/models_new/space/space_archive/cursor_attr.dart';
-import 'package:PiliPlus/models_new/space/space_archive/history.dart';
-import 'package:PiliPlus/models_new/space/space_archive/season.dart';
+import 'package:bili_plus/models/model_owner.dart';
+import 'package:bili_plus/models/model_video.dart';
+import 'package:bili_plus/models_new/space/space_archive/badge.dart';
+import 'package:bili_plus/models_new/space/space_archive/cursor_attr.dart';
+import 'package:bili_plus/models_new/space/space_archive/history.dart';
+import 'package:bili_plus/models_new/space/space_archive/season.dart';
 
 class SpaceArchiveItem extends BaseSimpleVideoItemModel {
   String? subtitle;

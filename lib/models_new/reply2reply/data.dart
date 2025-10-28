@@ -1,8 +1,8 @@
-import 'package:PiliPlus/models_new/reply/control.dart';
-import 'package:PiliPlus/models_new/reply/reply.dart';
-import 'package:PiliPlus/models_new/reply/upper.dart';
-import 'package:PiliPlus/models_new/reply2reply/page.dart';
-import 'package:PiliPlus/models_new/reply2reply/root.dart';
+import 'package:bili_plus/models_new/reply/control.dart';
+import 'package:bili_plus/models_new/reply/reply.dart';
+import 'package:bili_plus/models_new/reply/upper.dart';
+import 'package:bili_plus/models_new/reply2reply/page.dart';
+import 'package:bili_plus/models_new/reply2reply/root.dart';
 
 class ReplyReplyData {
   ReplyPage? page;

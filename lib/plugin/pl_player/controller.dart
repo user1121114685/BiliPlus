@@ -4,42 +4,42 @@ import 'dart:io';
 import 'dart:math' show max, min;
 import 'dart:ui' as ui;
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/ua_type.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/account_type.dart';
-import 'package:PiliPlus/models/common/audio_normalization.dart';
-import 'package:PiliPlus/models/common/sponsor_block/skip_type.dart';
-import 'package:PiliPlus/models/common/super_resolution_type.dart';
-import 'package:PiliPlus/models/common/video/video_type.dart';
-import 'package:PiliPlus/models/user/danmaku_rule.dart';
-import 'package:PiliPlus/models/video/play/url.dart';
-import 'package:PiliPlus/models_new/video/video_shot/data.dart';
-import 'package:PiliPlus/pages/danmaku/dnamaku_model.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/bottom_progress_behavior.dart';
-import 'package:PiliPlus/plugin/pl_player/models/data_source.dart';
-import 'package:PiliPlus/plugin/pl_player/models/data_status.dart';
-import 'package:PiliPlus/plugin/pl_player/models/double_tap_type.dart';
-import 'package:PiliPlus/plugin/pl_player/models/duration.dart';
-import 'package:PiliPlus/plugin/pl_player/models/fullscreen_mode.dart';
-import 'package:PiliPlus/plugin/pl_player/models/heart_beat_type.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_repeat.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_status.dart';
-import 'package:PiliPlus/plugin/pl_player/models/video_fit_type.dart';
-import 'package:PiliPlus/plugin/pl_player/utils/fullscreen.dart';
-import 'package:PiliPlus/services/service_locator.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart' show PageUtils;
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/ua_type.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/account_type.dart';
+import 'package:bili_plus/models/common/audio_normalization.dart';
+import 'package:bili_plus/models/common/sponsor_block/skip_type.dart';
+import 'package:bili_plus/models/common/super_resolution_type.dart';
+import 'package:bili_plus/models/common/video/video_type.dart';
+import 'package:bili_plus/models/user/danmaku_rule.dart';
+import 'package:bili_plus/models/video/play/url.dart';
+import 'package:bili_plus/models_new/video/video_shot/data.dart';
+import 'package:bili_plus/pages/danmaku/dnamaku_model.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/bottom_progress_behavior.dart';
+import 'package:bili_plus/plugin/pl_player/models/data_source.dart';
+import 'package:bili_plus/plugin/pl_player/models/data_status.dart';
+import 'package:bili_plus/plugin/pl_player/models/double_tap_type.dart';
+import 'package:bili_plus/plugin/pl_player/models/duration.dart';
+import 'package:bili_plus/plugin/pl_player/models/fullscreen_mode.dart';
+import 'package:bili_plus/plugin/pl_player/models/heart_beat_type.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_repeat.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_status.dart';
+import 'package:bili_plus/plugin/pl_player/models/video_fit_type.dart';
+import 'package:bili_plus/plugin/pl_player/utils/fullscreen.dart';
+import 'package:bili_plus/services/service_locator.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart' show PageUtils;
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:canvas_danmaku/canvas_danmaku.dart';
 import 'package:crclib/catalog.dart';
 import 'package:dio/dio.dart' show Options;
@@ -835,10 +835,7 @@ class PlPlayerController {
       if (isAnim) {
         setShader(superResolutionType.value, pp);
       }
-      await pp.setProperty(
-        "af",
-        "scaletempo2=max-speed=8",
-      );
+      await pp.setProperty("af", "scaletempo2=max-speed=8");
       if (Platform.isAndroid) {
         await pp.setProperty("volume-max", "100");
         String ao = Pref.useOpenSLES
@@ -901,14 +898,10 @@ class PlPlayerController {
         audioNormalization = audioNormalization.replaceFirstMapped(
           loudnormRegExp,
           (i) =>
-              'loudnorm=${volume.format(
-                Map.fromEntries(
-                  i.group(1)!.split(':').map((item) {
-                    final parts = item.split('=');
-                    return MapEntry(parts[0].toLowerCase(), num.parse(parts[1]));
-                  }),
-                ),
-              )}',
+              'loudnorm=${volume.format(Map.fromEntries(i.group(1)!.split(':').map((item) {
+                final parts = item.split('=');
+                return MapEntry(parts[0].toLowerCase(), num.parse(parts[1]));
+              })))}',
         );
       } else {
         audioNormalization = audioNormalization.replaceFirst(

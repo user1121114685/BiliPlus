@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:math' as math;
 import 'dart:math' show max;
 
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:get/get_navigation/src/dialog/dialog_route.dart';
@@ -152,27 +152,19 @@ class _PayCoinsPageState extends State<PayCoinsPage>
       duration: const Duration(milliseconds: 50),
     );
     _slide22Anim = _slide22Controller.drive(
-      Tween(
-        begin: Offset.zero,
-        end: const Offset(0.0, -0.2),
-      ),
+      Tween(begin: Offset.zero, end: const Offset(0.0, -0.2)),
     );
     _scale22Controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 50),
     );
-    _scale22Anim = _scale22Controller.drive(
-      Tween(begin: 1, end: 1.1),
-    );
+    _scale22Anim = _scale22Controller.drive(Tween(begin: 1, end: 1.1));
     _coinSlideController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 200),
     );
     _coinSlideAnim = _coinSlideController.drive(
-      Tween(
-        begin: Offset.zero,
-        end: const Offset(0.0, -2),
-      ),
+      Tween(begin: Offset.zero, end: const Offset(0.0, -2)),
     );
     _coinFadeController = AnimationController(
       vsync: this,
@@ -187,10 +179,7 @@ class _PayCoinsPageState extends State<PayCoinsPage>
       duration: const Duration(milliseconds: 50),
     );
     _boxAnim = _boxAnimController.drive(
-      Tween(
-        begin: Offset.zero,
-        end: const Offset(0.0, -0.2),
-      ),
+      Tween(begin: Offset.zero, end: const Offset(0.0, -0.2)),
     );
 
     _scale();
@@ -243,10 +232,7 @@ class _PayCoinsPageState extends State<PayCoinsPage>
         height: 70 + (factor * 30),
         width: 70 + (factor * 30),
         child: ColorFiltered(
-          colorFilter: ColorFilter.mode(
-            _payFilter[index],
-            BlendMode.srcATop,
-          ),
+          colorFilter: ColorFilter.mode(_payFilter[index], BlendMode.srcATop),
           child: Stack(
             clipBehavior: Clip.none,
             alignment: Alignment.center,
@@ -297,11 +283,7 @@ class _PayCoinsPageState extends State<PayCoinsPage>
         scale: _scale22Anim,
         child: SlideTransition(
           position: _slide22Anim,
-          child: SizedBox(
-            width: 110,
-            height: 155,
-            child: Image.asset(payImg),
-          ),
+          child: SizedBox(width: 110, height: 155, child: Image.asset(payImg)),
         ),
       ),
     );
@@ -345,59 +327,51 @@ class _PayCoinsPageState extends State<PayCoinsPage>
                             _scale();
                             _pageIndex.value = index;
                           },
-                          children: List.generate(
-                            2,
-                            (index) {
-                              return ListenableBuilder(
-                                listenable: _controller!,
-                                builder: (context, child) {
-                                  double factor = index == 0 ? 1 : 0;
-                                  if (_controller!
-                                      .position
-                                      .hasContentDimensions) {
-                                    factor =
-                                        1 - (_controller!.page! - index).abs();
+                          children: List.generate(2, (index) {
+                            return ListenableBuilder(
+                              listenable: _controller!,
+                              builder: (context, child) {
+                                double factor = index == 0 ? 1 : 0;
+                                if (_controller!
+                                    .position
+                                    .hasContentDimensions) {
+                                  factor =
+                                      1 - (_controller!.page! - index).abs();
+                                }
+                                return Obx(() {
+                                  if (_pageIndex.value != index && _isPaying) {
+                                    return const SizedBox.shrink();
                                   }
-                                  return Obx(
-                                    () {
-                                      if (_pageIndex.value != index &&
-                                          _isPaying) {
-                                        return const SizedBox.shrink();
-                                      }
-                                      return _buildCoinWidget(index, factor);
-                                    },
-                                  );
-                                },
-                              );
-                            },
-                          ),
+                                  return _buildCoinWidget(index, factor);
+                                });
+                              },
+                            );
+                          }),
                         ),
                       ),
                     ),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Obx(
-                        () {
-                          final index = _pageIndex.value;
-                          if (_isPaying) {
-                            return const SizedBox.shrink();
-                          }
-                          return GestureDetector(
-                            onTap: index == 0 ? null : () => _onScroll(0),
-                            behavior: HitTestBehavior.opaque,
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 12),
-                              child: Image.asset(
-                                width: 16,
-                                height: 28,
-                                index == 0
-                                    ? 'assets/images/paycoins/ic_left_disable.png'
-                                    : 'assets/images/paycoins/ic_left.png',
-                              ),
+                      child: Obx(() {
+                        final index = _pageIndex.value;
+                        if (_isPaying) {
+                          return const SizedBox.shrink();
+                        }
+                        return GestureDetector(
+                          onTap: index == 0 ? null : () => _onScroll(0),
+                          behavior: HitTestBehavior.opaque,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 12),
+                            child: Image.asset(
+                              width: 16,
+                              height: 28,
+                              index == 0
+                                  ? 'assets/images/paycoins/ic_left_disable.png'
+                                  : 'assets/images/paycoins/ic_left.png',
                             ),
-                          );
-                        },
-                      ),
+                          ),
+                        );
+                      }),
                     ),
                     Align(
                       alignment: Alignment.centerRight,

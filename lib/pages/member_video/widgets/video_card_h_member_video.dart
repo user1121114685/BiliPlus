@@ -1,17 +1,17 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/progress_bar/video_progress_indicator.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/common/widgets/video_popup_menu.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/progress_bar/video_progress_indicator.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/common/widgets/video_popup_menu.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
@@ -206,11 +206,7 @@ class VideoCardHMemberVideo extends StatelessWidget {
           Positioned(
             bottom: 0,
             right: 12,
-            child: VideoPopupMenu(
-              size: 29,
-              iconSize: 17,
-              videoItem: videoItem,
-            ),
+            child: VideoPopupMenu(size: 29, iconSize: 17, videoItem: videoItem),
           ),
         ],
       ),
@@ -256,14 +252,8 @@ class VideoCardHMemberVideo extends StatelessWidget {
           Row(
             spacing: 8,
             children: [
-              StatWidget(
-                type: StatType.play,
-                value: videoItem.stat.view,
-              ),
-              StatWidget(
-                type: StatType.danmaku,
-                value: videoItem.stat.danmu,
-              ),
+              StatWidget(type: StatType.play, value: videoItem.stat.view),
+              StatWidget(type: StatType.danmaku, value: videoItem.stat.danmu),
             ],
           ),
         ],

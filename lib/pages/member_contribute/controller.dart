@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:PiliPlus/models_new/space/space/tab2.dart';
-import 'package:PiliPlus/pages/member/controller.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models_new/space/space/tab2.dart';
+import 'package:bili_plus/pages/member/controller.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

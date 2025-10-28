@@ -1,16 +1,16 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/pair.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/models/common/sponsor_block/segment_type.dart';
-import 'package:PiliPlus/models/common/sponsor_block/skip_type.dart';
-import 'package:PiliPlus/pages/setting/slide_color_picker.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/pair.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/models/common/sponsor_block/segment_type.dart';
+import 'package:bili_plus/models/common/sponsor_block/skip_type.dart';
+import 'package:bili_plus/pages/setting/slide_color_picker.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show FilteringTextInputFormatter;
 import 'package:get/get.dart';
@@ -91,9 +91,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
                     onPressed: Get.back,
                     child: Text(
                       '取消',
-                      style: TextStyle(
-                        color: theme.colorScheme.outline,
-                      ),
+                      style: TextStyle(color: theme.colorScheme.outline),
                     ),
                   ),
                   TextButton(
@@ -114,14 +112,8 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
           );
         },
         title: Text('最短片段时长', style: titleStyle),
-        subtitle: Text(
-          '忽略短于此时长的片段',
-          style: subTitleStyle,
-        ),
-        trailing: Text(
-          '${_blockLimit}s',
-          style: const TextStyle(fontSize: 13),
-        ),
+        subtitle: Text('忽略短于此时长的片段', style: subTitleStyle),
+        trailing: Text('${_blockLimit}s', style: const TextStyle(fontSize: 13)),
       );
     },
   );
@@ -183,9 +175,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
                     onPressed: Get.back,
                     child: Text(
                       '取消',
-                      style: TextStyle(
-                        color: theme.colorScheme.outline,
-                      ),
+                      style: TextStyle(color: theme.colorScheme.outline),
                     ),
                   ),
                   TextButton(
@@ -219,17 +209,11 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
       return ListTile(
         dense: true,
         onTap: update,
-        title: Text(
-          '显示跳过Toast',
-          style: titleStyle,
-        ),
+        title: Text('显示跳过Toast', style: titleStyle),
         trailing: Transform.scale(
           alignment: Alignment.centerRight,
           scale: 0.8,
-          child: Switch(
-            value: _blockToast,
-            onChanged: (val) => update(),
-          ),
+          child: Switch(value: _blockToast, onChanged: (val) => update()),
         ),
       );
     },
@@ -249,10 +233,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
       return ListTile(
         dense: true,
         onTap: update,
-        title: Text(
-          '跳过次数统计跟踪',
-          style: titleStyle,
-        ),
+        title: Text('跳过次数统计跟踪', style: titleStyle),
         subtitle: Text(
           // from origin extension
           '此功能追踪您跳过了哪些片段，让用户知道他们提交的片段帮助了多少人。同时点赞会作为依据，确保垃圾信息不会污染数据库。在您每次跳过片段时，我们都会向服务器发送一条消息。希望大家开启此项设置，以便得到更准确的统计数据。:)',
@@ -261,10 +242,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
         trailing: Transform.scale(
           alignment: Alignment.centerRight,
           scale: 0.8,
-          child: Switch(
-            value: _blockTrack,
-            onChanged: (val) => update(),
-          ),
+          child: Switch(value: _blockTrack, onChanged: (val) => update()),
         ),
       );
     },
@@ -305,9 +283,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
                     onPressed: Get.back,
                     child: Text(
                       '取消',
-                      style: TextStyle(
-                        color: theme.colorScheme.outline,
-                      ),
+                      style: TextStyle(color: theme.colorScheme.outline),
                     ),
                   ),
                   TextButton(
@@ -325,46 +301,35 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
             },
           );
         },
-        title: Text(
-          '服务器地址',
-          style: titleStyle,
-        ),
-        subtitle: Text(
-          _blockServer,
-          style: subTitleStyle,
-        ),
+        title: Text('服务器地址', style: titleStyle),
+        subtitle: Text(_blockServer, style: subTitleStyle),
       );
     },
   );
 
-  Widget _serverStatusItem(ThemeData theme, TextStyle titleStyle) => Obx(
-    () {
-      String status;
-      Color? color;
-      switch (_serverStatus.value) {
-        case null:
-          status = '——';
-        case true:
-          status = '正常';
-          color = theme.colorScheme.primary;
-        case false:
-          status = '错误';
-          color = theme.colorScheme.error;
-      }
-      return ListTile(
-        dense: true,
-        onTap: () {
-          _serverStatus.value = null;
-          _checkServerStatus();
-        },
-        title: Text('服务器状态', style: titleStyle),
-        trailing: Text(
-          status,
-          style: TextStyle(fontSize: 13, color: color),
-        ),
-      );
-    },
-  );
+  Widget _serverStatusItem(ThemeData theme, TextStyle titleStyle) => Obx(() {
+    String status;
+    Color? color;
+    switch (_serverStatus.value) {
+      case null:
+        status = '——';
+      case true:
+        status = '正常';
+        color = theme.colorScheme.primary;
+      case false:
+        status = '错误';
+        color = theme.colorScheme.error;
+    }
+    return ListTile(
+      dense: true,
+      onTap: () {
+        _serverStatus.value = null;
+        _checkServerStatus();
+      },
+      title: Text('服务器状态', style: titleStyle),
+      trailing: Text(status, style: TextStyle(fontSize: 13, color: color)),
+    );
+  });
 
   void onSelectColor(
     BuildContext context,

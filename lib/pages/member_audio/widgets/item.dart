@@ -1,14 +1,14 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/grpc/bilibili/app/listener/v1.pbenum.dart'
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/grpc/bilibili/app/listener/v1.pbenum.dart'
     show PlaylistSource;
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models_new/space/space_audio/item.dart';
-import 'package:PiliPlus/pages/audio/view.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models_new/space/space_audio/item.dart';
+import 'package:bili_plus/pages/audio/view.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class MemberAudioItem extends StatelessWidget {

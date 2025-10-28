@@ -1,13 +1,13 @@
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/member/tags.dart';
-import 'package:PiliPlus/pages/follow/child/child_controller.dart';
-import 'package:PiliPlus/pages/follow/child/child_view.dart';
-import 'package:PiliPlus/pages/follow/controller.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/member/tags.dart';
+import 'package:bili_plus/pages/follow/child/child_controller.dart';
+import 'package:bili_plus/pages/follow/child/child_view.dart';
+import 'package:bili_plus/pages/follow/controller.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show LengthLimitingTextInputFormatter;
 import 'package:get/get.dart';
@@ -48,9 +48,7 @@ class _FollowPageState extends State<FollowPage> {
                 IconButton(
                   onPressed: () => Get.toNamed(
                     '/followSearch',
-                    arguments: {
-                      'mid': _followController.mid,
-                    },
+                    arguments: {'mid': _followController.mid},
                   ),
                   icon: const Icon(Icons.search_outlined),
                   tooltip: '搜索',
@@ -182,9 +180,7 @@ class _FollowPageState extends State<FollowPage> {
                       autofocus: true,
                       initialValue: tagName,
                       onChanged: (value) => tagName = value,
-                      inputFormatters: [
-                        LengthLimitingTextInputFormatter(16),
-                      ],
+                      inputFormatters: [LengthLimitingTextInputFormatter(16)],
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                       ),
@@ -197,10 +193,7 @@ class _FollowPageState extends State<FollowPage> {
                   );
                 },
                 dense: true,
-                title: const Text(
-                  '修改名称',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('修改名称', style: TextStyle(fontSize: 14)),
               ),
               ListTile(
                 onTap: () {
@@ -213,10 +206,7 @@ class _FollowPageState extends State<FollowPage> {
                   );
                 },
                 dense: true,
-                title: const Text(
-                  '删除分组',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('删除分组', style: TextStyle(fontSize: 14)),
               ),
             ],
           ),
@@ -234,9 +224,7 @@ class _FollowPageState extends State<FollowPage> {
         autofocus: true,
         initialValue: tagName,
         onChanged: (value) => tagName = value,
-        inputFormatters: [
-          LengthLimitingTextInputFormatter(16),
-        ],
+        inputFormatters: [LengthLimitingTextInputFormatter(16)],
         decoration: const InputDecoration(border: OutlineInputBorder()),
       ),
       onConfirm: () => _followController.onCreateTag(tagName),

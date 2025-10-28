@@ -1,20 +1,20 @@
 import 'dart:math' show pi;
 
-import 'package:PiliPlus/common/skeleton/video_reply.dart';
-import 'package:PiliPlus/common/widgets/custom_sliver_persistent_header_delegate.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/common/skeleton/video_reply.dart';
+import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show ReplyInfo;
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/common/dyn/common_dyn_controller.dart';
-import 'package:PiliPlus/pages/video/reply/widgets/reply_item_grpc.dart';
-import 'package:PiliPlus/pages/video/reply_reply/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/common/dyn/common_dyn_controller.dart';
+import 'package:bili_plus/pages/video/reply/widgets/reply_item_grpc.dart';
+import 'package:bili_plus/pages/video/reply_reply/view.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -107,23 +107,17 @@ abstract class CommonDynPageState<T extends StatefulWidget> extends State<T>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Obx(
-                () {
-                  final count = controller.count.value;
-                  return Text(
-                    '${count == -1 ? 0 : NumUtils.numFormat(count)}条回复',
-                  );
-                },
-              ),
+              Obx(() {
+                final count = controller.count.value;
+                return Text(
+                  '${count == -1 ? 0 : NumUtils.numFormat(count)}条回复',
+                );
+              }),
               SizedBox(
                 height: 35,
                 child: TextButton.icon(
                   onPressed: controller.queryBySort,
-                  icon: Icon(
-                    Icons.sort,
-                    size: 16,
-                    color: secondary,
-                  ),
+                  icon: Icon(Icons.sort, size: 16, color: secondary),
                   label: Obx(
                     () => Text(
                       controller.sortType.value.label,
@@ -173,10 +167,8 @@ abstract class CommonDynPageState<T extends StatefulWidget> extends State<T>
                       replyLevel: 1,
                       replyReply: (replyItem, id) =>
                           replyReply(context, replyItem, id, theme),
-                      onReply: (replyItem) => controller.onReply(
-                        context,
-                        replyItem: replyItem,
-                      ),
+                      onReply: (replyItem) =>
+                          controller.onReply(context, replyItem: replyItem),
                       onDelete: (item, subIndex) =>
                           controller.onRemove(index, item, subIndex),
                       upMid: controller.upMid,
@@ -193,10 +185,7 @@ abstract class CommonDynPageState<T extends StatefulWidget> extends State<T>
                   }
                 },
               )
-            : HttpError(
-                errMsg: '还没有评论',
-                onReload: controller.onReload,
-              ),
+            : HttpError(errMsg: '还没有评论', onReload: controller.onReload),
       Error(:var errMsg) => HttpError(
         errMsg: errMsg,
         onReload: controller.onReload,
@@ -276,10 +265,7 @@ abstract class CommonDynPageState<T extends StatefulWidget> extends State<T>
       builder: (context) => Align(
         alignment: Alignment.topRight,
         child: Container(
-          margin: const EdgeInsets.only(
-            top: 56,
-            right: 16,
-          ),
+          margin: const EdgeInsets.only(top: 56, right: 16),
           width: maxWidth / 4,
           height: 32,
           child: Builder(

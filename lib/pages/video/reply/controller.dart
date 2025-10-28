@@ -1,11 +1,11 @@
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show MainListReply, ReplyInfo;
-import 'package:PiliPlus/grpc/reply.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/video/video_type.dart';
-import 'package:PiliPlus/pages/common/reply_controller.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
+import 'package:bili_plus/grpc/reply.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/video/video_type.dart';
+import 'package:bili_plus/pages/common/reply_controller.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/utils/id_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,16 +32,10 @@ class VideoReplyController extends ReplyController<MainListReply>
     duration: const Duration(milliseconds: 100),
   )..forward();
 
-  late final anim =
-      Tween<Offset>(
-        begin: const Offset(0, 2),
-        end: Offset.zero,
-      ).animate(
-        CurvedAnimation(
-          parent: fabAnimationCtr,
-          curve: Curves.easeInOut,
-        ),
-      );
+  late final anim = Tween<Offset>(
+    begin: const Offset(0, 2),
+    end: Offset.zero,
+  ).animate(CurvedAnimation(parent: fabAnimationCtr, curve: Curves.easeInOut));
 
   void showFab() {
     if (!_isFabVisible) {

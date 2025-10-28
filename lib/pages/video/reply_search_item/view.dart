@@ -1,18 +1,14 @@
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/models/common/reply/reply_search_type.dart';
-import 'package:PiliPlus/pages/video/reply_search_item/child/view.dart';
-import 'package:PiliPlus/pages/video/reply_search_item/controller.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/models/common/reply/reply_search_type.dart';
+import 'package:bili_plus/pages/video/reply_search_item/child/view.dart';
+import 'package:bili_plus/pages/video/reply_search_item/controller.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ReplySearchPage extends StatefulWidget {
-  const ReplySearchPage({
-    super.key,
-    required this.type,
-    required this.oid,
-  });
+  const ReplySearchPage({super.key, required this.type, required this.oid});
 
   final int type;
   final int oid;

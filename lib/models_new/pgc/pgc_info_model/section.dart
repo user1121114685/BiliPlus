@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/episode.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/episode.dart';
 
 class Section {
   int? attr;

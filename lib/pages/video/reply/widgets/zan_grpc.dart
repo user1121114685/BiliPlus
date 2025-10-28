@@ -1,18 +1,15 @@
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show ReplyInfo;
-import 'package:PiliPlus/http/reply.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
+import 'package:bili_plus/http/reply.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/num_utils.dart';
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ZanButtonGrpc extends StatelessWidget {
-  const ZanButtonGrpc({
-    super.key,
-    required this.replyItem,
-  });
+  const ZanButtonGrpc({super.key, required this.replyItem});
 
   final ReplyInfo replyItem;
 

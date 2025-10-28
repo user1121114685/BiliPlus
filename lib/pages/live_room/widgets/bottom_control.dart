@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/pages/live_room/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/video_fit_type.dart';
-import 'package:PiliPlus/plugin/pl_player/widgets/common_btn.dart';
-import 'package:PiliPlus/plugin/pl_player/widgets/play_pause_btn.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/pages/live_room/controller.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/video_fit_type.dart';
+import 'package:bili_plus/plugin/pl_player/widgets/common_btn.dart';
+import 'package:bili_plus/plugin/pl_player/widgets/play_pause_btn.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -42,29 +42,19 @@ class BottomControl extends StatelessWidget {
           ComBtn(
             height: 30,
             tooltip: '刷新',
-            icon: const Icon(
-              Icons.refresh,
-              size: 18,
-              color: Colors.white,
-            ),
+            icon: const Icon(Icons.refresh, size: 18, color: Colors.white),
             onTap: onRefresh,
           ),
           const Spacer(),
           ComBtn(
             height: 30,
             tooltip: '屏蔽',
-            icon: const Icon(
-              size: 18,
-              Icons.block,
-              color: Colors.white,
-            ),
+            icon: const Icon(size: 18, Icons.block, color: Colors.white),
             onTap: () {
               if (liveRoomCtr.isLogin) {
                 Get.toNamed(
                   '/liveDmBlockPage',
-                  parameters: {
-                    'roomId': liveRoomCtr.roomId.toString(),
-                  },
+                  parameters: {'roomId': liveRoomCtr.roomId.toString()},
                 );
               } else {
                 SmartDialog.showToast('账号未登录');
@@ -72,36 +62,30 @@ class BottomControl extends StatelessWidget {
             },
           ),
           const SizedBox(width: 3),
-          Obx(
-            () {
-              final enableShowLiveDanmaku =
-                  plPlayerController.enableShowDanmaku.value;
-              return ComBtn(
-                tooltip: "${enableShowLiveDanmaku ? '关闭' : '开启'}弹幕",
-                icon: enableShowLiveDanmaku
-                    ? const Icon(
-                        size: 18,
-                        CustomIcons.dm_on,
-                        color: Colors.white,
-                      )
-                    : const Icon(
-                        size: 18,
-                        CustomIcons.dm_off,
-                        color: Colors.white,
-                      ),
-                onTap: () {
-                  final newVal = !enableShowLiveDanmaku;
-                  plPlayerController.enableShowDanmaku.value = newVal;
-                  if (!plPlayerController.tempPlayerConf) {
-                    GStorage.setting.put(
-                      SettingBoxKey.enableShowLiveDanmaku,
-                      newVal,
-                    );
-                  }
-                },
-              );
-            },
-          ),
+          Obx(() {
+            final enableShowLiveDanmaku =
+                plPlayerController.enableShowDanmaku.value;
+            return ComBtn(
+              tooltip: "${enableShowLiveDanmaku ? '关闭' : '开启'}弹幕",
+              icon: enableShowLiveDanmaku
+                  ? const Icon(size: 18, CustomIcons.dm_on, color: Colors.white)
+                  : const Icon(
+                      size: 18,
+                      CustomIcons.dm_off,
+                      color: Colors.white,
+                    ),
+              onTap: () {
+                final newVal = !enableShowLiveDanmaku;
+                plPlayerController.enableShowDanmaku.value = newVal;
+                if (!plPlayerController.tempPlayerConf) {
+                  GStorage.setting.put(
+                    SettingBoxKey.enableShowLiveDanmaku,
+                    newVal,
+                  );
+                }
+              },
+            );
+          }),
           Obx(
             () => PopupMenuButton<VideoFitType>(
               tooltip: '画面比例',
@@ -178,11 +162,7 @@ class BottomControl extends StatelessWidget {
                     size: 24,
                     color: Colors.white,
                   )
-                : const Icon(
-                    Icons.fullscreen,
-                    size: 24,
-                    color: Colors.white,
-                  ),
+                : const Icon(Icons.fullscreen, size: 24, color: Colors.white),
             onTap: () =>
                 plPlayerController.triggerFullScreen(status: !isFullScreen),
             onSecondaryTap: () => plPlayerController.triggerFullScreen(

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
-import 'package:PiliPlus/common/widgets/pendant_avatar.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamics_type.dart';
-import 'package:PiliPlus/models/dynamics/article_content_model.dart';
-import 'package:PiliPlus/models/model_avatar.dart';
-import 'package:PiliPlus/models_new/live/live_feed_index/watched_show.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/widgets/pendant_avatar.dart';
+import 'package:bili_plus/models/common/dynamic/dynamics_type.dart';
+import 'package:bili_plus/models/dynamics/article_content_model.dart';
+import 'package:bili_plus/models/model_avatar.dart';
+import 'package:bili_plus/models_new/live/live_feed_index/watched_show.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 
 class DynamicsDataModel {
   bool? hasMore;
@@ -139,15 +139,10 @@ class Fallback {
   String? id;
   int? type;
 
-  Fallback({
-    this.id,
-    this.type,
-  });
+  Fallback({this.id, this.type});
 
-  factory Fallback.fromJson(Map<String, dynamic> json) => Fallback(
-    id: json['id'],
-    type: json['type'],
-  );
+  factory Fallback.fromJson(Map<String, dynamic> json) =>
+      Fallback(id: json['id'], type: json['type']);
 }
 
 // 单个动态详情
@@ -443,13 +438,7 @@ class Fan {
   String? numStr;
   int? number;
 
-  Fan({
-    this.color,
-    this.isFan,
-    this.numPrefix,
-    this.numStr,
-    this.number,
-  });
+  Fan({this.color, this.isFan, this.numPrefix, this.numStr, this.number});
 
   factory Fan.fromJson(Map<String, dynamic> json) => Fan(
     color: json["color"],
@@ -462,12 +451,7 @@ class Fan {
 
 // 单个动态详情 - 动态信息
 class ModuleDynamicModel {
-  ModuleDynamicModel({
-    this.additional,
-    this.desc,
-    this.major,
-    this.topic,
-  });
+  ModuleDynamicModel({this.additional, this.desc, this.major, this.topic});
 
   DynamicAddModel? additional;
   DynamicDescModel? desc;
@@ -501,13 +485,7 @@ class ModuleDynamicModel {
 //   }
 // }
 class DynamicAddModel {
-  DynamicAddModel({
-    this.type,
-    this.vote,
-    this.ugc,
-    this.reserve,
-    this.goods,
-  });
+  DynamicAddModel({this.type, this.vote, this.ugc, this.reserve, this.goods});
 
   String? type;
   Vote? vote;
@@ -599,17 +577,10 @@ class TTeam {
   String? name;
   String? pic;
 
-  TTeam({
-    this.id,
-    this.name,
-    this.pic,
-  });
+  TTeam({this.id, this.name, this.pic});
 
-  factory TTeam.fromJson(Map<String, dynamic> json) => TTeam(
-    id: json["id"],
-    name: json["name"],
-    pic: json["pic"],
-  );
+  factory TTeam.fromJson(Map<String, dynamic> json) =>
+      TTeam(id: json["id"], name: json["name"], pic: json["pic"]);
 }
 
 class AddCommon {
@@ -694,30 +665,20 @@ class Hint {
   int? style;
   String? text;
 
-  Hint({
-    this.style,
-    this.text,
-  });
+  Hint({this.style, this.text});
 
-  factory Hint.fromJson(Map<String, dynamic> json) => Hint(
-    style: json["style"],
-    text: json["text"],
-  );
+  factory Hint.fromJson(Map<String, dynamic> json) =>
+      Hint(style: json["style"], text: json["text"]);
 }
 
 class JumpStyle {
   String? iconUrl;
   String? text;
 
-  JumpStyle({
-    this.iconUrl,
-    this.text,
-  });
+  JumpStyle({this.iconUrl, this.text});
 
-  factory JumpStyle.fromJson(Map<String, dynamic> json) => JumpStyle(
-    iconUrl: json["icon_url"],
-    text: json["text"],
-  );
+  factory JumpStyle.fromJson(Map<String, dynamic> json) =>
+      JumpStyle(iconUrl: json["icon_url"], text: json["text"]);
 }
 
 class Vote {
@@ -839,12 +800,7 @@ class Reserve {
 }
 
 class ReserveBtn {
-  ReserveBtn({
-    this.status,
-    this.type,
-    this.checkText,
-    this.uncheckText,
-  });
+  ReserveBtn({this.status, this.type, this.checkText, this.uncheckText});
 
   int? status;
   int? type;
@@ -866,12 +822,7 @@ class ReserveBtn {
 }
 
 class Desc {
-  Desc({
-    this.style,
-    this.text,
-    this.visible,
-    this.jumpUrl,
-  });
+  Desc({this.style, this.text, this.visible, this.jumpUrl});
 
   int? style;
   String? text;
@@ -887,12 +838,7 @@ class Desc {
 }
 
 class Good {
-  Good({
-    this.headIcon,
-    this.headText,
-    this.items,
-    this.jumpUrl,
-  });
+  Good({this.headIcon, this.headText, this.items, this.jumpUrl});
 
   String? headIcon;
   String? headText;
@@ -940,10 +886,7 @@ class GoodItem {
 }
 
 class DynamicDescModel {
-  DynamicDescModel({
-    this.richTextNodes,
-    this.text,
-  });
+  DynamicDescModel({this.richTextNodes, this.text});
 
   List<RichTextNodeItem>? richTextNodes;
   String? text;
@@ -1076,10 +1019,7 @@ class SubscriptionNew {
   LiveRcmd? liveRcmd;
   String? style;
 
-  SubscriptionNew({
-    this.liveRcmd,
-    this.style,
-  });
+  SubscriptionNew({this.liveRcmd, this.style});
 
   factory SubscriptionNew.fromJson(Map<String, dynamic> json) =>
       SubscriptionNew(
@@ -1094,10 +1034,7 @@ class LiveRcmd {
   LiveRcmdContent? content;
   int? reserveType;
 
-  LiveRcmd({
-    this.content,
-    this.reserveType,
-  });
+  LiveRcmd({this.content, this.reserveType});
 
   factory LiveRcmd.fromJson(Map<String, dynamic> json) => LiveRcmd(
     content: json["content"] == null
@@ -1111,10 +1048,7 @@ class LiveRcmdContent {
   int? type;
   LivePlayInfo? livePlayInfo;
 
-  LiveRcmdContent({
-    this.type,
-    this.livePlayInfo,
-  });
+  LiveRcmdContent({this.type, this.livePlayInfo});
 
   factory LiveRcmdContent.fromJson(Map<String, dynamic> json) =>
       LiveRcmdContent(
@@ -1188,11 +1122,7 @@ class LivePlayInfo {
 }
 
 class DynamicTopicModel {
-  DynamicTopicModel({
-    this.id,
-    this.jumpUrl,
-    this.name,
-  });
+  DynamicTopicModel({this.id, this.jumpUrl, this.name});
 
   int? id;
   String? jumpUrl;
@@ -1256,9 +1186,7 @@ class DynamicArchiveModel {
 }
 
 class Badge {
-  Badge({
-    this.text,
-  });
+  Badge({this.text});
 
   String? text;
 
@@ -1268,10 +1196,7 @@ class Badge {
 }
 
 class DynamicDrawModel {
-  DynamicDrawModel({
-    this.id,
-    this.items,
-  });
+  DynamicDrawModel({this.id, this.items});
 
   int? id;
   List<DynamicDrawItemModel>? items;
@@ -1285,12 +1210,7 @@ class DynamicDrawModel {
 }
 
 class DynamicOpusModel {
-  DynamicOpusModel({
-    this.jumpUrl,
-    this.pics,
-    this.summary,
-    this.title,
-  });
+  DynamicOpusModel({this.jumpUrl, this.pics, this.summary, this.title});
 
   String? jumpUrl;
   List<OpusPicModel>? pics;
@@ -1309,10 +1229,7 @@ class DynamicOpusModel {
 }
 
 class SummaryModel {
-  SummaryModel({
-    this.richTextNodes,
-    this.text,
-  });
+  SummaryModel({this.richTextNodes, this.text});
 
   List<RichTextNodeItem>? richTextNodes;
   String? text;
@@ -1326,13 +1243,7 @@ class SummaryModel {
 }
 
 class RichTextNodeItem {
-  RichTextNodeItem({
-    this.emoji,
-    this.origText,
-    this.text,
-    this.type,
-    this.rid,
-  });
+  RichTextNodeItem({this.emoji, this.origText, this.text, this.type, this.rid});
   Emoji? emoji;
   String? origText;
   String? text;
@@ -1376,9 +1287,7 @@ class Emoji {
 }
 
 class DynamicNoneModel {
-  DynamicNoneModel({
-    this.tips,
-  });
+  DynamicNoneModel({this.tips});
   String? tips;
   DynamicNoneModel.fromJson(Map<String, dynamic> json) {
     tips = json['tips'];
@@ -1386,12 +1295,7 @@ class DynamicNoneModel {
 }
 
 class OpusPicModel {
-  OpusPicModel({
-    this.width,
-    this.height,
-    this.src,
-    this.url,
-  });
+  OpusPicModel({this.width, this.height, this.src, this.url});
 
   int? width;
   int? height;
@@ -1431,9 +1335,7 @@ class DynamicDrawItemModel {
 }
 
 class DynamicLiveModel {
-  DynamicLiveModel({
-    this.content,
-  });
+  DynamicLiveModel({this.content});
 
   String? content;
   int? type;
@@ -1511,9 +1413,7 @@ class DynamicLive2Model {
 }
 
 class ModuleTag {
-  ModuleTag({
-    this.text,
-  });
+  ModuleTag({this.text});
 
   String? text;
 
@@ -1524,12 +1424,7 @@ class ModuleTag {
 
 // 动态状态 转发、评论、点赞
 class ModuleStatModel {
-  ModuleStatModel({
-    this.comment,
-    this.forward,
-    this.like,
-    this.favorite,
-  });
+  ModuleStatModel({this.comment, this.forward, this.like, this.favorite});
 
   DynamicStat? comment;
   DynamicStat? forward;
@@ -1553,11 +1448,7 @@ class ModuleStatModel {
 
 // 动态状态
 class DynamicStat {
-  DynamicStat({
-    this.count,
-    this.forbidden,
-    this.status,
-  });
+  DynamicStat({this.count, this.forbidden, this.status});
 
   int? count;
   bool? forbidden;
@@ -1578,10 +1469,7 @@ class DynamicStat {
 }
 
 class Stat {
-  Stat({
-    this.danmu,
-    this.play,
-  });
+  Stat({this.danmu, this.play});
 
   String? danmu;
   String? play;

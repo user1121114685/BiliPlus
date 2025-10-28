@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import 'package:PiliPlus/models/common/search/user_search_type.dart';
-import 'package:PiliPlus/models/search/result.dart';
-import 'package:PiliPlus/pages/search/widgets/search_text.dart';
-import 'package:PiliPlus/pages/search_panel/controller.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
+import 'package:bili_plus/models/common/search/user_search_type.dart';
+import 'package:bili_plus/models/search/result.dart';
+import 'package:bili_plus/pages/search/widgets/search_text.dart';
+import 'package:bili_plus/pages/search_panel/controller.dart';
+import 'package:bili_plus/utils/context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 
@@ -50,25 +50,23 @@ class SearchUserController
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: UserOrderType.values.map(
-                  (e) {
-                    final isCurr = e == userOrderType!.value;
-                    return SearchText(
-                      text: e.label,
-                      onTap: (_) {
-                        userOrderType!.value = e;
-                        order = e.order;
-                        onSortSearch(label: e.label);
-                      },
-                      bgColor: isCurr
-                          ? theme.colorScheme.secondaryContainer
-                          : null,
-                      textColor: isCurr
-                          ? theme.colorScheme.onSecondaryContainer
-                          : null,
-                    );
-                  },
-                ).toList(),
+                children: UserOrderType.values.map((e) {
+                  final isCurr = e == userOrderType!.value;
+                  return SearchText(
+                    text: e.label,
+                    onTap: (_) {
+                      userOrderType!.value = e;
+                      order = e.order;
+                      onSortSearch(label: e.label);
+                    },
+                    bgColor: isCurr
+                        ? theme.colorScheme.secondaryContainer
+                        : null,
+                    textColor: isCurr
+                        ? theme.colorScheme.onSecondaryContainer
+                        : null,
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 20),
               const Text('用户分类', style: TextStyle(fontSize: 16)),
@@ -76,24 +74,22 @@ class SearchUserController
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: UserType.values.map(
-                  (e) {
-                    final isCurr = e == userType!.value;
-                    return SearchText(
-                      text: e.label,
-                      onTap: (_) {
-                        userType!.value = e;
-                        onSortSearch(label: e.label);
-                      },
-                      bgColor: isCurr
-                          ? theme.colorScheme.secondaryContainer
-                          : null,
-                      textColor: isCurr
-                          ? theme.colorScheme.onSecondaryContainer
-                          : null,
-                    );
-                  },
-                ).toList(),
+                children: UserType.values.map((e) {
+                  final isCurr = e == userType!.value;
+                  return SearchText(
+                    text: e.label,
+                    onTap: (_) {
+                      userType!.value = e;
+                      onSortSearch(label: e.label);
+                    },
+                    bgColor: isCurr
+                        ? theme.colorScheme.secondaryContainer
+                        : null,
+                    textColor: isCurr
+                        ? theme.colorScheme.onSecondaryContainer
+                        : null,
+                  );
+                }).toList(),
               ),
             ],
           ),

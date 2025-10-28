@@ -1,10 +1,10 @@
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/models/common/member/search_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/models_new/member/search_archive/data.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/pages/member_search/controller.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/models/common/member/search_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/models_new/member/search_archive/data.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/pages/member_search/controller.dart';
 
 class MemberSearchChildController extends CommonListController {
   MemberSearchChildController(this.controller, this.searchType);

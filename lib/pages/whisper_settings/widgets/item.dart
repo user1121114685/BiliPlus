@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart'
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart'
     show SelectItem, Setting, SettingSwitch;
 import 'package:flutter/material.dart';
 
@@ -42,10 +42,7 @@ class ImSettingsItem extends StatelessWidget {
       return ListTile(
         dense: true,
         onTap: onChanged,
-        title: Text(
-          item.switch_1.title,
-          style: titleStyle,
-        ),
+        title: Text(item.switch_1.title, style: titleStyle),
         subtitle: item.switch_1.hasSubtitle()
             ? Text(item.switch_1.subtitle, style: subtitleStyle)
             : null,
@@ -83,10 +80,7 @@ class ImSettingsItem extends StatelessWidget {
       return ListTile(
         dense: true,
         onTap: onRedirect,
-        title: Text(
-          item.redirect.title,
-          style: titleStyle,
-        ),
+        title: Text(item.redirect.title, style: titleStyle),
         subtitle: item.redirect.hasSubtitle()
             ? Text(item.redirect.subtitle, style: subtitleStyle)
             : null,
@@ -99,10 +93,7 @@ class ImSettingsItem extends StatelessWidget {
                 style: TextStyle(fontSize: 13, color: outline),
               )
             else if (sw1tch != null)
-              Text(
-                sw1tch.title,
-                style: TextStyle(fontSize: 13, color: outline),
-              )
+              Text(sw1tch.title, style: TextStyle(fontSize: 13, color: outline))
             else if (item.redirect.hasSelectedSummary())
               Text(
                 item.redirect.selectedSummary,
@@ -124,47 +115,42 @@ class ImSettingsItem extends StatelessWidget {
       return Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: List.generate(
-          max(0, item.select.item.length * 2 - 1),
-          (index) {
-            if (index.isOdd) {
-              return divider;
-            }
-            final e = item.select.item[index ~/ 2];
-            if (e.selected) {
-              selected ??= e.text;
-            }
-            return ListTile(
-              dense: true,
-              onTap: () async {
-                if (!e.selected) {
-                  for (var i in item.select.item) {
-                    i.selected = false;
-                  }
-                  e.selected = true;
-                  rebuild();
-
-                  if (await onSet()) {
-                    selected = e.text;
-                  } else {
-                    for (var i in item.select.item) {
-                      i.selected = i.text == selected;
-                    }
-                    rebuild();
-                  }
+        children: List.generate(max(0, item.select.item.length * 2 - 1), (
+          index,
+        ) {
+          if (index.isOdd) {
+            return divider;
+          }
+          final e = item.select.item[index ~/ 2];
+          if (e.selected) {
+            selected ??= e.text;
+          }
+          return ListTile(
+            dense: true,
+            onTap: () async {
+              if (!e.selected) {
+                for (var i in item.select.item) {
+                  i.selected = false;
                 }
-              },
-              title: Text(e.text, style: titleStyle),
-              trailing: e.selected
-                  ? Icon(
-                      size: 20,
-                      Icons.check,
-                      color: theme.colorScheme.primary,
-                    )
-                  : null,
-            );
-          },
-        ),
+                e.selected = true;
+                rebuild();
+
+                if (await onSet()) {
+                  selected = e.text;
+                } else {
+                  for (var i in item.select.item) {
+                    i.selected = i.text == selected;
+                  }
+                  rebuild();
+                }
+              }
+            },
+            title: Text(e.text, style: titleStyle),
+            trailing: e.selected
+                ? Icon(size: 20, Icons.check, color: theme.colorScheme.primary)
+                : null,
+          );
+        }),
       );
     }
 

@@ -1,4 +1,4 @@
-import 'package:PiliPlus/http/constants.dart';
+import 'package:bili_plus/http/constants.dart';
 
 class Api {
   // 推荐视频

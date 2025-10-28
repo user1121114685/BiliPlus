@@ -1,10 +1,10 @@
-import 'package:PiliPlus/grpc/bilibili/app/dynamic/v1.pb.dart'
+import 'package:bili_plus/grpc/bilibili/app/dynamic/v1.pb.dart'
     show DynRedReq, TabOffset, DynRedReply;
-import 'package:PiliPlus/grpc/bilibili/app/dynamic/v2.pb.dart'
+import 'package:bili_plus/grpc/bilibili/app/dynamic/v2.pb.dart'
     show OpusType, OpusDetailReq, OpusDetailResp;
-import 'package:PiliPlus/grpc/grpc_req.dart';
-import 'package:PiliPlus/grpc/url.dart';
-import 'package:PiliPlus/http/loading_state.dart';
+import 'package:bili_plus/grpc/grpc_req.dart';
+import 'package:bili_plus/grpc/url.dart';
+import 'package:bili_plus/http/loading_state.dart';
 import 'package:fixnum/fixnum.dart';
 
 class DynGrpc {
@@ -39,10 +39,7 @@ class DynGrpc {
   }) async {
     return GrpcReq.request(
       GrpcUrl.opusDetail,
-      OpusDetailReq(
-        opusType: opusType,
-        oid: Int64(oid),
-      ),
+      OpusDetailReq(opusType: opusType, oid: Int64(oid)),
       OpusDetailResp.fromBuffer,
     );
   }

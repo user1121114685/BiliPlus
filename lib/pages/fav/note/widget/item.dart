@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/select_mask.dart';
-import 'package:PiliPlus/models_new/fav/fav_note/list.dart';
-import 'package:PiliPlus/pages/fav/note/controller.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/select_mask.dart';
+import 'package:bili_plus/models_new/fav/fav_note/list.dart';
+import 'package:bili_plus/pages/fav/note/controller.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class FavNoteItem extends StatelessWidget {
@@ -38,10 +38,7 @@ class FavNoteItem extends StatelessWidget {
             return;
           }
           if (item.webUrl?.isNotEmpty == true) {
-            PageUtils.handleWebview(
-              item.webUrl!,
-              inApp: true,
-            );
+            PageUtils.handleWebview(item.webUrl!, inApp: true);
           }
         },
         onLongPress: onLongPress,
@@ -69,10 +66,7 @@ class FavNoteItem extends StatelessWidget {
                             height: boxConstraints.maxHeight,
                           ),
                           Positioned.fill(
-                            child: selectMask(
-                              theme,
-                              item.checked == true,
-                            ),
+                            child: selectMask(theme, item.checked == true),
                           ),
                         ],
                       );
@@ -87,10 +81,7 @@ class FavNoteItem extends StatelessWidget {
                       item.title ?? '',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        height: 1.4,
-                        fontSize: 14,
-                      ),
+                      style: const TextStyle(height: 1.4, fontSize: 14),
                     ),
                     const Spacer(),
                     Text(

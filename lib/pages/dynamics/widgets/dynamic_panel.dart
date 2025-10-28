@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/widgets/dyn/ink_well.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/action_panel.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/author_panel.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/dyn_content.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/dyn/ink_well.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/dynamics/widgets/action_panel.dart';
+import 'package:bili_plus/pages/dynamics/widgets/author_panel.dart';
+import 'package:bili_plus/pages/dynamics/widgets/dyn_content.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart' hide InkWell;
 
 class DynamicPanel extends StatelessWidget {
@@ -145,10 +145,7 @@ class DynamicPanel extends StatelessWidget {
           ),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: child,
-      ),
+      child: Padding(padding: const EdgeInsets.only(bottom: 8), child: child),
     );
   }
 
@@ -210,10 +207,6 @@ class DynamicPanel extends StatelessWidget {
         morePanel(context);
         return;
     }
-    imageSaveDialog(
-      title: title,
-      cover: cover,
-      bvid: bvid,
-    );
+    imageSaveDialog(title: title, cover: cover, bvid: bvid);
   }
 }

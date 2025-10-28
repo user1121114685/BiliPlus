@@ -1,22 +1,22 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/result.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/introduction/pgc/controller.dart';
-import 'package:PiliPlus/pages/video/introduction/pgc/widgets/pgc_panel.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/widgets/action_item.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/result.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/introduction/pgc/controller.dart';
+import 'package:bili_plus/pages/video/introduction/pgc/widgets/pgc_panel.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/widgets/action_item.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -93,12 +93,7 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
     if (!introController.isPgc) {
       final breif = _buildBreif(item);
       if (breif != null) {
-        sliver = SliverMainAxisGroup(
-          slivers: [
-            sliver,
-            breif,
-          ],
-        );
+        sliver = SliverMainAxisGroup(slivers: [sliver, breif]);
       }
     }
     return SliverPadding(
@@ -145,9 +140,7 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
       children: [
         GestureDetector(
           onTap: () {
-            PageUtils.imageView(
-              imgList: [SourceModel(url: item.cover!)],
-            );
+            PageUtils.imageView(imgList: [SourceModel(url: item.cover!)]);
           },
           child: Hero(
             tag: item.cover!,
@@ -196,53 +189,46 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
 
   Widget _buildInfoPanel(bool isLandscape, ThemeData theme, PgcInfoModel item) {
     if (introController.isPgc) {
-      Widget subBtn() => Obx(
-        () {
-          final isFollowed = introController.isFollowed.value;
-          final followStatus = introController.followStatus.value;
-          return FilledButton.tonal(
-            style: FilledButton.styleFrom(
-              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-                vertical: 10,
-              ),
-              visualDensity: VisualDensity.compact,
-              foregroundColor: isFollowed ? theme.colorScheme.outline : null,
-              backgroundColor: isFollowed
-                  ? theme.colorScheme.onInverseSurface
-                  : null,
-            ),
-            onPressed: followStatus == -1
-                ? null
-                : () {
-                    if (isFollowed) {
-                      showPgcFollowDialog(
-                        context: context,
-                        type: introController.pgcType,
-                        followStatus: followStatus,
-                        onUpdateStatus: (followStatus) {
-                          if (followStatus == -1) {
-                            introController.pgcDel();
-                          } else {
-                            introController.pgcUpdate(
-                              followStatus,
-                            );
-                          }
-                        },
-                      );
-                    } else {
-                      introController.pgcAdd();
-                    }
-                  },
-            child: Text(
-              isFollowed
-                  ? '已${introController.pgcType}'
-                  : introController.pgcType,
-            ),
-          );
-        },
-      );
+      Widget subBtn() => Obx(() {
+        final isFollowed = introController.isFollowed.value;
+        final followStatus = introController.followStatus.value;
+        return FilledButton.tonal(
+          style: FilledButton.styleFrom(
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            visualDensity: VisualDensity.compact,
+            foregroundColor: isFollowed ? theme.colorScheme.outline : null,
+            backgroundColor: isFollowed
+                ? theme.colorScheme.onInverseSurface
+                : null,
+          ),
+          onPressed: followStatus == -1
+              ? null
+              : () {
+                  if (isFollowed) {
+                    showPgcFollowDialog(
+                      context: context,
+                      type: introController.pgcType,
+                      followStatus: followStatus,
+                      onUpdateStatus: (followStatus) {
+                        if (followStatus == -1) {
+                          introController.pgcDel();
+                        } else {
+                          introController.pgcUpdate(followStatus);
+                        }
+                      },
+                    );
+                  } else {
+                    introController.pgcAdd();
+                  }
+                },
+          child: Text(
+            isFollowed
+                ? '已${introController.pgcType}'
+                : introController.pgcType,
+          ),
+        );
+      });
       Widget title() => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         spacing: 20,
@@ -261,47 +247,31 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
       List<Widget> desc() => [
         Text(
           item.newEp!.desc!,
-          style: TextStyle(
-            fontSize: 12,
-            color: theme.colorScheme.outline,
-          ),
+          style: TextStyle(fontSize: 12, color: theme.colorScheme.outline),
         ),
         Text.rich(
           TextSpan(
             children: [
               if (item.areas?.isNotEmpty == true)
                 TextSpan(text: '${item.areas!.first.name!}  '),
-              TextSpan(
-                text: item.publish!.pubTimeShow!,
-              ),
+              TextSpan(text: item.publish!.pubTimeShow!),
             ],
           ),
-          style: TextStyle(
-            fontSize: 12,
-            color: theme.colorScheme.outline,
-          ),
+          style: TextStyle(fontSize: 12, color: theme.colorScheme.outline),
         ),
       ];
       Widget stat() => Wrap(
         spacing: 6,
         runSpacing: 2,
         children: [
-          StatWidget(
-            type: StatType.play,
-            value: item.stat!.view,
-          ),
-          StatWidget(
-            type: StatType.danmaku,
-            value: item.stat!.danmaku,
-          ),
+          StatWidget(type: StatType.play, value: item.stat!.view),
+          StatWidget(type: StatType.danmaku, value: item.stat!.danmaku),
           if (isLandscape) ...desc(),
         ],
       );
       return GestureDetector(
-        onTap: () => widget.showIntroDetail(
-          item,
-          introController.videoTags.value,
-        ),
+        onTap: () =>
+            widget.showIntroDetail(item, introController.videoTags.value),
         behavior: HitTestBehavior.opaque,
         child: SizedBox(
           height: 153,
@@ -376,17 +346,10 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
           ),
           const SizedBox(height: 6),
         ] else if (item.upInfo?.mid != null) ...[
-          upInfo(
-            item.upInfo!.mid!,
-            item.upInfo!.avatar!,
-            item.upInfo!.uname!,
-          ),
+          upInfo(item.upInfo!.mid!, item.upInfo!.avatar!, item.upInfo!.uname!),
           const SizedBox(height: 6),
         ],
-        Text(
-          item.title!,
-          style: const TextStyle(fontSize: 16),
-        ),
+        Text(item.title!, style: const TextStyle(fontSize: 16)),
         if (item.subtitle?.isNotEmpty == true) ...[
           const SizedBox(height: 5),
           Text(

@@ -1,9 +1,9 @@
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/pages/fan/view.dart';
-import 'package:PiliPlus/pages/follow/child/child_view.dart';
-import 'package:PiliPlus/pages/follow_search/view.dart';
-import 'package:PiliPlus/pages/share/view.dart' show UserModel;
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/pages/fan/view.dart';
+import 'package:bili_plus/pages/follow/child/child_view.dart';
+import 'package:bili_plus/pages/follow_search/view.dart';
+import 'package:bili_plus/pages/share/view.dart' show UserModel;
+import 'package:bili_plus/services/account_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

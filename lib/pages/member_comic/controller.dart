@@ -1,9 +1,9 @@
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/models/common/member/contribute_type.dart';
-import 'package:PiliPlus/models_new/space/space_archive/data.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/models/common/member/contribute_type.dart';
+import 'package:bili_plus/models_new/space/space_archive/data.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
 
 class MemberComicController
     extends CommonListController<SpaceArchiveData, SpaceArchiveItem> {
@@ -34,8 +34,5 @@ class MemberComicController
 
   @override
   Future<LoadingState<SpaceArchiveData>> customGetData() =>
-      MemberHttp.spaceArchive(
-        type: ContributeType.comic,
-        mid: mid,
-      );
+      MemberHttp.spaceArchive(type: ContributeType.comic, mid: mid);
 }

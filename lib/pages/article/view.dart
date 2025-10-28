@@ -1,26 +1,26 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart' show DynamicStat;
-import 'package:PiliPlus/pages/article/controller.dart';
-import 'package:PiliPlus/pages/article/widgets/article_ops.dart';
-import 'package:PiliPlus/pages/article/widgets/html_render.dart';
-import 'package:PiliPlus/pages/article/widgets/opus_content.dart';
-import 'package:PiliPlus/pages/common/dyn/common_dyn_page.dart';
-import 'package:PiliPlus/pages/dynamics_repost/view.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart' show DynamicStat;
+import 'package:bili_plus/pages/article/controller.dart';
+import 'package:bili_plus/pages/article/widgets/article_ops.dart';
+import 'package:bili_plus/pages/article/widgets/html_render.dart';
+import 'package:bili_plus/pages/article/widgets/opus_content.dart';
+import 'package:bili_plus/pages/common/dyn/common_dyn_page.dart';
+import 'package:bili_plus/pages/dynamics_repost/view.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -43,9 +43,7 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
   );
 
   @override
-  dynamic get arguments => {
-    'id': controller.id,
-  };
+  dynamic get arguments => {'id': controller.id};
 
   @override
   void didChangeDependencies() {
@@ -68,10 +66,7 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
         padding: EdgeInsets.only(left: padding.left, right: padding.right),
         child: Stack(
           clipBehavior: Clip.none,
-          children: [
-            _buildPage(theme),
-            _buildBottom(theme),
-          ],
+          children: [_buildPage(theme), _buildBottom(theme)],
         ),
       ),
     );
@@ -161,233 +156,226 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
 
   Widget _buildContent(ThemeData theme, double maxWidth) => SliverPadding(
     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-    sliver: Obx(
-      () {
-        if (controller.isLoaded.value) {
-          late Widget content;
-          if (controller.opus != null) {
-            // if (kDebugMode) debugPrint('json page');
-            content = OpusContent(
-              opus: controller.opus!,
-              maxWidth: maxWidth,
-            );
-          } else if (controller.opusData?.modules.moduleBlocked != null) {
-            // if (kDebugMode) debugPrint('moduleBlocked');
-            final moduleBlocked = controller.opusData!.modules.moduleBlocked!;
-            content = SliverToBoxAdapter(
-              child: moduleBlockedItem(theme, moduleBlocked, maxWidth),
-            );
-          } else if (controller.articleData?.content != null) {
-            if (controller.articleData?.type == 3) {
-              // json
-              return ArticleOpus(ops: controller.articleData?.ops);
-            }
-            // if (kDebugMode) debugPrint('html page');
-            final res = parser.parse(controller.articleData!.content!);
-            if (res.body!.children.isEmpty) {
-              content = SliverToBoxAdapter(
-                child: htmlRender(
-                  context: context,
-                  html: controller.articleData!.content!,
-                  maxWidth: maxWidth,
-                ),
-              );
-            } else {
-              content = SliverList.separated(
-                itemCount: res.body!.children.length,
-                itemBuilder: (context, index) {
-                  return htmlRender(
-                    context: context,
-                    element: res.body!.children[index],
-                    maxWidth: maxWidth,
-                  );
-                },
-                separatorBuilder: (context, index) =>
-                    const SizedBox(height: 10),
-              );
-            }
-          } else {
-            content = const SliverToBoxAdapter(child: Text('NULL'));
+    sliver: Obx(() {
+      if (controller.isLoaded.value) {
+        late Widget content;
+        if (controller.opus != null) {
+          // if (kDebugMode) debugPrint('json page');
+          content = OpusContent(opus: controller.opus!, maxWidth: maxWidth);
+        } else if (controller.opusData?.modules.moduleBlocked != null) {
+          // if (kDebugMode) debugPrint('moduleBlocked');
+          final moduleBlocked = controller.opusData!.modules.moduleBlocked!;
+          content = SliverToBoxAdapter(
+            child: moduleBlockedItem(theme, moduleBlocked, maxWidth),
+          );
+        } else if (controller.articleData?.content != null) {
+          if (controller.articleData?.type == 3) {
+            // json
+            return ArticleOpus(ops: controller.articleData?.ops);
           }
+          // if (kDebugMode) debugPrint('html page');
+          final res = parser.parse(controller.articleData!.content!);
+          if (res.body!.children.isEmpty) {
+            content = SliverToBoxAdapter(
+              child: htmlRender(
+                context: context,
+                html: controller.articleData!.content!,
+                maxWidth: maxWidth,
+              ),
+            );
+          } else {
+            content = SliverList.separated(
+              itemCount: res.body!.children.length,
+              itemBuilder: (context, index) {
+                return htmlRender(
+                  context: context,
+                  element: res.body!.children[index],
+                  maxWidth: maxWidth,
+                );
+              },
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+            );
+          }
+        } else {
+          content = const SliverToBoxAdapter(child: Text('NULL'));
+        }
 
-          int? pubTime =
-              controller.opusData?.modules.moduleAuthor?.pubTs ??
-              controller.articleData?.publishTime;
-          return SliverMainAxisGroup(
-            slivers: [
-              if (controller.type != 'read' &&
-                  controller
-                          .opusData
-                          ?.modules
-                          .moduleTop
-                          ?.display
-                          ?.album
-                          ?.pics
-                          ?.isNotEmpty ==
-                      true)
-                SliverToBoxAdapter(
-                  child: Builder(
-                    builder: (context) {
-                      final pics = controller
-                          .opusData!
-                          .modules
-                          .moduleTop!
-                          .display!
-                          .album!
-                          .pics!;
-                      final length = pics.length;
-                      final first = pics.first;
-                      double height;
-                      double paddingRight;
-                      if (first.height != null && first.width != null) {
-                        final ratio = first.height! / first.width!;
-                        height = min(maxWidth * ratio, Get.height * 0.55);
-                        paddingRight = (maxWidth - height / ratio) / 2 + 12;
-                      } else {
-                        height = Get.height * 0.55;
-                        paddingRight = 12;
-                      }
-                      return Stack(
-                        clipBehavior: Clip.none,
-                        children: [
-                          Container(
-                            height: height,
-                            width: maxWidth,
-                            margin: const EdgeInsets.only(bottom: 10),
-                            child: PageView.builder(
-                              physics: const ClampingScrollPhysics(),
-                              onPageChanged: (value) {
-                                controller.topIndex.value = value;
-                              },
-                              itemCount: length,
-                              itemBuilder: (context, index) {
-                                final pic = pics[index];
-                                return GestureDetector(
-                                  behavior: HitTestBehavior.opaque,
-                                  onTap: () => PageUtils.imageView(
-                                    quality: 60,
-                                    imgList: pics
-                                        .map((e) => SourceModel(url: e.url!))
-                                        .toList(),
-                                    initialPage: index,
-                                  ),
-                                  child: Hero(
-                                    tag: pic.url!,
-                                    child: Stack(
-                                      clipBehavior: Clip.none,
-                                      alignment: Alignment.center,
-                                      children: [
-                                        Positioned.fill(
-                                          child: CachedNetworkImage(
-                                            fit: pic.isLongPic == true
-                                                ? BoxFit.cover
-                                                : null,
-                                            imageUrl: ImageUtils.thumbnailUrl(
-                                              pic.url,
-                                              60,
-                                            ),
-                                            fadeInDuration: const Duration(
-                                              milliseconds: 120,
-                                            ),
-                                            fadeOutDuration: const Duration(
-                                              milliseconds: 120,
-                                            ),
+        int? pubTime =
+            controller.opusData?.modules.moduleAuthor?.pubTs ??
+            controller.articleData?.publishTime;
+        return SliverMainAxisGroup(
+          slivers: [
+            if (controller.type != 'read' &&
+                controller
+                        .opusData
+                        ?.modules
+                        .moduleTop
+                        ?.display
+                        ?.album
+                        ?.pics
+                        ?.isNotEmpty ==
+                    true)
+              SliverToBoxAdapter(
+                child: Builder(
+                  builder: (context) {
+                    final pics = controller
+                        .opusData!
+                        .modules
+                        .moduleTop!
+                        .display!
+                        .album!
+                        .pics!;
+                    final length = pics.length;
+                    final first = pics.first;
+                    double height;
+                    double paddingRight;
+                    if (first.height != null && first.width != null) {
+                      final ratio = first.height! / first.width!;
+                      height = min(maxWidth * ratio, Get.height * 0.55);
+                      paddingRight = (maxWidth - height / ratio) / 2 + 12;
+                    } else {
+                      height = Get.height * 0.55;
+                      paddingRight = 12;
+                    }
+                    return Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Container(
+                          height: height,
+                          width: maxWidth,
+                          margin: const EdgeInsets.only(bottom: 10),
+                          child: PageView.builder(
+                            physics: const ClampingScrollPhysics(),
+                            onPageChanged: (value) {
+                              controller.topIndex.value = value;
+                            },
+                            itemCount: length,
+                            itemBuilder: (context, index) {
+                              final pic = pics[index];
+                              return GestureDetector(
+                                behavior: HitTestBehavior.opaque,
+                                onTap: () => PageUtils.imageView(
+                                  quality: 60,
+                                  imgList: pics
+                                      .map((e) => SourceModel(url: e.url!))
+                                      .toList(),
+                                  initialPage: index,
+                                ),
+                                child: Hero(
+                                  tag: pic.url!,
+                                  child: Stack(
+                                    clipBehavior: Clip.none,
+                                    alignment: Alignment.center,
+                                    children: [
+                                      Positioned.fill(
+                                        child: CachedNetworkImage(
+                                          fit: pic.isLongPic == true
+                                              ? BoxFit.cover
+                                              : null,
+                                          imageUrl: ImageUtils.thumbnailUrl(
+                                            pic.url,
+                                            60,
+                                          ),
+                                          fadeInDuration: const Duration(
+                                            milliseconds: 120,
+                                          ),
+                                          fadeOutDuration: const Duration(
+                                            milliseconds: 120,
                                           ),
                                         ),
-                                        if (pic.isLongPic == true)
-                                          PBadge(
-                                            text: '长图',
-                                            type: PBadgeType.primary,
-                                            right: paddingRight,
-                                            bottom: 12,
-                                          ),
-                                      ],
-                                    ),
+                                      ),
+                                      if (pic.isLongPic == true)
+                                        PBadge(
+                                          text: '长图',
+                                          type: PBadgeType.primary,
+                                          right: paddingRight,
+                                          bottom: 12,
+                                        ),
+                                    ],
                                   ),
-                                );
-                              },
-                            ),
-                          ),
-                          Obx(
-                            () => PBadge(
-                              top: 12,
-                              right: paddingRight,
-                              type: PBadgeType.gray,
-                              text: '${controller.topIndex.value + 1}/$length',
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
-                ),
-              if (controller.summary.title != null)
-                SliverToBoxAdapter(
-                  child: Text(
-                    controller.summary.title!,
-                    style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: GestureDetector(
-                    onTap: () => Get.toNamed(
-                      '/member?mid=${controller.summary.author?.mid}',
-                    ),
-                    child: Row(
-                      children: [
-                        NetworkImgLayer(
-                          width: 40,
-                          height: 40,
-                          type: ImageType.avatar,
-                          src: controller.summary.author?.face,
-                        ),
-                        const SizedBox(width: 10),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              controller.summary.author?.name ?? '',
-                              style: TextStyle(
-                                fontSize: theme.textTheme.titleSmall!.fontSize,
-                              ),
-                            ),
-                            if (pubTime != null)
-                              Text(
-                                DateFormatUtils.format(pubTime),
-                                style: TextStyle(
-                                  color: theme.colorScheme.outline,
-                                  fontSize:
-                                      theme.textTheme.labelSmall!.fontSize,
                                 ),
-                              ),
-                          ],
+                              );
+                            },
+                          ),
+                        ),
+                        Obx(
+                          () => PBadge(
+                            top: 12,
+                            right: paddingRight,
+                            type: PBadgeType.gray,
+                            text: '${controller.topIndex.value + 1}/$length',
+                          ),
                         ),
                       ],
-                    ),
+                    );
+                  },
+                ),
+              ),
+            if (controller.summary.title != null)
+              SliverToBoxAdapter(
+                child: Text(
+                  controller.summary.title!,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              if (controller.type != 'read' &&
-                  controller.opusData?.modules.moduleCollection != null)
-                SliverToBoxAdapter(
-                  child: opusCollection(
-                    theme,
-                    controller.opusData!.modules.moduleCollection!,
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: GestureDetector(
+                  onTap: () => Get.toNamed(
+                    '/member?mid=${controller.summary.author?.mid}',
+                  ),
+                  child: Row(
+                    children: [
+                      NetworkImgLayer(
+                        width: 40,
+                        height: 40,
+                        type: ImageType.avatar,
+                        src: controller.summary.author?.face,
+                      ),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            controller.summary.author?.name ?? '',
+                            style: TextStyle(
+                              fontSize: theme.textTheme.titleSmall!.fontSize,
+                            ),
+                          ),
+                          if (pubTime != null)
+                            Text(
+                              DateFormatUtils.format(pubTime),
+                              style: TextStyle(
+                                color: theme.colorScheme.outline,
+                                fontSize: theme.textTheme.labelSmall!.fontSize,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-              content,
-            ],
-          );
-        }
+              ),
+            ),
+            if (controller.type != 'read' &&
+                controller.opusData?.modules.moduleCollection != null)
+              SliverToBoxAdapter(
+                child: opusCollection(
+                  theme,
+                  controller.opusData!.modules.moduleCollection!,
+                ),
+              ),
+            content,
+          ],
+        );
+      }
 
-        return const SliverToBoxAdapter();
-      },
-    ),
+      return const SliverToBoxAdapter();
+    }),
   );
 
   PreferredSizeWidget _buildAppBar() => AppBar(
@@ -514,11 +502,7 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
             final color = status ? primary : outline;
             return TextButton.icon(
               onPressed: onPressed,
-              icon: Icon(
-                status ? activitedIcon : icon,
-                size: 16,
-                color: color,
-              ),
+              icon: Icon(status ? activitedIcon : icon, size: 16, color: color),
               style: btnStyle,
               label: Text(
                 stat?.count != null ? NumUtils.numFormat(stat!.count) : text,
@@ -541,10 +525,7 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
             );
 
             if (stats == null) {
-              return Align(
-                alignment: Alignment.centerRight,
-                child: btn,
-              );
+              return Align(alignment: Alignment.centerRight, child: btn);
             }
 
             return Column(

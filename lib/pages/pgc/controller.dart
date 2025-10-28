@@ -1,15 +1,15 @@
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/pgc.dart';
-import 'package:PiliPlus/models/common/home_tab_type.dart';
-import 'package:PiliPlus/models_new/fav/fav_pgc/data.dart';
-import 'package:PiliPlus/models_new/fav/fav_pgc/list.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_index_result/list.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_timeline/result.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/pgc.dart';
+import 'package:bili_plus/models/common/home_tab_type.dart';
+import 'package:bili_plus/models_new/fav/fav_pgc/data.dart';
+import 'package:bili_plus/models_new/fav/fav_pgc/list.dart';
+import 'package:bili_plus/models_new/pgc/pgc_index_result/list.dart';
+import 'package:bili_plus/models_new/pgc/pgc_timeline/result.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

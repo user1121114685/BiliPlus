@@ -1,7 +1,7 @@
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/log_table/controller.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/log_table/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -52,17 +52,9 @@ class _LogPageState<T> extends State<LogPage<T>> {
                   final outline = them.colorScheme.outline.withValues(
                     alpha: 0.1,
                   );
-                  final divider = Divider(
-                    height: 1,
-                    color: outline,
-                  );
-                  final sliverDivider = SliverToBoxAdapter(
-                    child: divider,
-                  );
-                  final dividerV = VerticalDivider(
-                    width: 1,
-                    color: outline,
-                  );
+                  final divider = Divider(height: 1, color: outline);
+                  final sliverDivider = SliverToBoxAdapter(child: divider);
+                  final dividerV = VerticalDivider(width: 1, color: outline);
                   return SliverMainAxisGroup(
                     slivers: [
                       sliverDivider,

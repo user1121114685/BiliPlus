@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space_setting/privacy.dart';
-import 'package:PiliPlus/pages/space_setting/controller.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space_setting/privacy.dart';
+import 'package:bili_plus/pages/space_setting/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -115,17 +115,11 @@ class _SpaceSettingPageState extends State<SpaceSettingPage> {
         return ListTile(
           dense: true,
           onTap: onChanged,
-          title: Text(
-            item.name,
-            style: const TextStyle(fontSize: 14),
-          ),
+          title: Text(item.name, style: const TextStyle(fontSize: 14)),
           trailing: Transform.scale(
             alignment: Alignment.centerRight,
             scale: 0.8,
-            child: Switch(
-              value: item.boolVal,
-              onChanged: onChanged,
-            ),
+            child: Switch(value: item.boolVal, onChanged: onChanged),
           ),
         );
       },

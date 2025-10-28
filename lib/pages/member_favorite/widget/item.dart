@@ -1,12 +1,12 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models_new/space/space_fav/list.dart';
-import 'package:PiliPlus/pages/subscription_detail/view.dart';
-import 'package:PiliPlus/utils/fav_utils.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models_new/space/space_fav/list.dart';
+import 'package:bili_plus/pages/subscription_detail/view.dart';
+import 'package:bili_plus/utils/fav_utils.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,10 +19,7 @@ class MemberFavItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    void onLongPress() => imageSaveDialog(
-      title: item.title,
-      cover: item.cover,
-    );
+    void onLongPress() => imageSaveDialog(title: item.title, cover: item.cover);
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -42,10 +39,7 @@ class MemberFavItem extends StatelessWidget {
             );
             callback?.call(res);
           } else {
-            SubDetailPage.toSubDetailPage(
-              item.id!,
-              subInfo: item,
-            );
+            SubDetailPage.toSubDetailPage(item.id!, subInfo: item);
           }
         },
         onLongPress: onLongPress,
@@ -61,23 +55,11 @@ class MemberFavItem extends StatelessWidget {
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  NetworkImgLayer(
-                    src: item.cover,
-                    width: 140.8,
-                    height: 88,
-                  ),
+                  NetworkImgLayer(src: item.cover, width: 140.8, height: 88),
                   if (item.type == 21)
-                    const PBadge(
-                      right: 6,
-                      top: 6,
-                      text: '合集',
-                    )
+                    const PBadge(right: 6, top: 6, text: '合集')
                   else if (item.type == 11)
-                    const PBadge(
-                      right: 6,
-                      top: 6,
-                      text: '收藏夹',
-                    ),
+                    const PBadge(right: 6, top: 6, text: '收藏夹'),
                 ],
               ),
               const SizedBox(width: 10),

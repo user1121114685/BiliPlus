@@ -1,12 +1,12 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/grpc/bilibili/app/listener/v1.pb.dart' show DetailItem;
-import 'package:PiliPlus/models_new/live/live_room_info_h5/data.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/episode.dart';
-import 'package:PiliPlus/models_new/video/video_detail/data.dart';
-import 'package:PiliPlus/models_new/video/video_detail/page.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_status.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/grpc/bilibili/app/listener/v1.pb.dart' show DetailItem;
+import 'package:bili_plus/models_new/live/live_room_info_h5/data.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/episode.dart';
+import 'package:bili_plus/models_new/video/video_detail/data.dart';
+import 'package:bili_plus/models_new/video/video_detail/page.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_status.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:audio_service/audio_service.dart';
 import 'package:get/get_utils/get_utils.dart';
 

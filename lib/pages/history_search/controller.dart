@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/models_new/history/data.dart';
-import 'package:PiliPlus/models_new/history/list.dart';
-import 'package:PiliPlus/pages/common/multi_select/base.dart';
-import 'package:PiliPlus/pages/common/search/common_search_controller.dart';
-import 'package:PiliPlus/utils/accounts.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/models_new/history/data.dart';
+import 'package:bili_plus/models_new/history/list.dart';
+import 'package:bili_plus/pages/common/multi_select/base.dart';
+import 'package:bili_plus/pages/common/search/common_search_controller.dart';
+import 'package:bili_plus/utils/accounts.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
@@ -27,10 +27,7 @@ class HistorySearchController
   final account = Accounts.history;
 
   Future<void> onDelHistory(int index, kid, String business) async {
-    var res = await UserHttp.delHistory(
-      '${business}_$kid',
-      account: account,
-    );
+    var res = await UserHttp.delHistory('${business}_$kid', account: account);
     if (res['status']) {
       loadingState
         ..value.data!.removeAt(index)

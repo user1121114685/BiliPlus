@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:PiliPlus/pages/common/common_controller.dart';
-import 'package:PiliPlus/pages/home/controller.dart';
-import 'package:PiliPlus/pages/main/controller.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/pages/common/common_controller.dart';
+import 'package:bili_plus/pages/home/controller.dart';
+import 'package:bili_plus/pages/main/controller.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';

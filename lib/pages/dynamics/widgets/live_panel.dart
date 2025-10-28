@@ -1,5 +1,5 @@
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
 import 'package:flutter/material.dart';
 
 Widget livePanel(
@@ -22,11 +22,7 @@ Widget livePanel(
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        NetworkImgLayer(
-          width: 120,
-          height: 75,
-          src: live.cover,
-        ),
+        NetworkImgLayer(width: 120, height: 75, src: live.cover),
         const SizedBox(width: 10),
         Expanded(
           child: Column(

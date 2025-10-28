@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/space/space/draw_src.dart';
+import 'package:bili_plus/models_new/space/space/draw_src.dart';
 
 class ResNativeDraw {
   DrawSrc? drawSrc;

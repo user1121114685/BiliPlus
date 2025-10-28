@@ -1,17 +1,17 @@
-import 'package:PiliPlus/common/skeleton/video_reply.dart';
-import 'package:PiliPlus/common/widgets/custom_sliver_persistent_header_delegate.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/common/skeleton/video_reply.dart';
+import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show ReplyInfo, Mode;
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/common/slide/common_slide_page.dart';
-import 'package:PiliPlus/pages/video/reply/widgets/reply_item_grpc.dart';
-import 'package:PiliPlus/pages/video/reply_reply/controller.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/common/slide/common_slide_page.dart';
+import 'package:bili_plus/pages/video/reply/widgets/reply_item_grpc.dart';
+import 'package:bili_plus/pages/video/reply_reply/controller.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -205,10 +205,7 @@ class _VideoReplyReplyPanelState extends State<VideoReplyReplyPanel>
       ),
     );
     if (widget.isNested) {
-      return ExtendedVisibilityDetector(
-        uniqueKey: Key(_tag),
-        child: child,
-      );
+      return ExtendedVisibilityDetector(uniqueKey: Key(_tag), child: child);
     }
     return child;
   }
@@ -221,11 +218,8 @@ class _VideoReplyReplyPanelState extends State<VideoReplyReplyPanel>
             replyItem: firstFloor,
             replyLevel: 2,
             needDivider: false,
-            onReply: (replyItem) => _controller.onReply(
-              context,
-              replyItem: replyItem,
-              index: -1,
-            ),
+            onReply: (replyItem) =>
+                _controller.onReply(context, replyItem: replyItem, index: -1),
             upMid: _controller.upMid,
             onCheckReply: (item) =>
                 _controller.onCheckReply(item, isManual: true),
@@ -254,17 +248,15 @@ class _VideoReplyReplyPanelState extends State<VideoReplyReplyPanel>
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Obx(
-                () {
-                  final count = _controller.count.value;
-                  return count != -1
-                      ? Text(
-                          '相关回复共${NumUtils.numFormat(count)}条',
-                          style: const TextStyle(fontSize: 13),
-                        )
-                      : const SizedBox.shrink();
-                },
-              ),
+              Obx(() {
+                final count = _controller.count.value;
+                return count != -1
+                    ? Text(
+                        '相关回复共${NumUtils.numFormat(count)}条',
+                        style: const TextStyle(fontSize: 13),
+                      )
+                    : const SizedBox.shrink();
+              }),
               SizedBox(
                 height: 35,
                 child: TextButton.icon(
@@ -341,10 +333,7 @@ class _VideoReplyReplyPanelState extends State<VideoReplyReplyPanel>
                   ),
               child: child,
               builder: (context, child) {
-                return ColoredBox(
-                  color: colorAnimation!.value!,
-                  child: child,
-                );
+                return ColoredBox(color: colorAnimation!.value!, child: child);
               },
             );
           }

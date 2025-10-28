@@ -1,34 +1,34 @@
 import 'dart:async';
 import 'dart:math' show max;
 
-import 'package:PiliPlus/grpc/bilibili/app/viewunite/pgcanymodel.pb.dart'
+import 'package:bili_plus/grpc/bilibili/app/viewunite/pgcanymodel.pb.dart'
     show ViewPgcAny;
-import 'package:PiliPlus/grpc/view.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/video/source_type.dart';
-import 'package:PiliPlus/models/common/video/video_type.dart';
-import 'package:PiliPlus/models/pgc_lcf.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/episode.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/result.dart';
-import 'package:PiliPlus/models_new/triple/pgc_triple.dart';
-import 'package:PiliPlus/models_new/video/video_detail/episode.dart'
+import 'package:bili_plus/grpc/view.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/video/source_type.dart';
+import 'package:bili_plus/models/common/video/video_type.dart';
+import 'package:bili_plus/models/pgc_lcf.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/episode.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/result.dart';
+import 'package:bili_plus/models_new/triple/pgc_triple.dart';
+import 'package:bili_plus/models_new/video/video_detail/episode.dart'
     hide EpisodeItem;
-import 'package:PiliPlus/models_new/video/video_detail/stat_detail.dart';
-import 'package:PiliPlus/pages/common/common_intro_controller.dart';
-import 'package:PiliPlus/pages/dynamics_repost/view.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/pay_coins/view.dart';
-import 'package:PiliPlus/pages/video/reply/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_repeat.dart';
-import 'package:PiliPlus/services/service_locator.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/models_new/video/video_detail/stat_detail.dart';
+import 'package:bili_plus/pages/common/common_intro_controller.dart';
+import 'package:bili_plus/pages/dynamics_repost/view.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/pay_coins/view.dart';
+import 'package:bili_plus/pages/video/reply/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_repeat.dart';
+import 'package:bili_plus/services/service_locator.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -155,10 +155,7 @@ class PgcIntroController extends CommonIntroController {
             children: [
               ListTile(
                 dense: true,
-                title: const Text(
-                  '复制链接',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('复制链接', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   Utils.copyText(videoUrl);
@@ -166,10 +163,7 @@ class PgcIntroController extends CommonIntroController {
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '其它app打开',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('其它app打开', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   PageUtils.launchURL(videoUrl);
@@ -178,10 +172,7 @@ class PgcIntroController extends CommonIntroController {
               if (Utils.isMobile)
                 ListTile(
                   dense: true,
-                  title: const Text(
-                    '分享视频',
-                    style: TextStyle(fontSize: 14),
-                  ),
+                  title: const Text('分享视频', style: TextStyle(fontSize: 14)),
                   onTap: () {
                     Get.back();
                     Utils.shareText(videoUrl);
@@ -189,10 +180,7 @@ class PgcIntroController extends CommonIntroController {
                 ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '分享至动态',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('分享至动态', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   EpisodeItem? item = pgcItem.episodes?.firstWhereOrNull(
@@ -231,10 +219,7 @@ class PgcIntroController extends CommonIntroController {
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '分享至消息',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('分享至消息', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   try {

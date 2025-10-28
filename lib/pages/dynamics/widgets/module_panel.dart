@@ -1,18 +1,18 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/dyn/ink_well.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/grpc/bilibili/app/listener/v1.pbenum.dart'
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/dyn/ink_well.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/grpc/bilibili/app/listener/v1.pbenum.dart'
     show PlaylistSource;
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/audio/view.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/forward_panel.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/live_panel.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/live_panel_sub.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/live_rcmd_panel.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/video_panel.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/audio/view.dart';
+import 'package:bili_plus/pages/dynamics/widgets/forward_panel.dart';
+import 'package:bili_plus/pages/dynamics/widgets/live_panel.dart';
+import 'package:bili_plus/pages/dynamics/widgets/live_panel_sub.dart';
+import 'package:bili_plus/pages/dynamics/widgets/live_rcmd_panel.dart';
+import 'package:bili_plus/pages/dynamics/widgets/video_panel.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide InkWell;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,15 +20,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 Widget noneWidget(ThemeData theme, String? tips) => Row(
   spacing: 5,
   children: [
-    Icon(
-      Icons.error,
-      size: 18,
-      color: theme.colorScheme.outline,
-    ),
-    Text(
-      tips ?? '已失效',
-      style: TextStyle(color: theme.colorScheme.outline),
-    ),
+    Icon(Icons.error, size: 18, color: theme.colorScheme.outline),
+    Text(tips ?? '已失效', style: TextStyle(color: theme.colorScheme.outline)),
   ],
 );
 
@@ -237,9 +230,7 @@ Widget module(
                     children: [
                       Text(
                         music.title!,
-                        style: TextStyle(
-                          color: theme.colorScheme.primary,
-                        ),
+                        style: TextStyle(color: theme.colorScheme.primary),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -278,11 +269,7 @@ Widget module(
                     src: major.medialist!.cover,
                   ),
                 ),
-                PBadge(
-                  right: 6,
-                  top: 6,
-                  text: major.medialist!.badge?.text,
-                ),
+                PBadge(right: 6, top: 6, text: major.medialist!.badge?.text),
               ],
             ),
             const SizedBox(width: 14),

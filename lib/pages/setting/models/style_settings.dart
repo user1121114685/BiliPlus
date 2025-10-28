@@ -1,34 +1,34 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/custom_toast.dart';
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/main.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamic_badge_mode.dart';
-import 'package:PiliPlus/models/common/dynamic/up_panel_position.dart';
-import 'package:PiliPlus/models/common/home_tab_type.dart';
-import 'package:PiliPlus/models/common/msg/msg_unread_type.dart';
-import 'package:PiliPlus/models/common/nav_bar_config.dart';
-import 'package:PiliPlus/models/common/settings_type.dart';
-import 'package:PiliPlus/models/common/theme/theme_type.dart';
-import 'package:PiliPlus/pages/main/controller.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/pages/setting/models/model.dart';
-import 'package:PiliPlus/pages/setting/pages/color_select.dart';
-import 'package:PiliPlus/pages/setting/slide_color_picker.dart';
-import 'package:PiliPlus/pages/setting/widgets/multi_select_dialog.dart';
-import 'package:PiliPlus/pages/setting/widgets/select_dialog.dart';
-import 'package:PiliPlus/pages/setting/widgets/slide_dialog.dart';
-import 'package:PiliPlus/plugin/pl_player/utils/fullscreen.dart';
-import 'package:PiliPlus/router/app_pages.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
 import 'package:auto_orientation/auto_orientation.dart';
+import 'package:bili_plus/common/widgets/custom_toast.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/main.dart';
+import 'package:bili_plus/models/common/dynamic/dynamic_badge_mode.dart';
+import 'package:bili_plus/models/common/dynamic/up_panel_position.dart';
+import 'package:bili_plus/models/common/home_tab_type.dart';
+import 'package:bili_plus/models/common/msg/msg_unread_type.dart';
+import 'package:bili_plus/models/common/nav_bar_config.dart';
+import 'package:bili_plus/models/common/settings_type.dart';
+import 'package:bili_plus/models/common/theme/theme_type.dart';
+import 'package:bili_plus/pages/main/controller.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/pages/setting/models/model.dart';
+import 'package:bili_plus/pages/setting/pages/color_select.dart';
+import 'package:bili_plus/pages/setting/slide_color_picker.dart';
+import 'package:bili_plus/pages/setting/widgets/multi_select_dialog.dart';
+import 'package:bili_plus/pages/setting/widgets/select_dialog.dart';
+import 'package:bili_plus/pages/setting/widgets/slide_dialog.dart';
+import 'package:bili_plus/plugin/pl_player/utils/fullscreen.dart';
+import 'package:bili_plus/router/app_pages.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -392,10 +392,7 @@ List<SettingsModel> get styleSettings => [
                   Get.back();
                   GStorage.setting.put(
                     SettingBoxKey.scrollThreshold,
-                    max(
-                      10.0,
-                      double.tryParse(scrollThreshold) ?? 50.0,
-                    ),
+                    max(10.0, double.tryParse(scrollThreshold) ?? 50.0),
                   );
                   SmartDialog.showToast('重启生效');
                 },
@@ -426,10 +423,7 @@ List<SettingsModel> get styleSettings => [
     leading: const Icon(Icons.image_outlined),
     getTrailing: () => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Text(
-        '${Pref.picQuality}%',
-        style: Get.theme.textTheme.titleSmall,
-      ),
+      child: Text('${Pref.picQuality}%', style: Get.theme.textTheme.titleSmall),
     ),
   ),
   // preview quality
@@ -451,10 +445,7 @@ List<SettingsModel> get styleSettings => [
     leading: const Icon(Icons.image_outlined),
     getTrailing: () => Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Text(
-        '${Pref.previewQ}%',
-        style: Get.theme.textTheme.titleSmall,
-      ),
+      child: Text('${Pref.previewQ}%', style: Get.theme.textTheme.titleSmall),
     ),
   ),
   SettingsModel(

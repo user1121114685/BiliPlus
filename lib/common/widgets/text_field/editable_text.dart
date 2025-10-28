@@ -22,10 +22,10 @@ import 'dart:math' as math;
 import 'dart:ui' as ui hide TextStyle;
 import 'dart:ui';
 
-import 'package:PiliPlus/common/widgets/text_field/controller.dart';
-import 'package:PiliPlus/common/widgets/text_field/editable.dart';
-import 'package:PiliPlus/common/widgets/text_field/spell_check.dart';
-import 'package:PiliPlus/common/widgets/text_field/text_selection.dart';
+import 'package:bili_plus/common/widgets/text_field/controller.dart';
+import 'package:bili_plus/common/widgets/text_field/editable.dart';
+import 'package:bili_plus/common/widgets/text_field/spell_check.dart';
+import 'package:bili_plus/common/widgets/text_field/text_selection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart'
@@ -2030,9 +2030,7 @@ class EditableText extends StatefulWidget {
       );
     style.debugFillProperties(properties);
     properties
-      ..add(
-        EnumProperty<TextAlign>('textAlign', textAlign, defaultValue: null),
-      )
+      ..add(EnumProperty<TextAlign>('textAlign', textAlign, defaultValue: null))
       ..add(
         EnumProperty<TextDirection>(
           'textDirection',
@@ -2040,9 +2038,7 @@ class EditableText extends StatefulWidget {
           defaultValue: null,
         ),
       )
-      ..add(
-        DiagnosticsProperty<Locale>('locale', locale, defaultValue: null),
-      )
+      ..add(DiagnosticsProperty<Locale>('locale', locale, defaultValue: null))
       ..add(
         DiagnosticsProperty<TextScaler>(
           'textScaler',
@@ -2052,9 +2048,7 @@ class EditableText extends StatefulWidget {
       )
       ..add(IntProperty('maxLines', maxLines, defaultValue: 1))
       ..add(IntProperty('minLines', minLines, defaultValue: null))
-      ..add(
-        DiagnosticsProperty<bool>('expands', expands, defaultValue: false),
-      )
+      ..add(DiagnosticsProperty<bool>('expands', expands, defaultValue: false))
       ..add(
         DiagnosticsProperty<bool>('autofocus', autofocus, defaultValue: false),
       )
@@ -2966,11 +2960,7 @@ class EditableTextState extends State<EditableText>
             );
             if (selectedText.isNotEmpty) {
               final String? processedText = await _processTextService
-                  .processTextAction(
-                    action.id,
-                    selectedText,
-                    widget.readOnly,
-                  );
+                  .processTextAction(action.id, selectedText, widget.readOnly);
               // If an activity does not return a modified version, just hide the toolbar.
               // Otherwise use the result to replace the selected text.
               if (processedText != null && _allowPaste) {
@@ -4293,10 +4283,7 @@ class EditableTextState extends State<EditableText>
           kMinInteractiveDimension,
         );
         final Offset anchor = _selectionOverlay!.selectionControls!
-            .getHandleAnchor(
-              TextSelectionHandleType.collapsed,
-              lineHeight,
-            );
+            .getHandleAnchor(TextSelectionHandleType.collapsed, lineHeight);
         final double handleCenter = handleHeight / 2 - anchor.dy;
         bottomSpacing = math.max(
           handleCenter + interactiveHandleHeight / 2,
@@ -5400,9 +5387,7 @@ class EditableTextState extends State<EditableText>
   }
 
   late final Action<ReplaceTextIntent> _replaceTextAction =
-      CallbackAction<ReplaceTextIntent>(
-        onInvoke: _replaceText,
-      );
+      CallbackAction<ReplaceTextIntent>(onInvoke: _replaceText);
 
   // Scrolls either to the beginning or end of the document depending on the
   // intent's `forward` parameter.
@@ -5834,9 +5819,7 @@ class EditableTextState extends State<EditableText>
                       // either case, glowing or stretching.
                       scrollBehavior:
                           widget.scrollBehavior ??
-                          ScrollConfiguration.of(
-                            context,
-                          ).copyWith(
+                          ScrollConfiguration.of(context).copyWith(
                             scrollbars: _isMultiline,
                             overscroll: false,
                           ),
@@ -6454,11 +6437,7 @@ class _CodePointBoundary extends TextBoundary {
 // -------------------------------  Text Actions -------------------------------
 class _DeleteTextAction<T extends DirectionalTextEditingIntent>
     extends ContextAction<T> {
-  _DeleteTextAction(
-    this.state,
-    this.getTextBoundary,
-    this._applyTextBoundary,
-  );
+  _DeleteTextAction(this.state, this.getTextBoundary, this._applyTextBoundary);
 
   final EditableTextState state;
   final TextBoundary Function() getTextBoundary;

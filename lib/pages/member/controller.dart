@@ -1,19 +1,19 @@
 import 'dart:math';
 
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/member/tab_type.dart';
-import 'package:PiliPlus/models_new/space/space/data.dart';
-import 'package:PiliPlus/models_new/space/space/live.dart';
-import 'package:PiliPlus/models_new/space/space/setting.dart';
-import 'package:PiliPlus/models_new/space/space/tab2.dart';
-import 'package:PiliPlus/pages/common/common_data_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/member/tab_type.dart';
+import 'package:bili_plus/models_new/space/space/data.dart';
+import 'package:bili_plus/models_new/space/space/live.dart';
+import 'package:bili_plus/models_new/space/space/setting.dart';
+import 'package:bili_plus/models_new/space/space/tab2.dart';
+import 'package:bili_plus/pages/common/common_data_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart'
     show ExtendedNestedScrollViewState;
 import 'package:flutter/material.dart';
@@ -126,20 +126,15 @@ class MemberController extends CommonDataController<SpaceData, SpaceData?>
     ];
     tabs = tab2!.map((item) => Tab(text: item.title)).toList();
     tabController?.dispose();
-    tabController = TabController(
-      vsync: this,
-      length: tabs.length,
-    );
+    tabController = TabController(vsync: this, length: tabs.length);
     username = errMsg;
     loadingState.value = const Success(null);
     return true;
   }
 
   @override
-  Future<LoadingState<SpaceData>> customGetData() => MemberHttp.space(
-    mid: mid,
-    fromViewAid: fromViewAid,
-  );
+  Future<LoadingState<SpaceData>> customGetData() =>
+      MemberHttp.space(mid: mid, fromViewAid: fromViewAid);
 
   void blockUser(BuildContext context) {
     if (!accountService.isLogin.value) {

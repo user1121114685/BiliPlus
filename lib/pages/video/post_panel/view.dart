@@ -1,21 +1,21 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/pair.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/models/common/sponsor_block/action_type.dart';
-import 'package:PiliPlus/models/common/sponsor_block/post_segment_model.dart';
-import 'package:PiliPlus/models/common/sponsor_block/segment_type.dart';
-import 'package:PiliPlus/models_new/sponsor_block/segment_item.dart';
-import 'package:PiliPlus/pages/common/slide/common_slide_page.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/post_panel/popup_menu_text.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/pair.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/models/common/sponsor_block/action_type.dart';
+import 'package:bili_plus/models/common/sponsor_block/post_segment_model.dart';
+import 'package:bili_plus/models/common/sponsor_block/segment_type.dart';
+import 'package:bili_plus/models_new/sponsor_block/segment_item.dart';
+import 'package:bili_plus/pages/common/slide/common_slide_page.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/post_panel/popup_menu_text.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:dio/dio.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
@@ -69,9 +69,7 @@ class PostPanel extends CommonSlidePage {
           spacing: 5,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              '${isFirst ? '开始' : '结束'}: $value',
-            ),
+            Text('${isFirst ? '开始' : '结束'}: $value'),
             iconButton(
               context: context,
               size: 26,
@@ -126,9 +124,7 @@ class PostPanel extends CommonSlidePage {
                           onPressed: Get.back,
                           child: Text(
                             '取消',
-                            style: TextStyle(
-                              color: theme.colorScheme.outline,
-                            ),
+                            style: TextStyle(color: theme.colorScheme.outline),
                           ),
                         ),
                         TextButton(
@@ -214,10 +210,7 @@ class _PostPanelState extends State<PostPanel>
                 list.insert(
                   0,
                   PostSegmentModel(
-                    segment: Pair(
-                      first: 0,
-                      second: currentPos,
-                    ),
+                    segment: Pair(first: 0, second: currentPos),
                     category: SegmentType.sponsor,
                     actionType: ActionType.skip,
                   ),
@@ -294,10 +287,7 @@ class _PostPanelState extends State<PostPanel>
                       style: TextStyle(color: theme.colorScheme.outline),
                     ),
                   ),
-                  TextButton(
-                    onPressed: _onPost,
-                    child: const Text('确定提交'),
-                  ),
+                  TextButton(onPressed: _onPost, child: const Text('确定提交')),
                 ],
               ),
             ),
@@ -321,10 +311,7 @@ class _PostPanelState extends State<PostPanel>
         'segments': list
             .map(
               (item) => {
-                'segment': [
-                  item.segment.first,
-                  item.segment.second,
-                ],
+                'segment': [item.segment.first, item.segment.second],
                 'category': item.category.name,
                 'actionType': item.actionType.name,
               },
@@ -379,10 +366,7 @@ class _PostPanelState extends State<PostPanel>
       children: [
         Container(
           width: double.infinity,
-          margin: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 5,
-          ),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: theme.colorScheme.onInverseSurface,
@@ -526,9 +510,7 @@ class _PostPanelState extends State<PostPanel>
                   await Future.delayed(Duration(milliseconds: delay));
                 }
                 videoCtr.seek(
-                  Duration(
-                    milliseconds: (item.segment.second * 1000).round(),
-                  ),
+                  Duration(milliseconds: (item.segment.second * 1000).round()),
                 );
               }
             },

@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models/model_avatar.dart' show Vip;
+import 'package:bili_plus/models/model_avatar.dart' show Vip;
 
 class Author {
   String? avatar;
@@ -7,13 +7,7 @@ class Author {
   String? uname;
   Vip? vip;
 
-  Author({
-    this.avatar,
-    this.level,
-    this.mid,
-    this.uname,
-    this.vip,
-  });
+  Author({this.avatar, this.level, this.mid, this.uname, this.vip});
 
   factory Author.fromJson(Map<String, dynamic> json) => Author(
     avatar: json['avatar'] as String?,

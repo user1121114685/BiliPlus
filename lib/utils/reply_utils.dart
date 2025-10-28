@@ -1,17 +1,17 @@
 import 'dart:convert' show jsonEncode;
 import 'dart:io' show Platform;
 
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show ReplyInfo;
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/reply.dart';
-import 'package:PiliPlus/models/common/reply/reply_sort_type.dart';
-import 'package:PiliPlus/models_new/reply/data.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/reply.dart';
+import 'package:bili_plus/models/common/reply/reply_sort_type.dart';
+import 'package:bili_plus/models_new/reply/data.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -71,23 +71,20 @@ class ReplyUtils {
             .entries
             .map((i) => '${i.key}=${i.value}')
             .join(';');
-        Utils.channel.invokeMethod(
-          'biliSendCommAntifraud',
-          {
-            'action': 0,
-            'oid': oid,
-            'type': type,
-            'rpid': id,
-            'root': root,
-            'parent': parent,
-            'ctime': ctime,
-            'comment_text': message,
-            if (pictures?.isNotEmpty == true) 'pictures': jsonEncode(pictures),
-            'source_id': '$sourceId',
-            'uid': mid,
-            'cookies': [cookieString],
-          },
-        );
+        Utils.channel.invokeMethod('biliSendCommAntifraud', {
+          'action': 0,
+          'oid': oid,
+          'type': type,
+          'rpid': id,
+          'root': root,
+          'parent': parent,
+          'ctime': ctime,
+          'comment_text': message,
+          if (pictures?.isNotEmpty == true) 'pictures': jsonEncode(pictures),
+          'source_id': '$sourceId',
+          'uid': mid,
+          'cookies': [cookieString],
+        });
       } catch (e) {
         if (kDebugMode) debugPrint('biliSendCommAntifraud: $e');
       }
@@ -130,10 +127,7 @@ class ReplyUtils {
                 child: const Text('申诉'),
               ),
             if (!isManual)
-              TextButton(
-                onPressed: Get.back,
-                child: const Text('关闭'),
-              ),
+              TextButton(onPressed: Get.back, child: const Text('关闭')),
           ],
         ),
       );

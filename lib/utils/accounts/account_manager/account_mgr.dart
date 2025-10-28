@@ -2,15 +2,15 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/models/common/account_type.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/app_sign.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/models/common/account_type.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/app_sign.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
@@ -106,11 +106,7 @@ class AccountManager extends Interceptor {
       Api.topicTop,
     },
     // progress
-    AccountType.video: {
-      Api.ugcUrl,
-      Api.pgcUrl,
-      Api.pugvUrl,
-    },
+    AccountType.video: {Api.ugcUrl, Api.pgcUrl, Api.pugvUrl},
   };
 
   static const loginApi = {
@@ -228,15 +224,13 @@ class AccountManager extends Interceptor {
         response,
       ).whenComplete(() => handler.next(response));
       assert(() {
-        future.catchError(
-          (Object e, StackTrace s) {
-            throw DioException(
-              requestOptions: response.requestOptions,
-              error: e,
-              stackTrace: s,
-            );
-          },
-        );
+        future.catchError((Object e, StackTrace s) {
+          throw DioException(
+            requestOptions: response.requestOptions,
+            error: e,
+            stackTrace: s,
+          );
+        });
         return true;
       }());
     }
@@ -249,18 +243,16 @@ class AccountManager extends Interceptor {
     }
     if (err.response != null &&
         !err.response!.requestOptions.path.startsWith(HttpString.appBaseUrl)) {
-      _saveCookies(
-        err.response!,
-      ).whenComplete(() => handler.next(err)).catchError(
-        (dynamic e, StackTrace s) {
-          final error = DioException(
-            requestOptions: err.response!.requestOptions,
-            error: e,
-            stackTrace: s,
-          );
-          handler.next(error);
-        },
-      );
+      _saveCookies(err.response!)
+          .whenComplete(() => handler.next(err))
+          .catchError((dynamic e, StackTrace s) {
+            final error = DioException(
+              requestOptions: err.response!.requestOptions,
+              error: e,
+              stackTrace: s,
+            );
+            handler.next(error);
+          });
     } else {
       handler.next(err);
     }

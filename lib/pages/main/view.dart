@@ -1,23 +1,23 @@
 import 'dart:io';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/tabs.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamic_badge_mode.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/common/nav_bar_config.dart';
-import 'package:PiliPlus/pages/home/view.dart';
-import 'package:PiliPlus/pages/main/controller.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_status.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/tabs.dart';
+import 'package:bili_plus/models/common/dynamic/dynamic_badge_mode.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/common/nav_bar_config.dart';
+import 'package:bili_plus/pages/home/view.dart';
+import 'package:bili_plus/pages/main/controller.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_status.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -358,9 +358,7 @@ class _MainAppState extends State<MainApp>
                                                 (e) =>
                                                     NavigationDrawerDestination(
                                                       label: Text(e.label),
-                                                      icon: _buildIcon(
-                                                        type: e,
-                                                      ),
+                                                      icon: _buildIcon(type: e),
                                                       selectedIcon: _buildIcon(
                                                         type: e,
                                                         selected: true,
@@ -453,26 +451,20 @@ class _MainAppState extends State<MainApp>
     );
   }
 
-  Widget _buildIcon({
-    required NavigationBarType type,
-    bool selected = false,
-  }) {
+  Widget _buildIcon({required NavigationBarType type, bool selected = false}) {
     final icon = selected ? type.selectIcon : type.icon;
     return type == NavigationBarType.dynamics
-        ? Obx(
-            () {
-              final dynCount = _mainController.dynCount.value;
-              return Badge(
-                isLabelVisible: dynCount > 0,
-                label:
-                    _mainController.dynamicBadgeMode == DynamicBadgeMode.number
-                    ? Text(dynCount.toString())
-                    : null,
-                padding: const EdgeInsets.symmetric(horizontal: 6),
-                child: icon,
-              );
-            },
-          )
+        ? Obx(() {
+            final dynCount = _mainController.dynCount.value;
+            return Badge(
+              isLabelVisible: dynCount > 0,
+              label: _mainController.dynamicBadgeMode == DynamicBadgeMode.number
+                  ? Text(dynCount.toString())
+                  : null,
+              padding: const EdgeInsets.symmetric(horizontal: 6),
+              child: icon,
+            );
+          })
         : icon;
   }
 
@@ -544,10 +536,7 @@ class _MainAppState extends State<MainApp>
         ),
         IconButton(
           tooltip: '搜索',
-          icon: const Icon(
-            Icons.search_outlined,
-            semanticLabel: '搜索',
-          ),
+          icon: const Icon(Icons.search_outlined, semanticLabel: '搜索'),
           onPressed: () => Get.toNamed('/search'),
         ),
       ],

@@ -1,7 +1,7 @@
-import 'package:PiliPlus/models/model_rec_video_item.dart';
-import 'package:PiliPlus/models/model_video.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
+import 'package:bili_plus/models/model_rec_video_item.dart';
+import 'package:bili_plus/models/model_video.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/num_utils.dart';
 
 class RecVideoItemAppModel extends BaseRecVideoItemModel {
   int? get id => aid;

@@ -1,9 +1,9 @@
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart';
-import 'package:PiliPlus/grpc/bilibili/im/interfaces/v1.pb.dart';
-import 'package:PiliPlus/grpc/bilibili/im/type.pb.dart';
-import 'package:PiliPlus/grpc/grpc_req.dart';
-import 'package:PiliPlus/grpc/url.dart';
-import 'package:PiliPlus/http/loading_state.dart';
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart';
+import 'package:bili_plus/grpc/bilibili/im/interfaces/v1.pb.dart';
+import 'package:bili_plus/grpc/bilibili/im/type.pb.dart';
+import 'package:bili_plus/grpc/grpc_req.dart';
+import 'package:bili_plus/grpc/url.dart';
+import 'package:bili_plus/http/loading_state.dart';
 import 'package:fixnum/fixnum.dart';
 import 'package:protobuf/protobuf.dart' show PbMap;
 import 'package:uuid/uuid.dart';
@@ -93,10 +93,7 @@ class ImGrpc {
   }) {
     return GrpcReq.request(
       GrpcUrl.clearUnread,
-      ClearUnreadReq(
-        pageType: pageType,
-        sessionId: sessionId,
-      ),
+      ClearUnreadReq(pageType: pageType, sessionId: sessionId),
       ClearUnreadReply.fromBuffer,
     );
   }
@@ -107,10 +104,7 @@ class ImGrpc {
   }) {
     return GrpcReq.request(
       GrpcUrl.sessionUpdate,
-      SessionUpdateReq(
-        pageType: pageType,
-        sessionId: sessionId,
-      ),
+      SessionUpdateReq(pageType: pageType, sessionId: sessionId),
       SessionUpdateReply.fromBuffer,
     );
   }
@@ -121,10 +115,7 @@ class ImGrpc {
   }) {
     return GrpcReq.request(
       GrpcUrl.pinSession,
-      PinSessionReq(
-        sessionId: sessionId,
-        topTimeMicros: topTimeMicros,
-      ),
+      PinSessionReq(sessionId: sessionId, topTimeMicros: topTimeMicros),
       PinSessionReply.fromBuffer,
     );
   }
@@ -134,9 +125,7 @@ class ImGrpc {
   }) {
     return GrpcReq.request(
       GrpcUrl.unpinSession,
-      UnPinSessionReq(
-        sessionId: sessionId,
-      ),
+      UnPinSessionReq(sessionId: sessionId),
       UnPinSessionReply.fromBuffer,
     );
   }
@@ -146,9 +135,7 @@ class ImGrpc {
   }) {
     return GrpcReq.request(
       GrpcUrl.deleteSessionList,
-      DeleteSessionListReq(
-        pageType: pageType,
-      ),
+      DeleteSessionListReq(pageType: pageType),
       DeleteSessionListReply.fromBuffer,
     );
   }
@@ -158,9 +145,7 @@ class ImGrpc {
   }) {
     return GrpcReq.request(
       GrpcUrl.getImSettings,
-      GetImSettingsReq(
-        type: type,
-      ),
+      GetImSettingsReq(type: type),
       GetImSettingsReply.fromBuffer,
     );
   }
@@ -170,9 +155,7 @@ class ImGrpc {
   }) {
     return GrpcReq.request(
       GrpcUrl.setImSettings,
-      SetImSettingsReq(
-        settings: settings?.entries,
-      ),
+      SetImSettingsReq(settings: settings?.entries),
       SetImSettingsReply.fromBuffer,
     );
   }

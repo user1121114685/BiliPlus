@@ -1,5 +1,5 @@
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show PlatformException;
@@ -77,9 +77,7 @@ class _SetDisplayModeState extends State<SetDisplayMode> {
           Expanded(
             child: RadioGroup(
               onChanged: (DisplayMode? newMode) {
-                FlutterDisplayMode.setPreferredMode(
-                  newMode!,
-                ).whenComplete(
+                FlutterDisplayMode.setPreferredMode(newMode!).whenComplete(
                   () => Future.delayed(
                     const Duration(milliseconds: 100),
                     fetchAll,

@@ -1,9 +1,9 @@
-import 'package:PiliPlus/models/common/account_type.dart';
-import 'package:PiliPlus/models/common/settings_type.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/pages/setting/models/model.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account_manager/account_mgr.dart';
+import 'package:bili_plus/models/common/account_type.dart';
+import 'package:bili_plus/models/common/settings_type.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/pages/setting/models/model.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account_manager/account_mgr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -42,15 +42,8 @@ List<SettingsModel> get privacySettings => [
         builder: (context) {
           return AlertDialog(
             title: const Text('账号模式详情'),
-            content: SingleChildScrollView(
-              child: _getAccountDetail(context),
-            ),
-            actions: [
-              TextButton(
-                onPressed: Get.back,
-                child: const Text('确认'),
-              ),
-            ],
+            content: SingleChildScrollView(child: _getAccountDetail(context)),
+            actions: [TextButton(onPressed: Get.back, child: const Text('确认'))],
           );
         },
       );

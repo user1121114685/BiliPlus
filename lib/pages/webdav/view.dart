@@ -1,8 +1,8 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/pages/webdav/webdav.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/pages/webdav/webdav.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 

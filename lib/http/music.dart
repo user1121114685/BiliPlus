@@ -1,10 +1,10 @@
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/music/bgm_detail.dart';
-import 'package:PiliPlus/models_new/music/bgm_recommend_list.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/music/bgm_detail.dart';
+import 'package:bili_plus/models_new/music/bgm_recommend_list.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
 
 class MusicHttp {
@@ -48,9 +48,7 @@ class MusicHttp {
   ) async {
     final res = await Request().get(
       Api.bgmRecommend,
-      queryParameters: {
-        'music_id': musicId,
-      },
+      queryParameters: {'music_id': musicId},
     );
     if (res.data['code'] == 0) {
       return Success(

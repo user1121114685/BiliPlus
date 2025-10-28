@@ -1,12 +1,12 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/video_card_v.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/live/live_follow/item.dart';
-import 'package:PiliPlus/pages/live_follow/controller.dart';
-import 'package:PiliPlus/pages/live_follow/widgets/live_item_follow.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/video_card_v.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/live/live_follow/item.dart';
+import 'package:bili_plus/pages/live_follow/controller.dart';
+import 'package:bili_plus/pages/live_follow/widgets/live_item_follow.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,12 +26,10 @@ class _LiveFollowPageState extends State<LiveFollowPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Obx(
-          () {
-            final count = _controller.count.value;
-            return Text(count != null ? '$count人正在直播' : '关注直播');
-          },
-        ),
+        title: Obx(() {
+          final count = _controller.count.value;
+          return Text(count != null ? '$count人正在直播' : '关注直播');
+        }),
       ),
       body: refreshIndicator(
         onRefresh: _controller.onRefresh,
@@ -75,9 +73,7 @@ class _LiveFollowPageState extends State<LiveFollowPage> {
                   if (index == response.length - 1) {
                     _controller.onLoadMore();
                   }
-                  return LiveCardVFollow(
-                    liveItem: response[index],
-                  );
+                  return LiveCardVFollow(liveItem: response[index]);
                 },
                 itemCount: response!.length,
               )

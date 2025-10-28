@@ -1,19 +1,15 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/live/live_superchat/item.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/widgets/selectable_text.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/live/live_superchat/item.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/widgets/selectable_text.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SuperChatCard extends StatefulWidget {
-  const SuperChatCard({
-    super.key,
-    required this.item,
-    required this.onRemove,
-  });
+  const SuperChatCard({super.key, required this.item, required this.onRemove});
 
   final SuperChatItem item;
   final VoidCallback onRemove;

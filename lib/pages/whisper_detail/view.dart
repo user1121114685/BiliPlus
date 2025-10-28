@@ -1,22 +1,22 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/text_field/text_field.dart';
-import 'package:PiliPlus/grpc/bilibili/im/type.pb.dart' show Msg;
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/msg.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/common/publish_panel_type.dart';
-import 'package:PiliPlus/models_new/upload_bfs/data.dart';
-import 'package:PiliPlus/pages/common/publish/common_rich_text_pub_page.dart';
-import 'package:PiliPlus/pages/emote/view.dart';
-import 'package:PiliPlus/pages/whisper_detail/controller.dart';
-import 'package:PiliPlus/pages/whisper_detail/widget/chat_item.dart';
-import 'package:PiliPlus/pages/whisper_link_setting/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/text_field/text_field.dart';
+import 'package:bili_plus/grpc/bilibili/im/type.pb.dart' show Msg;
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/msg.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/common/publish_panel_type.dart';
+import 'package:bili_plus/models_new/upload_bfs/data.dart';
+import 'package:bili_plus/pages/common/publish/common_rich_text_pub_page.dart';
+import 'package:bili_plus/pages/emote/view.dart';
+import 'package:bili_plus/pages/whisper_detail/controller.dart';
+import 'package:bili_plus/pages/whisper_detail/widget/chat_item.dart';
+import 'package:bili_plus/pages/whisper_link_setting/view.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart' hide TextField;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -24,10 +24,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
 
 class WhisperDetailPage extends CommonRichTextPubPage {
-  const WhisperDetailPage({
-    super.key,
-    super.autofocus = false,
-  });
+  const WhisperDetailPage({super.key, super.autofocus = false});
 
   @override
   State<WhisperDetailPage> createState() => _WhisperDetailPageState();
@@ -128,10 +125,7 @@ class _WhisperDetailPageState
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.only(
-          left: padding.left,
-          right: padding.right,
-        ),
+        padding: EdgeInsets.only(left: padding.left, right: padding.right),
         child: Column(
           children: [
             Expanded(
@@ -151,10 +145,7 @@ class _WhisperDetailPageState
             ),
             if (_whisperDetailController.mid != null) ...[
               _buildInputView(theme, containerColor),
-              buildPanelContainer(
-                theme,
-                containerColor,
-              ),
+              buildPanelContainer(theme, containerColor),
             ] else
               SizedBox(height: padding.bottom),
           ],
@@ -224,10 +215,7 @@ class _WhisperDetailPageState
                   );
                 },
                 dense: true,
-                title: const Text(
-                  '撤回',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('撤回', style: TextStyle(fontSize: 14)),
               ),
             ],
           ),
@@ -289,68 +277,64 @@ class _WhisperDetailPageState
               ),
             ),
           ),
-          Obx(
-            () {
-              final enablePublish = this.enablePublish.value;
-              return IconButton(
-                onPressed: () async {
-                  if (enablePublish) {
-                    _whisperDetailController.sendMsg(
-                      message: editController.rawText,
-                      onClearText: editController.clear,
+          Obx(() {
+            final enablePublish = this.enablePublish.value;
+            return IconButton(
+              onPressed: () async {
+                if (enablePublish) {
+                  _whisperDetailController.sendMsg(
+                    message: editController.rawText,
+                    onClearText: editController.clear,
+                  );
+                } else {
+                  try {
+                    XFile? pickedFile = await imagePicker.pickImage(
+                      source: ImageSource.gallery,
+                      imageQuality: 100,
                     );
-                  } else {
-                    try {
-                      XFile? pickedFile = await imagePicker.pickImage(
-                        source: ImageSource.gallery,
-                        imageQuality: 100,
+                    if (pickedFile != null) {
+                      SmartDialog.showLoading(msg: '正在上传图片');
+                      final result = await MsgHttp.uploadBfs(
+                        path: pickedFile.path,
+                        biz: 'im',
                       );
-                      if (pickedFile != null) {
-                        SmartDialog.showLoading(msg: '正在上传图片');
-                        final result = await MsgHttp.uploadBfs(
-                          path: pickedFile.path,
-                          biz: 'im',
+                      if (result['status']) {
+                        String mimeType =
+                            lookupMimeType(
+                              pickedFile.path,
+                            )?.split('/').getOrNull(1) ??
+                            'jpg';
+                        UploadBfsResData data = result['data'];
+                        Map picMsg = {
+                          'url': data.imageUrl,
+                          'height': data.imageHeight,
+                          'width': data.imageWidth,
+                          'imageType': mimeType,
+                          'original': 1,
+                          'size': data.imgSize,
+                        };
+                        SmartDialog.showLoading(msg: '正在发送');
+                        await _whisperDetailController.sendMsg(
+                          picMsg: picMsg,
+                          onClearText: editController.clear,
                         );
-                        if (result['status']) {
-                          String mimeType =
-                              lookupMimeType(
-                                pickedFile.path,
-                              )?.split('/').getOrNull(1) ??
-                              'jpg';
-                          UploadBfsResData data = result['data'];
-                          Map picMsg = {
-                            'url': data.imageUrl,
-                            'height': data.imageHeight,
-                            'width': data.imageWidth,
-                            'imageType': mimeType,
-                            'original': 1,
-                            'size': data.imgSize,
-                          };
-                          SmartDialog.showLoading(msg: '正在发送');
-                          await _whisperDetailController.sendMsg(
-                            picMsg: picMsg,
-                            onClearText: editController.clear,
-                          );
-                        } else {
-                          SmartDialog.dismiss();
-                          SmartDialog.showToast(result['msg']);
-                          return;
-                        }
+                      } else {
+                        SmartDialog.dismiss();
+                        SmartDialog.showToast(result['msg']);
+                        return;
                       }
-                    } catch (e) {
-                      SmartDialog.showToast(e.toString());
                     }
+                  } catch (e) {
+                    SmartDialog.showToast(e.toString());
                   }
-                },
-                icon: Icon(
-                  enablePublish
-                      ? Icons.send
-                      : Icons.add_photo_alternate_outlined,
-                ),
-                tooltip: enablePublish ? '发送' : '图片',
-              );
-            },
-          ),
+                }
+              },
+              icon: Icon(
+                enablePublish ? Icons.send : Icons.add_photo_alternate_outlined,
+              ),
+              tooltip: enablePublish ? '发送' : '图片',
+            );
+          }),
         ],
       ),
     );

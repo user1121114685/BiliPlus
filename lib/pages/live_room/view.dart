@@ -2,33 +2,33 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/keep_alive_wrapper.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/live/live_room_info_h5/data.dart';
-import 'package:PiliPlus/models_new/live/live_superchat/item.dart';
-import 'package:PiliPlus/pages/danmaku/dnamaku_model.dart';
-import 'package:PiliPlus/pages/live_room/controller.dart';
-import 'package:PiliPlus/pages/live_room/superchat/superchat_card.dart';
-import 'package:PiliPlus/pages/live_room/superchat/superchat_panel.dart';
-import 'package:PiliPlus/pages/live_room/widgets/bottom_control.dart';
-import 'package:PiliPlus/pages/live_room/widgets/chat_panel.dart';
-import 'package:PiliPlus/pages/live_room/widgets/header_control.dart';
-import 'package:PiliPlus/pages/video/widgets/player_focus.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_status.dart';
-import 'package:PiliPlus/plugin/pl_player/utils/fullscreen.dart';
-import 'package:PiliPlus/plugin/pl_player/view.dart';
-import 'package:PiliPlus/services/service_locator.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/keep_alive_wrapper.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/live/live_room_info_h5/data.dart';
+import 'package:bili_plus/models_new/live/live_superchat/item.dart';
+import 'package:bili_plus/pages/danmaku/dnamaku_model.dart';
+import 'package:bili_plus/pages/live_room/controller.dart';
+import 'package:bili_plus/pages/live_room/superchat/superchat_card.dart';
+import 'package:bili_plus/pages/live_room/superchat/superchat_panel.dart';
+import 'package:bili_plus/pages/live_room/widgets/bottom_control.dart';
+import 'package:bili_plus/pages/live_room/widgets/chat_panel.dart';
+import 'package:bili_plus/pages/live_room/widgets/header_control.dart';
+import 'package:bili_plus/pages/video/widgets/player_focus.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_status.dart';
+import 'package:bili_plus/plugin/pl_player/utils/fullscreen.dart';
+import 'package:bili_plus/plugin/pl_player/view.dart';
+import 'package:bili_plus/services/service_locator.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:canvas_danmaku/canvas_danmaku.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
@@ -60,10 +60,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _liveRoomController = Get.put(
-      LiveRoomController(heroTag),
-      tag: heroTag,
-    );
+    _liveRoomController = Get.put(LiveRoomController(heroTag), tag: heroTag);
     plPlayerController = _liveRoomController.plPlayerController;
     PlPlayerController.setPlayCallBack(plPlayerController.play);
     plPlayerController
@@ -218,42 +215,39 @@ class _LiveRoomPageState extends State<LiveRoomPage>
       _liveRoomController.fsSC.value = null;
     }
     _liveRoomController.isFullScreen = isFullScreen;
-    Widget player = Obx(
-      key: playerKey,
-      () {
-        if (_liveRoomController.isLoaded.value) {
-          final roomInfoH5 = _liveRoomController.roomInfoH5.value;
-          return PLVideoPlayer(
-            maxWidth: width,
-            maxHeight: height,
-            fill: fill,
-            alignment: alignment,
+    Widget player = Obx(key: playerKey, () {
+      if (_liveRoomController.isLoaded.value) {
+        final roomInfoH5 = _liveRoomController.roomInfoH5.value;
+        return PLVideoPlayer(
+          maxWidth: width,
+          maxHeight: height,
+          fill: fill,
+          alignment: alignment,
+          plPlayerController: plPlayerController,
+          headerControl: LiveHeaderControl(
+            title: roomInfoH5?.roomInfo?.title,
+            upName: roomInfoH5?.anchorInfo?.baseInfo?.uname,
             plPlayerController: plPlayerController,
-            headerControl: LiveHeaderControl(
-              title: roomInfoH5?.roomInfo?.title,
-              upName: roomInfoH5?.anchorInfo?.baseInfo?.uname,
-              plPlayerController: plPlayerController,
-              onSendDanmaku: _liveRoomController.onSendDanmaku,
-              onPlayAudio: _liveRoomController.queryLiveUrl,
-            ),
-            bottomControl: BottomControl(
-              plPlayerController: plPlayerController,
-              liveRoomCtr: _liveRoomController,
-              onRefresh: _liveRoomController.queryLiveUrl,
-            ),
-            danmuWidget: !needDm
-                ? null
-                : LiveDanmaku(
-                    liveRoomController: _liveRoomController,
-                    plPlayerController: plPlayerController,
-                    isFullScreen: isFullScreen,
-                    isPipMode: isPipMode,
-                  ),
-          );
-        }
-        return const SizedBox.shrink();
-      },
-    );
+            onSendDanmaku: _liveRoomController.onSendDanmaku,
+            onPlayAudio: _liveRoomController.queryLiveUrl,
+          ),
+          bottomControl: BottomControl(
+            plPlayerController: plPlayerController,
+            liveRoomCtr: _liveRoomController,
+            onRefresh: _liveRoomController.queryLiveUrl,
+          ),
+          danmuWidget: !needDm
+              ? null
+              : LiveDanmaku(
+                  liveRoomController: _liveRoomController,
+                  plPlayerController: plPlayerController,
+                  isFullScreen: isFullScreen,
+                  isPipMode: isPipMode,
+                ),
+        );
+      }
+      return const SizedBox.shrink();
+    });
     if (_liveRoomController.showSuperChat &&
         (isFullScreen || plPlayerController.isDesktopPip)) {
       player = Stack(
@@ -358,45 +352,38 @@ class _LiveRoomPageState extends State<LiveRoomPage>
         children: [
           const SizedBox.expand(child: ColoredBox(color: Colors.black)),
           if (!isFullScreen)
-            Obx(
-              () {
-                final appBackground = _liveRoomController
-                    .roomInfoH5
-                    .value
-                    ?.roomInfo
-                    ?.appBackground;
-                Widget child;
-                if (appBackground?.isNotEmpty == true) {
-                  child = CachedNetworkImage(
-                    fit: BoxFit.cover,
-                    width: maxWidth,
-                    height: maxHeight,
-                    imageUrl: appBackground!.http2https,
-                  );
-                } else {
-                  child = Image.asset(
-                    'assets/images/live/default_bg.webp',
-                    fit: BoxFit.cover,
-                  );
-                }
-                return Positioned.fill(
-                  child: Opacity(opacity: 0.6, child: child),
+            Obx(() {
+              final appBackground =
+                  _liveRoomController.roomInfoH5.value?.roomInfo?.appBackground;
+              Widget child;
+              if (appBackground?.isNotEmpty == true) {
+                child = CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  width: maxWidth,
+                  height: maxHeight,
+                  imageUrl: appBackground!.http2https,
                 );
-              },
-            ),
+              } else {
+                child = Image.asset(
+                  'assets/images/live/default_bg.webp',
+                  fit: BoxFit.cover,
+                );
+              }
+              return Positioned.fill(
+                child: Opacity(opacity: 0.6, child: child),
+              );
+            }),
           Scaffold(
             resizeToAvoidBottomInset: false,
             backgroundColor: Colors.transparent,
             appBar: _buildAppBar(isFullScreen),
             body: isPortrait
-                ? Obx(
-                    () {
-                      if (_liveRoomController.isPortrait.value) {
-                        return _buildPP(isFullScreen);
-                      }
-                      return _buildPH(isFullScreen);
-                    },
-                  )
+                ? Obx(() {
+                    if (_liveRoomController.isPortrait.value) {
+                      return _buildPP(isFullScreen);
+                    }
+                    return _buildPH(isFullScreen);
+                  })
                 : _buildBodyH(isFullScreen),
           ),
         ],
@@ -467,10 +454,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
           bottom: 0,
           child: Offstage(
             offstage: isFullScreen,
-            child: SizedBox(
-              height: bottomHeight,
-              child: _buildInputWidget,
-            ),
+            child: SizedBox(height: bottomHeight, child: _buildInputWidget),
           ),
         ),
       ],
@@ -484,62 +468,60 @@ class _LiveRoomPageState extends State<LiveRoomPage>
       backgroundColor: Colors.transparent,
       foregroundColor: Colors.white,
       titleTextStyle: const TextStyle(color: Colors.white),
-      title: Obx(
-        () {
-          RoomInfoH5Data? roomInfoH5 = _liveRoomController.roomInfoH5.value;
-          if (roomInfoH5 == null) {
-            return const SizedBox.shrink();
-          }
-          return GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () => Get.toNamed('/member?mid=${roomInfoH5.roomInfo?.uid}'),
-            child: Row(
-              spacing: 10,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                NetworkImgLayer(
-                  width: 34,
-                  height: 34,
-                  type: ImageType.avatar,
-                  src: roomInfoH5.anchorInfo!.baseInfo!.face,
-                ),
-                Column(
-                  spacing: 1,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      roomInfoH5.anchorInfo!.baseInfo!.uname!,
-                      style: const TextStyle(fontSize: 14),
-                    ),
-                    Obx(() {
-                      final liveTime = _liveRoomController.liveTime.value;
-                      final textLarge = roomInfoH5.watchedShow?.textLarge;
-                      String text = '';
-                      if (textLarge != null) {
-                        text += textLarge;
+      title: Obx(() {
+        RoomInfoH5Data? roomInfoH5 = _liveRoomController.roomInfoH5.value;
+        if (roomInfoH5 == null) {
+          return const SizedBox.shrink();
+        }
+        return GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => Get.toNamed('/member?mid=${roomInfoH5.roomInfo?.uid}'),
+          child: Row(
+            spacing: 10,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              NetworkImgLayer(
+                width: 34,
+                height: 34,
+                type: ImageType.avatar,
+                src: roomInfoH5.anchorInfo!.baseInfo!.face,
+              ),
+              Column(
+                spacing: 1,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    roomInfoH5.anchorInfo!.baseInfo!.uname!,
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                  Obx(() {
+                    final liveTime = _liveRoomController.liveTime.value;
+                    final textLarge = roomInfoH5.watchedShow?.textLarge;
+                    String text = '';
+                    if (textLarge != null) {
+                      text += textLarge;
+                    }
+                    if (liveTime != null) {
+                      if (text.isNotEmpty) {
+                        text += '  ';
                       }
-                      if (liveTime != null) {
-                        if (text.isNotEmpty) {
-                          text += '  ';
-                        }
-                        final duration = DurationUtils.formatDurationBetween(
-                          liveTime * 1000,
-                          DateTime.now().millisecondsSinceEpoch,
-                        );
-                        text += duration.isEmpty ? '刚刚开播' : '开播$duration';
-                      }
-                      if (text.isEmpty) {
-                        return const SizedBox.shrink();
-                      }
-                      return Text(text, style: const TextStyle(fontSize: 12));
-                    }),
-                  ],
-                ),
-              ],
-            ),
-          );
-        },
-      ),
+                      final duration = DurationUtils.formatDurationBetween(
+                        liveTime * 1000,
+                        DateTime.now().millisecondsSinceEpoch,
+                      );
+                      text += duration.isEmpty ? '刚刚开播' : '开播$duration';
+                    }
+                    if (text.isEmpty) {
+                      return const SizedBox.shrink();
+                    }
+                    return Text(text, style: const TextStyle(fontSize: 12));
+                  }),
+                ],
+              ),
+            ],
+          ),
+        );
+      }),
       actions: [
         // IconButton(
         //   tooltip: '刷新',
@@ -558,11 +540,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
                   spacing: 10,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
-                      Icons.copy,
-                      size: 19,
-                      color: color,
-                    ),
+                    Icon(Icons.copy, size: 19, color: color),
                     const Text('复制链接'),
                   ],
                 ),
@@ -574,11 +552,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
                     spacing: 10,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
-                        Icons.share,
-                        size: 19,
-                        color: color,
-                      ),
+                      Icon(Icons.share, size: 19, color: color),
                       const Text('分享直播间'),
                     ],
                   ),
@@ -589,11 +563,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
                   spacing: 10,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(
-                      Icons.open_in_browser,
-                      size: 19,
-                      color: color,
-                    ),
+                    Icon(Icons.open_in_browser, size: 19, color: color),
                     const Text('浏览器打开'),
                   ],
                 ),
@@ -625,11 +595,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
                     spacing: 10,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
-                        Icons.forward_to_inbox,
-                        size: 19,
-                        color: color,
-                      ),
+                      Icon(Icons.forward_to_inbox, size: 19, color: color),
                       const Text('分享至消息'),
                     ],
                   ),
@@ -705,10 +671,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
                   _liveRoomController.pageIndex.value = value,
               children: [
                 KeepAliveWrapper(builder: (context) => chat()),
-                SuperChatPanel(
-                  key: scKey,
-                  controller: _liveRoomController,
-                ),
+                SuperChatPanel(key: scKey, controller: _liveRoomController),
               ],
             )
           : chat(),
@@ -739,42 +702,38 @@ class _LiveRoomPageState extends State<LiveRoomPage>
             child: Row(
               spacing: 6,
               children: [
-                Obx(
-                  () {
-                    final enableShowLiveDanmaku =
-                        plPlayerController.enableShowDanmaku.value;
-                    return SizedBox(
-                      width: 34,
-                      height: 34,
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          padding: EdgeInsets.zero,
-                        ),
-                        onPressed: () {
-                          final newVal = !enableShowLiveDanmaku;
-                          plPlayerController.enableShowDanmaku.value = newVal;
-                          if (!plPlayerController.tempPlayerConf) {
-                            GStorage.setting.put(
-                              SettingBoxKey.enableShowLiveDanmaku,
-                              newVal,
-                            );
-                          }
-                        },
-                        icon: enableShowLiveDanmaku
-                            ? const Icon(
-                                size: 22,
-                                CustomIcons.dm_on,
-                                color: Color(0xFFEEEEEE),
-                              )
-                            : const Icon(
-                                size: 22,
-                                CustomIcons.dm_off,
-                                color: Color(0xFFEEEEEE),
-                              ),
-                      ),
-                    );
-                  },
-                ),
+                Obx(() {
+                  final enableShowLiveDanmaku =
+                      plPlayerController.enableShowDanmaku.value;
+                  return SizedBox(
+                    width: 34,
+                    height: 34,
+                    child: IconButton(
+                      style: IconButton.styleFrom(padding: EdgeInsets.zero),
+                      onPressed: () {
+                        final newVal = !enableShowLiveDanmaku;
+                        plPlayerController.enableShowDanmaku.value = newVal;
+                        if (!plPlayerController.tempPlayerConf) {
+                          GStorage.setting.put(
+                            SettingBoxKey.enableShowLiveDanmaku,
+                            newVal,
+                          );
+                        }
+                      },
+                      icon: enableShowLiveDanmaku
+                          ? const Icon(
+                              size: 22,
+                              CustomIcons.dm_on,
+                              color: Color(0xFFEEEEEE),
+                            )
+                          : const Icon(
+                              size: 22,
+                              CustomIcons.dm_off,
+                              color: Color(0xFFEEEEEE),
+                            ),
+                    ),
+                  );
+                }),
                 const Expanded(
                   child: Text(
                     '发送弹幕',
@@ -875,9 +834,7 @@ class _LiveRoomPageState extends State<LiveRoomPage>
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(20),
                     ),
-                    border: Border(
-                      top: BorderSide(color: Colors.white38),
-                    ),
+                    border: Border(top: BorderSide(color: Colors.white38)),
                   ),
                   child: SizedBox(width: double.infinity, height: 20),
                 ),
@@ -982,37 +939,35 @@ class _LiveDanmakuState extends State<LiveDanmaku> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        return AnimatedOpacity(
-          opacity: plPlayerController.enableShowDanmaku.value
-              ? plPlayerController.danmakuOpacity.value
-              : 0,
-          duration: const Duration(milliseconds: 100),
-          child: DanmakuScreen<DanmakuExtra>(
-            createdController: (e) {
-              widget.liveRoomController.danmakuController =
-                  plPlayerController.danmakuController = e;
-            },
-            option: DanmakuOption(
-              fontSize: _fontSize,
-              fontWeight: plPlayerController.danmakuFontWeight,
-              area: plPlayerController.showArea,
-              hideTop: plPlayerController.blockTypes.contains(5),
-              hideScroll: plPlayerController.blockTypes.contains(2),
-              hideBottom: plPlayerController.blockTypes.contains(4),
-              duration:
-                  plPlayerController.danmakuDuration /
-                  plPlayerController.playbackSpeed,
-              staticDuration:
-                  plPlayerController.danmakuStaticDuration /
-                  plPlayerController.playbackSpeed,
-              strokeWidth: plPlayerController.danmakuStrokeWidth,
-              lineHeight: plPlayerController.danmakuLineHeight,
-            ),
+    return Obx(() {
+      return AnimatedOpacity(
+        opacity: plPlayerController.enableShowDanmaku.value
+            ? plPlayerController.danmakuOpacity.value
+            : 0,
+        duration: const Duration(milliseconds: 100),
+        child: DanmakuScreen<DanmakuExtra>(
+          createdController: (e) {
+            widget.liveRoomController.danmakuController =
+                plPlayerController.danmakuController = e;
+          },
+          option: DanmakuOption(
+            fontSize: _fontSize,
+            fontWeight: plPlayerController.danmakuFontWeight,
+            area: plPlayerController.showArea,
+            hideTop: plPlayerController.blockTypes.contains(5),
+            hideScroll: plPlayerController.blockTypes.contains(2),
+            hideBottom: plPlayerController.blockTypes.contains(4),
+            duration:
+                plPlayerController.danmakuDuration /
+                plPlayerController.playbackSpeed,
+            staticDuration:
+                plPlayerController.danmakuStaticDuration /
+                plPlayerController.playbackSpeed,
+            strokeWidth: plPlayerController.danmakuStrokeWidth,
+            lineHeight: plPlayerController.danmakuLineHeight,
           ),
-        );
-      },
-    );
+        ),
+      );
+    });
   }
 }

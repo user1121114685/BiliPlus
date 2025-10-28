@@ -1,24 +1,24 @@
-import 'package:PiliPlus/common/widgets/dialog/report_member.dart';
-import 'package:PiliPlus/common/widgets/dynamic_sliver_appbar_medium.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space/data.dart';
-import 'package:PiliPlus/pages/coin_log/controller.dart';
-import 'package:PiliPlus/pages/exp_log/controller.dart';
-import 'package:PiliPlus/pages/log_table/view.dart';
-import 'package:PiliPlus/pages/login_devices/view.dart';
-import 'package:PiliPlus/pages/login_log/controller.dart';
-import 'package:PiliPlus/pages/member/controller.dart';
-import 'package:PiliPlus/pages/member/widget/user_info_card.dart';
-import 'package:PiliPlus/pages/member_cheese/view.dart';
-import 'package:PiliPlus/pages/member_contribute/view.dart';
-import 'package:PiliPlus/pages/member_dynamics/view.dart';
-import 'package:PiliPlus/pages/member_favorite/view.dart';
-import 'package:PiliPlus/pages/member_home/view.dart';
-import 'package:PiliPlus/pages/member_pgc/view.dart';
-import 'package:PiliPlus/pages/member_shop/view.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/dialog/report_member.dart';
+import 'package:bili_plus/common/widgets/dynamic_sliver_appbar_medium.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space/data.dart';
+import 'package:bili_plus/pages/coin_log/controller.dart';
+import 'package:bili_plus/pages/exp_log/controller.dart';
+import 'package:bili_plus/pages/log_table/view.dart';
+import 'package:bili_plus/pages/login_devices/view.dart';
+import 'package:bili_plus/pages/login_log/controller.dart';
+import 'package:bili_plus/pages/member/controller.dart';
+import 'package:bili_plus/pages/member/widget/user_info_card.dart';
+import 'package:bili_plus/pages/member_cheese/view.dart';
+import 'package:bili_plus/pages/member_contribute/view.dart';
+import 'package:bili_plus/pages/member_dynamics/view.dart';
+import 'package:bili_plus/pages/member_favorite/view.dart';
+import 'package:bili_plus/pages/member_home/view.dart';
+import 'package:bili_plus/pages/member_pgc/view.dart';
+import 'package:bili_plus/pages/member_shop/view.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -41,10 +41,7 @@ class _MemberPageState extends State<MemberPage> {
     super.initState();
     _mid = int.tryParse(Get.parameters['mid']!) ?? -1;
     _heroTag = Utils.makeHeroTag(_mid);
-    _userController = Get.put(
-      MemberController(mid: _mid),
-      tag: _heroTag,
-    );
+    _userController = Get.put(MemberController(mid: _mid), tag: _heroTag);
   }
 
   @override
@@ -53,51 +50,49 @@ class _MemberPageState extends State<MemberPage> {
     final padding = MediaQuery.viewPaddingOf(context);
     return Material(
       color: theme.surface,
-      child: Obx(
-        () {
-          if (_userController.loadingState.value.isSuccess) {
-            return ExtendedNestedScrollView(
-              key: _userController.key,
-              onlyOneScrollInBody: true,
-              pinnedHeaderSliverHeightBuilder: () =>
-                  kToolbarHeight + MediaQuery.viewPaddingOf(context).top,
-              headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return [
-                  _buildUserInfo(theme, _userController.loadingState.value),
-                ];
-              },
-              body: _userController.tab2?.isNotEmpty == true
-                  ? Padding(
-                      padding: EdgeInsets.only(
-                        left: padding.left,
-                        right: padding.right,
-                      ),
-                      child: Column(
-                        children: [
-                          if ((_userController.tab2?.length ?? 0) > 1)
-                            SizedBox(
-                              height: 45,
-                              child: TabBar(
-                                controller: _userController.tabController,
-                                tabs: _userController.tabs,
-                                onTap: _userController.onTapTab,
-                                dividerColor: theme.outline.withValues(
-                                  alpha: 0.2,
-                                ),
+      child: Obx(() {
+        if (_userController.loadingState.value.isSuccess) {
+          return ExtendedNestedScrollView(
+            key: _userController.key,
+            onlyOneScrollInBody: true,
+            pinnedHeaderSliverHeightBuilder: () =>
+                kToolbarHeight + MediaQuery.viewPaddingOf(context).top,
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                _buildUserInfo(theme, _userController.loadingState.value),
+              ];
+            },
+            body: _userController.tab2?.isNotEmpty == true
+                ? Padding(
+                    padding: EdgeInsets.only(
+                      left: padding.left,
+                      right: padding.right,
+                    ),
+                    child: Column(
+                      children: [
+                        if ((_userController.tab2?.length ?? 0) > 1)
+                          SizedBox(
+                            height: 45,
+                            child: TabBar(
+                              controller: _userController.tabController,
+                              tabs: _userController.tabs,
+                              onTap: _userController.onTapTab,
+                              dividerColor: theme.outline.withValues(
+                                alpha: 0.2,
                               ),
                             ),
-                          Expanded(child: _buildBody),
-                        ],
-                      ),
-                    )
-                  : const Center(child: Text('EMPTY')),
-            );
-          }
-          return Center(
-            child: _buildUserInfo(theme, _userController.loadingState.value),
+                          ),
+                        Expanded(child: _buildBody),
+                      ],
+                    ),
+                  )
+                : const Center(child: Text('EMPTY')),
           );
-        },
-      ),
+        }
+        return Center(
+          child: _buildUserInfo(theme, _userController.loadingState.value),
+        );
+      }),
     );
   }
 
@@ -121,9 +116,7 @@ class _MemberPageState extends State<MemberPage> {
               children: [
                 const Icon(Icons.block, size: 19),
                 const SizedBox(width: 10),
-                Text(
-                  _userController.relation.value != 128 ? '加入黑名单' : '移除黑名单',
-                ),
+                Text(_userController.relation.value != 128 ? '加入黑名单' : '移除黑名单'),
               ],
             ),
           ),
@@ -156,9 +149,7 @@ class _MemberPageState extends State<MemberPage> {
         PopupMenuItem(
           onTap: () => Get.toNamed(
             '/upowerRank',
-            parameters: {
-              'mid': _userController.mid.toString(),
-            },
+            parameters: {'mid': _userController.mid.toString()},
           ),
           child: const Row(
             mainAxisSize: MainAxisSize.min,
@@ -203,10 +194,8 @@ class _MemberPageState extends State<MemberPage> {
               ),
             ),
             PopupMenuItem(
-              onTap: () => Get.to(
-                const LogPage(),
-                arguments: LoginLogController(),
-              ),
+              onTap: () =>
+                  Get.to(const LogPage(), arguments: LoginLogController()),
               child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -217,10 +206,8 @@ class _MemberPageState extends State<MemberPage> {
               ),
             ),
             PopupMenuItem(
-              onTap: () => Get.to(
-                const LogPage(),
-                arguments: CoinLogController(),
-              ),
+              onTap: () =>
+                  Get.to(const LogPage(), arguments: CoinLogController()),
               child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -231,10 +218,8 @@ class _MemberPageState extends State<MemberPage> {
               ),
             ),
             PopupMenuItem(
-              onTap: () => Get.to(
-                const LogPage(),
-                arguments: ExpLogController(),
-              ),
+              onTap: () =>
+                  Get.to(const LogPage(), arguments: ExpLogController()),
               child: const Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -266,16 +251,9 @@ class _MemberPageState extends State<MemberPage> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.error_outline,
-                    size: 19,
-                    color: theme.error,
-                  ),
+                  Icon(Icons.error_outline, size: 19, color: theme.error),
                   const SizedBox(width: 10),
-                  Text(
-                    '举报',
-                    style: TextStyle(color: theme.error),
-                  ),
+                  Text('举报', style: TextStyle(color: theme.error)),
                 ],
               ),
             ),
@@ -298,31 +276,16 @@ class _MemberPageState extends State<MemberPage> {
             mid: _mid,
           ),
         ),
-        'bangumi' => MemberBangumi(
-          heroTag: _heroTag,
-          mid: _mid,
-        ),
-        'favorite' => MemberFavorite(
-          heroTag: _heroTag,
-          mid: _mid,
-        ),
-        'cheese' => MemberCheese(
-          heroTag: _heroTag,
-          mid: _mid,
-        ),
-        'shop' => MemberShop(
-          heroTag: _heroTag,
-          mid: _mid,
-        ),
+        'bangumi' => MemberBangumi(heroTag: _heroTag, mid: _mid),
+        'favorite' => MemberFavorite(heroTag: _heroTag, mid: _mid),
+        'cheese' => MemberCheese(heroTag: _heroTag, mid: _mid),
+        'shop' => MemberShop(heroTag: _heroTag, mid: _mid),
         _ => Center(child: Text(item.title ?? '')),
       };
     }).toList(),
   );
 
-  Widget _buildUserInfo(
-    ColorScheme theme,
-    LoadingState<SpaceData?> userState,
-  ) {
+  Widget _buildUserInfo(ColorScheme theme, LoadingState<SpaceData?> userState) {
     switch (userState) {
       case Loading():
         return const CircularProgressIndicator();

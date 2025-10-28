@@ -1,25 +1,22 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/marquee.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models_new/music/bgm_recommend_list.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/marquee.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models_new/music/bgm_recommend_list.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class MusicVideoCardH extends StatelessWidget {
   final BgmRecommend videoItem;
 
-  const MusicVideoCardH({
-    super.key,
-    required this.videoItem,
-  });
+  const MusicVideoCardH({super.key, required this.videoItem});
 
   @override
   Widget build(BuildContext context) {
@@ -98,9 +95,7 @@ class MusicVideoCardH extends StatelessWidget {
             child: Text(
               videoItem.title!,
               textAlign: TextAlign.start,
-              style: const TextStyle(
-                letterSpacing: 0.3,
-              ),
+              style: const TextStyle(letterSpacing: 0.3),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
@@ -108,14 +103,8 @@ class MusicVideoCardH extends StatelessWidget {
           Row(
             spacing: 8,
             children: [
-              StatWidget(
-                type: StatType.play,
-                value: videoItem.play,
-              ),
-              StatWidget(
-                type: StatType.danmaku,
-                value: videoItem.danmu,
-              ),
+              StatWidget(type: StatType.play, value: videoItem.play),
+              StatWidget(type: StatType.danmaku, value: videoItem.danmu),
             ],
           ),
           const SizedBox(height: 3),

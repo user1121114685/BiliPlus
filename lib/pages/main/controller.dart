@@ -1,24 +1,24 @@
 import 'dart:async';
 import 'dart:math' show max;
 
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/grpc/dyn.dart';
-import 'package:PiliPlus/http/msg.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamic_badge_mode.dart';
-import 'package:PiliPlus/models/common/msg/msg_unread_type.dart';
-import 'package:PiliPlus/models/common/nav_bar_config.dart';
-import 'package:PiliPlus/models_new/msgfeed_unread/data.dart';
-import 'package:PiliPlus/models_new/single_unread/data.dart';
-import 'package:PiliPlus/pages/dynamics/controller.dart';
-import 'package:PiliPlus/pages/home/controller.dart';
-import 'package:PiliPlus/pages/mine/view.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/update.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/grpc/dyn.dart';
+import 'package:bili_plus/http/msg.dart';
+import 'package:bili_plus/models/common/dynamic/dynamic_badge_mode.dart';
+import 'package:bili_plus/models/common/msg/msg_unread_type.dart';
+import 'package:bili_plus/models/common/nav_bar_config.dart';
+import 'package:bili_plus/models_new/msgfeed_unread/data.dart';
+import 'package:bili_plus/models_new/single_unread/data.dart';
+import 'package:bili_plus/pages/dynamics/controller.dart';
+import 'package:bili_plus/pages/home/controller.dart';
+import 'package:bili_plus/pages/mine/view.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/update.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -269,10 +269,7 @@ class MainController extends GetxController
     } else {
       Get.to(
         const Material(
-          child: ViewSafeArea(
-            top: true,
-            child: MinePage(showBackBtn: true),
-          ),
+          child: ViewSafeArea(top: true, child: MinePage(showBackBtn: true)),
         ),
       );
     }

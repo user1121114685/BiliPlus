@@ -1,11 +1,11 @@
-import 'package:PiliPlus/models/model_avatar.dart';
-import 'package:PiliPlus/models_new/article/article_view/category.dart';
-import 'package:PiliPlus/models_new/article/article_view/media.dart';
-import 'package:PiliPlus/models_new/article/article_view/ops.dart';
-import 'package:PiliPlus/models_new/article/article_view/opus.dart';
-import 'package:PiliPlus/models_new/article/article_view/stats.dart';
-import 'package:PiliPlus/models_new/article/article_view/tag.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models/model_avatar.dart';
+import 'package:bili_plus/models_new/article/article_view/category.dart';
+import 'package:bili_plus/models_new/article/article_view/media.dart';
+import 'package:bili_plus/models_new/article/article_view/ops.dart';
+import 'package:bili_plus/models_new/article/article_view/opus.dart';
+import 'package:bili_plus/models_new/article/article_view/stats.dart';
+import 'package:bili_plus/models_new/article/article_view/tag.dart';
+import 'package:bili_plus/utils/extension.dart';
 
 class ArticleViewData {
   int? id;

@@ -1,45 +1,45 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/video/source_type.dart';
-import 'package:PiliPlus/models_new/member_card_info/data.dart';
-import 'package:PiliPlus/models_new/triple/ugc_triple.dart';
-import 'package:PiliPlus/models_new/video/video_ai_conclusion/data.dart';
-import 'package:PiliPlus/models_new/video/video_ai_conclusion/model_result.dart';
-import 'package:PiliPlus/models_new/video/video_detail/data.dart';
-import 'package:PiliPlus/models_new/video/video_detail/episode.dart';
-import 'package:PiliPlus/models_new/video/video_detail/page.dart';
-import 'package:PiliPlus/models_new/video/video_detail/section.dart';
-import 'package:PiliPlus/models_new/video/video_detail/staff.dart';
-import 'package:PiliPlus/models_new/video/video_detail/stat_detail.dart';
-import 'package:PiliPlus/models_new/video/video_detail/ugc_season.dart';
-import 'package:PiliPlus/pages/common/common_intro_controller.dart';
-import 'package:PiliPlus/pages/dynamics_repost/view.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/pay_coins/view.dart';
-import 'package:PiliPlus/pages/video/related/controller.dart';
-import 'package:PiliPlus/pages/video/reply/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/play_repeat.dart';
-import 'package:PiliPlus/services/service_locator.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/video/source_type.dart';
+import 'package:bili_plus/models_new/member_card_info/data.dart';
+import 'package:bili_plus/models_new/triple/ugc_triple.dart';
+import 'package:bili_plus/models_new/video/video_ai_conclusion/data.dart';
+import 'package:bili_plus/models_new/video/video_ai_conclusion/model_result.dart';
+import 'package:bili_plus/models_new/video/video_detail/data.dart';
+import 'package:bili_plus/models_new/video/video_detail/episode.dart';
+import 'package:bili_plus/models_new/video/video_detail/page.dart';
+import 'package:bili_plus/models_new/video/video_detail/section.dart';
+import 'package:bili_plus/models_new/video/video_detail/staff.dart';
+import 'package:bili_plus/models_new/video/video_detail/stat_detail.dart';
+import 'package:bili_plus/models_new/video/video_detail/ugc_season.dart';
+import 'package:bili_plus/pages/common/common_intro_controller.dart';
+import 'package:bili_plus/pages/dynamics_repost/view.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/pay_coins/view.dart';
+import 'package:bili_plus/pages/video/related/controller.dart';
+import 'package:bili_plus/pages/video/reply/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/play_repeat.dart';
+import 'package:bili_plus/services/service_locator.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/request_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
@@ -319,10 +319,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
             children: [
               ListTile(
                 dense: true,
-                title: const Text(
-                  '复制链接',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('复制链接', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   Utils.copyText(videoUrl);
@@ -330,10 +327,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '其它app打开',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('其它app打开', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   PageUtils.launchURL(videoUrl);
@@ -342,10 +336,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
               if (Utils.isMobile)
                 ListTile(
                   dense: true,
-                  title: const Text(
-                    '分享视频',
-                    style: TextStyle(fontSize: 14),
-                  ),
+                  title: const Text('分享视频', style: TextStyle(fontSize: 14)),
                   onTap: () {
                     Get.back();
                     Utils.shareText(
@@ -357,10 +348,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
                 ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '分享至动态',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('分享至动态', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   showModalBottomSheet(
@@ -379,10 +367,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '分享至消息',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('分享至消息', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   try {
@@ -440,11 +425,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
     }
     int attr = followStatus['attribute'] ?? 0;
     if (attr == 128) {
-      var res = await VideoHttp.relationMod(
-        mid: mid,
-        act: 6,
-        reSrc: 11,
-      );
+      var res = await VideoHttp.relationMod(mid: mid, act: 6, reSrc: 11);
       if (res['status']) {
         followStatus['attribute'] = 0;
       }
@@ -484,11 +465,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
       if (videoDetailCtr.isPlayAll) {
         if (videoDetailCtr.mediaList.indexWhere((item) => item.bvid == bvid) ==
             -1) {
-          PageUtils.toVideoPage(
-            bvid: bvid,
-            cid: cid,
-            cover: cover,
-          );
+          PageUtils.toVideoPage(bvid: bvid, cid: cid, cover: cover);
           return false;
         }
       }
@@ -763,11 +740,7 @@ class UgcIntroController extends CommonIntroController with ReloadMixin {
       return null;
     }
     SmartDialog.showLoading(msg: '正在获取AI总结');
-    final res = await VideoHttp.aiConclusion(
-      bvid: bvid,
-      cid: cid,
-      upMid: mid,
-    );
+    final res = await VideoHttp.aiConclusion(bvid: bvid, cid: cid, upMid: mid);
     SmartDialog.dismiss();
     if (res['status']) {
       AiConclusionData data = res['data'];

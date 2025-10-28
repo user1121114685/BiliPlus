@@ -1,6 +1,6 @@
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
@@ -84,20 +84,11 @@ Widget htmlRender({
       color: Theme.of(context).colorScheme.primary,
       textDecoration: TextDecoration.none,
     ),
-    'br': Style(
-      lineHeight: LineHeight.percent(-1),
-    ),
-    'p': Style(
-      margin: Margins.only(bottom: 4),
-    ),
-    'span': Style(
-      fontSize: FontSize.large,
-      height: Height(1.8),
-    ),
+    'br': Style(lineHeight: LineHeight.percent(-1)),
+    'p': Style(margin: Margins.only(bottom: 4)),
+    'span': Style(fontSize: FontSize.large, height: Height(1.8)),
     'div': Style(height: Height.auto()),
-    'li > p': Style(
-      display: Display.inline,
-    ),
+    'li > p': Style(display: Display.inline),
     'li': Style(
       padding: HtmlPaddings.only(bottom: 4),
       textAlign: TextAlign.justify,
@@ -113,14 +104,9 @@ Widget htmlRender({
       fontWeight: FontWeight.bold,
       margin: Margins.only(bottom: 4),
     ),
-    'figcaption': Style(
-      fontSize: FontSize.large,
-      textAlign: TextAlign.center,
-    ),
+    'figcaption': Style(fontSize: FontSize.large, textAlign: TextAlign.center),
     'strong': Style(fontWeight: FontWeight.bold),
-    'figure': Style(
-      margin: Margins.zero,
-    ),
+    'figure': Style(margin: Margins.zero),
   };
   return SelectionArea(
     child: element != null
@@ -129,10 +115,6 @@ Widget htmlRender({
             extensions: extensions,
             style: style,
           )
-        : Html(
-            data: html,
-            extensions: extensions,
-            style: style,
-          ),
+        : Html(data: html, extensions: extensions, style: style),
   );
 }

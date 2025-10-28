@@ -1,19 +1,19 @@
 import 'dart:io';
 
-import 'package:PiliPlus/models/common/settings_type.dart';
-import 'package:PiliPlus/models/common/video/audio_quality.dart';
-import 'package:PiliPlus/models/common/video/cdn_type.dart';
-import 'package:PiliPlus/models/common/video/live_quality.dart';
-import 'package:PiliPlus/models/common/video/video_decode_type.dart';
-import 'package:PiliPlus/models/common/video/video_quality.dart';
-import 'package:PiliPlus/pages/setting/models/model.dart';
-import 'package:PiliPlus/pages/setting/widgets/ordered_multi_select_dialog.dart';
-import 'package:PiliPlus/pages/setting/widgets/select_dialog.dart';
-import 'package:PiliPlus/plugin/pl_player/models/hwdec_type.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/video_utils.dart';
+import 'package:bili_plus/models/common/settings_type.dart';
+import 'package:bili_plus/models/common/video/audio_quality.dart';
+import 'package:bili_plus/models/common/video/cdn_type.dart';
+import 'package:bili_plus/models/common/video/live_quality.dart';
+import 'package:bili_plus/models/common/video/video_decode_type.dart';
+import 'package:bili_plus/models/common/video/video_quality.dart';
+import 'package:bili_plus/pages/setting/models/model.dart';
+import 'package:bili_plus/pages/setting/widgets/ordered_multi_select_dialog.dart';
+import 'package:bili_plus/pages/setting/widgets/select_dialog.dart';
+import 'package:bili_plus/plugin/pl_player/models/hwdec_type.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/video_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -43,10 +43,7 @@ List<SettingsModel> get videoSettings => [
     getTrailing: () => Transform.scale(
       alignment: Alignment.centerRight,
       scale: 0.8,
-      child: Switch(
-        value: true,
-        onChanged: (_) {},
-      ),
+      child: Switch(value: true, onChanged: (_) {}),
     ),
   ),
   SettingsModel(

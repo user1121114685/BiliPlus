@@ -1,8 +1,8 @@
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
@@ -51,11 +51,7 @@ abstract class UrlUtils {
       bvid ??= IdUtils.av2bv(aid!);
       final int? cid = await SearchHttp.ab2c(aid: aid, bvid: bvid);
       if (cid != null) {
-        PageUtils.toVideoPage(
-          aid: aid,
-          bvid: bvid,
-          cid: cid,
-        );
+        PageUtils.toVideoPage(aid: aid, bvid: bvid, cid: cid);
       }
     } else {
       if (redirectUrl.isNotEmpty) {

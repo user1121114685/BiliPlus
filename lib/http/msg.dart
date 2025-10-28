@@ -1,20 +1,20 @@
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/msg/im_user_infos/datum.dart';
-import 'package:PiliPlus/models_new/msg/msg_at/data.dart';
-import 'package:PiliPlus/models_new/msg/msg_dnd/uid_setting.dart';
-import 'package:PiliPlus/models_new/msg/msg_like/data.dart';
-import 'package:PiliPlus/models_new/msg/msg_like_detail/data.dart';
-import 'package:PiliPlus/models_new/msg/msg_reply/data.dart';
-import 'package:PiliPlus/models_new/msg/msg_sys/data.dart';
-import 'package:PiliPlus/models_new/msg/session_ss/data.dart';
-import 'package:PiliPlus/models_new/msgfeed_unread/data.dart';
-import 'package:PiliPlus/models_new/single_unread/data.dart';
-import 'package:PiliPlus/models_new/upload_bfs/data.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/msg/im_user_infos/datum.dart';
+import 'package:bili_plus/models_new/msg/msg_at/data.dart';
+import 'package:bili_plus/models_new/msg/msg_dnd/uid_setting.dart';
+import 'package:bili_plus/models_new/msg/msg_like/data.dart';
+import 'package:bili_plus/models_new/msg/msg_like_detail/data.dart';
+import 'package:bili_plus/models_new/msg/msg_reply/data.dart';
+import 'package:bili_plus/models_new/msg/msg_sys/data.dart';
+import 'package:bili_plus/models_new/msg/session_ss/data.dart';
+import 'package:bili_plus/models_new/msgfeed_unread/data.dart';
+import 'package:bili_plus/models_new/single_unread/data.dart';
+import 'package:bili_plus/models_new/upload_bfs/data.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
 
@@ -138,20 +138,12 @@ class MsgHttp {
     String csrf = Accounts.main.csrf;
     var res = await Request().get(
       Api.msgSysUpdateCursor,
-      queryParameters: {
-        'csrf': csrf,
-        'cursor': cursor,
-      },
+      queryParameters: {'csrf': csrf, 'cursor': cursor},
     );
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-      };
+      return {'status': true};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
@@ -170,15 +162,9 @@ class MsgHttp {
       }),
     );
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-        'data': res.data['data'],
-      };
+      return {'status': true, 'data': res.data['data']};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
@@ -204,16 +190,11 @@ class MsgHttp {
         'data': UploadBfsResData.fromJson(res.data['data']),
       };
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
-  static Future createTextDynamic(
-    dynamic content,
-  ) async {
+  static Future createTextDynamic(dynamic content) async {
     String csrf = Accounts.main.csrf;
     Map<String, dynamic> data = await WbiSign.makSign({
       'dynamic_id': 0,
@@ -231,25 +212,15 @@ class MsgHttp {
     if (res.data['code'] == 0) {
       return {'status': true};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
   static Future removeDynamic({required dynIdStr, dynType, ridStr}) async {
     var res = await Request().post(
       Api.removeDynamic,
-      queryParameters: {
-        'platform': 'web',
-        'csrf': Accounts.main.csrf,
-      },
-      data: {
-        "dyn_id_str": dynIdStr,
-        "dyn_type": ?dynType,
-        "rid_str": ?ridStr,
-      },
+      queryParameters: {'platform': 'web', 'csrf': Accounts.main.csrf},
+      data: {"dyn_id_str": dynIdStr, "dyn_type": ?dynType, "rid_str": ?ridStr},
     );
     if (res.data['code'] == 0) {
       return {'status': true};
@@ -258,9 +229,7 @@ class MsgHttp {
     }
   }
 
-  static Future removeMsg(
-    dynamic talkerId,
-  ) async {
+  static Future removeMsg(dynamic talkerId) async {
     String csrf = Accounts.main.csrf;
     Map<String, dynamic> data = await WbiSign.makSign({
       'talker_id': talkerId,
@@ -282,10 +251,7 @@ class MsgHttp {
     }
   }
 
-  static Future delMsgfeed(
-    int tp,
-    dynamic id,
-  ) async {
+  static Future delMsgfeed(int tp, dynamic id) async {
     String csrf = Accounts.main.csrf;
     var res = await Request().post(
       Api.delMsgfeed,
@@ -302,23 +268,15 @@ class MsgHttp {
     if (res.data['code'] == 0) {
       return {'status': true};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
-  static Future delSysMsg(
-    dynamic id,
-  ) async {
+  static Future delSysMsg(dynamic id) async {
     String csrf = Accounts.main.csrf;
     var res = await Request().post(
       HttpString.messageBaseUrl + Api.delSysMsg,
-      queryParameters: {
-        'mobi_app': 'android',
-        'csrf': csrf,
-      },
+      queryParameters: {'mobi_app': 'android', 'csrf': csrf},
       data: {
         'csrf': csrf,
         'ids': [id],
@@ -330,17 +288,11 @@ class MsgHttp {
     if (res.data['code'] == 0) {
       return {'status': true};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
-  static Future setTop({
-    required dynamic talkerId,
-    required int opType,
-  }) async {
+  static Future setTop({required dynamic talkerId, required int opType}) async {
     String csrf = Accounts.main.csrf;
     Map<String, dynamic> data = await WbiSign.makSign({
       'talker_id': talkerId,
@@ -359,18 +311,12 @@ class MsgHttp {
     if (res.data['code'] == 0) {
       return {'status': true};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
   // 消息标记已读
-  static Future ackSessionMsg({
-    int? talkerId,
-    int? ackSeqno,
-  }) async {
+  static Future ackSessionMsg({int? talkerId, int? ackSeqno}) async {
     String csrf = Accounts.main.csrf;
     final params = await WbiSign.makSign({
       'talker_id': talkerId,
@@ -383,10 +329,7 @@ class MsgHttp {
     });
     var res = await Request().get(Api.ackSessionMsg, queryParameters: params);
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-        'data': res.data['data'],
-      };
+      return {'status': true, 'data': res.data['data']};
     } else {
       return {
         'status': false,
@@ -436,15 +379,10 @@ class MsgHttp {
         'wts': params['wts'],
       },
       data: data,
-      options: Options(
-        contentType: Headers.formUrlEncodedContentType,
-      ),
+      options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-        'data': res.data['data'],
-      };
+      return {'status': true, 'data': res.data['data']};
     } else {
       return {'status': false, 'msg': res.data['message']};
     }
@@ -471,9 +409,7 @@ class MsgHttp {
         'csrf_token': csrf,
         'csrf': csrf,
       },
-      options: Options(
-        contentType: Headers.formUrlEncodedContentType,
-      ),
+      options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
       return {'status': true};
@@ -508,10 +444,7 @@ class MsgHttp {
     }
   }
 
-  static Future setPushSs({
-    required int setting,
-    required talkerUid,
-  }) async {
+  static Future setPushSs({required int setting, required talkerUid}) async {
     final csrf = Accounts.main.csrf;
     var res = await Request().post(
       Api.setPushSs,

@@ -1,28 +1,22 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models_new/fav/fav_pgc/list.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models_new/fav/fav_pgc/list.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 // 视频卡片 - 垂直布局
 class PgcCardV extends StatelessWidget {
-  const PgcCardV({
-    super.key,
-    required this.item,
-  });
+  const PgcCardV({super.key, required this.item});
 
   final FavPgcItemModel item;
 
   @override
   Widget build(BuildContext context) {
-    void onLongPress() => imageSaveDialog(
-      title: item.title,
-      cover: item.cover,
-    );
+    void onLongPress() => imageSaveDialog(title: item.title, cover: item.cover);
     return Card(
       shape: const RoundedRectangleBorder(borderRadius: StyleString.mdRadius),
       child: InkWell(
@@ -89,25 +83,15 @@ class PgcCardV extends StatelessWidget {
             Text(
               item.title!,
               textAlign: TextAlign.start,
-              style: const TextStyle(
-                letterSpacing: 0.3,
-              ),
+              style: const TextStyle(letterSpacing: 0.3),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 1),
             if (item.progress != null)
-              Text(
-                item.progress!,
-                maxLines: 1,
-                style: style,
-              )
+              Text(item.progress!, maxLines: 1, style: style)
             else if (item.newEp?.indexShow != null)
-              Text(
-                item.newEp!.indexShow!,
-                maxLines: 1,
-                style: style,
-              ),
+              Text(item.newEp!.indexShow!, maxLines: 1, style: style),
           ],
         ),
       ),

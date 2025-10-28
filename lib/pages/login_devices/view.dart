@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/widgets/list_tile.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/view_sliver_safe_area.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/login_devices/device.dart';
-import 'package:PiliPlus/pages/login_devices/controller.dart';
+import 'package:bili_plus/common/widgets/list_tile.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/view_sliver_safe_area.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/login_devices/device.dart';
+import 'package:bili_plus/pages/login_devices/controller.dart';
 import 'package:flutter/material.dart' hide ListTile;
 import 'package:get/get.dart';
 
@@ -32,10 +32,8 @@ class LloginDevicesPageState extends State<LoginDevicesPage> {
               slivers: [
                 ViewSliverSafeArea(
                   sliver: Obx(
-                    () => _buildBody(
-                      colorScheme,
-                      _controller.loadingState.value,
-                    ),
+                    () =>
+                        _buildBody(colorScheme, _controller.loadingState.value),
                   ),
                 ),
               ],
@@ -77,14 +75,8 @@ class LloginDevicesPageState extends State<LoginDevicesPage> {
     final style = TextStyle(fontSize: 13, color: colorScheme.outline);
     return ListTile(
       dense: true,
-      title: Text(
-        item.deviceName ?? '',
-        style: const TextStyle(fontSize: 14),
-      ),
-      subtitle: Text(
-        '${item.latestLoginAt} ${item.source}',
-        style: style,
-      ),
+      title: Text(item.deviceName ?? '', style: const TextStyle(fontSize: 14)),
+      subtitle: Text('${item.latestLoginAt} ${item.source}', style: style),
       trailing: item.isCurrentDevice == true
           ? Text('(本机)', style: style)
           : null,

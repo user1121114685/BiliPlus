@@ -1,13 +1,13 @@
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/custom_tooltip.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/emote/emote.dart';
-import 'package:PiliPlus/models_new/emote/package.dart';
-import 'package:PiliPlus/pages/emote/controller.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/custom_tooltip.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/emote/emote.dart';
+import 'package:bili_plus/models_new/emote/package.dart';
+import 'package:bili_plus/pages/emote/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -56,111 +56,109 @@ class _EmotePanelState extends State<EmotePanel>
                   Expanded(
                     child: tabBarView(
                       controller: _emotePanelController.tabController,
-                      children: response!.map(
-                        (e) {
-                          final emote = e.emote;
-                          if (emote == null || emote.isEmpty) {
-                            return const SizedBox.shrink();
-                          }
-                          final flag = emote.first.meta?.size == 1;
-                          final size = flag ? 40.0 : 60.0;
-                          final isTextEmote = e.type == 4;
-                          return GridView.builder(
-                            padding: const EdgeInsets.only(
-                              left: 12,
-                              right: 12,
-                              bottom: 12,
-                            ),
-                            gridDelegate:
-                                SliverGridDelegateWithMaxCrossAxisExtent(
-                                  maxCrossAxisExtent: isTextEmote ? 100 : size,
-                                  crossAxisSpacing: 8,
-                                  mainAxisSpacing: 8,
-                                  mainAxisExtent: size,
+                      children: response!.map((e) {
+                        final emote = e.emote;
+                        if (emote == null || emote.isEmpty) {
+                          return const SizedBox.shrink();
+                        }
+                        final flag = emote.first.meta?.size == 1;
+                        final size = flag ? 40.0 : 60.0;
+                        final isTextEmote = e.type == 4;
+                        return GridView.builder(
+                          padding: const EdgeInsets.only(
+                            left: 12,
+                            right: 12,
+                            bottom: 12,
+                          ),
+                          gridDelegate:
+                              SliverGridDelegateWithMaxCrossAxisExtent(
+                                maxCrossAxisExtent: isTextEmote ? 100 : size,
+                                crossAxisSpacing: 8,
+                                mainAxisSpacing: 8,
+                                mainAxisExtent: size,
+                              ),
+                          itemCount: emote.length,
+                          itemBuilder: (context, index) {
+                            final item = emote[index];
+                            Widget child = Padding(
+                              padding: const EdgeInsets.all(6),
+                              child: isTextEmote
+                                  ? Center(
+                                      child: Text(
+                                        item.text ?? '',
+                                        overflow: TextOverflow.clip,
+                                        maxLines: 1,
+                                      ),
+                                    )
+                                  : NetworkImgLayer(
+                                      src: item.url,
+                                      width: size,
+                                      height: size,
+                                      type: ImageType.emote,
+                                      boxFit: BoxFit.contain,
+                                    ),
+                            );
+                            if (!isTextEmote) {
+                              child = CustomTooltip(
+                                indicator: () => CustomPaint(
+                                  size: const Size(14, 8),
+                                  painter: TrianglePainter(color),
                                 ),
-                            itemCount: emote.length,
-                            itemBuilder: (context, index) {
-                              final item = emote[index];
-                              Widget child = Padding(
-                                padding: const EdgeInsets.all(6),
-                                child: isTextEmote
-                                    ? Center(
-                                        child: Text(
-                                          item.text ?? '',
-                                          overflow: TextOverflow.clip,
-                                          maxLines: 1,
-                                        ),
-                                      )
-                                    : NetworkImgLayer(
+                                overlayWidget: () => Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: color,
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(8),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    spacing: 4,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      NetworkImgLayer(
                                         src: item.url,
-                                        width: size,
-                                        height: size,
+                                        width: 65,
+                                        height: 65,
                                         type: ImageType.emote,
                                         boxFit: BoxFit.contain,
                                       ),
-                              );
-                              if (!isTextEmote) {
-                                child = CustomTooltip(
-                                  indicator: () => CustomPaint(
-                                    size: const Size(14, 8),
-                                    painter: TrianglePainter(color),
-                                  ),
-                                  overlayWidget: () => Container(
-                                    padding: const EdgeInsets.all(8),
-                                    decoration: BoxDecoration(
-                                      color: color,
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(8),
+                                      Text(
+                                        item.meta?.alias ??
+                                            item.text?.substring(
+                                              1,
+                                              item.text!.length - 1,
+                                            ) ??
+                                            '',
+                                        style: const TextStyle(fontSize: 12),
                                       ),
-                                    ),
-                                    child: Column(
-                                      spacing: 4,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        NetworkImgLayer(
-                                          src: item.url,
-                                          width: 65,
-                                          height: 65,
-                                          type: ImageType.emote,
-                                          boxFit: BoxFit.contain,
-                                        ),
-                                        Text(
-                                          item.meta?.alias ??
-                                              item.text?.substring(
-                                                1,
-                                                item.text!.length - 1,
-                                              ) ??
-                                              '',
-                                          style: const TextStyle(fontSize: 12),
-                                        ),
-                                      ],
-                                    ),
+                                    ],
                                   ),
-                                  child: child,
-                                );
-                              }
-                              return Material(
-                                type: MaterialType.transparency,
-                                child: InkWell(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(6),
-                                  ),
-                                  onTap: () => widget.onChoose(
-                                    item,
-                                    isTextEmote
-                                        ? null
-                                        : flag
-                                        ? 24
-                                        : 42,
-                                    null,
-                                  ),
-                                  child: child,
                                 ),
+                                child: child,
                               );
-                            },
-                          );
-                        },
-                      ).toList(),
+                            }
+                            return Material(
+                              type: MaterialType.transparency,
+                              child: InkWell(
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(6),
+                                ),
+                                onTap: () => widget.onChoose(
+                                  item,
+                                  isTextEmote
+                                      ? null
+                                      : flag
+                                      ? 24
+                                      : 42,
+                                  null,
+                                ),
+                                child: child,
+                              ),
+                            );
+                          },
+                        );
+                      }).toList(),
                     ),
                   ),
                   Divider(

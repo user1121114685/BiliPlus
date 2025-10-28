@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:PiliPlus/http/live.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/live/live_area_list/area_item.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/http/live.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/live/live_area_list/area_item.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
 
 class LiveAreaDatailController
     extends CommonListController<List<AreaItem>?, AreaItem> {

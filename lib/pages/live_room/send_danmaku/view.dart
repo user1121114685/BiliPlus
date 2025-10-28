@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/text_field/text_field.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/http/live.dart';
-import 'package:PiliPlus/models/common/publish_panel_type.dart';
-import 'package:PiliPlus/pages/common/publish/common_rich_text_pub_page.dart';
-import 'package:PiliPlus/pages/live_emote/controller.dart';
-import 'package:PiliPlus/pages/live_emote/view.dart';
-import 'package:PiliPlus/pages/live_room/controller.dart';
+import 'package:bili_plus/common/widgets/text_field/text_field.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/http/live.dart';
+import 'package:bili_plus/models/common/publish_panel_type.dart';
+import 'package:bili_plus/pages/common/publish/common_rich_text_pub_page.dart';
+import 'package:bili_plus/pages/live_emote/controller.dart';
+import 'package:bili_plus/pages/live_emote/view.dart';
+import 'package:bili_plus/pages/live_room/controller.dart';
 import 'package:flutter/material.dart' hide TextField;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide MultipartFile;
@@ -124,10 +124,7 @@ class _ReplyPageState extends CommonRichTextPubPageState<LiveSendDmPanel> {
           ),
         ),
       ),
-      Divider(
-        height: 1,
-        color: theme.dividerColor.withValues(alpha: 0.1),
-      ),
+      Divider(height: 1, color: theme.dividerColor.withValues(alpha: 0.1)),
       Container(
         height: 52,
         padding: const EdgeInsets.only(left: 12, right: 12),

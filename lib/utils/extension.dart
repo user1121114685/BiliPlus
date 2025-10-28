@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pb.dart' show ThreeDotItem;
-import 'package:PiliPlus/grpc/bilibili/app/im/v1.pbenum.dart'
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart' show ThreeDotItem;
+import 'package:bili_plus/grpc/bilibili/app/im/v1.pbenum.dart'
     show IMSettingType, ThreeDotItemType;
-import 'package:PiliPlus/pages/common/common_whisper_controller.dart';
-import 'package:PiliPlus/pages/contact/view.dart';
-import 'package:PiliPlus/pages/whisper_settings/view.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
+import 'package:bili_plus/pages/common/common_whisper_controller.dart';
+import 'package:bili_plus/pages/contact/view.dart';
+import 'package:bili_plus/pages/whisper_settings/view.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
 import 'package:floating/floating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -39,11 +39,7 @@ extension ScrollControllerExt on ScrollController {
     if ((offset - this.offset).abs() >= position.viewportDimension * 7) {
       jumpTo(offset);
     } else {
-      animateTo(
-        offset,
-        duration: duration,
-        curve: Curves.easeInOut,
-      );
+      animateTo(offset, duration: duration, curve: Curves.easeInOut);
     }
   }
 
@@ -98,10 +94,7 @@ extension ListExt<T> on List<T> {
     return List<R>.from(this);
   }
 
-  T findClosestTarget(
-    bool Function(T) test,
-    T Function(T, T) combine,
-  ) {
+  T findClosestTarget(bool Function(T) test, T Function(T, T) combine) {
     return where(test).reduceOrNull(combine) ?? reduce(combine);
   }
 }

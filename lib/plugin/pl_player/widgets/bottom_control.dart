@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/progress_bar/audio_video_progress_bar.dart';
-import 'package:PiliPlus/common/widgets/progress_bar/segment_progress_bar.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/progress_bar/audio_video_progress_bar.dart';
+import 'package:bili_plus/common/widgets/progress_bar/segment_progress_bar.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/plugin/pl_player/view.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
@@ -46,27 +46,20 @@ class BottomControl extends StatelessWidget {
 
     void onDragUpdate(ThumbDragDetails duration, int max) {
       if (controller.showSeekPreview) {
-        controller.updatePreviewIndex(
-          duration.timeStamp.inSeconds,
-        );
+        controller.updatePreviewIndex(duration.timeStamp.inSeconds);
       }
       double newProgress = duration.timeStamp.inSeconds / max;
       if ((newProgress - lastAnnouncedValue).abs() > 0.02) {
         accessibilityDebounce?.cancel();
-        accessibilityDebounce = Timer(
-          const Duration(milliseconds: 200),
-          () {
-            SemanticsService.announce(
-              "${(newProgress * 100).round()}%",
-              TextDirection.ltr,
-            );
-            lastAnnouncedValue = newProgress;
-          },
-        );
+        accessibilityDebounce = Timer(const Duration(milliseconds: 200), () {
+          SemanticsService.announce(
+            "${(newProgress * 100).round()}%",
+            TextDirection.ltr,
+          );
+          lastAnnouncedValue = newProgress;
+        });
       }
-      controller.onUpdatedSliderProgress(
-        duration.timeStamp,
-      );
+      controller.onUpdatedSliderProgress(duration.timeStamp);
     }
 
     void onSeek(Duration duration, int max) {
@@ -76,10 +69,7 @@ class BottomControl extends StatelessWidget {
       controller
         ..onChangedSliderEnd()
         ..onChangedSlider(duration.inSeconds.toDouble())
-        ..seekTo(
-          Duration(seconds: duration.inSeconds),
-          isSeek: false,
-        );
+        ..seekTo(Duration(seconds: duration.inSeconds), isSeek: false);
       SemanticsService.announce(
         "${(duration.inSeconds / max * 100).round()}%",
         TextDirection.ltr,
@@ -111,10 +101,7 @@ class BottomControl extends StatelessWidget {
         );
       });
       if (Utils.isDesktop) {
-        return MouseRegion(
-          cursor: SystemMouseCursors.click,
-          child: child,
-        );
+        return MouseRegion(cursor: SystemMouseCursors.click, child: child);
       }
       return child;
     }

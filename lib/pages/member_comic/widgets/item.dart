@@ -1,8 +1,8 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -63,16 +63,10 @@ class MemberComicItem extends StatelessWidget {
                     Text(item.title),
                     if (item.styles != null) ...[
                       const SizedBox(height: 6),
-                      Text(
-                        item.styles!,
-                        style: style,
-                      ),
+                      Text(item.styles!, style: style),
                     ],
                     if (item.label != null) ...[
-                      Text(
-                        item.label!,
-                        style: style,
-                      ),
+                      Text(item.label!, style: style),
                     ],
                   ],
                 ),

@@ -1,27 +1,27 @@
-import 'package:PiliPlus/common/widgets/pair.dart';
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/reply.dart';
-import 'package:PiliPlus/models/common/dynamic/dynamics_type.dart';
-import 'package:PiliPlus/models/common/reply/reply_option_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/models/dynamics/up.dart';
-import 'package:PiliPlus/models/dynamics/vote_model.dart';
-import 'package:PiliPlus/models_new/article/article_info/data.dart';
-import 'package:PiliPlus/models_new/article/article_list/data.dart';
-import 'package:PiliPlus/models_new/article/article_view/data.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_mention/data.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_mention/group.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_reserve/data.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_reserve_info/data.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_feed/topic_card_list.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_top/top_details.dart';
-import 'package:PiliPlus/models_new/dynamic/dyn_topic_top/topic_item.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/utils.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/common/widgets/pair.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/reply.dart';
+import 'package:bili_plus/models/common/dynamic/dynamics_type.dart';
+import 'package:bili_plus/models/common/reply/reply_option_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/models/dynamics/up.dart';
+import 'package:bili_plus/models/dynamics/vote_model.dart';
+import 'package:bili_plus/models_new/article/article_info/data.dart';
+import 'package:bili_plus/models_new/article/article_list/data.dart';
+import 'package:bili_plus/models_new/article/article_view/data.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_mention/data.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_mention/group.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_reserve/data.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_reserve_info/data.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_feed/topic_card_list.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_top/top_details.dart';
+import 'package:bili_plus/models_new/dynamic/dyn_topic_top/topic_item.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/utils.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
 
 class DynamicsHttp {
@@ -70,10 +70,7 @@ class DynamicsHttp {
   static Future<LoadingState<FollowUpModel>> followUp() async {
     var res = await Request().get(
       Api.followUp,
-      queryParameters: {
-        'up_list_more': 1,
-        'web_location': 333.1365,
-      },
+      queryParameters: {'up_list_more': 1, 'web_location': 333.1365},
     );
     if (res.data['code'] == 0) {
       return Success(FollowUpModel.fromJson(res.data['data']));
@@ -128,19 +125,9 @@ class DynamicsHttp {
   }) async {
     var res = await Request().post(
       Api.thumbDynamic,
-      queryParameters: {
-        'csrf': Accounts.main.csrf,
-      },
-      data: {
-        'dyn_id_str': dynamicId,
-        'up': up,
-        'spmid': '333.1365.0.0',
-      },
-      options: Options(
-        headers: {
-          'referer': HttpString.dynamicShareBaseUrl,
-        },
-      ),
+      queryParameters: {'csrf': Accounts.main.csrf},
+      data: {'dyn_id_str': dynamicId, 'up': up, 'spmid': '333.1365.0.0'},
+      options: Options(headers: {'referer': HttpString.dynamicShareBaseUrl}),
     );
     if (res.data['code'] == 0) {
       return {'status': true, 'data': res.data['data']};
@@ -177,11 +164,7 @@ class DynamicsHttp {
           "content": {
             "contents": [
               if (rawText != null)
-                {
-                  "raw_text": rawText,
-                  "type": 1,
-                  "biz_id": "",
-                },
+                {"raw_text": rawText, "type": 1, "biz_id": ""},
               ...?extraContent,
             ],
             if (title?.isNotEmpty == true) 'title': title,
@@ -220,24 +203,14 @@ class DynamicsHttp {
         if (dynIdStr != null || rid != null)
           "web_repost_src": {
             "dyn_id_str": ?dynIdStr,
-            if (rid != null)
-              "revs_id": {
-                "dyn_type": dynType,
-                "rid": rid,
-              },
+            if (rid != null) "revs_id": {"dyn_type": dynType, "rid": rid},
           },
       },
     );
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-        'data': res.data['data'],
-      };
+      return {'status': true, 'data': res.data['data']};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
@@ -275,17 +248,11 @@ class DynamicsHttp {
     }
   }
 
-  static Future setTop({
-    required dynamic dynamicId,
-  }) async {
+  static Future setTop({required dynamic dynamicId}) async {
     var res = await Request().post(
       Api.setTopDyn,
-      queryParameters: {
-        'csrf': Accounts.main.csrf,
-      },
-      data: {
-        'dyn_str': dynamicId,
-      },
+      queryParameters: {'csrf': Accounts.main.csrf},
+      data: {'dyn_str': dynamicId},
     );
     if (res.data['code'] == 0) {
       return {'status': true};
@@ -294,17 +261,11 @@ class DynamicsHttp {
     }
   }
 
-  static Future rmTop({
-    required dynamic dynamicId,
-  }) async {
+  static Future rmTop({required dynamic dynamicId}) async {
     var res = await Request().post(
       Api.rmTopDyn,
-      queryParameters: {
-        'csrf': Accounts.main.csrf,
-      },
-      data: {
-        'dyn_str': dynamicId,
-      },
+      queryParameters: {'csrf': Accounts.main.csrf},
+      data: {'dyn_str': dynamicId},
     );
     if (res.data['code'] == 0) {
       return {'status': true};
@@ -313,9 +274,7 @@ class DynamicsHttp {
     }
   }
 
-  static Future articleInfo({
-    required dynamic cvId,
-  }) async {
+  static Future articleInfo({required dynamic cvId}) async {
     var res = await Request().get(
       Api.articleInfo,
       queryParameters: await WbiSign.makSign({
@@ -416,10 +375,7 @@ class DynamicsHttp {
   static Future<LoadingState<TopDetails?>> topicTop({required topicId}) async {
     final res = await Request().get(
       Api.topicTop,
-      queryParameters: {
-        'topic_id': topicId,
-        'source': 'Web',
-      },
+      queryParameters: {'topic_id': topicId, 'source': 'Web'},
     );
     if (res.data['code'] == 0) {
       TopDetails? data = res.data['data']?['top_details'] == null
@@ -463,10 +419,7 @@ class DynamicsHttp {
   }) async {
     final res = await Request().get(
       Api.articleList,
-      queryParameters: {
-        'id': id,
-        'web_location': 333.1400,
-      },
+      queryParameters: {'id': id, 'web_location': 333.1400},
     );
     if (res.data['code'] == 0) {
       return Success(ArticleListData.fromJson(res.data['data']));
@@ -483,9 +436,7 @@ class DynamicsHttp {
   }) async {
     var res = await Request().post(
       Api.dynReserve,
-      queryParameters: {
-        'csrf': Accounts.main.csrf,
-      },
+      queryParameters: {'csrf': Accounts.main.csrf},
       data: {
         'reserve_id': reserveId,
         'cur_btn_status': curBtnStatus,
@@ -528,10 +479,7 @@ class DynamicsHttp {
   static Future<LoadingState<List<OpusPicModel>?>> dynPic(dynamic id) async {
     final res = await Request().get(
       Api.dynPic,
-      queryParameters: {
-        'id': id,
-        'web_location': 333.1368,
-      },
+      queryParameters: {'id': id, 'web_location': 333.1368},
     );
     if (res.data['code'] == 0) {
       return Success(
@@ -555,9 +503,7 @@ class DynamicsHttp {
       },
     );
     if (res.data['code'] == 0) {
-      return Success(
-        DynMentionData.fromJson(res.data['data']).groups,
-      );
+      return Success(DynMentionData.fromJson(res.data['data']).groups);
     } else {
       return Error(res.data['message']);
     }
@@ -644,11 +590,7 @@ class DynamicsHttp {
   }) async {
     final res = await Request().get(
       Api.reserveInfo,
-      queryParameters: {
-        'from': 1,
-        'id': sid,
-        'web_location': 333.1365,
-      },
+      queryParameters: {'from': 1, 'id': sid, 'web_location': 333.1365},
     );
     if (res.data['code'] == 0) {
       return Success(ReserveInfoData.fromJson(res.data['data']));

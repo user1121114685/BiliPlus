@@ -1,18 +1,18 @@
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/models/common/later_view_type.dart';
-import 'package:PiliPlus/models/common/video/source_type.dart';
-import 'package:PiliPlus/models_new/later/data.dart';
-import 'package:PiliPlus/models_new/later/list.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart'
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/models/common/later_view_type.dart';
+import 'package:bili_plus/models/common/video/source_type.dart';
+import 'package:bili_plus/models_new/later/data.dart';
+import 'package:bili_plus/models_new/later/list.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart'
     show CommonListController;
-import 'package:PiliPlus/pages/common/multi_select/base.dart';
-import 'package:PiliPlus/pages/common/multi_select/multi_select_controller.dart';
-import 'package:PiliPlus/pages/later/base_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/pages/common/multi_select/base.dart';
+import 'package:bili_plus/pages/common/multi_select/multi_select_controller.dart';
+import 'package:bili_plus/pages/later/base_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -47,11 +47,7 @@ mixin BaseLaterController
   }
 
   // single
-  void toViewDel(
-    BuildContext context,
-    int index,
-    int? aid,
-  ) {
+  void toViewDel(BuildContext context, int index, int? aid) {
     showDialog(
       context: context,
       builder: (context) {

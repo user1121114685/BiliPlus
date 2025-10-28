@@ -1,22 +1,22 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/pendant_avatar.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/space/space/card.dart';
-import 'package:PiliPlus/models_new/space/space/followings_followed_upper.dart';
-import 'package:PiliPlus/models_new/space/space/images.dart';
-import 'package:PiliPlus/models_new/space/space/live.dart';
-import 'package:PiliPlus/models_new/space/space/pr_info.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/pendant_avatar.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/space/space/card.dart';
+import 'package:bili_plus/models_new/space/space/followings_followed_upper.dart';
+import 'package:bili_plus/models_new/space/space/images.dart';
+import 'package:bili_plus/models_new/space/space/live.dart';
+import 'package:bili_plus/models_new/space/space/pr_info.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -66,10 +66,7 @@ class UserInfoCard extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            NumUtils.numFormat(count),
-            style: const TextStyle(fontSize: 14),
-          ),
+          Text(NumUtils.numFormat(count), style: const TextStyle(fontSize: 14)),
           Text(
             title,
             style: TextStyle(
@@ -210,9 +207,7 @@ class UserInfoCard extends StatelessWidget {
                     ),
                   ),
                 ),
-                const TextSpan(
-                  text: ' ',
-                ),
+                const TextSpan(text: ' '),
               ],
               TextSpan(
                 text: card.officialVerify!.spliceTitle!,
@@ -249,31 +244,26 @@ class UserInfoCard extends StatelessWidget {
             onTap: () => Utils.copyText(card.mid.toString()),
             child: Text(
               'UID: ${card.mid}',
-              style: TextStyle(
-                fontSize: 12,
-                color: colorScheme.outline,
-              ),
+              style: TextStyle(fontSize: 12, color: colorScheme.outline),
             ),
           ),
-          ...?card.spaceTag?.map(
-            (item) {
-              final hasUri = item.uri?.isNotEmpty == true;
-              final child = Text(
-                item.title ?? '',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: hasUri ? colorScheme.secondary : colorScheme.outline,
-                ),
+          ...?card.spaceTag?.map((item) {
+            final hasUri = item.uri?.isNotEmpty == true;
+            final child = Text(
+              item.title ?? '',
+              style: TextStyle(
+                fontSize: 12,
+                color: hasUri ? colorScheme.secondary : colorScheme.outline,
+              ),
+            );
+            if (hasUri) {
+              return GestureDetector(
+                onTap: () => PiliScheme.routePushFromUrl(item.uri!),
+                child: child,
               );
-              if (hasUri) {
-                return GestureDetector(
-                  onTap: () => PiliScheme.routePushFromUrl(item.uri!),
-                  child: child,
-                );
-              }
-              return child;
-            },
-          ),
+            }
+            return child;
+          }),
         ],
       ),
     ),
@@ -462,11 +452,7 @@ class UserInfoCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Positioned(
-                top: 110,
-                left: 20,
-                child: _buildAvatar,
-              ),
+              Positioned(top: 110, left: 20, child: _buildAvatar),
               Positioned(
                 left: 160,
                 top: 140,
@@ -519,10 +505,7 @@ class UserInfoCard extends StatelessWidget {
           ),
           if (prInfo.url?.isNotEmpty == true) ...[
             const SizedBox(width: 10),
-            Icon(
-              Icons.keyboard_arrow_right,
-              color: textColor,
-            ),
+            Icon(Icons.keyboard_arrow_right, color: textColor),
           ],
         ],
       ),
@@ -565,10 +548,7 @@ class UserInfoCard extends StatelessWidget {
               ],
             ),
           ),
-          Expanded(
-            flex: 3,
-            child: _buildRight(colorScheme),
-          ),
+          Expanded(flex: 3, child: _buildRight(colorScheme)),
           const SizedBox(width: 20),
         ],
       ),
@@ -634,21 +614,14 @@ class UserInfoCard extends StatelessWidget {
             list.map((e) => e.name).join('、'),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 13,
-              color: colorScheme.onSurfaceVariant,
-            ),
+            style: TextStyle(fontSize: 13, color: colorScheme.onSurfaceVariant),
           ),
         ),
         Text(
           '${flag ? '等${item.items!.length}人' : ''}也关注了TA ',
           style: TextStyle(fontSize: 13, color: colorScheme.outline),
         ),
-        Icon(
-          Icons.keyboard_arrow_right,
-          size: 20,
-          color: colorScheme.outline,
-        ),
+        Icon(Icons.keyboard_arrow_right, size: 20, color: colorScheme.outline),
         const SizedBox(width: 10),
       ],
     );

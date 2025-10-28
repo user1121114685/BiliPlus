@@ -1,9 +1,9 @@
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/fav/fav_folder/data.dart';
-import 'package:PiliPlus/models_new/fav/fav_folder/list.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/fav/fav_folder/data.dart';
+import 'package:bili_plus/models_new/fav/fav_folder/list.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
 import 'package:get/get.dart';
 
 class FavController extends CommonListController<FavFolderData, FavFolderInfo> {
@@ -33,9 +33,6 @@ class FavController extends CommonListController<FavFolderData, FavFolderInfo> {
   }
 
   @override
-  Future<LoadingState<FavFolderData>> customGetData() => FavHttp.userfavFolder(
-    pn: page,
-    ps: 20,
-    mid: accountService.mid,
-  );
+  Future<LoadingState<FavFolderData>> customGetData() =>
+      FavHttp.userfavFolder(pn: page, ps: 20, mid: accountService.mid);
 }

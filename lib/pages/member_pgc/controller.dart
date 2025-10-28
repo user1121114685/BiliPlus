@@ -1,19 +1,16 @@
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/models/common/member/contribute_type.dart';
-import 'package:PiliPlus/models_new/space/space/data.dart';
-import 'package:PiliPlus/models_new/space/space_archive/data.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/pages/member/controller.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/models/common/member/contribute_type.dart';
+import 'package:bili_plus/models_new/space/space/data.dart';
+import 'package:bili_plus/models_new/space/space_archive/data.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/pages/member/controller.dart';
 import 'package:get/get.dart';
 
 class MemberBangumiCtr
     extends CommonListController<SpaceArchiveData, SpaceArchiveItem> {
-  MemberBangumiCtr({
-    required this.mid,
-    required this.heroTag,
-  });
+  MemberBangumiCtr({required this.mid, required this.heroTag});
 
   final int mid;
   final String? heroTag;
@@ -49,9 +46,5 @@ class MemberBangumiCtr
 
   @override
   Future<LoadingState<SpaceArchiveData>> customGetData() =>
-      MemberHttp.spaceArchive(
-        type: ContributeType.bangumi,
-        mid: mid,
-        pn: page,
-      );
+      MemberHttp.spaceArchive(type: ContributeType.bangumi, mid: mid, pn: page);
 }

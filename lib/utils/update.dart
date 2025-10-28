@@ -1,15 +1,15 @@
 import 'dart:io' show Platform;
 
-import 'package:PiliPlus/build_config.dart';
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/ua_type.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
+import 'package:bili_plus/build_config.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/ua_type.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
@@ -71,9 +71,7 @@ abstract class Update {
                         ),
                         child: Text(
                           "点此查看完整更新(即commit)内容",
-                          style: TextStyle(
-                            color: theme.colorScheme.primary,
-                          ),
+                          style: TextStyle(color: theme.colorScheme.primary),
                         ),
                       ),
                     ],
@@ -89,18 +87,14 @@ abstract class Update {
                     },
                     child: Text(
                       '不再提醒',
-                      style: TextStyle(
-                        color: theme.colorScheme.outline,
-                      ),
+                      style: TextStyle(color: theme.colorScheme.outline),
                     ),
                   ),
                 TextButton(
                   onPressed: SmartDialog.dismiss,
                   child: Text(
                     '取消',
-                    style: TextStyle(
-                      color: theme.colorScheme.outline,
-                    ),
+                    style: TextStyle(color: theme.colorScheme.outline),
                   ),
                 ),
                 if (Platform.isWindows) ...[

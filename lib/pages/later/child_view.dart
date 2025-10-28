@@ -1,23 +1,20 @@
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/later_view_type.dart';
-import 'package:PiliPlus/models/common/video/source_type.dart';
-import 'package:PiliPlus/models_new/later/list.dart';
-import 'package:PiliPlus/pages/later/base_controller.dart';
-import 'package:PiliPlus/pages/later/controller.dart';
-import 'package:PiliPlus/pages/later/widgets/video_card_h_later.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/later_view_type.dart';
+import 'package:bili_plus/models/common/video/source_type.dart';
+import 'package:bili_plus/models_new/later/list.dart';
+import 'package:bili_plus/pages/later/base_controller.dart';
+import 'package:bili_plus/pages/later/controller.dart';
+import 'package:bili_plus/pages/later/widgets/video_card_h_later.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LaterViewChildPage extends StatefulWidget {
-  const LaterViewChildPage({
-    super.key,
-    required this.laterViewType,
-  });
+  const LaterViewChildPage({super.key, required this.laterViewType});
 
   final LaterViewType laterViewType;
 
@@ -47,9 +44,7 @@ class _LaterViewChildPageState extends State<LaterViewChildPage>
               top: 7,
               bottom: MediaQuery.viewPaddingOf(context).bottom + 85,
             ),
-            sliver: Obx(
-              () => _buildBody(_laterController.loadingState.value),
-            ),
+            sliver: Obx(() => _buildBody(_laterController.loadingState.value)),
           ),
         ],
       ),

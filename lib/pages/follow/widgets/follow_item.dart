@@ -1,8 +1,8 @@
-import 'package:PiliPlus/common/widgets/pendant_avatar.dart';
-import 'package:PiliPlus/models_new/follow/list.dart';
-import 'package:PiliPlus/pages/share/view.dart' show UserModel;
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/request_utils.dart';
+import 'package:bili_plus/common/widgets/pendant_avatar.dart';
+import 'package:bili_plus/models_new/follow/list.dart';
+import 'package:bili_plus/pages/share/view.dart' show UserModel;
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/request_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,11 +29,7 @@ class FollowItem extends StatelessWidget {
         onTap: () {
           if (onSelect != null) {
             onSelect!.call(
-              UserModel(
-                mid: item.mid,
-                name: item.uname!,
-                avatar: item.face!,
-              ),
+              UserModel(mid: item.mid, name: item.uname!, avatar: item.face!),
             );
           } else {
             feedBack();
@@ -41,10 +37,7 @@ class FollowItem extends StatelessWidget {
           }
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 10,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           child: Row(
             children: [
               PendantAvatar(

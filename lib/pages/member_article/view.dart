@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space_article/item.dart';
-import 'package:PiliPlus/pages/member_article/controller.dart';
-import 'package:PiliPlus/pages/member_article/widget/item.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space_article/item.dart';
+import 'package:bili_plus/pages/member_article/controller.dart';
+import 'package:bili_plus/pages/member_article/widget/item.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

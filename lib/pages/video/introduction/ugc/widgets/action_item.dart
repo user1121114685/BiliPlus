@@ -1,6 +1,6 @@
 import 'dart:math' show pi;
 
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart';
 
 class ActionItem extends StatelessWidget {

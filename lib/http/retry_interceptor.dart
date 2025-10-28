@@ -1,4 +1,4 @@
-import 'package:PiliPlus/http/init.dart';
+import 'package:bili_plus/http/init.dart';
 import 'package:dio/dio.dart';
 import 'package:http2/http2.dart';
 

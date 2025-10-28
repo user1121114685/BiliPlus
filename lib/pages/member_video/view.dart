@@ -1,14 +1,14 @@
-import 'package:PiliPlus/common/widgets/custom_sliver_persistent_header_delegate.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/member/contribute_type.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/pages/member/controller.dart';
-import 'package:PiliPlus/pages/member_video/controller.dart';
-import 'package:PiliPlus/pages/member_video/widgets/video_card_h_member_video.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/member/contribute_type.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/pages/member/controller.dart';
+import 'package:bili_plus/pages/member_video/controller.dart';
+import 'package:bili_plus/pages/member_video/widgets/video_card_h_member_video.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -180,48 +180,43 @@ class _MemberVideoState extends State<MemberVideo>
                             const SizedBox(width: 8),
                             Padding(
                               padding: const EdgeInsets.only(left: 6),
-                              child: Obx(
-                                () {
-                                  final count = _controller.count.value;
-                                  return Text(
-                                    count != -1 ? '共$count视频' : '',
-                                    style: const TextStyle(fontSize: 13),
-                                  );
-                                },
-                              ),
+                              child: Obx(() {
+                                final count = _controller.count.value;
+                                return Text(
+                                  count != -1 ? '共$count视频' : '',
+                                  style: const TextStyle(fontSize: 13),
+                                );
+                              }),
                             ),
-                            Obx(
-                              () {
-                                final episodicButton =
-                                    _controller.episodicButton.value;
-                                return episodicButton.uri?.isNotEmpty == true
-                                    ? Container(
-                                        height: 35,
-                                        padding: EdgeInsets.only(
-                                          left: _controller.count.value != -1
-                                              ? 6
-                                              : 0,
+                            Obx(() {
+                              final episodicButton =
+                                  _controller.episodicButton.value;
+                              return episodicButton.uri?.isNotEmpty == true
+                                  ? Container(
+                                      height: 35,
+                                      padding: EdgeInsets.only(
+                                        left: _controller.count.value != -1
+                                            ? 6
+                                            : 0,
+                                      ),
+                                      child: TextButton.icon(
+                                        onPressed: _controller.toViewPlayAll,
+                                        icon: Icon(
+                                          Icons.play_circle_outline_rounded,
+                                          size: 16,
+                                          color: theme.colorScheme.secondary,
                                         ),
-                                        child: TextButton.icon(
-                                          onPressed: _controller.toViewPlayAll,
-                                          icon: Icon(
-                                            Icons.play_circle_outline_rounded,
-                                            size: 16,
+                                        label: Text(
+                                          episodicButton.text ?? '播放全部',
+                                          style: TextStyle(
+                                            fontSize: 13,
                                             color: theme.colorScheme.secondary,
                                           ),
-                                          label: Text(
-                                            episodicButton.text ?? '播放全部',
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              color:
-                                                  theme.colorScheme.secondary,
-                                            ),
-                                          ),
                                         ),
-                                      )
-                                    : const SizedBox.shrink();
-                              },
-                            ),
+                                      ),
+                                    )
+                                  : const SizedBox.shrink();
+                            }),
                             const Spacer(),
                             SizedBox(
                               height: 35,

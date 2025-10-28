@@ -1,9 +1,9 @@
 import 'dart:math' as math;
 import 'dart:ui';
 
-import 'package:PiliPlus/common/widgets/text_field/controller.dart';
-import 'package:PiliPlus/common/widgets/text_field/editable.dart';
-import 'package:PiliPlus/common/widgets/text_field/editable_text.dart';
+import 'package:bili_plus/common/widgets/text_field/controller.dart';
+import 'package:bili_plus/common/widgets/text_field/editable.dart';
+import 'package:bili_plus/common/widgets/text_field/editable_text.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart' show kMinInteractiveDimension;
@@ -526,9 +526,7 @@ class TextSelectionGestureDetectorBuilder {
                 renderEditable.selection ??
                 editableText.textEditingValue.selection;
             final TextPosition textPosition = renderEditable
-                .getPositionForPoint(
-                  details.globalPosition,
-                );
+                .getPositionForPoint(details.globalPosition);
             final bool isAffinityTheSame =
                 textPosition.affinity == previousSelection.affinity;
             final bool wordAtCursorIndexIsMisspelled =
@@ -1471,46 +1469,46 @@ class _TextSelectionGestureDetectorState
           gestures[TapAndHorizontalDragGestureRecognizer] =
               GestureRecognizerFactoryWithHandlers<
                 TapAndHorizontalDragGestureRecognizer
-              >(
-                () => TapAndHorizontalDragGestureRecognizer(debugOwner: this),
-                (TapAndHorizontalDragGestureRecognizer instance) {
-                  instance
-                    // Text selection should start from the position of the first pointer
-                    // down event.
-                    ..dragStartBehavior = DragStartBehavior.down
-                    ..eagerVictoryOnDrag =
-                        defaultTargetPlatform != TargetPlatform.iOS
-                    ..onTapTrackStart = _handleTapTrackStart
-                    ..onTapTrackReset = _handleTapTrackReset
-                    ..onTapDown = _handleTapDown
-                    ..onDragStart = _handleDragStart
-                    ..onDragUpdate = _handleDragUpdate
-                    ..onDragEnd = _handleDragEnd
-                    ..onTapUp = _handleTapUp
-                    ..onCancel = _handleTapCancel;
-                },
-              );
+              >(() => TapAndHorizontalDragGestureRecognizer(debugOwner: this), (
+                TapAndHorizontalDragGestureRecognizer instance,
+              ) {
+                instance
+                  // Text selection should start from the position of the first pointer
+                  // down event.
+                  ..dragStartBehavior = DragStartBehavior.down
+                  ..eagerVictoryOnDrag =
+                      defaultTargetPlatform != TargetPlatform.iOS
+                  ..onTapTrackStart = _handleTapTrackStart
+                  ..onTapTrackReset = _handleTapTrackReset
+                  ..onTapDown = _handleTapDown
+                  ..onDragStart = _handleDragStart
+                  ..onDragUpdate = _handleDragUpdate
+                  ..onDragEnd = _handleDragEnd
+                  ..onTapUp = _handleTapUp
+                  ..onCancel = _handleTapCancel;
+              });
         case TargetPlatform.linux:
         case TargetPlatform.macOS:
         case TargetPlatform.windows:
           gestures[TapAndPanGestureRecognizer] =
-              GestureRecognizerFactoryWithHandlers<TapAndPanGestureRecognizer>(
-                () => TapAndPanGestureRecognizer(debugOwner: this),
-                (TapAndPanGestureRecognizer instance) {
-                  instance
-                    // Text selection should start from the position of the first pointer
-                    // down event.
-                    ..dragStartBehavior = DragStartBehavior.down
-                    ..onTapTrackStart = _handleTapTrackStart
-                    ..onTapTrackReset = _handleTapTrackReset
-                    ..onTapDown = _handleTapDown
-                    ..onDragStart = _handleDragStart
-                    ..onDragUpdate = _handleDragUpdate
-                    ..onDragEnd = _handleDragEnd
-                    ..onTapUp = _handleTapUp
-                    ..onCancel = _handleTapCancel;
-                },
-              );
+              GestureRecognizerFactoryWithHandlers<
+                TapAndPanGestureRecognizer
+              >(() => TapAndPanGestureRecognizer(debugOwner: this), (
+                TapAndPanGestureRecognizer instance,
+              ) {
+                instance
+                  // Text selection should start from the position of the first pointer
+                  // down event.
+                  ..dragStartBehavior = DragStartBehavior.down
+                  ..onTapTrackStart = _handleTapTrackStart
+                  ..onTapTrackReset = _handleTapTrackReset
+                  ..onTapDown = _handleTapDown
+                  ..onDragStart = _handleDragStart
+                  ..onDragUpdate = _handleDragUpdate
+                  ..onDragEnd = _handleDragEnd
+                  ..onTapUp = _handleTapUp
+                  ..onCancel = _handleTapCancel;
+              });
       }
     }
 
@@ -2346,9 +2344,7 @@ class SelectionOverlay {
   final BuildContext context;
 
   final ValueNotifier<MagnifierInfo> _magnifierInfo =
-      ValueNotifier<MagnifierInfo>(
-        MagnifierInfo.empty,
-      );
+      ValueNotifier<MagnifierInfo>(MagnifierInfo.empty);
 
   // [MagnifierController.show] and [MagnifierController.hide] should not be
   // called directly, except from inside [showMagnifier] and [hideMagnifier]. If

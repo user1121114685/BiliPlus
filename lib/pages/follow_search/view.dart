@@ -1,18 +1,14 @@
-import 'package:PiliPlus/models_new/follow/data.dart';
-import 'package:PiliPlus/models_new/follow/list.dart';
-import 'package:PiliPlus/pages/common/search/common_search_page.dart';
-import 'package:PiliPlus/pages/follow/widgets/follow_item.dart';
-import 'package:PiliPlus/pages/follow_search/controller.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/models_new/follow/data.dart';
+import 'package:bili_plus/models_new/follow/list.dart';
+import 'package:bili_plus/pages/common/search/common_search_page.dart';
+import 'package:bili_plus/pages/follow/widgets/follow_item.dart';
+import 'package:bili_plus/pages/follow_search/controller.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class FollowSearchPage extends CommonSearchPage {
-  const FollowSearchPage({
-    super.key,
-    this.mid,
-    this.isFromSelect = false,
-  });
+  const FollowSearchPage({super.key, this.mid, this.isFromSelect = false});
 
   final int? mid;
   final bool isFromSelect;

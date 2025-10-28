@@ -1,22 +1,18 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show SearchItem, SearchItemVideoSubType;
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/reply/reply_search_type.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/reply/reply_search_type.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ReplySearchItem extends StatelessWidget {
-  const ReplySearchItem({
-    super.key,
-    required this.item,
-    required this.type,
-  });
+  const ReplySearchItem({super.key, required this.item, required this.type});
 
   final SearchItem item;
   final ReplySearchType type;
@@ -48,10 +44,7 @@ class ReplySearchItem extends StatelessWidget {
         cover = article.covers.firstOrNull ?? '';
         upNickname = article.upNickname;
     }
-    void onLongPress() => imageSaveDialog(
-      title: title,
-      cover: cover,
-    );
+    void onLongPress() => imageSaveDialog(title: title, cover: cover);
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -78,11 +71,7 @@ class ReplySearchItem extends StatelessWidget {
                           height: boxConstraints.maxHeight,
                         ),
                         if (category != null)
-                          PBadge(
-                            right: 6,
-                            top: 6,
-                            text: category,
-                          ),
+                          PBadge(right: 6, top: 6, text: category),
                         if (duration != null)
                           PBadge(
                             right: 6,

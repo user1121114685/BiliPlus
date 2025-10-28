@@ -1,12 +1,12 @@
-import 'package:PiliPlus/http/follow.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/models/common/follow_order_type.dart';
-import 'package:PiliPlus/models_new/follow/data.dart';
-import 'package:PiliPlus/models_new/follow/list.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/pages/follow/controller.dart';
+import 'package:bili_plus/http/follow.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/models/common/follow_order_type.dart';
+import 'package:bili_plus/models_new/follow/data.dart';
+import 'package:bili_plus/models_new/follow/list.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/pages/follow/controller.dart';
 import 'package:get/get.dart';
 
 class FollowChildController

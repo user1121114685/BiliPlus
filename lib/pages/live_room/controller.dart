@@ -1,29 +1,29 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:PiliPlus/common/widgets/text_field/controller.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/live.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/video/live_quality.dart';
-import 'package:PiliPlus/models_new/live/live_danmaku/danmaku_msg.dart';
-import 'package:PiliPlus/models_new/live/live_danmaku/live_emote.dart';
-import 'package:PiliPlus/models_new/live/live_dm_info/data.dart';
-import 'package:PiliPlus/models_new/live/live_room_info_h5/data.dart';
-import 'package:PiliPlus/models_new/live/live_room_play_info/codec.dart';
-import 'package:PiliPlus/models_new/live/live_superchat/item.dart';
-import 'package:PiliPlus/pages/danmaku/dnamaku_model.dart';
-import 'package:PiliPlus/pages/live_room/send_danmaku/view.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/plugin/pl_player/models/data_source.dart';
-import 'package:PiliPlus/services/service_locator.dart';
-import 'package:PiliPlus/tcp/live.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/danmaku_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
-import 'package:PiliPlus/utils/video_utils.dart';
+import 'package:bili_plus/common/widgets/text_field/controller.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/live.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/video/live_quality.dart';
+import 'package:bili_plus/models_new/live/live_danmaku/danmaku_msg.dart';
+import 'package:bili_plus/models_new/live/live_danmaku/live_emote.dart';
+import 'package:bili_plus/models_new/live/live_dm_info/data.dart';
+import 'package:bili_plus/models_new/live/live_room_info_h5/data.dart';
+import 'package:bili_plus/models_new/live/live_room_play_info/codec.dart';
+import 'package:bili_plus/models_new/live/live_superchat/item.dart';
+import 'package:bili_plus/pages/danmaku/dnamaku_model.dart';
+import 'package:bili_plus/pages/live_room/send_danmaku/view.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/plugin/pl_player/models/data_source.dart';
+import 'package:bili_plus/services/service_locator.dart';
+import 'package:bili_plus/tcp/live.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/danmaku_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
+import 'package:bili_plus/utils/video_utils.dart';
 import 'package:canvas_danmaku/canvas_danmaku.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/foundation.dart';
@@ -157,10 +157,7 @@ class LiveRoomController extends GetxController {
       // 以服务端返回的码率为准
       currentQn = item.currentQn!;
       acceptQnList = item.acceptQn!.map((e) {
-        return (
-          code: e,
-          desc: LiveQuality.fromCode(e)?.desc ?? e.toString(),
-        );
+        return (code: e, desc: LiveQuality.fromCode(e)?.desc ?? e.toString());
       }).toList();
       currentQnDesc.value =
           LiveQuality.fromCode(currentQn)?.desc ?? currentQn.toString();
@@ -424,10 +421,7 @@ class LiveRoomController extends GetxController {
   }
 
   void onLikeTapUp([_]) {
-    likeClickTimer ??= Timer(
-      const Duration(milliseconds: 800),
-      onLike,
-    );
+    likeClickTimer ??= Timer(const Duration(milliseconds: 800), onLike);
   }
 
   Future<void> onLike() async {
@@ -481,10 +475,7 @@ class LiveRoomController extends GetxController {
           begin: const Offset(0.0, 1.0),
           end: Offset.zero,
         ).chain(CurveTween(curve: Curves.linear));
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
+        return SlideTransition(position: animation.drive(tween), child: child);
       },
     );
   }

@@ -1,23 +1,23 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/button/more_btn.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space/data.dart';
-import 'package:PiliPlus/models_new/space/space/tab2.dart';
-import 'package:PiliPlus/pages/member/controller.dart';
-import 'package:PiliPlus/pages/member_article/widget/item.dart';
-import 'package:PiliPlus/pages/member_audio/widgets/item.dart';
-import 'package:PiliPlus/pages/member_coin_arc/view.dart';
-import 'package:PiliPlus/pages/member_comic/widgets/item.dart';
-import 'package:PiliPlus/pages/member_contribute/controller.dart';
-import 'package:PiliPlus/pages/member_home/widgets/fav_item.dart';
-import 'package:PiliPlus/pages/member_home/widgets/video_card_v_member_home.dart';
-import 'package:PiliPlus/pages/member_like_arc/view.dart';
-import 'package:PiliPlus/pages/member_pgc/widgets/pgc_card_v_member_pgc.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/button/more_btn.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space/data.dart';
+import 'package:bili_plus/models_new/space/space/tab2.dart';
+import 'package:bili_plus/pages/member/controller.dart';
+import 'package:bili_plus/pages/member_article/widget/item.dart';
+import 'package:bili_plus/pages/member_audio/widgets/item.dart';
+import 'package:bili_plus/pages/member_coin_arc/view.dart';
+import 'package:bili_plus/pages/member_comic/widgets/item.dart';
+import 'package:bili_plus/pages/member_contribute/controller.dart';
+import 'package:bili_plus/pages/member_home/widgets/fav_item.dart';
+import 'package:bili_plus/pages/member_home/widgets/video_card_v_member_home.dart';
+import 'package:bili_plus/pages/member_like_arc/view.dart';
+import 'package:bili_plus/pages/member_pgc/widgets/pgc_card_v_member_pgc.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -115,9 +115,7 @@ class _MemberHomeState extends State<MemberHome>
                     SliverToBoxAdapter(
                       child: SizedBox(
                         height: 98,
-                        child: MemberFavItem(
-                          item: res.favourite2!.item!.first,
-                        ),
+                        child: MemberFavItem(item: res.favourite2!.item!.first),
                       ),
                     ),
                   ],
@@ -202,9 +200,7 @@ class _MemberHomeState extends State<MemberHome>
                     SliverGrid.builder(
                       gridDelegate: gridDelegateAudio,
                       itemBuilder: (context, index) {
-                        return MemberAudioItem(
-                          item: res.audios!.item![index],
-                        );
+                        return MemberAudioItem(item: res.audios!.item![index]);
                       },
                       itemCount: isVertical ? 1 : min(2, res.audios!.count!),
                     ),
@@ -340,20 +336,14 @@ class _MemberHomeState extends State<MemberHome>
                 } else {
                   if (param == 'coinArchive') {
                     Get.to(
-                      MemberCoinArcPage(
-                        mid: _ctr.mid,
-                        name: _ctr.username,
-                      ),
+                      MemberCoinArcPage(mid: _ctr.mid, name: _ctr.username),
                     );
                     return;
                   }
 
                   if (param == 'likeArchive') {
                     Get.to(
-                      MemberLikeArcPage(
-                        mid: _ctr.mid,
-                        name: _ctr.username,
-                      ),
+                      MemberLikeArcPage(mid: _ctr.mid, name: _ctr.username),
                     );
                     return;
                   }

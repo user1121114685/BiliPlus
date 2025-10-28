@@ -1,12 +1,12 @@
-import 'package:PiliPlus/common/widgets/pair.dart';
-import 'package:PiliPlus/http/live.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/live/live_feed_index/card_data_list_item.dart';
-import 'package:PiliPlus/models_new/live/live_feed_index/card_list.dart';
-import 'package:PiliPlus/models_new/live/live_feed_index/data.dart';
-import 'package:PiliPlus/models_new/live/live_second_list/data.dart';
-import 'package:PiliPlus/models_new/live/live_second_list/tag.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/common/widgets/pair.dart';
+import 'package:bili_plus/http/live.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/live/live_feed_index/card_data_list_item.dart';
+import 'package:bili_plus/models_new/live/live_feed_index/card_list.dart';
+import 'package:bili_plus/models_new/live/live_feed_index/data.dart';
+import 'package:bili_plus/models_new/live/live_second_list/data.dart';
+import 'package:bili_plus/models_new/live/live_second_list/tag.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
 import 'package:get/get.dart';
 
 class LiveController extends CommonListController {
@@ -51,10 +51,7 @@ class LiveController extends CommonListController {
         if (data.hasMore == 0) {
           isEnd = true;
         }
-        topState.value = Pair(
-          first: data.followItem,
-          second: data.areaItem,
-        );
+        topState.value = Pair(first: data.followItem, second: data.areaItem);
       } else if (res case LiveSecondData data) {
         count = data.count;
         newTags = data.newTags;
@@ -95,10 +92,7 @@ class LiveController extends CommonListController {
     final res = await LiveHttp.liveFeedIndex(pn: page, moduleSelect: true);
     if (res.isSuccess) {
       final data = res.data;
-      topState.value = Pair(
-        first: data.followItem,
-        second: data.areaItem,
-      );
+      topState.value = Pair(first: data.followItem, second: data.areaItem);
       areaIndex.value =
           (data.areaItem?.cardData?.areaEntranceV3?.list?.indexWhere(
                 (e) => e.areaV2Id == areaId && e.areaV2ParentId == parentAreaId,

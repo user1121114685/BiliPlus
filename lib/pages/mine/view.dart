@@ -1,22 +1,22 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/list_tile.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/common/nav_bar_config.dart';
-import 'package:PiliPlus/models/user/info.dart';
-import 'package:PiliPlus/models_new/fav/fav_folder/list.dart';
-import 'package:PiliPlus/pages/common/common_page.dart';
-import 'package:PiliPlus/pages/home/view.dart';
-import 'package:PiliPlus/pages/login/controller.dart';
-import 'package:PiliPlus/pages/main/controller.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/pages/mine/widgets/item.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/list_tile.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/common/nav_bar_config.dart';
+import 'package:bili_plus/models/user/info.dart';
+import 'package:bili_plus/models_new/fav/fav_folder/list.dart';
+import 'package:bili_plus/pages/common/common_page.dart';
+import 'package:bili_plus/pages/home/view.dart';
+import 'package:bili_plus/pages/login/controller.dart';
+import 'package:bili_plus/pages/main/controller.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/pages/mine/widgets/item.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart' hide ListTile;
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -115,15 +115,8 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          size: 22,
-                          e.icon,
-                          color: primary,
-                        ),
-                        Text(
-                          e.title,
-                          style: const TextStyle(fontSize: 13),
-                        ),
+                        Icon(size: 22, e.icon, color: primary),
+                        Text(e.title, style: const TextStyle(fontSize: 13)),
                       ],
                     ),
                   ),
@@ -163,23 +156,21 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
           ),
           msgBadge(_mainController),
         ],
-        Obx(
-          () {
-            final anonymity = MineController.anonymity.value;
-            return IconButton(
-              iconSize: 22,
-              padding: const EdgeInsets.all(8),
-              style: const ButtonStyle(
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              tooltip: "${anonymity ? '退出' : '进入'}无痕模式",
-              onPressed: MineController.onChangeAnonymity,
-              icon: anonymity
-                  ? const Icon(MdiIcons.incognito)
-                  : const Icon(MdiIcons.incognitoOff),
-            );
-          },
-        ),
+        Obx(() {
+          final anonymity = MineController.anonymity.value;
+          return IconButton(
+            iconSize: 22,
+            padding: const EdgeInsets.all(8),
+            style: const ButtonStyle(
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            tooltip: "${anonymity ? '退出' : '进入'}无痕模式",
+            onPressed: MineController.onChangeAnonymity,
+            icon: anonymity
+                ? const Icon(MdiIcons.incognito)
+                : const Icon(MdiIcons.incognitoOff),
+          );
+        }),
         IconButton(
           iconSize: 22,
           padding: const EdgeInsets.all(8),
@@ -190,20 +181,18 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
           onPressed: () => LoginPageController.switchAccountDialog(context),
           icon: const Icon(Icons.switch_account_outlined),
         ),
-        Obx(
-          () {
-            return IconButton(
-              iconSize: 22,
-              padding: const EdgeInsets.all(8),
-              style: const ButtonStyle(
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-              tooltip: '切换至${controller.nextThemeType.desc}主题',
-              onPressed: controller.onChangeTheme,
-              icon: controller.themeType.value.icon,
-            );
-          },
-        ),
+        Obx(() {
+          return IconButton(
+            iconSize: 22,
+            padding: const EdgeInsets.all(8),
+            style: const ButtonStyle(
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            ),
+            tooltip: '切换至${controller.nextThemeType.desc}主题',
+            onPressed: controller.onChangeTheme,
+            icon: controller.themeType.value.icon,
+          );
+        }),
         IconButton(
           iconSize: 22,
           padding: const EdgeInsets.all(8),
@@ -325,18 +314,12 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
                       Text.rich(
                         TextSpan(
                           children: [
-                            TextSpan(
-                              text: '硬币 ',
-                              style: coinLabelStyle,
-                            ),
+                            TextSpan(text: '硬币 ', style: coinLabelStyle),
                             TextSpan(
                               text: userInfo.money?.toString() ?? '-',
                               style: coinValStyle,
                             ),
-                            TextSpan(
-                              text: "      经验 ",
-                              style: coinLabelStyle,
-                            ),
+                            TextSpan(text: "      经验 ", style: coinLabelStyle),
                             TextSpan(
                               text: levelInfo?.currentExp?.toString() ?? '-',
                               style: coinValStyle,
@@ -422,15 +405,9 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  count?.toString() ?? '-',
-                  style: countStyle,
-                ),
+                Text(count?.toString() ?? '-', style: countStyle),
                 const SizedBox(height: 4),
-                Text(
-                  name,
-                  style: lebelStyle,
-                ),
+                Text(name, style: lebelStyle),
               ],
             ),
           ),
@@ -442,10 +419,7 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
   Widget _buildFav(ThemeData theme, Color secondary) {
     return Column(
       children: [
-        Divider(
-          height: 20,
-          color: theme.dividerColor.withValues(alpha: 0.1),
-        ),
+        Divider(height: 20, color: theme.dividerColor.withValues(alpha: 0.1)),
         ListTile(
           onTap: () => Get.toNamed('/fav')?.whenComplete(
             () => Future.delayed(
@@ -565,12 +539,7 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
       ),
       Error(:var errMsg) => SizedBox(
         height: 160,
-        child: Center(
-          child: Text(
-            errMsg ?? '',
-            textAlign: TextAlign.center,
-          ),
-        ),
+        child: Center(child: Text(errMsg ?? '', textAlign: TextAlign.center)),
       ),
     };
   }

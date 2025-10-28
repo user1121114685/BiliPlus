@@ -1,13 +1,13 @@
-import 'package:PiliPlus/common/widgets/color_palette.dart';
-import 'package:PiliPlus/models/common/nav_bar_config.dart';
-import 'package:PiliPlus/models/common/theme/theme_color_type.dart';
-import 'package:PiliPlus/models/common/theme/theme_type.dart';
-import 'package:PiliPlus/pages/home/view.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/pages/setting/widgets/select_dialog.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/widgets/color_palette.dart';
+import 'package:bili_plus/models/common/nav_bar_config.dart';
+import 'package:bili_plus/models/common/theme/theme_color_type.dart';
+import 'package:bili_plus/models/common/theme/theme_type.dart';
+import 'package:bili_plus/pages/home/view.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/pages/setting/widgets/select_dialog.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -142,9 +142,7 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                           size: 20,
                           Icons.keyboard_arrow_right,
                           color: ctr.dynamicColor.value
-                              ? theme.colorScheme.outline.withValues(
-                                  alpha: 0.8,
-                                )
+                              ? theme.colorScheme.outline.withValues(alpha: 0.8)
                               : theme.colorScheme.secondary,
                         ),
                       ],
@@ -192,42 +190,40 @@ class _ColorSelectPageState extends State<ColorSelectPage> {
                           alignment: WrapAlignment.center,
                           spacing: 22,
                           runSpacing: 18,
-                          children: colorThemeTypes.indexed.map(
-                            (e) {
-                              final index = e.$1;
-                              final item = e.$2;
-                              return GestureDetector(
-                                behavior: HitTestBehavior.opaque,
-                                onTap: () {
-                                  ctr
-                                    ..currentColor.value = index
-                                    ..setting.put(
-                                      SettingBoxKey.customColor,
-                                      index,
-                                    );
-                                  Get.forceAppUpdate();
-                                },
-                                child: Column(
-                                  spacing: 3,
-                                  children: [
-                                    ColorPalette(
-                                      color: item.color,
-                                      selected: ctr.currentColor.value == index,
+                          children: colorThemeTypes.indexed.map((e) {
+                            final index = e.$1;
+                            final item = e.$2;
+                            return GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () {
+                                ctr
+                                  ..currentColor.value = index
+                                  ..setting.put(
+                                    SettingBoxKey.customColor,
+                                    index,
+                                  );
+                                Get.forceAppUpdate();
+                              },
+                              child: Column(
+                                spacing: 3,
+                                children: [
+                                  ColorPalette(
+                                    color: item.color,
+                                    selected: ctr.currentColor.value == index,
+                                  ),
+                                  Text(
+                                    item.label,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: ctr.currentColor.value != index
+                                          ? theme.colorScheme.outline
+                                          : null,
                                     ),
-                                    Text(
-                                      item.label,
-                                      style: TextStyle(
-                                        fontSize: 12,
-                                        color: ctr.currentColor.value != index
-                                            ? theme.colorScheme.outline
-                                            : null,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            },
-                          ).toList(),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }).toList(),
                         ),
                       ),
               ),

@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import 'package:PiliPlus/models/common/search/article_search_type.dart';
-import 'package:PiliPlus/models/search/result.dart';
-import 'package:PiliPlus/pages/search/widgets/search_text.dart';
-import 'package:PiliPlus/pages/search_panel/controller.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
+import 'package:bili_plus/models/common/search/article_search_type.dart';
+import 'package:bili_plus/models/search/result.dart';
+import 'package:bili_plus/pages/search/widgets/search_text.dart';
+import 'package:bili_plus/pages/search_panel/controller.dart';
+import 'package:bili_plus/utils/context_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 
@@ -30,13 +30,7 @@ class SearchArticleController
     ).matchAsPrefix(keyword)?.group(2);
     if (cvid != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        Get.toNamed(
-          '/articlePage',
-          parameters: {
-            'id': cvid,
-            'type': 'read',
-          },
-        );
+        Get.toNamed('/articlePage', parameters: {'id': cvid, 'type': 'read'});
       });
     }
   }
@@ -70,25 +64,23 @@ class SearchArticleController
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: ArticleOrderType.values.map(
-                  (e) {
-                    final isCurr = e == articleOrderType.value;
-                    return SearchText(
-                      text: e.label,
-                      onTap: (_) {
-                        articleOrderType.value = e;
-                        order = e.order;
-                        onSortSearch(label: e.label);
-                      },
-                      bgColor: isCurr
-                          ? theme.colorScheme.secondaryContainer
-                          : null,
-                      textColor: isCurr
-                          ? theme.colorScheme.onSecondaryContainer
-                          : null,
-                    );
-                  },
-                ).toList(),
+                children: ArticleOrderType.values.map((e) {
+                  final isCurr = e == articleOrderType.value;
+                  return SearchText(
+                    text: e.label,
+                    onTap: (_) {
+                      articleOrderType.value = e;
+                      order = e.order;
+                      onSortSearch(label: e.label);
+                    },
+                    bgColor: isCurr
+                        ? theme.colorScheme.secondaryContainer
+                        : null,
+                    textColor: isCurr
+                        ? theme.colorScheme.onSecondaryContainer
+                        : null,
+                  );
+                }).toList(),
               ),
               const SizedBox(height: 20),
               const Text('分区', style: TextStyle(fontSize: 16)),
@@ -96,24 +88,22 @@ class SearchArticleController
               Wrap(
                 spacing: 8,
                 runSpacing: 8,
-                children: ArticleZoneType.values.map(
-                  (e) {
-                    final isCurr = e == articleZoneType!.value;
-                    return SearchText(
-                      text: e.label,
-                      onTap: (_) {
-                        articleZoneType!.value = e;
-                        onSortSearch(label: e.label);
-                      },
-                      bgColor: isCurr
-                          ? theme.colorScheme.secondaryContainer
-                          : null,
-                      textColor: isCurr
-                          ? theme.colorScheme.onSecondaryContainer
-                          : null,
-                    );
-                  },
-                ).toList(),
+                children: ArticleZoneType.values.map((e) {
+                  final isCurr = e == articleZoneType!.value;
+                  return SearchText(
+                    text: e.label,
+                    onTap: (_) {
+                      articleZoneType!.value = e;
+                      onSortSearch(label: e.label);
+                    },
+                    bgColor: isCurr
+                        ? theme.colorScheme.secondaryContainer
+                        : null,
+                    textColor: isCurr
+                        ? theme.colorScheme.onSecondaryContainer
+                        : null,
+                  );
+                }).toList(),
               ),
             ],
           ),

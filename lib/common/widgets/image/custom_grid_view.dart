@@ -17,16 +17,16 @@
 
 import 'dart:math' show min;
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/custom_layout.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/custom_layout.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart'
     hide CustomMultiChildLayout, MultiChildLayoutDelegate;
 
@@ -76,36 +76,27 @@ class CustomGridView extends StatelessWidget {
   static bool horizontalPreview = Pref.horizontalPreview;
 
   void onTap(BuildContext context, int index) {
-    final imgList = picArr.map(
-      (item) {
-        bool isLive = item.isLivePhoto;
-        return SourceModel(
-          sourceType: isLive ? SourceType.livePhoto : SourceType.networkImage,
-          url: item.url,
-          liveUrl: isLive ? item.liveUrl : null,
-          width: isLive ? item.width.toInt() : null,
-          height: isLive ? item.height.toInt() : null,
-        );
-      },
-    ).toList();
+    final imgList = picArr.map((item) {
+      bool isLive = item.isLivePhoto;
+      return SourceModel(
+        sourceType: isLive ? SourceType.livePhoto : SourceType.networkImage,
+        url: item.url,
+        liveUrl: isLive ? item.liveUrl : null,
+        width: isLive ? item.width.toInt() : null,
+        height: isLive ? item.height.toInt() : null,
+      );
+    }).toList();
     if (horizontalPreview &&
         !fullScreen &&
         !context.mediaQuerySize.isPortrait) {
       final scaffoldState = Scaffold.maybeOf(context);
       if (scaffoldState != null) {
         onViewImage?.call();
-        PageUtils.onHorizontalPreviewState(
-          scaffoldState,
-          imgList,
-          index,
-        );
+        PageUtils.onHorizontalPreviewState(scaffoldState, imgList, index);
         return;
       }
     }
-    PageUtils.imageView(
-      initialPage: index,
-      imgList: imgList,
-    );
+    PageUtils.imageView(initialPage: index, imgList: imgList);
   }
 
   static BorderRadius borderRadius(
@@ -228,11 +219,7 @@ class CustomGridView extends StatelessWidget {
                           type: PBadgeType.gray,
                         )
                       else if (item.isLongPic)
-                        const PBadge(
-                          text: '长图',
-                          right: 8,
-                          bottom: 8,
-                        ),
+                        const PBadge(text: '长图', right: 8, bottom: 8),
                     ],
                   ),
                 ),

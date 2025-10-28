@@ -1,4 +1,4 @@
-import 'package:PiliPlus/http/member.dart';
+import 'package:bili_plus/http/member.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -25,10 +25,7 @@ Future<void> showMemberReportDialog(
         title: Column(
           spacing: 4,
           children: [
-            Text(
-              '举报: $name',
-              style: const TextStyle(fontSize: 18),
-            ),
+            Text('举报: $name', style: const TextStyle(fontSize: 18)),
             Text('uid: $mid'),
           ],
         ),

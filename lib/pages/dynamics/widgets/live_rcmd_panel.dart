@@ -1,8 +1,8 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
 import 'package:flutter/material.dart';
 
 Widget liveRcmdPanel(
@@ -76,10 +76,7 @@ Widget liveRcmdPanel(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
-                      colors: <Color>[
-                        Colors.transparent,
-                        Colors.black45,
-                      ],
+                      colors: <Color>[Colors.transparent, Colors.black45],
                     ),
                     borderRadius: BorderRadius.vertical(
                       bottom: StyleString.imgRadius,

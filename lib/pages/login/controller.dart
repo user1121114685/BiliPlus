@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/radio_widget.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/login.dart';
-import 'package:PiliPlus/models/common/account_type.dart';
-import 'package:PiliPlus/models/login/model.dart';
-import 'package:PiliPlus/pages/login/geetest/geetest_webview_dialog.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/radio_widget.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/login.dart';
+import 'package:bili_plus/models/common/account_type.dart';
+import 'package:bili_plus/models/login/model.dart';
+import 'package:bili_plus/pages/login/geetest/geetest_webview_dialog.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
@@ -119,11 +119,7 @@ class LoginPageController extends GetxController
   }
 
   // 申请极验验证码
-  void getCaptcha(
-    String geeGt,
-    String geeChallenge,
-    VoidCallback onSuccess,
-  ) {
+  void getCaptcha(String geeGt, String geeChallenge, VoidCallback onSuccess) {
     void updateCaptchaData(Map json) {
       captchaData
         ..validate = json['geetest_validate']
@@ -244,9 +240,7 @@ class LoginPageController extends GetxController
       var result = await Request().get(
         "/x/member/web/account",
         options: Options(
-          headers: {
-            "cookie": cookieTextController.text,
-          },
+          headers: {"cookie": cookieTextController.text},
           extra: {'account': AnonymousAccount()},
         ),
       );
@@ -354,10 +348,7 @@ class LoginPageController extends GetxController
               horizontal: 16,
               vertical: 12,
             ),
-            title: const Text(
-              "本次登录需要验证您的手机号",
-              textAlign: TextAlign.center,
-            ),
+            title: const Text("本次登录需要验证您的手机号", textAlign: TextAlign.center),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -409,31 +400,27 @@ class LoginPageController extends GetxController
                     return;
                   }
 
-                  getCaptcha(
-                    geeGt,
-                    geeChallenge,
-                    () async {
-                      var safeCenterSendSmsCodeRes =
-                          await LoginHttp.safeCenterSmsCode(
-                            tmpCode: currentUri.queryParameters['tmp_token']!,
-                            geeChallenge: geeChallenge,
-                            geeSeccode: captchaData.seccode,
-                            geeValidate: captchaData.validate,
-                            recaptchaToken: captchaData.token,
-                            refererUrl: url,
-                          );
-                      if (!safeCenterSendSmsCodeRes['status']) {
-                        SmartDialog.showToast(
-                          "发送短信验证码失败，请尝试其它登录方式\n"
-                          "(${safeCenterSendSmsCodeRes['code']}) ${safeCenterSendSmsCodeRes['msg']}",
+                  getCaptcha(geeGt, geeChallenge, () async {
+                    var safeCenterSendSmsCodeRes =
+                        await LoginHttp.safeCenterSmsCode(
+                          tmpCode: currentUri.queryParameters['tmp_token']!,
+                          geeChallenge: geeChallenge,
+                          geeSeccode: captchaData.seccode,
+                          geeValidate: captchaData.validate,
+                          recaptchaToken: captchaData.token,
+                          refererUrl: url,
                         );
-                        return;
-                      }
-                      SmartDialog.showToast("短信验证码已发送，请查收");
-                      captchaKey =
-                          safeCenterSendSmsCodeRes['data']['captcha_key'];
-                    },
-                  );
+                    if (!safeCenterSendSmsCodeRes['status']) {
+                      SmartDialog.showToast(
+                        "发送短信验证码失败，请尝试其它登录方式\n"
+                        "(${safeCenterSendSmsCodeRes['code']}) ${safeCenterSendSmsCodeRes['msg']}",
+                      );
+                      return;
+                    }
+                    SmartDialog.showToast("短信验证码已发送，请查收");
+                    captchaKey =
+                        safeCenterSendSmsCodeRes['data']['captcha_key'];
+                  });
                 },
               ),
               TextButton(
@@ -730,9 +717,7 @@ class LoginPageController extends GetxController
     final selectAccount = List.of(Accounts.accountMode);
     final options = {
       AnonymousAccount(): '0',
-      ...Accounts.account.toMap().map(
-        (k, v) => MapEntry(v, k as String),
-      ),
+      ...Accounts.account.toMap().map((k, v) => MapEntry(v, k as String)),
     };
     return showDialog(
       context: context,
@@ -740,11 +725,7 @@ class LoginPageController extends GetxController
         title: const Text('选择账号mid, 为0时使用匿名'),
         titlePadding: const EdgeInsets.only(left: 22, top: 16, right: 22),
         contentPadding: const EdgeInsets.symmetric(vertical: 5),
-        actionsPadding: const EdgeInsets.only(
-          left: 16,
-          right: 16,
-          bottom: 10,
-        ),
+        actionsPadding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
         content: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -772,9 +753,7 @@ class LoginPageController extends GetxController
             onPressed: Get.back,
             child: Text(
               '取消',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.outline,
-              ),
+              style: TextStyle(color: Theme.of(context).colorScheme.outline),
             ),
           ),
           TextButton(

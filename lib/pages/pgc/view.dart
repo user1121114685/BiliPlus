@@ -1,35 +1,32 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/button/more_btn.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/fav_type.dart';
-import 'package:PiliPlus/models/common/home_tab_type.dart';
-import 'package:PiliPlus/models_new/fav/fav_pgc/list.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_index_result/list.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_timeline/result.dart';
-import 'package:PiliPlus/pages/common/common_page.dart';
-import 'package:PiliPlus/pages/pgc/controller.dart';
-import 'package:PiliPlus/pages/pgc/widgets/pgc_card_v.dart';
-import 'package:PiliPlus/pages/pgc/widgets/pgc_card_v_timeline.dart';
-import 'package:PiliPlus/pages/pgc_index/controller.dart';
-import 'package:PiliPlus/pages/pgc_index/view.dart';
-import 'package:PiliPlus/pages/pgc_index/widgets/pgc_card_v_pgc_index.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/button/more_btn.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/fav_type.dart';
+import 'package:bili_plus/models/common/home_tab_type.dart';
+import 'package:bili_plus/models_new/fav/fav_pgc/list.dart';
+import 'package:bili_plus/models_new/pgc/pgc_index_result/list.dart';
+import 'package:bili_plus/models_new/pgc/pgc_timeline/result.dart';
+import 'package:bili_plus/pages/common/common_page.dart';
+import 'package:bili_plus/pages/pgc/controller.dart';
+import 'package:bili_plus/pages/pgc/widgets/pgc_card_v.dart';
+import 'package:bili_plus/pages/pgc/widgets/pgc_card_v_timeline.dart';
+import 'package:bili_plus/pages/pgc_index/controller.dart';
+import 'package:bili_plus/pages/pgc_index/view.dart';
+import 'package:bili_plus/pages/pgc_index/widgets/pgc_card_v_pgc_index.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class PgcPage extends StatefulWidget {
-  const PgcPage({
-    super.key,
-    required this.tabType,
-  });
+  const PgcPage({super.key, required this.tabType});
 
   final HomeTabType tabType;
 
@@ -99,10 +96,7 @@ class _PgcPageState extends CommonPageState<PgcPage, PgcController>
                       Row(
                         children: [
                           const SizedBox(width: 16),
-                          Text(
-                            '追番时间表',
-                            style: theme.textTheme.titleMedium,
-                          ),
+                          Text('追番时间表', style: theme.textTheme.titleMedium),
                           const SizedBox(width: 16),
                           Expanded(
                             child: TabBar(
@@ -133,22 +127,12 @@ class _PgcPageState extends CommonPageState<PgcPage, PgcController>
                                   ).labelStyle?.copyWith(fontSize: 14) ??
                                   const TextStyle(fontSize: 14),
                               dividerColor: Colors.transparent,
-                              tabs: response.map(
-                                (item) {
-                                  return Tab(
-                                    text:
-                                        '${item.date} ${item.isToday == 1 ? '今天' : '周${const [
-                                                '一',
-                                                '二',
-                                                '三',
-                                                '四',
-                                                '五',
-                                                '六',
-                                                '日',
-                                              ][item.dayOfWeek! - 1]}'}',
-                                  );
-                                },
-                              ).toList(),
+                              tabs: response.map((item) {
+                                return Tab(
+                                  text:
+                                      '${item.date} ${item.isToday == 1 ? '今天' : '周${const ['一', '二', '三', '四', '五', '六', '日'][item.dayOfWeek! - 1]}'}',
+                                );
+                              }).toList(),
                             ),
                           ),
                         ],
@@ -195,10 +179,7 @@ class _PgcPageState extends CommonPageState<PgcPage, PgcController>
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         alignment: Alignment.center,
-        child: Text(
-          errMsg ?? '',
-          textAlign: TextAlign.center,
-        ),
+        child: Text(errMsg ?? '', textAlign: TextAlign.center),
       ),
     ),
   };
@@ -211,40 +192,24 @@ class _PgcPageState extends CommonPageState<PgcPage, PgcController>
         right: StyleString.safeSpace,
         bottom: 100,
       ),
-      sliver: Obx(
-        () => _buildRcmdBody(controller.loadingState.value),
-      ),
+      sliver: Obx(() => _buildRcmdBody(controller.loadingState.value)),
     ),
   ];
 
   Widget _buildRcmdTitle(ThemeData theme) => SliverToBoxAdapter(
     child: Padding(
-      padding: const EdgeInsets.only(
-        top: 10,
-        bottom: 10,
-        left: 16,
-        right: 10,
-      ),
+      padding: const EdgeInsets.only(top: 10, bottom: 10, left: 16, right: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            '推荐',
-            style: theme.textTheme.titleMedium,
-          ),
+          Text('推荐', style: theme.textTheme.titleMedium),
           moreTextButton(
             padding: const EdgeInsets.symmetric(vertical: 2),
             onTap: () {
               if (widget.tabType == HomeTabType.bangumi) {
                 Get.to(const PgcIndexPage());
               } else {
-                List<String> titles = const [
-                  '全部',
-                  '电影',
-                  '电视剧',
-                  '纪录片',
-                  '综艺',
-                ];
+                List<String> titles = const ['全部', '电影', '电视剧', '纪录片', '综艺'];
                 List<int> types = const [102, 2, 5, 3, 7];
                 Get.to(
                   Scaffold(
@@ -367,10 +332,7 @@ class _PgcPageState extends CommonPageState<PgcPage, PgcController>
             ..followPage = 1
             ..followEnd = false
             ..queryPgcFollow(),
-          icon: const Icon(
-            Icons.refresh,
-            size: 20,
-          ),
+          icon: const Icon(Icons.refresh, size: 20),
         ),
         Obx(
           () => controller.accountService.isLogin.value
@@ -416,9 +378,7 @@ class _PgcPageState extends CommonPageState<PgcPage, PgcController>
                           ? StyleString.safeSpace
                           : 0,
                     ),
-                    child: PgcCardV(
-                      item: response[index],
-                    ),
+                    child: PgcCardV(item: response[index]),
                   );
                 },
               )
@@ -430,10 +390,7 @@ class _PgcPageState extends CommonPageState<PgcPage, PgcController>
       Error(:var errMsg) => Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         alignment: Alignment.center,
-        child: Text(
-          errMsg ?? '',
-          textAlign: TextAlign.center,
-        ),
+        child: Text(errMsg ?? '', textAlign: TextAlign.center),
       ),
     };
   }

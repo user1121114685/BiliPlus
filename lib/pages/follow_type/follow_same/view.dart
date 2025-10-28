@@ -1,6 +1,6 @@
-import 'package:PiliPlus/pages/follow_type/follow_same/controller.dart';
-import 'package:PiliPlus/pages/follow_type/view.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/pages/follow_type/follow_same/controller.dart';
+import 'package:bili_plus/pages/follow_type/view.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,11 +20,9 @@ class _FollowSamePageState extends FollowTypePageState<FollowSamePage> {
 
   @override
   PreferredSizeWidget get appBar => AppBar(
-    title: Obx(
-      () {
-        final name = controller.name.value;
-        return Text('${name == null ? '' : '我与$name的'}共同关注');
-      },
-    ),
+    title: Obx(() {
+      final name = controller.name.value;
+      return Text('${name == null ? '' : '我与$name的'}共同关注');
+    }),
   );
 }

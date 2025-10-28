@@ -1,6 +1,6 @@
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/follow/list.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/follow/list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,10 +27,7 @@ class FollowTypeItem extends StatelessWidget {
         onLongPress: onLongPress,
         onSecondaryTap: onSecondaryTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 10,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           child: Row(
             spacing: 10,
             children: [
@@ -45,10 +42,7 @@ class FollowTypeItem extends StatelessWidget {
                   spacing: 3,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      item.uname!,
-                      style: const TextStyle(fontSize: 14),
-                    ),
+                    Text(item.uname!, style: const TextStyle(fontSize: 14)),
                     if (item.sign case final sign?)
                       Text(
                         sign,

@@ -16,7 +16,7 @@ import 'dart:ui'
         SemanticsInputType,
         TextBox;
 
-import 'package:PiliPlus/common/widgets/text_field/controller.dart';
+import 'package:bili_plus/common/widgets/text_field/controller.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -2211,9 +2211,7 @@ class RenderEditable extends RenderBox
 
     final TextPosition? toPosition = to == null
         ? null
-        : _textPainter.getPositionForOffset(
-            globalToLocal(to) - _paintOffset,
-          );
+        : _textPainter.getPositionForOffset(globalToLocal(to) - _paintOffset);
 
     int baseOffset = fromPosition.offset;
     int extentOffset = toPosition?.offset ?? fromPosition.offset;
@@ -2278,9 +2276,7 @@ class RenderEditable extends RenderBox
     final TextSelection fromWord = getWordAtOffset(fromPosition);
     final TextPosition toPosition = to == null
         ? fromPosition
-        : _textPainter.getPositionForOffset(
-            globalToLocal(to) - _paintOffset,
-          );
+        : _textPainter.getPositionForOffset(globalToLocal(to) - _paintOffset);
     final TextSelection toWord = toPosition == fromPosition
         ? fromWord
         : getWordAtOffset(toPosition);
@@ -2526,9 +2522,7 @@ class RenderEditable extends RenderBox
       ..layout(minWidth: minWidth, maxWidth: maxWidth);
     final double width = forceLine
         ? constraints.maxWidth
-        : constraints.constrainWidth(
-            _textIntrinsics.size.width + _caretMargin,
-          );
+        : constraints.constrainWidth(_textIntrinsics.size.width + _caretMargin);
     return Size(
       width,
       constraints.constrainHeight(_preferredHeight(constraints.maxWidth)),

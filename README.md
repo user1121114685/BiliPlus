@@ -7,13 +7,13 @@
 <div align="center">
     <h1>PiliPlus</h1>
 <div align="center">
-    
-![GitHub repo size](https://img.shields.io/github/repo-size/bggRGjQaUbCoE/PiliPlus) 
-![GitHub Repo stars](https://img.shields.io/github/stars/bggRGjQaUbCoE/PiliPlus) 
-![GitHub all releases](https://img.shields.io/github/downloads/bggRGjQaUbCoE/PiliPlus/total) 
+
+![GitHub repo size](https://img.shields.io/github/repo-size/bggRGjQaUbCoE/PiliPlus)
+![GitHub Repo stars](https://img.shields.io/github/stars/bggRGjQaUbCoE/PiliPlus)
+![GitHub all releases](https://img.shields.io/github/downloads/bggRGjQaUbCoE/PiliPlus/total)
 </div>
     <p>使用Flutter开发的BiliBili第三方客户端</p>
-    
+
 <img src="assets/screenshots/510shots_so.png" width="32%" alt="home" />
 <img src="assets/screenshots/174shots_so.png" width="32%" alt="home" />
 <img src="assets/screenshots/850shots_so.png" width="32%" alt="home" />
@@ -148,62 +148,62 @@
 - [x] 游客模式（推荐视为未登录）
 
 - [x] 用户相关
-  - [x] 粉丝、关注用户、拉黑用户查看
-  - [x] 用户主页查看
-  - [x] 关注/取关用户
-  - [ ] 离线缓存
-  - [x] 稍后再看
-  - [x] 观看记录
-  - [x] 我的收藏
-  - [x] 站内私信
-  
+    - [x] 粉丝、关注用户、拉黑用户查看
+    - [x] 用户主页查看
+    - [x] 关注/取关用户
+    - [ ] 离线缓存
+    - [x] 稍后再看
+    - [x] 观看记录
+    - [x] 我的收藏
+    - [x] 站内私信
+
 - [x] 动态相关
-  - [x] 全部、投稿、番剧分类查看
-  - [x] 动态评论查看
-  - [x] 动态评论回复功能
+    - [x] 全部、投稿、番剧分类查看
+    - [x] 动态评论查看
+    - [x] 动态评论回复功能
 
 - [x] 视频播放相关
-  - [x] 双击快进/快退
-  - [x] 双击播放/暂停
-  - [x] 垂直方向调节亮度/音量
-  - [x] 垂直方向上滑全屏、下滑退出全屏
-  - [x] 水平方向手势快进/快退
-  - [x] 全屏方向设置
-  - [x] 倍速选择/长按2倍速
-  - [x] 硬件加速（视机型而定）
-  - [x] 画质选择（高清画质未解锁）
-  - [x] 音质选择（视视频而定）
-  - [x] 解码格式选择（视视频而定）
-  - [x] 弹幕
-  - [x] 字幕
-  - [x] 记忆播放
-  - [x] 视频比例：高度/宽度适应、填充、包含等
-     
+    - [x] 双击快进/快退
+    - [x] 双击播放/暂停
+    - [x] 垂直方向调节亮度/音量
+    - [x] 垂直方向上滑全屏、下滑退出全屏
+    - [x] 水平方向手势快进/快退
+    - [x] 全屏方向设置
+    - [x] 倍速选择/长按2倍速
+    - [x] 硬件加速（视机型而定）
+    - [x] 画质选择（高清画质未解锁）
+    - [x] 音质选择（视视频而定）
+    - [x] 解码格式选择（视视频而定）
+    - [x] 弹幕
+    - [x] 字幕
+    - [x] 记忆播放
+    - [x] 视频比例：高度/宽度适应、填充、包含等
+
 - [x] 搜索相关
-  - [x] 热搜
-  - [x] 搜索历史
-  - [x] 默认搜索词
-  - [x] 投稿、番剧、直播间、用户搜索
-  - [x] 视频搜索排序、按时长筛选
-    
+    - [x] 热搜
+    - [x] 搜索历史
+    - [x] 默认搜索词
+    - [x] 投稿、番剧、直播间、用户搜索
+    - [x] 视频搜索排序、按时长筛选
+
 - [x] 视频详情页相关
-  - [x] 视频选集(分p)切换
-  - [x] 点赞、投币、收藏/取消收藏
-  - [x] 相关视频查看
-  - [x] 评论用户身份标识
-  - [x] 评论(排序)查看、二楼评论查看
-  - [x] 主楼、二楼评论回复功能
-  - [x] 评论点赞
-  - [x] 评论笔记图片查看、保存
+    - [x] 视频选集(分p)切换
+    - [x] 点赞、投币、收藏/取消收藏
+    - [x] 相关视频查看
+    - [x] 评论用户身份标识
+    - [x] 评论(排序)查看、二楼评论查看
+    - [x] 主楼、二楼评论回复功能
+    - [x] 评论点赞
+    - [x] 评论笔记图片查看、保存
 
 - [x] 设置相关
-  - [x] 画质、音质、解码方式预设      
-  - [x] 图片质量设定
-  - [x] 主题模式：亮色/暗色/跟随系统
-  - [x] 震动反馈(可选)
-  - [x] 高帧率
-  - [x] 自动全屏
-  - [x] 横屏适配
+    - [x] 画质、音质、解码方式预设
+    - [x] 图片质量设定
+    - [x] 主题模式：亮色/暗色/跟随系统
+    - [x] 震动反馈(可选)
+    - [x] 高帧率
+    - [x] 自动全屏
+    - [x] 横屏适配
 - [ ] 等等
 
 <br/>

@@ -1,33 +1,33 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/dialog/report.dart';
-import 'package:PiliPlus/common/widgets/image/custom_grid_view.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/pendant_avatar.dart';
-import 'package:PiliPlus/common/widgets/text/text.dart' as custom_text;
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/dialog/report.dart';
+import 'package:bili_plus/common/widgets/image/custom_grid_view.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/pendant_avatar.dart';
+import 'package:bili_plus/common/widgets/text/text.dart' as custom_text;
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show ReplyInfo, ReplyControl, Content, Url;
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/vote.dart';
-import 'package:PiliPlus/pages/save_panel/view.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/reply/widgets/zan_grpc.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/url_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/pages/dynamics/widgets/vote.dart';
+import 'package:bili_plus/pages/save_panel/view.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/reply/widgets/zan_grpc.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/url_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:fixnum/fixnum.dart';
@@ -184,10 +184,7 @@ class ReplyItemGrpc extends StatelessWidget {
   );
 
   Widget content(BuildContext context, ThemeData theme) {
-    final padding = EdgeInsets.only(
-      left: replyLevel == 0 ? 6 : 45,
-      right: 6,
-    );
+    final padding = EdgeInsets.only(left: replyLevel == 0 ? 6 : 45, right: 6);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
@@ -516,9 +513,7 @@ class ReplyItemGrpc extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: childReply.member.name,
-                            style: TextStyle(
-                              color: theme.colorScheme.primary,
-                            ),
+                            style: TextStyle(color: theme.colorScheme.primary),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 feedBack();
@@ -579,9 +574,7 @@ class ReplyItemGrpc extends StatelessWidget {
                           ),
                         TextSpan(
                           text: '共${replyItem.count}条回复',
-                          style: TextStyle(
-                            color: theme.colorScheme.primary,
-                          ),
+                          style: TextStyle(color: theme.colorScheme.primary),
                         ),
                       ],
                     ),
@@ -650,9 +643,7 @@ class ReplyItemGrpc extends StatelessWidget {
           ),
         TextSpan(
           text: isCv ? '[笔记] ' : url.title,
-          style: TextStyle(
-            color: theme.colorScheme.primary,
-          ),
+          style: TextStyle(color: theme.colorScheme.primary),
           recognizer: TapGestureRecognizer()
             ..onTap = () {
               if (url.appUrlSchema.isEmpty) {
@@ -671,10 +662,7 @@ class ReplyItemGrpc extends StatelessWidget {
                   if (cvid != null) {
                     Get.toNamed(
                       '/articlePage',
-                      parameters: {
-                        'id': cvid,
-                        'type': 'read',
-                      },
+                      parameters: {'id': cvid, 'type': 'read'},
                     );
                     return;
                   }
@@ -928,9 +916,7 @@ class ReplyItemGrpc extends StatelessWidget {
                           onPressed: () => Get.back(result: false),
                           child: Text(
                             '取消',
-                            style: TextStyle(
-                              color: theme.colorScheme.outline,
-                            ),
+                            style: TextStyle(color: theme.colorScheme.outline),
                           ),
                         ),
                         TextButton(
@@ -966,34 +952,34 @@ class ReplyItemGrpc extends StatelessWidget {
             ListTile(
               onTap: () {
                 Get.back();
-                autoWrapReportDialog(
-                  context,
-                  ReportOptions.commentReport,
-                  (reasonType, reasonDesc, banUid) async {
-                    final res = await Request().post(
-                      '/x/v2/reply/report',
-                      data: {
-                        'add_blacklist': banUid,
-                        'csrf': Accounts.main.csrf,
-                        'gaia_source': 'main_h5',
-                        'oid': item.oid,
-                        'platform': 'android',
-                        'reason': reasonType,
-                        'rpid': item.id,
-                        'scene': 'main',
-                        'type': 1,
-                        if (reasonType == 0) 'content': reasonDesc!,
-                      },
-                      options: Options(
-                        contentType: Headers.formUrlEncodedContentType,
-                      ),
-                    );
-                    if (res.data['code'] == 0) {
-                      onDelete();
-                    }
-                    return res.data as Map;
-                  },
-                );
+                autoWrapReportDialog(context, ReportOptions.commentReport, (
+                  reasonType,
+                  reasonDesc,
+                  banUid,
+                ) async {
+                  final res = await Request().post(
+                    '/x/v2/reply/report',
+                    data: {
+                      'add_blacklist': banUid,
+                      'csrf': Accounts.main.csrf,
+                      'gaia_source': 'main_h5',
+                      'oid': item.oid,
+                      'platform': 'android',
+                      'reason': reasonType,
+                      'rpid': item.id,
+                      'scene': 'main',
+                      'type': 1,
+                      if (reasonType == 0) 'content': reasonDesc!,
+                    },
+                    options: Options(
+                      contentType: Headers.formUrlEncodedContentType,
+                    ),
+                  );
+                  if (res.data['code'] == 0) {
+                    onDelete();
+                  }
+                  return res.data as Map;
+                });
               },
               minLeadingWidth: 0,
               leading: Icon(Icons.error_outline, color: errorColor, size: 19),

@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/services/logger.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/services/logger.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -73,9 +73,7 @@ class _LogsPageState extends State<LogsPage> {
           .map((l) {
             if (l.startsWith("Crash occurred on")) {
               try {
-                date = DateTime.parse(
-                  l.split("Crash occurred on")[1].trim(),
-                );
+                date = DateTime.parse(l.split("Crash occurred on")[1].trim());
               } catch (e) {
                 if (kDebugMode) debugPrint(e.toString());
                 date = l.toString();
@@ -96,18 +94,18 @@ class _LogsPageState extends State<LogsPage> {
   void copyLogs() {
     Utils.copyText('```\n$fileContent\n```', needToast: false);
     if (mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('复制成功')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('复制成功')));
     }
   }
 
   Future<void> clearLogsHandle() async {
     if (await LoggerUtils.clearLogs()) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('已清空')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(const SnackBar(content: Text('已清空')));
         logsContent.clear();
         setState(() {});
       }
@@ -147,18 +145,12 @@ class _LogsPageState extends State<LogsPage> {
                 value: 'log',
                 child: Text('${enableLog ? '关闭' : '开启'}日志'),
               ),
-              const PopupMenuItem<String>(
-                value: 'copy',
-                child: Text('复制日志'),
-              ),
+              const PopupMenuItem<String>(value: 'copy', child: Text('复制日志')),
               const PopupMenuItem<String>(
                 value: 'feedback',
                 child: Text('错误反馈'),
               ),
-              const PopupMenuItem<String>(
-                value: 'clear',
-                child: Text('清空日志'),
-              ),
+              const PopupMenuItem<String>(value: 'clear', child: Text('清空日志')),
             ],
           ),
           const SizedBox(width: 6),
@@ -208,9 +200,7 @@ class _LogsPageState extends State<LogsPage> {
                               if (context.mounted) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text(
-                                      '已将 ${log.date} 复制至剪贴板',
-                                    ),
+                                    content: Text('已将 ${log.date} 复制至剪贴板'),
                                   ),
                                 );
                               }
@@ -230,11 +220,8 @@ class _LogsPageState extends State<LogsPage> {
                   ),
                 );
               },
-              separatorBuilder: (context, index) => const Divider(
-                indent: 12,
-                endIndent: 12,
-                height: 24,
-              ),
+              separatorBuilder: (context, index) =>
+                  const Divider(indent: 12, endIndent: 12, height: 24),
             )
           : scrollErrorWidget(),
     );

@@ -1,15 +1,15 @@
 import 'dart:io';
 import 'dart:ui';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/pages/login/controller.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/pages/login/controller.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -106,9 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: PrettyQrView.data(
                   data: response.url,
                   decoration: const PrettyQrDecoration(
-                    shape: PrettyQrSquaresSymbol(
-                      color: Colors.black87,
-                    ),
+                    shape: PrettyQrSquaresSymbol(color: Colors.black87),
                   ),
                 ),
               ),
@@ -126,29 +124,24 @@ class _LoginPageState extends State<LoginPage> {
             style: TextStyle(color: theme.colorScheme.secondaryFixedDim),
           ),
         ),
-        Obx(
-          () {
-            final url = _loginPageCtr.codeInfo.value.dataOrNull?.url ?? '';
-            return GestureDetector(
-              onTap: () => Utils.copyText(
+        Obx(() {
+          final url = _loginPageCtr.codeInfo.value.dataOrNull?.url ?? '';
+          return GestureDetector(
+            onTap: () => Utils.copyText(
+              url,
+              toastText: '已复制到剪贴板，可粘贴至已登录的app私信处发送，然后点击已发送的链接打开',
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Text(
                 url,
-                toastText: '已复制到剪贴板，可粘贴至已登录的app私信处发送，然后点击已发送的链接打开',
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 20,
-                ),
-                child: Text(
-                  url,
-                  style: theme.textTheme.labelSmall!.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
-                  ),
+                style: theme.textTheme.labelSmall!.copyWith(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        }),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Text(
@@ -279,9 +272,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Text("试试扫码、手机号登录，或选择"),
                         ),
                         ListTile(
-                          title: const Text(
-                            '找回密码（手机版）',
-                          ),
+                          title: const Text('找回密码（手机版）'),
                           leading: const Icon(Icons.smartphone_outlined),
                           subtitle: const Text(
                             'https://passport.bilibili.com/h5-app/passport/login/findPassword',
@@ -300,9 +291,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                         ),
                         ListTile(
-                          title: const Text(
-                            '找回密码（电脑版）',
-                          ),
+                          title: const Text('找回密码（电脑版）'),
                           leading: const Icon(Icons.desktop_windows_outlined),
                           subtitle: const Text(
                             'https://passport.bilibili.com/pc/passport/findPassword',

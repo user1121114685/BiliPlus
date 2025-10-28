@@ -1,37 +1,37 @@
 import 'dart:convert';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/login.dart';
-import 'package:PiliPlus/http/ua_type.dart';
-import 'package:PiliPlus/models/common/account_type.dart';
-import 'package:PiliPlus/models/common/video/video_type.dart';
-import 'package:PiliPlus/models/home/rcmd/result.dart';
-import 'package:PiliPlus/models/model_hot_video_item.dart';
-import 'package:PiliPlus/models/model_rec_video_item.dart';
-import 'package:PiliPlus/models/pgc_lcf.dart';
-import 'package:PiliPlus/models/video/play/url.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_rank/pgc_rank_item_model.dart';
-import 'package:PiliPlus/models_new/popular/popular_precious/data.dart';
-import 'package:PiliPlus/models_new/popular/popular_series_list/list.dart';
-import 'package:PiliPlus/models_new/popular/popular_series_one/data.dart';
-import 'package:PiliPlus/models_new/triple/pgc_triple.dart';
-import 'package:PiliPlus/models_new/triple/ugc_triple.dart';
-import 'package:PiliPlus/models_new/video/video_ai_conclusion/data.dart';
-import 'package:PiliPlus/models_new/video/video_detail/data.dart';
-import 'package:PiliPlus/models_new/video/video_detail/video_detail_response.dart';
-import 'package:PiliPlus/models_new/video/video_note_list/data.dart';
-import 'package:PiliPlus/models_new/video/video_play_info/data.dart';
-import 'package:PiliPlus/models_new/video/video_relation/data.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/global_data.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/recommend_filter.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/login.dart';
+import 'package:bili_plus/http/ua_type.dart';
+import 'package:bili_plus/models/common/account_type.dart';
+import 'package:bili_plus/models/common/video/video_type.dart';
+import 'package:bili_plus/models/home/rcmd/result.dart';
+import 'package:bili_plus/models/model_hot_video_item.dart';
+import 'package:bili_plus/models/model_rec_video_item.dart';
+import 'package:bili_plus/models/pgc_lcf.dart';
+import 'package:bili_plus/models/video/play/url.dart';
+import 'package:bili_plus/models_new/pgc/pgc_rank/pgc_rank_item_model.dart';
+import 'package:bili_plus/models_new/popular/popular_precious/data.dart';
+import 'package:bili_plus/models_new/popular/popular_series_list/list.dart';
+import 'package:bili_plus/models_new/popular/popular_series_one/data.dart';
+import 'package:bili_plus/models_new/triple/pgc_triple.dart';
+import 'package:bili_plus/models_new/triple/ugc_triple.dart';
+import 'package:bili_plus/models_new/video/video_ai_conclusion/data.dart';
+import 'package:bili_plus/models_new/video/video_detail/data.dart';
+import 'package:bili_plus/models_new/video/video_detail/video_detail_response.dart';
+import 'package:bili_plus/models_new/video/video_note_list/data.dart';
+import 'package:bili_plus/models_new/video/video_play_info/data.dart';
+import 'package:bili_plus/models_new/video/video_relation/data.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/global_data.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/recommend_filter.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -219,10 +219,7 @@ class VideoHttp {
     });
 
     try {
-      var res = await Request().get(
-        videoType.api,
-        queryParameters: params,
-      );
+      var res = await Request().get(videoType.api, queryParameters: params);
 
       if (res.data['code'] == 0) {
         late PlayUrlModel data;
@@ -290,10 +287,7 @@ class VideoHttp {
   }) async {
     var res = await Request().get(
       Api.videoRelation,
-      queryParameters: {
-        'aid': IdUtils.bv2av(bvid),
-        'bvid': bvid,
-      },
+      queryParameters: {'aid': IdUtils.bv2av(bvid), 'bvid': bvid},
     );
     if (res.data['code'] == 0) {
       return Success(VideoRelation.fromJson(res.data['data']));
@@ -364,10 +358,7 @@ class VideoHttp {
   static Future pgcTriple({dynamic epId, required dynamic seasonId}) async {
     var res = await Request().post(
       Api.pgcTriple,
-      data: {
-        'ep_id': epId,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'ep_id': epId, 'csrf': Accounts.main.csrf},
       options: Options(
         contentType: Headers.formUrlEncodedContentType,
         headers: {
@@ -418,10 +409,7 @@ class VideoHttp {
   static Future likeVideo({required String bvid, required bool type}) async {
     var res = await Request().post(
       Api.likeVideo,
-      data: {
-        'aid': IdUtils.bv2av(bvid).toString(),
-        'like': type ? '0' : '1',
-      },
+      data: {'aid': IdUtils.bv2av(bvid).toString(), 'like': type ? '0' : '1'},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -627,32 +615,18 @@ class VideoHttp {
     }
   }
 
-  static Future roomEntryAction({
-    roomId,
-  }) async {
+  static Future roomEntryAction({roomId}) async {
     await Request().post(
       Api.roomEntryAction,
-      queryParameters: {
-        'csrf': Accounts.heartbeat.csrf,
-      },
-      data: {
-        'room_id': roomId,
-        'platform': 'pc',
-      },
+      queryParameters: {'csrf': Accounts.heartbeat.csrf},
+      data: {'room_id': roomId, 'platform': 'pc'},
     );
   }
 
-  static Future historyReport({
-    aid,
-    type,
-  }) async {
+  static Future historyReport({aid, type}) async {
     await Request().post(
       Api.historyReport,
-      data: {
-        'aid': ?aid,
-        'type': ?type,
-        'csrf': Accounts.heartbeat.csrf,
-      },
+      data: {'aid': ?aid, 'type': ?type, 'csrf': Accounts.heartbeat.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
   }
@@ -706,10 +680,7 @@ class VideoHttp {
   static Future pgcAdd({int? seasonId}) async {
     var res = await Request().post(
       Api.pgcAdd,
-      data: {
-        'season_id': seasonId,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'season_id': seasonId, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -733,10 +704,7 @@ class VideoHttp {
   static Future pgcDel({int? seasonId}) async {
     var res = await Request().post(
       Api.pgcDel,
-      data: {
-        'season_id': seasonId,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'season_id': seasonId, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -767,9 +735,7 @@ class VideoHttp {
         'status': status,
         'csrf': Accounts.main.csrf,
       },
-      options: Options(
-        contentType: Headers.formUrlEncodedContentType,
-      ),
+      options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     return {
       'status': res.data['code'] == 0,
@@ -783,11 +749,7 @@ class VideoHttp {
   static Future onlineTotal({int? aid, String? bvid, int? cid}) async {
     var res = await Request().get(
       Api.onlineTotal,
-      queryParameters: {
-        'aid': aid,
-        'bvid': bvid,
-        'cid': cid,
-      },
+      queryParameters: {'aid': aid, 'bvid': bvid, 'cid': cid},
     );
     if (res.data['code'] == 0) {
       return {'status': true, 'data': res.data['data']['total']};
@@ -796,11 +758,7 @@ class VideoHttp {
     }
   }
 
-  static Future aiConclusion({
-    String? bvid,
-    int? cid,
-    int? upMid,
-  }) async {
+  static Future aiConclusion({String? bvid, int? cid, int? upMid}) async {
     final params = await WbiSign.makSign({
       'bvid': bvid,
       'cid': cid,
@@ -835,10 +793,7 @@ class VideoHttp {
       }),
     );
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-        'data': PlayInfoData.fromJson(res.data['data']),
-      };
+      return {'status': true, 'data': PlayInfoData.fromJson(res.data['data'])};
     } else {
       return {'status': false, 'msg': res.data['message']};
     }
@@ -899,10 +854,7 @@ class VideoHttp {
   ) async {
     var res = await Request().get(
       Api.getRankApi,
-      queryParameters: await WbiSign.makSign({
-        'rid': rid,
-        'type': 'all',
-      }),
+      queryParameters: await WbiSign.makSign({'rid': rid, 'type': 'all'}),
     );
     if (res.data['code'] == 0) {
       List<HotVideoItemModel> list = <HotVideoItemModel>[];
@@ -998,9 +950,7 @@ class VideoHttp {
   popularSeriesList() async {
     var res = await Request().get(
       Api.popularSeriesList,
-      queryParameters: await WbiSign.makSign({
-        'web_location': 333.934,
-      }),
+      queryParameters: await WbiSign.makSign({'web_location': 333.934}),
     );
     if (res.data['code'] == 0) {
       return Success(

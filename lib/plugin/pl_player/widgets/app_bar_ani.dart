@@ -1,4 +1,4 @@
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
 import 'package:flutter/material.dart';
 
 class AppBarAni extends StatelessWidget {
@@ -18,35 +18,23 @@ class AppBarAni extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SlideTransition(
-      position:
-          Tween<Offset>(
-            begin: isTop ? const Offset(0, -1) : const Offset(0, 1.2),
-            end: Offset.zero,
-          ).animate(
-            CurvedAnimation(
-              parent: controller,
-              curve: Curves.linear,
-            ),
-          ),
+      position: Tween<Offset>(
+        begin: isTop ? const Offset(0, -1) : const Offset(0, 1.2),
+        end: Offset.zero,
+      ).animate(CurvedAnimation(parent: controller, curve: Curves.linear)),
       child: DecoratedBox(
         decoration: BoxDecoration(
           gradient: isTop
               ? const LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
-                  colors: <Color>[
-                    Colors.transparent,
-                    Color(0xBF000000),
-                  ],
+                  colors: <Color>[Colors.transparent, Color(0xBF000000)],
                   tileMode: TileMode.mirror,
                 )
               : const LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: <Color>[
-                    Colors.transparent,
-                    Color(0xBF000000),
-                  ],
+                  colors: <Color>[Colors.transparent, Color(0xBF000000)],
                   tileMode: TileMode.mirror,
                 ),
         ),

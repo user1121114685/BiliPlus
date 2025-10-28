@@ -1,16 +1,16 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/video_card/video_card_h.dart';
-import 'package:PiliPlus/common/widgets/view_sliver_safe_area.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/video/source_type.dart';
-import 'package:PiliPlus/models/model_hot_video_item.dart';
-import 'package:PiliPlus/models_new/popular/popular_series_one/config.dart';
-import 'package:PiliPlus/pages/popular_series/controller.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/video_card/video_card_h.dart';
+import 'package:bili_plus/common/widgets/view_sliver_safe_area.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/video/source_type.dart';
+import 'package:bili_plus/models/model_hot_video_item.dart';
+import 'package:bili_plus/models_new/popular/popular_series_one/config.dart';
+import 'package:bili_plus/pages/popular_series/controller.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -88,18 +88,12 @@ class _PopularSeriesPageState extends State<PopularSeriesPage> with GridMixin {
         }
         if (_controller.config.value case final config?) {
           sliver = SliverMainAxisGroup(
-            slivers: [
-              _buildSeriesList(config),
-              sliver,
-            ],
+            slivers: [_buildSeriesList(config), sliver],
           );
         }
         return sliver;
       case Error(:var errMsg):
-        return HttpError(
-          errMsg: errMsg,
-          onReload: _controller.onReload,
-        );
+        return HttpError(errMsg: errMsg, onReload: _controller.onReload);
     }
   }
 
@@ -198,10 +192,7 @@ class _PopularSeriesPageState extends State<PopularSeriesPage> with GridMixin {
         spacing: 16,
         children: [
           child,
-          Text(
-            reminder,
-            style: TextStyle(color: colorScheme.outline),
-          ),
+          Text(reminder, style: TextStyle(color: colorScheme.outline)),
         ],
       );
     }

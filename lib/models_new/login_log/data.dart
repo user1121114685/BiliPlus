@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/login_log/list.dart';
+import 'package:bili_plus/models_new/login_log/list.dart';
 
 class LoginLogData {
   int? count;

@@ -1,27 +1,27 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/marquee.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/music.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/music/bgm_detail.dart';
-import 'package:PiliPlus/pages/common/dyn/common_dyn_page.dart';
-import 'package:PiliPlus/pages/music/controller.dart';
-import 'package:PiliPlus/pages/music/video/view.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/marquee.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/music.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/music/bgm_detail.dart';
+import 'package:bili_plus/pages/common/dyn/common_dyn_page.dart';
+import 'package:bili_plus/pages/music/controller.dart';
+import 'package:bili_plus/pages/music/video/view.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -66,40 +66,35 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
   PreferredSizeWidget _buildAppBar() => AppBar(
     title: Padding(
       padding: const EdgeInsets.only(right: 12),
-      child: Obx(
-        () {
-          final info = controller.infoState.value;
-          late final showTitle = controller.showTitle.value;
-          return info.isSuccess
-              ? AnimatedOpacity(
-                  opacity: showTitle ? 1 : 0,
-                  duration: const Duration(milliseconds: 300),
-                  child: IgnorePointer(
-                    ignoring: !showTitle,
-                    child: Row(
-                      spacing: 8,
-                      children: [
-                        NetworkImgLayer(
-                          src: info.data.mvCover,
-                          width: 36,
-                          height: 36,
-                          type: ImageType.avatar,
-                        ),
-                        Text(info.data.musicTitle!),
-                      ],
-                    ),
+      child: Obx(() {
+        final info = controller.infoState.value;
+        late final showTitle = controller.showTitle.value;
+        return info.isSuccess
+            ? AnimatedOpacity(
+                opacity: showTitle ? 1 : 0,
+                duration: const Duration(milliseconds: 300),
+                child: IgnorePointer(
+                  ignoring: !showTitle,
+                  child: Row(
+                    spacing: 8,
+                    children: [
+                      NetworkImgLayer(
+                        src: info.data.mvCover,
+                        width: 36,
+                        height: 36,
+                        type: ImageType.avatar,
+                      ),
+                      Text(info.data.musicTitle!),
+                    ],
                   ),
-                )
-              : const SizedBox(height: 40);
-        },
-      ),
+                ),
+              )
+            : const SizedBox(height: 40);
+      }),
     ),
     actions: isPortrait
         ? null
-        : [
-            ratioWidget(maxWidth),
-            const SizedBox(width: 16),
-          ],
+        : [ratioWidget(maxWidth), const SizedBox(width: 16)],
   );
 
   Widget _buildBody(ThemeData theme) => Obx(() {
@@ -141,9 +136,7 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   slivers: [
                     SliverPadding(
-                      padding: EdgeInsets.only(
-                        left: padding,
-                      ),
+                      padding: EdgeInsets.only(left: padding),
                       sliver: SliverToBoxAdapter(
                         child: _buildCard(theme, response, leftWidth),
                       ),
@@ -189,10 +182,7 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
         }
         return Stack(
           clipBehavior: Clip.none,
-          children: [
-            child,
-            _buildBottom(theme, response),
-          ],
+          children: [child, _buildBottom(theme, response)],
         );
       default:
         return const SizedBox.shrink();
@@ -213,11 +203,7 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
       final color = status ? theme.colorScheme.primary : outline;
       return TextButton.icon(
         onPressed: onPressed,
-        icon: Icon(
-          status ? activitedIcon : icon,
-          size: 16,
-          color: color,
-        ),
+        icon: Icon(status ? activitedIcon : icon, size: 16, color: color),
         style: TextButton.styleFrom(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           foregroundColor: outline,
@@ -388,10 +374,7 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(NumUtils.numFormat(rank)),
-        Text(
-          name,
-          style: theme.textTheme.bodySmall!.copyWith(color: outline),
-        ),
+        Text(name, style: theme.textTheme.bodySmall!.copyWith(color: outline)),
       ],
     );
     return onTap == null
@@ -405,11 +388,7 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   child,
-                  Icon(
-                    size: 18,
-                    color: outline,
-                    Icons.keyboard_arrow_right,
-                  ),
+                  Icon(size: 18, color: outline, Icons.keyboard_arrow_right),
                 ],
               ),
             ),

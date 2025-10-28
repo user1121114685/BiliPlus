@@ -3,34 +3,34 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:PiliPlus/grpc/bilibili/im/type.pbenum.dart';
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/grpc/bilibili/im/type.pbenum.dart';
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show ReplyInfo;
-import 'package:PiliPlus/grpc/im.dart';
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/http/msg.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/http/validate.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/models/login/model.dart';
-import 'package:PiliPlus/pages/common/multi_select/base.dart';
-import 'package:PiliPlus/pages/common/multi_select/multi_select_controller.dart';
-import 'package:PiliPlus/pages/dynamics_tab/controller.dart';
-import 'package:PiliPlus/pages/group_panel/view.dart';
-import 'package:PiliPlus/pages/later/controller.dart';
-import 'package:PiliPlus/pages/login/geetest/geetest_webview_dialog.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/feed_back.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/grpc/im.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/http/msg.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/http/validate.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/models/login/model.dart';
+import 'package:bili_plus/pages/common/multi_select/base.dart';
+import 'package:bili_plus/pages/common/multi_select/multi_select_controller.dart';
+import 'package:bili_plus/pages/dynamics_tab/controller.dart';
+import 'package:bili_plus/pages/group_panel/view.dart';
+import 'package:bili_plus/pages/later/controller.dart';
+import 'package:bili_plus/pages/login/geetest/geetest_webview_dialog.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/feed_back.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -116,11 +116,7 @@ abstract class RequestUtils {
     }
     feedBack();
     if (!isFollow) {
-      var res = await VideoHttp.relationMod(
-        mid: mid,
-        act: 1,
-        reSrc: 11,
-      );
+      var res = await VideoHttp.relationMod(mid: mid, act: 1, reSrc: 11);
       SmartDialog.showToast(res['status'] ? "关注成功" : res['msg']);
       if (res['status']) {
         callback?.call(2);
@@ -163,10 +159,7 @@ abstract class RequestUtils {
                         SmartDialog.showToast(res['msg']);
                       }
                     },
-                    title: Text(
-                      text,
-                      style: const TextStyle(fontSize: 14),
-                    ),
+                    title: Text(text, style: const TextStyle(fontSize: 14)),
                   ),
                   ListTile(
                     dense: true,
@@ -209,10 +202,7 @@ abstract class RequestUtils {
                         callback?.call(result.contains(-10) ? -10 : 2);
                       }
                     },
-                    title: const Text(
-                      '设置分组',
-                      style: TextStyle(fontSize: 14),
-                    ),
+                    title: const Text('设置分组', style: TextStyle(fontSize: 14)),
                   ),
                   ListTile(
                     dense: true,
@@ -230,10 +220,7 @@ abstract class RequestUtils {
                         callback?.call(0);
                       }
                     },
-                    title: const Text(
-                      '取消关注',
-                      style: TextStyle(fontSize: 14),
-                    ),
+                    title: const Text('取消关注', style: TextStyle(fontSize: 14)),
                   ),
                 ],
               ),
@@ -344,10 +331,7 @@ abstract class RequestUtils {
                     child: const Text('申诉'),
                   ),
                 if (!isManual)
-                  TextButton(
-                    onPressed: Get.back,
-                    child: const Text('关闭'),
-                  ),
+                  TextButton(onPressed: Get.back, child: const Text('关闭')),
               ],
             ),
           );
@@ -548,10 +532,7 @@ abstract class RequestUtils {
         captchaData
           ..validate = json['geetest_validate']
           ..seccode = json['geetest_seccode']
-          ..geetest = GeetestData(
-            challenge: json['geetest_challenge'],
-            gt: gt,
-          );
+          ..geetest = GeetestData(challenge: json['geetest_challenge'], gt: gt);
         gaiaVgateValidate();
       }
       return;
@@ -664,12 +645,7 @@ abstract class RequestUtils {
             show ? data.name! : data.rejectPage?.title ?? '',
           ),
           content: show ? null : Text(data.rejectPage?.text ?? ''),
-          actions: [
-            TextButton(
-              onPressed: Get.back,
-              child: const Text('关闭'),
-            ),
-          ],
+          actions: [TextButton(onPressed: Get.back, child: const Text('关闭'))],
         ),
       );
     } else {

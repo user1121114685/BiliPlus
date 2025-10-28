@@ -1,4 +1,4 @@
-import 'package:PiliPlus/common/widgets/interactiveviewer_gallery/interactive_viewer.dart'
+import 'package:bili_plus/common/widgets/interactiveviewer_gallery/interactive_viewer.dart'
     as custom;
 import 'package:flutter/material.dart';
 
@@ -106,27 +106,17 @@ class InteractiveViewerBoundaryState extends State<InteractiveViewerBoundary>
     final double endY = _offset.dy.sign;
 
     _slideAnimation = _animateController.drive(
-      Tween<Offset>(
-        begin: Offset.zero,
-        end: Offset(endX, endY),
-      ),
+      Tween<Offset>(begin: Offset.zero, end: Offset(endX, endY)),
     );
 
     _scaleAnimation = _animateController.drive(
-      Tween<double>(
-        begin: 1,
-        end: 0.25,
-      ),
+      Tween<double>(begin: 1, end: 0.25),
     );
 
     _opacityAnimation = _animateController.drive(
       DecorationTween(
-        begin: const BoxDecoration(
-          color: Colors.black,
-        ),
-        end: const BoxDecoration(
-          color: Colors.transparent,
-        ),
+        begin: const BoxDecoration(color: Colors.black),
+        end: const BoxDecoration(color: Colors.transparent),
       ),
     );
   }
@@ -213,10 +203,7 @@ class InteractiveViewerBoundaryState extends State<InteractiveViewerBoundary>
     decoration: _opacityAnimation,
     child: SlideTransition(
       position: _slideAnimation,
-      child: ScaleTransition(
-        scale: _scaleAnimation,
-        child: widget.child,
-      ),
+      child: ScaleTransition(scale: _scaleAnimation, child: widget.child),
     ),
   );
 

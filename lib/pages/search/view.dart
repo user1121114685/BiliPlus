@@ -1,18 +1,18 @@
 import 'dart:convert';
 
-import 'package:PiliPlus/common/widgets/disabled_icon.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/search/search_rcmd/data.dart';
-import 'package:PiliPlus/pages/about/view.dart' show showInportExportDialog;
-import 'package:PiliPlus/pages/search/controller.dart';
-import 'package:PiliPlus/pages/search/widgets/hot_keyword.dart';
-import 'package:PiliPlus/pages/search/widgets/search_text.dart';
-import 'package:PiliPlus/utils/em.dart' show Em;
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_key.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/disabled_icon.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/search/search_rcmd/data.dart';
+import 'package:bili_plus/pages/about/view.dart' show showInportExportDialog;
+import 'package:bili_plus/pages/search/controller.dart';
+import 'package:bili_plus/pages/search/widgets/hot_keyword.dart';
+import 'package:bili_plus/pages/search/widgets/search_text.dart';
+import 'package:bili_plus/utils/em.dart' show Em;
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_key.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -172,11 +172,7 @@ class _SearchPageState extends State<SearchPage> {
     );
     final outline = theme.colorScheme.outline;
     final secondary = theme.colorScheme.secondary;
-    final style = TextStyle(
-      height: 1,
-      fontSize: 13,
-      color: outline,
-    );
+    final style = TextStyle(height: 1, fontSize: 13, color: outline);
     return Padding(
       padding: EdgeInsets.fromLTRB(
         10,
@@ -245,10 +241,7 @@ class _SearchPageState extends State<SearchPage> {
                     label: Text(
                       '刷新',
                       strutStyle: const StrutStyle(leading: 0, height: 1),
-                      style: TextStyle(
-                        height: 1,
-                        color: secondary,
-                      ),
+                      style: TextStyle(height: 1, color: secondary),
                     ),
                   ),
                 ),
@@ -269,116 +262,102 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Widget _history(ThemeData theme, bool isPortrait) {
-    return Obx(
-      () {
-        if (_searchController.historyList.isEmpty) {
-          return const SizedBox.shrink();
-        }
-        final secondary = theme.colorScheme.secondary;
-        return Padding(
-          padding: EdgeInsets.fromLTRB(
-            10,
-            !isPortrait
-                ? 25
-                : _searchController.enableTrending
-                ? 0
-                : 6,
-            6,
-            25,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(6, 0, 6, 6),
-                child: Row(
-                  children: [
-                    Text(
-                      '搜索历史',
-                      strutStyle: const StrutStyle(leading: 0, height: 1),
-                      style: theme.textTheme.titleMedium!.copyWith(
-                        height: 1,
-                        fontWeight: FontWeight.bold,
-                      ),
+    return Obx(() {
+      if (_searchController.historyList.isEmpty) {
+        return const SizedBox.shrink();
+      }
+      final secondary = theme.colorScheme.secondary;
+      return Padding(
+        padding: EdgeInsets.fromLTRB(
+          10,
+          !isPortrait
+              ? 25
+              : _searchController.enableTrending
+              ? 0
+              : 6,
+          6,
+          25,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(6, 0, 6, 6),
+              child: Row(
+                children: [
+                  Text(
+                    '搜索历史',
+                    strutStyle: const StrutStyle(leading: 0, height: 1),
+                    style: theme.textTheme.titleMedium!.copyWith(
+                      height: 1,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(width: 12),
-                    Obx(
-                      () {
-                        bool enable =
-                            _searchController.recordSearchHistory.value;
-                        return SizedBox(
-                          width: 34,
-                          height: 34,
-                          child: IconButton(
-                            iconSize: 22,
-                            tooltip: enable ? '记录搜索' : '无痕搜索',
-                            icon: enable
-                                ? historyIcon(theme)
-                                : historyIcon(theme).disable(),
-                            style: IconButton.styleFrom(
-                              padding: EdgeInsets.zero,
-                            ),
-                            onPressed: () {
-                              enable = !enable;
-                              _searchController.recordSearchHistory.value =
-                                  enable;
-                              GStorage.setting.put(
-                                SettingBoxKey.recordSearchHistory,
-                                enable,
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                    _exportHsitory(theme),
-                    const Spacer(),
-                    SizedBox(
+                  ),
+                  const SizedBox(width: 12),
+                  Obx(() {
+                    bool enable = _searchController.recordSearchHistory.value;
+                    return SizedBox(
+                      width: 34,
                       height: 34,
-                      child: TextButton.icon(
-                        style: const ButtonStyle(
-                          padding: WidgetStatePropertyAll(
-                            EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 6,
-                            ),
-                          ),
-                        ),
-                        onPressed: _searchController.onClearHistory,
-                        icon: Icon(
-                          Icons.clear_all_outlined,
-                          size: 18,
-                          color: secondary,
-                        ),
-                        label: Text(
-                          '清空',
-                          style: TextStyle(color: secondary),
+                      child: IconButton(
+                        iconSize: 22,
+                        tooltip: enable ? '记录搜索' : '无痕搜索',
+                        icon: enable
+                            ? historyIcon(theme)
+                            : historyIcon(theme).disable(),
+                        style: IconButton.styleFrom(padding: EdgeInsets.zero),
+                        onPressed: () {
+                          enable = !enable;
+                          _searchController.recordSearchHistory.value = enable;
+                          GStorage.setting.put(
+                            SettingBoxKey.recordSearchHistory,
+                            enable,
+                          );
+                        },
+                      ),
+                    );
+                  }),
+                  _exportHsitory(theme),
+                  const Spacer(),
+                  SizedBox(
+                    height: 34,
+                    child: TextButton.icon(
+                      style: const ButtonStyle(
+                        padding: WidgetStatePropertyAll(
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                         ),
                       ),
+                      onPressed: _searchController.onClearHistory,
+                      icon: Icon(
+                        Icons.clear_all_outlined,
+                        size: 18,
+                        color: secondary,
+                      ),
+                      label: Text('清空', style: TextStyle(color: secondary)),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
-                direction: Axis.horizontal,
-                textDirection: TextDirection.ltr,
-                children: _searchController.historyList
-                    .map(
-                      (item) => SearchText(
-                        text: item,
-                        onTap: _searchController.onClickKeyword,
-                        onLongPress: _searchController.onLongSelect,
-                      ),
-                    )
-                    .toList(),
-              ),
-            ],
-          ),
-        );
-      },
-    );
+            ),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              direction: Axis.horizontal,
+              textDirection: TextDirection.ltr,
+              children: _searchController.historyList
+                  .map(
+                    (item) => SearchText(
+                      text: item,
+                      onTap: _searchController.onClickKeyword,
+                      onLongPress: _searchController.onLongSelect,
+                    ),
+                  )
+                  .toList(),
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget _exportHsitory(ThemeData theme) => SizedBox(

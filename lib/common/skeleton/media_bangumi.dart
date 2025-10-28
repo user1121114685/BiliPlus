@@ -1,5 +1,5 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/skeleton.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/skeleton.dart';
 import 'package:flutter/material.dart';
 
 class MediaPgcSkeleton extends StatefulWidget {
@@ -56,11 +56,7 @@ class _MediaPgcSkeletonState extends State<MediaPgcSkeleton> {
                       height: 13,
                       margin: const EdgeInsets.only(bottom: 5),
                     ),
-                    Container(
-                      color: bgColor,
-                      width: 150,
-                      height: 13,
-                    ),
+                    Container(color: bgColor, width: 150, height: 13),
                     const Spacer(),
                     Container(
                       width: 90,

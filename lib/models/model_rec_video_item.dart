@@ -1,5 +1,5 @@
-import 'package:PiliPlus/models/model_owner.dart';
-import 'package:PiliPlus/models/model_video.dart';
+import 'package:bili_plus/models/model_owner.dart';
+import 'package:bili_plus/models/model_video.dart';
 
 abstract class BaseRecVideoItemModel extends BaseVideoItemModel {
   String? goto;

@@ -1,11 +1,11 @@
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/model_hot_video_item.dart';
-import 'package:PiliPlus/models_new/popular/popular_series_list/list.dart';
-import 'package:PiliPlus/models_new/popular/popular_series_one/config.dart';
-import 'package:PiliPlus/models_new/popular/popular_series_one/data.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/model_hot_video_item.dart';
+import 'package:bili_plus/models_new/popular/popular_series_list/list.dart';
+import 'package:bili_plus/models_new/popular/popular_series_one/config.dart';
+import 'package:bili_plus/models_new/popular/popular_series_one/data.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:get/get.dart';
 
 class PopularSeriesController

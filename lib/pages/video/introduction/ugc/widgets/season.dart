@@ -1,10 +1,10 @@
 import 'dart:async';
 
-import 'package:PiliPlus/models_new/video/video_detail/data.dart';
-import 'package:PiliPlus/models_new/video/video_detail/episode.dart';
-import 'package:PiliPlus/models_new/video/video_detail/section.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/controller.dart';
+import 'package:bili_plus/models_new/video/video_detail/data.dart';
+import 'package:bili_plus/models_new/video/video_detail/episode.dart';
+import 'package:bili_plus/models_new/video/video_detail/section.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -92,11 +92,7 @@ class _SeasonPanelState extends State<SeasonPanel> {
     }
     final theme = Theme.of(context);
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 8,
-        left: 2,
-        right: 2,
-      ),
+      padding: const EdgeInsets.only(top: 8, left: 2, right: 2),
       child: Material(
         color: theme.colorScheme.onInverseSurface,
         borderRadius: const BorderRadius.all(Radius.circular(6)),

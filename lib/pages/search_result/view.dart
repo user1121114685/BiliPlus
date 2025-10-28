@@ -1,13 +1,13 @@
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/models/common/search/search_type.dart';
-import 'package:PiliPlus/pages/search/controller.dart';
-import 'package:PiliPlus/pages/search_panel/article/view.dart';
-import 'package:PiliPlus/pages/search_panel/live/view.dart';
-import 'package:PiliPlus/pages/search_panel/pgc/view.dart';
-import 'package:PiliPlus/pages/search_panel/user/view.dart';
-import 'package:PiliPlus/pages/search_panel/video/view.dart';
-import 'package:PiliPlus/pages/search_result/controller.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/models/common/search/search_type.dart';
+import 'package:bili_plus/pages/search/controller.dart';
+import 'package:bili_plus/pages/search_panel/article/view.dart';
+import 'package:bili_plus/pages/search_panel/live/view.dart';
+import 'package:bili_plus/pages/search_panel/pgc/view.dart';
+import 'package:bili_plus/pages/search_panel/user/view.dart';
+import 'package:bili_plus/pages/search_panel/video/view.dart';
+import 'package:bili_plus/pages/search_result/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -29,10 +29,7 @@ class _SearchResultPageState extends State<SearchResultPage>
   @override
   void initState() {
     super.initState();
-    _searchResultController = Get.put(
-      SearchResultController(),
-      tag: _tag,
-    );
+    _searchResultController = Get.put(SearchResultController(), tag: _tag);
 
     _tabController = TabController(
       vsync: this,
@@ -107,15 +104,13 @@ class _SearchResultPageState extends State<SearchResultPage>
               controller: _tabController,
               tabs: SearchType.values
                   .map(
-                    (item) => Obx(
-                      () {
-                        int count = _searchResultController.count[item.index];
-                        return Tab(
-                          text:
-                              '${item.label}${count != -1 ? ' ${count > 99 ? '99+' : count}' : ''}',
-                        );
-                      },
-                    ),
+                    (item) => Obx(() {
+                      int count = _searchResultController.count[item.index];
+                      return Tab(
+                        text:
+                            '${item.label}${count != -1 ? ' ${count > 99 ? '99+' : count}' : ''}',
+                      );
+                    }),
                   )
                   .toList(),
               isScrollable: true,
@@ -131,9 +126,7 @@ class _SearchResultPageState extends State<SearchResultPage>
               indicatorSize: TabBarIndicatorSize.tab,
               labelColor: theme.colorScheme.onSecondaryContainer,
               labelStyle:
-                  TabBarTheme.of(
-                    context,
-                  ).labelStyle?.copyWith(fontSize: 13) ??
+                  TabBarTheme.of(context).labelStyle?.copyWith(fontSize: 13) ??
                   const TextStyle(fontSize: 13),
               dividerColor: Colors.transparent,
               dividerHeight: 0,

@@ -1,9 +1,9 @@
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/live/live_danmaku/danmaku_msg.dart';
-import 'package:PiliPlus/models_new/live/live_superchat/item.dart';
-import 'package:PiliPlus/pages/live_room/controller.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/live/live_danmaku/danmaku_msg.dart';
+import 'package:bili_plus/models_new/live/live_superchat/item.dart';
+import 'package:bili_plus/pages/live_room/controller.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -59,10 +59,7 @@ class LiveRoomChatPanel extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: '${item.name}: ',
-                          style: TextStyle(
-                            color: nameColor,
-                            fontSize: 14,
-                          ),
+                          style: TextStyle(color: nameColor, fontSize: 14),
                           recognizer: item.uid == 0
                               ? null
                               : (TapGestureRecognizer()
@@ -92,10 +89,7 @@ class LiveRoomChatPanel extends StatelessWidget {
                     "end_time":
                         DateTime.now().millisecondsSinceEpoch ~/ 1000 + 5,
                     "message": "message message message message message",
-                    "user_info": {
-                      "face": "",
-                      "uname": "UNAME",
-                    },
+                    "user_info": {"face": "", "uname": "UNAME"},
                   }),
                 );
               },
@@ -173,10 +167,7 @@ class LiveRoomChatPanel extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       visualDensity: VisualDensity.comfortable,
                     ),
-                    icon: const Icon(
-                      Icons.arrow_downward_rounded,
-                      size: 20,
-                    ),
+                    icon: const Icon(Icons.arrow_downward_rounded, size: 20),
                     label: const Text('回到底部'),
                     onPressed: () => liveRoomController
                       ..disableAutoScroll.value = false
@@ -234,10 +225,7 @@ class LiveRoomChatPanel extends StatelessWidget {
           spanChildren.add(
             TextSpan(
               text: nonMatchStr,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 14,
-              ),
+              style: const TextStyle(color: Colors.white, fontSize: 14),
             ),
           );
           return '';
@@ -247,10 +235,7 @@ class LiveRoomChatPanel extends StatelessWidget {
     } else {
       return TextSpan(
         text: obj.text,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 14,
-        ),
+        style: const TextStyle(color: Colors.white, fontSize: 14),
       );
     }
   }

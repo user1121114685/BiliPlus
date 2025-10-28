@@ -1,5 +1,5 @@
-import UIKit
 import Flutter
+import UIKit
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -8,7 +8,6 @@ import Flutter
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
-    application.applicationSupportsShakeToEdit = false // Disable shake to undo
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

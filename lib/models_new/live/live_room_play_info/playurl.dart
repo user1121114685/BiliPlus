@@ -1,6 +1,6 @@
-import 'package:PiliPlus/models_new/live/live_room_play_info/g_qn_desc.dart';
-import 'package:PiliPlus/models_new/live/live_room_play_info/p2p_data.dart';
-import 'package:PiliPlus/models_new/live/live_room_play_info/stream.dart';
+import 'package:bili_plus/models_new/live/live_room_play_info/g_qn_desc.dart';
+import 'package:bili_plus/models_new/live/live_room_play_info/p2p_data.dart';
+import 'package:bili_plus/models_new/live/live_room_play_info/stream.dart';
 
 class Playurl {
   int? cid;

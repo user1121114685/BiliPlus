@@ -1,20 +1,16 @@
-import 'package:PiliPlus/common/skeleton/video_card_h.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space_fav/data.dart';
-import 'package:PiliPlus/pages/member_favorite/controller.dart';
-import 'package:PiliPlus/pages/member_favorite/widget/item.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/skeleton/video_card_h.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space_fav/data.dart';
+import 'package:bili_plus/pages/member_favorite/controller.dart';
+import 'package:bili_plus/pages/member_favorite/widget/item.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MemberFavorite extends StatefulWidget {
-  const MemberFavorite({
-    super.key,
-    required this.heroTag,
-    required this.mid,
-  });
+  const MemberFavorite({super.key, required this.heroTag, required this.mid});
 
   final String? heroTag;
   final int mid;
@@ -91,19 +87,14 @@ class _MemberFavoriteState extends State<MemberFavorite>
 
   Theme _buildItem(ThemeData theme, SpaceFavData data, bool isFirst) {
     return Theme(
-      data: theme.copyWith(
-        dividerColor: Colors.transparent,
-      ),
+      data: theme.copyWith(dividerColor: Colors.transparent),
       child: ExpansionTile(
         dense: true,
         initiallyExpanded: true,
         title: Text.rich(
           TextSpan(
             children: [
-              TextSpan(
-                text: data.name,
-                style: const TextStyle(fontSize: 14),
-              ),
+              TextSpan(text: data.name, style: const TextStyle(fontSize: 14)),
               TextSpan(
                 text: ' ${data.mediaListResponse?.count}',
                 style: TextStyle(
@@ -157,9 +148,7 @@ class _MemberFavoriteState extends State<MemberFavorite>
       title: Text(
         '查看更多内容',
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: theme.colorScheme.primary,
-        ),
+        style: TextStyle(color: theme.colorScheme.primary),
       ),
     );
   }

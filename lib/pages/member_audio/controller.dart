@@ -1,11 +1,11 @@
-import 'package:PiliPlus/grpc/bilibili/app/listener/v1.pbenum.dart'
+import 'package:bili_plus/grpc/bilibili/app/listener/v1.pbenum.dart'
     show PlaylistSource;
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/member.dart';
-import 'package:PiliPlus/models_new/space/space_audio/data.dart';
-import 'package:PiliPlus/models_new/space/space_audio/item.dart';
-import 'package:PiliPlus/pages/audio/view.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/member.dart';
+import 'package:bili_plus/models_new/space/space_audio/data.dart';
+import 'package:bili_plus/models_new/space/space_audio/item.dart';
+import 'package:bili_plus/pages/audio/view.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
 
 class MemberAudioController
     extends CommonListController<SpaceAudioData, SpaceAudioItem> {
@@ -34,10 +34,8 @@ class MemberAudioController
   }
 
   @override
-  Future<LoadingState<SpaceAudioData>> customGetData() => MemberHttp.spaceAudio(
-    page: page,
-    mid: mid,
-  );
+  Future<LoadingState<SpaceAudioData>> customGetData() =>
+      MemberHttp.spaceAudio(page: page, mid: mid);
 
   void toViewPlayAll() {
     final item = loadingState.value.data!.first;

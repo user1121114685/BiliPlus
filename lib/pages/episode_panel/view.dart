@@ -1,35 +1,35 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/keep_alive_wrapper.dart';
-import 'package:PiliPlus/common/widgets/page/tabs.dart';
-import 'package:PiliPlus/common/widgets/scroll_physics.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/episode_panel_type.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models/user/info.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/episode.dart' as pgc;
-import 'package:PiliPlus/models_new/video/video_detail/episode.dart' as ugc;
-import 'package:PiliPlus/models_new/video/video_detail/page.dart';
-import 'package:PiliPlus/pages/common/slide/common_slide_page.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/controller.dart';
-import 'package:PiliPlus/pages/video/introduction/ugc/widgets/page.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/keep_alive_wrapper.dart';
+import 'package:bili_plus/common/widgets/page/tabs.dart';
+import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/episode_panel_type.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models/user/info.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/episode.dart' as pgc;
+import 'package:bili_plus/models_new/video/video_detail/episode.dart' as ugc;
+import 'package:bili_plus/models_new/video/video_detail/page.dart';
+import 'package:bili_plus/pages/common/slide/common_slide_page.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/controller.dart';
+import 'package:bili_plus/pages/video/introduction/ugc/widgets/page.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide TabBarView;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -102,10 +102,8 @@ class _EpisodePanelState extends State<EpisodePanel>
 
   // item
   late int _currentItemIndex;
-  int get _findCurrentItemIndex => max(
-    0,
-    _getCurrEpisodes.indexWhere((item) => item.cid == widget.cid),
-  );
+  int get _findCurrentItemIndex =>
+      max(0, _getCurrEpisodes.indexWhere((item) => item.cid == widget.cid));
 
   late final List<bool> _isReversed;
   late final List<ScrollController> _itemScrollController;
@@ -167,13 +165,11 @@ class _EpisodePanelState extends State<EpisodePanel>
 
     if (widget.type == EpisodeType.season && Accounts.main.isLogin) {
       _favState = LoadingState<bool>.loading().obs;
-      VideoHttp.videoRelation(bvid: widget.bvid).then(
-        (result) {
-          if (result case Success(:var response)) {
-            _favState!.value = Success(response.seasonFav ?? false);
-          }
-        },
-      );
+      VideoHttp.videoRelation(bvid: widget.bvid).then((result) {
+        if (result case Success(:var response)) {
+          _favState!.value = Success(response.seasonFav ?? false);
+        }
+      });
     }
   }
 
@@ -209,18 +205,11 @@ class _EpisodePanelState extends State<EpisodePanel>
         bgColor: theme.colorScheme.surface,
         header: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildToolbar(theme),
-            tabbar(),
-          ],
+          children: [_buildToolbar(theme), tabbar()],
         ),
         children: List.generate(
           widget.list.length,
-          (index) => _buildBody(
-            theme,
-            index,
-            widget.list[index].episodes,
-          ),
+          (index) => _buildBody(theme, index, widget.list[index].episodes),
         ),
       );
     }
@@ -238,11 +227,8 @@ class _EpisodePanelState extends State<EpisodePanel>
                 controller: _tabController,
                 children: List.generate(
                   widget.list.length,
-                  (index) => _buildBody(
-                    theme,
-                    index,
-                    widget.list[index].episodes,
-                  ),
+                  (index) =>
+                      _buildBody(theme, index, widget.list[index].episodes),
                 ),
               ),
             ),
@@ -471,11 +457,7 @@ class _EpisodePanelState extends State<EpisodePanel>
                     Stack(
                       clipBehavior: Clip.none,
                       children: [
-                        NetworkImgLayer(
-                          src: cover,
-                          width: 140.8,
-                          height: 88,
-                        ),
+                        NetworkImgLayer(src: cover, width: 140.8, height: 88),
                         if (duration != null && duration > 0)
                           PBadge(
                             text: DurationUtils.formatDuration(duration),
@@ -548,10 +530,7 @@ class _EpisodePanelState extends State<EpisodePanel>
                           Row(
                             spacing: 8,
                             children: [
-                              StatWidget(
-                                value: view,
-                                type: StatType.play,
-                              ),
+                              StatWidget(value: view, type: StatType.play),
                               if (danmaku != null)
                                 StatWidget(
                                   value: danmaku,
@@ -621,18 +600,13 @@ class _EpisodePanelState extends State<EpisodePanel>
     padding: EdgeInsets.symmetric(horizontal: showTitle ? 14 : 6),
     decoration: BoxDecoration(
       border: Border(
-        bottom: BorderSide(
-          color: theme.dividerColor.withValues(alpha: 0.1),
-        ),
+        bottom: BorderSide(color: theme.dividerColor.withValues(alpha: 0.1)),
       ),
     ),
     child: Row(
       children: [
         if (showTitle)
-          Text(
-            widget.type.title,
-            style: theme.textTheme.titleMedium,
-          ),
+          Text(widget.type.title, style: theme.textTheme.titleMedium),
         if (_favState != null) Obx(() => _buildFavBtn(_favState!.value)),
         iconButton(
           iconSize: 22,
@@ -663,29 +637,25 @@ class _EpisodePanelState extends State<EpisodePanel>
           },
         ),
         if (widget.isSupportReverse == true)
-          Obx(
-            () {
-              return _currentTabIndex.value == widget.initialTabIndex
-                  ? _buildReverseBtn
-                  : const SizedBox.shrink();
-            },
-          ),
+          Obx(() {
+            return _currentTabIndex.value == widget.initialTabIndex
+                ? _buildReverseBtn
+                : const SizedBox.shrink();
+          }),
         const Spacer(),
-        Obx(
-          () {
-            final currentTabIndex = _currentTabIndex.value;
-            return iconButton(
-              iconSize: 22,
-              tooltip: _isReversed[currentTabIndex] ? '顺序' : '倒序',
-              icon: !_isReversed[currentTabIndex]
-                  ? const Icon(MdiIcons.sortNumericAscending)
-                  : const Icon(MdiIcons.sortNumericDescending),
-              onPressed: () => setState(() {
-                _isReversed[currentTabIndex] = !_isReversed[currentTabIndex];
-              }),
-            );
-          },
-        ),
+        Obx(() {
+          final currentTabIndex = _currentTabIndex.value;
+          return iconButton(
+            iconSize: 22,
+            tooltip: _isReversed[currentTabIndex] ? '顺序' : '倒序',
+            icon: !_isReversed[currentTabIndex]
+                ? const Icon(MdiIcons.sortNumericAscending)
+                : const Icon(MdiIcons.sortNumericDescending),
+            onPressed: () => setState(() {
+              _isReversed[currentTabIndex] = !_isReversed[currentTabIndex];
+            }),
+          );
+        }),
         if (widget.onClose != null)
           iconButton(
             iconSize: 22,

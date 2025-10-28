@@ -1,5 +1,5 @@
-import 'package:PiliPlus/common/widgets/radio_widget.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/common/widgets/radio_widget.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -22,11 +22,7 @@ Future<void> autoWrapReportDialog(
         title: const Text('举报'),
         titlePadding: const EdgeInsets.only(left: 22, top: 16, right: 22),
         contentPadding: const EdgeInsets.symmetric(vertical: 5),
-        actionsPadding: const EdgeInsets.only(
-          left: 16,
-          right: 16,
-          bottom: 10,
-        ),
+        actionsPadding: const EdgeInsets.only(left: 16, right: 16, bottom: 10),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

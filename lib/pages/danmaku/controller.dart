@@ -1,14 +1,12 @@
-import 'package:PiliPlus/grpc/bilibili/community/service/dm/v1.pb.dart';
-import 'package:PiliPlus/grpc/dm.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:bili_plus/grpc/bilibili/community/service/dm/v1.pb.dart';
+import 'package:bili_plus/grpc/dm.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/services/account_service.dart';
 import 'package:get/get.dart';
 
 class PlDanmakuController {
-  PlDanmakuController(
-    this.cid,
-    this.plPlayerController,
-  ) : mergeDanmaku = plPlayerController.mergeDanmaku;
+  PlDanmakuController(this.cid, this.plPlayerController)
+    : mergeDanmaku = plPlayerController.mergeDanmaku;
   final int cid;
   final PlPlayerController plPlayerController;
   final bool mergeDanmaku;

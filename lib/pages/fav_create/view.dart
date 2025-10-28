@@ -1,11 +1,11 @@
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/msg.dart';
-import 'package:PiliPlus/models_new/fav/fav_folder/list.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/fav_utils.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/msg.dart';
+import 'package:bili_plus/models_new/fav/fav_folder/list.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/fav_utils.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_throttle.dart';
 import 'package:flutter/material.dart';
@@ -228,10 +228,7 @@ class _CreateFavPageState extends State<CreateFavPage> {
                     },
                   );
                 },
-                leading: Text(
-                  '封面',
-                  style: leadingStyle,
-                ),
+                leading: Text('封面', style: leadingStyle),
                 trailing: Row(
                   spacing: 10,
                   mainAxisSize: MainAxisSize.min,
@@ -297,9 +294,7 @@ class _CreateFavPageState extends State<CreateFavPage> {
                         ? theme.colorScheme.outline
                         : null,
                   ),
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(20),
-                  ],
+                  inputFormatters: [LengthLimitingTextInputFormatter(20)],
                   decoration: InputDecoration(
                     isDense: true,
                     hintText: '名称',
@@ -341,9 +336,7 @@ class _CreateFavPageState extends State<CreateFavPage> {
                     maxLines: 6,
                     controller: _introController,
                     style: const TextStyle(fontSize: 14),
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(200),
-                    ],
+                    inputFormatters: [LengthLimitingTextInputFormatter(200)],
                     decoration: InputDecoration(
                       isDense: true,
                       hintText: '可填写简介',
@@ -374,17 +367,11 @@ class _CreateFavPageState extends State<CreateFavPage> {
             return ListTile(
               onTap: onTap,
               tileColor: theme.colorScheme.onInverseSurface,
-              leading: Text(
-                '公开',
-                style: leadingStyle,
-              ),
+              leading: Text('公开', style: leadingStyle),
               trailing: Transform.scale(
                 alignment: Alignment.centerRight,
                 scale: 0.8,
-                child: Switch(
-                  value: _isPublic,
-                  onChanged: (value) => onTap(),
-                ),
+                child: Switch(value: _isPublic, onChanged: (value) => onTap()),
               ),
             );
           },

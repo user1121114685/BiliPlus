@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math' as math;
 
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart' show clampDouble;
 import 'package:flutter/material.dart' hide RefreshIndicator;
@@ -727,9 +727,7 @@ class RefreshIndicatorState extends State<RefreshIndicator>
                             );
 
                         final Widget cupertinoIndicator =
-                            CupertinoActivityIndicator(
-                              color: widget.color,
-                            );
+                            CupertinoActivityIndicator(color: widget.color);
 
                         switch (widget._indicatorType) {
                           case _IndicatorType.material:

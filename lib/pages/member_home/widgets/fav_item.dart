@@ -1,8 +1,8 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models_new/space/space_fav/list.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models_new/space/space_fav/list.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,10 +13,7 @@ class MemberFavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void onLongPress() => imageSaveDialog(
-      title: item.title,
-      cover: item.cover,
-    );
+    void onLongPress() => imageSaveDialog(title: item.title, cover: item.cover);
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -39,11 +36,7 @@ class MemberFavItem extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              NetworkImgLayer(
-                src: item.cover,
-                width: 140.8,
-                height: 88,
-              ),
+              NetworkImgLayer(src: item.cover, width: 140.8, height: 88),
               const SizedBox(width: 10),
               Expanded(
                 child: Column(

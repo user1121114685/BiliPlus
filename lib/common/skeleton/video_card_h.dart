@@ -1,5 +1,5 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/skeleton.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/skeleton.dart';
 import 'package:flutter/material.dart';
 
 class VideoCardHSkeleton extends StatelessWidget {
@@ -38,11 +38,7 @@ class VideoCardHSkeleton extends StatelessWidget {
                       height: 11,
                       margin: const EdgeInsets.only(bottom: 5),
                     ),
-                    Container(
-                      color: color,
-                      width: 150,
-                      height: 13,
-                    ),
+                    Container(color: color, width: 150, height: 13),
                     const Spacer(),
                     Container(
                       color: color,
@@ -58,11 +54,7 @@ class VideoCardHSkeleton extends StatelessWidget {
                           height: 13,
                           margin: const EdgeInsets.only(right: 8),
                         ),
-                        Container(
-                          color: color,
-                          width: 40,
-                          height: 13,
-                        ),
+                        Container(color: color, width: 40, height: 13),
                       ],
                     ),
                   ],

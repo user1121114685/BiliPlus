@@ -1,26 +1,26 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/video_card_v.dart';
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/button/more_btn.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/pair.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/common/widgets/self_sized_horizontal_list.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/live/live_feed_index/card_data_list_item.dart';
-import 'package:PiliPlus/models_new/live/live_feed_index/card_list.dart';
-import 'package:PiliPlus/pages/common/common_page.dart';
-import 'package:PiliPlus/pages/live/controller.dart';
-import 'package:PiliPlus/pages/live/widgets/live_item_app.dart';
-import 'package:PiliPlus/pages/live_area/view.dart';
-import 'package:PiliPlus/pages/live_follow/view.dart';
-import 'package:PiliPlus/pages/search/widgets/search_text.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/video_card_v.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/button/more_btn.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/pair.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/common/widgets/self_sized_horizontal_list.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/live/live_feed_index/card_data_list_item.dart';
+import 'package:bili_plus/models_new/live/live_feed_index/card_list.dart';
+import 'package:bili_plus/pages/common/common_page.dart';
+import 'package:bili_plus/pages/live/controller.dart';
+import 'package:bili_plus/pages/live/widgets/live_item_app.dart';
+import 'package:bili_plus/pages/live_area/view.dart';
+import 'package:bili_plus/pages/live_follow/view.dart';
+import 'package:bili_plus/pages/search/widgets/search_text.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -96,31 +96,29 @@ class _LivePageState extends CommonPageState<LivePage, LiveController>
                           .cardData!
                           .areaEntranceV3!
                           .list![index - 1];
-                      return Obx(
-                        () {
-                          final isCurr = index == controller.areaIndex.value;
-                          return SearchText(
-                            fontSize: 14,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 3,
-                            ),
-                            text: index == 0 ? '推荐' : '${item.title}',
-                            bgColor: isCurr
-                                ? theme.colorScheme.secondaryContainer
-                                : Colors.transparent,
-                            textColor: isCurr
-                                ? theme.colorScheme.onSecondaryContainer
-                                : null,
-                            onTap: (value) {
-                              controller.onSelectArea(
-                                index,
-                                index == 0 ? null : item,
-                              );
-                            },
-                          );
-                        },
-                      );
+                      return Obx(() {
+                        final isCurr = index == controller.areaIndex.value;
+                        return SearchText(
+                          fontSize: 14,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 3,
+                          ),
+                          text: index == 0 ? '推荐' : '${item.title}',
+                          bgColor: isCurr
+                              ? theme.colorScheme.secondaryContainer
+                              : Colors.transparent,
+                          textColor: isCurr
+                              ? theme.colorScheme.onSecondaryContainer
+                              : null,
+                          onTap: (value) {
+                            controller.onSelectArea(
+                              index,
+                              index == 0 ? null : item,
+                            );
+                          },
+                        );
+                      });
                     },
                     itemCount:
                         data.second!.cardData!.areaEntranceV3!.list!.length + 1,
@@ -186,31 +184,26 @@ class _LivePageState extends CommonPageState<LivePage, LiveController>
                 padding: const EdgeInsets.only(bottom: 8),
                 childBuilder: (index) {
                   late final item = controller.newTags![index];
-                  return Obx(
-                    () {
-                      final isCurr = index == controller.tagIndex.value;
-                      return SearchText(
-                        fontSize: 13,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 3,
-                        ),
-                        text: '${item.name}',
-                        bgColor: isCurr
-                            ? theme.colorScheme.secondaryContainer
-                            : Colors.transparent,
-                        textColor: isCurr
-                            ? theme.colorScheme.onSecondaryContainer
-                            : null,
-                        onTap: (value) {
-                          controller.onSelectTag(
-                            index,
-                            item.sortType,
-                          );
-                        },
-                      );
-                    },
-                  );
+                  return Obx(() {
+                    final isCurr = index == controller.tagIndex.value;
+                    return SearchText(
+                      fontSize: 13,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
+                      text: '${item.name}',
+                      bgColor: isCurr
+                          ? theme.colorScheme.secondaryContainer
+                          : Colors.transparent,
+                      textColor: isCurr
+                          ? theme.colorScheme.onSecondaryContainer
+                          : null,
+                      onTap: (value) {
+                        controller.onSelectTag(index, item.sortType);
+                      },
+                    );
+                  });
                 },
                 itemCount: controller.newTags!.length,
               ),
@@ -224,9 +217,7 @@ class _LivePageState extends CommonPageState<LivePage, LiveController>
                     }
                     final item = response[index];
                     if (item is LiveCardList) {
-                      return LiveCardVApp(
-                        item: item.cardData!.smallCardV1!,
-                      );
+                      return LiveCardVApp(item: item.cardData!.smallCardV1!);
                     }
                     return LiveCardVApp(item: item);
                   },

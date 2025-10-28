@@ -1,33 +1,33 @@
 import 'dart:io';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/ua_type.dart';
-import 'package:PiliPlus/models/common/member/contribute_type.dart';
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/models/member/info.dart';
-import 'package:PiliPlus/models/member/tags.dart';
-import 'package:PiliPlus/models_new/follow/data.dart';
-import 'package:PiliPlus/models_new/follow/list.dart';
-import 'package:PiliPlus/models_new/member/coin_like_arc/data.dart';
-import 'package:PiliPlus/models_new/member/search_archive/data.dart';
-import 'package:PiliPlus/models_new/member_card_info/data.dart';
-import 'package:PiliPlus/models_new/space/space/data.dart';
-import 'package:PiliPlus/models_new/space/space_archive/data.dart';
-import 'package:PiliPlus/models_new/space/space_article/data.dart';
-import 'package:PiliPlus/models_new/space/space_audio/data.dart';
-import 'package:PiliPlus/models_new/space/space_cheese/data.dart';
-import 'package:PiliPlus/models_new/space/space_opus/data.dart';
-import 'package:PiliPlus/models_new/space/space_season_series/item.dart';
-import 'package:PiliPlus/models_new/space/space_shop/data.dart';
-import 'package:PiliPlus/models_new/upower_rank/data.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/app_sign.dart';
-import 'package:PiliPlus/utils/utils.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/ua_type.dart';
+import 'package:bili_plus/models/common/member/contribute_type.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/models/member/info.dart';
+import 'package:bili_plus/models/member/tags.dart';
+import 'package:bili_plus/models_new/follow/data.dart';
+import 'package:bili_plus/models_new/follow/list.dart';
+import 'package:bili_plus/models_new/member/coin_like_arc/data.dart';
+import 'package:bili_plus/models_new/member/search_archive/data.dart';
+import 'package:bili_plus/models_new/member_card_info/data.dart';
+import 'package:bili_plus/models_new/space/space/data.dart';
+import 'package:bili_plus/models_new/space/space_archive/data.dart';
+import 'package:bili_plus/models_new/space/space_article/data.dart';
+import 'package:bili_plus/models_new/space/space_audio/data.dart';
+import 'package:bili_plus/models_new/space/space_cheese/data.dart';
+import 'package:bili_plus/models_new/space/space_opus/data.dart';
+import 'package:bili_plus/models_new/space/space_season_series/item.dart';
+import 'package:bili_plus/models_new/space/space_shop/data.dart';
+import 'package:bili_plus/models_new/upower_rank/data.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/app_sign.dart';
+import 'package:bili_plus/utils/utils.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
 
 class MemberHttp {
@@ -92,11 +92,7 @@ class MemberHttp {
   }) async {
     var res = await Request().get(
       Api.seasonSeries,
-      queryParameters: {
-        'mid': mid,
-        'page_num': pn,
-        'page_size': 10,
-      },
+      queryParameters: {'mid': mid, 'page_num': pn, 'page_size': 10},
     );
     if (res.data['code'] == 0) {
       return Success(
@@ -281,10 +277,7 @@ class MemberHttp {
     }
   }
 
-  static Future memberInfo({
-    int? mid,
-    String token = '',
-  }) async {
+  static Future memberInfo({int? mid, String token = ''}) async {
     String dmImgStr = Utils.base64EncodeRandomString(16, 64);
     String dmCoverImgStr = Utils.base64EncodeRandomString(32, 128);
     final params = await WbiSign.makSign({
@@ -332,10 +325,7 @@ class MemberHttp {
   }) async {
     var res = await Request().get(
       Api.memberCardInfo,
-      queryParameters: {
-        'mid': mid,
-        'photo': false,
-      },
+      queryParameters: {'mid': mid, 'photo': false},
     );
     if (res.data['code'] == 0) {
       return Success(MemberCardInfoData.fromJson(res.data['data']));
@@ -384,9 +374,7 @@ class MemberHttp {
     if (res.data['code'] == 0) {
       return Success(SearchArchiveData.fromJson(res.data['data']));
     } else {
-      Map errMap = const {
-        -352: '风控校验失败，请检查登录状态',
-      };
+      Map errMap = const {-352: '风控校验失败，请检查登录状态'};
       return Error(errMap[res.data['code']] ?? res.data['message']);
     }
   }
@@ -434,9 +422,7 @@ class MemberHttp {
         return Error(err.toString());
       }
     } else {
-      Map errMap = const {
-        -352: '风控校验失败，请检查登录状态',
-      };
+      Map errMap = const {-352: '风控校验失败，请检查登录状态'};
       return Error(errMap[res.data['code']] ?? res.data['message']);
     }
   }
@@ -479,25 +465,16 @@ class MemberHttp {
     }
   }
 
-  static Future specialAction({
-    int? fid,
-    bool isAdd = true,
-  }) async {
+  static Future specialAction({int? fid, bool isAdd = true}) async {
     var res = await Request().post(
       isAdd ? Api.addSpecial : Api.delSpecial,
-      data: {
-        'fid': fid,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'fid': fid, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
       return {'status': true};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
@@ -533,12 +510,7 @@ class MemberHttp {
   }) async {
     var res = await Request().get(
       Api.followUpGroup,
-      queryParameters: {
-        'mid': mid,
-        'tagid': tagid,
-        'pn': pn,
-        'ps': ps,
-      },
+      queryParameters: {'mid': mid, 'tagid': tagid, 'pn': pn, 'ps': ps},
     );
     if (res.data['code'] == 0) {
       return Success(
@@ -562,10 +534,7 @@ class MemberHttp {
         'x-bili-device-req-json':
             '{"platform":"web","device":"pc","spmid":"333.1387"}',
       },
-      data: {
-        'tag': tagName,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'tag': tagName, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -582,11 +551,7 @@ class MemberHttp {
         'x-bili-device-req-json':
             '{"platform":"web","device":"pc","spmid":"333.1387"}',
       },
-      data: {
-        'tagid': tagid,
-        'name': name,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'tagid': tagid, 'name': name, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -603,10 +568,7 @@ class MemberHttp {
         'x-bili-device-req-json':
             '{"platform":"web","device":"pc","spmid":"333.1387"}',
       },
-      data: {
-        'tagid': tagid,
-        'csrf': Accounts.main.csrf,
-      },
+      data: {'tagid': tagid, 'csrf': Accounts.main.csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -730,11 +692,7 @@ class MemberHttp {
   }) async {
     var res = await Request().get(
       Api.coinArc,
-      queryParameters: {
-        'pn': page,
-        'ps': 20,
-        'vmid': mid,
-      },
+      queryParameters: {'pn': page, 'ps': 20, 'vmid': mid},
     );
     if (res.data['code'] == 0) {
       return Success(CoinLikeArcData.fromJson(res.data['data']));
@@ -749,11 +707,7 @@ class MemberHttp {
   }) async {
     var res = await Request().get(
       Api.likeArc,
-      queryParameters: {
-        'pn': page,
-        'ps': 20,
-        'vmid': mid,
-      },
+      queryParameters: {'pn': page, 'ps': 20, 'vmid': mid},
     );
     if (res.data['code'] == 0) {
       return Success(CoinLikeArcData.fromJson(res.data['data']));

@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/skeleton/msg_feed_top.dart';
-import 'package:PiliPlus/common/widgets/custom_sliver_persistent_header_delegate.dart';
-import 'package:PiliPlus/models/search/result.dart';
-import 'package:PiliPlus/pages/search_panel/user/controller.dart';
-import 'package:PiliPlus/pages/search_panel/user/widgets/item.dart';
-import 'package:PiliPlus/pages/search_panel/view.dart';
-import 'package:PiliPlus/utils/grid.dart';
+import 'package:bili_plus/common/skeleton/msg_feed_top.dart';
+import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
+import 'package:bili_plus/models/search/result.dart';
+import 'package:bili_plus/pages/search_panel/user/controller.dart';
+import 'package:bili_plus/pages/search_panel/user/widgets/item.dart';
+import 'package:bili_plus/pages/search_panel/view.dart';
+import 'package:bili_plus/utils/grid.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -102,9 +102,7 @@ class _SearchUserPanelState
         if (index == list.length - 1) {
           controller.onLoadMore();
         }
-        return SearchUserItem(
-          item: list[index],
-        );
+        return SearchUserItem(item: list[index]);
       },
       itemCount: list.length,
     );

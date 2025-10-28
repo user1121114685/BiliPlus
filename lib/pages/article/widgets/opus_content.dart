@@ -1,20 +1,20 @@
 import 'dart:math';
 
-import 'package:PiliPlus/common/widgets/image/cached_network_svg_image.dart';
-import 'package:PiliPlus/common/widgets/image/custom_grid_view.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/dynamics/article_content_model.dart'
+import 'package:bili_plus/common/widgets/image/cached_network_svg_image.dart';
+import 'package:bili_plus/common/widgets/image/custom_grid_view.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/dynamics/article_content_model.dart'
     show ArticleContentModel, Rich, Style, Word, Node;
-import 'package:PiliPlus/models/dynamics/result.dart';
-import 'package:PiliPlus/pages/dynamics/widgets/vote.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/models/dynamics/result.dart';
+import 'package:bili_plus/pages/dynamics/widgets/vote.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/gestures.dart';
@@ -30,11 +30,7 @@ class OpusContent extends StatelessWidget {
   final List<ArticleContentModel> opus;
   final double maxWidth;
 
-  const OpusContent({
-    super.key,
-    required this.opus,
-    required this.maxWidth,
-  });
+  const OpusContent({super.key, required this.opus, required this.maxWidth});
 
   static InlineSpan _node2Widget({
     required Node item,
@@ -74,9 +70,7 @@ class OpusContent extends StatelessWidget {
                     // case 'RICH_TEXT_NODE_TYPE_TOPIC':
                     default:
                       if (rich.jumpUrl != null) {
-                        PiliScheme.routePushFromUrl(
-                          rich.jumpUrl!,
-                        );
+                        PiliScheme.routePushFromUrl(rich.jumpUrl!);
                       }
                   }
                 },
@@ -736,9 +730,7 @@ Widget moduleBlockedItem(
             ],
             if (moduleBlocked.button != null) ...[
               const SizedBox(height: 8),
-              btn(
-                visualDensity: const VisualDensity(vertical: -2.5),
-              ),
+              btn(visualDensity: const VisualDensity(vertical: -2.5)),
             ],
           ],
         ),
@@ -792,10 +784,8 @@ Widget opusCollection(ThemeData theme, ModuleCollection item) {
       color: theme.colorScheme.onInverseSurface,
       child: InkWell(
         borderRadius: const BorderRadius.all(Radius.circular(8)),
-        onTap: () => Get.toNamed(
-          '/articleList',
-          parameters: {'id': '${item.id}'},
-        ),
+        onTap: () =>
+            Get.toNamed('/articleList', parameters: {'id': '${item.id}'}),
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Row(

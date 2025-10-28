@@ -1,10 +1,10 @@
-import 'package:PiliPlus/http/fav.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/models_new/sub/sub/data.dart';
-import 'package:PiliPlus/models_new/sub/sub/list.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
+import 'package:bili_plus/http/fav.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/models_new/sub/sub/data.dart';
+import 'package:bili_plus/models_new/sub/sub/list.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/services/account_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -74,9 +74,6 @@ class SubController extends CommonListController<SubData, SubItemModel> {
   }
 
   @override
-  Future<LoadingState<SubData>> customGetData() => UserHttp.userSubFolder(
-    pn: page,
-    ps: 20,
-    mid: accountService.mid,
-  );
+  Future<LoadingState<SubData>> customGetData() =>
+      UserHttp.userSubFolder(pn: page, ps: 20, mid: accountService.mid);
 }

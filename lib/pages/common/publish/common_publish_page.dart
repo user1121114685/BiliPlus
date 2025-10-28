@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' show max;
 
-import 'package:PiliPlus/models/common/publish_panel_type.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
+import 'package:bili_plus/models/common/publish_panel_type.dart';
+import 'package:bili_plus/utils/context_ext.dart';
 import 'package:chat_bottom_container/chat_bottom_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -143,9 +143,7 @@ abstract class CommonPublishPageState<T extends CommonPublishPage>
     controller.updatePanelType(ChatBottomPanelType.none);
   }
 
-  bool updateInputView({
-    required bool isReadOnly,
-  }) {
+  bool updateInputView({required bool isReadOnly}) {
     if (readOnly.value != isReadOnly) {
       readOnly.value = isReadOnly;
       return true;
@@ -159,10 +157,7 @@ abstract class CommonPublishPageState<T extends CommonPublishPage>
     if (keyboardHeight != 0) {
       height = max(height, keyboardHeight);
     }
-    return SizedBox(
-      height: height,
-      child: customPanel,
-    );
+    return SizedBox(height: height, child: customPanel);
   }
 
   Widget buildMorePanel(ThemeData theme) => throw UnimplementedError();

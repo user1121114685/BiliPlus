@@ -1,25 +1,19 @@
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models_new/live/live_search/user_item.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models_new/live/live_search/user_item.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
 import 'package:flutter/material.dart';
 
 class LiveSearchUserItem extends StatelessWidget {
-  const LiveSearchUserItem({
-    super.key,
-    required this.item,
-  });
+  const LiveSearchUserItem({super.key, required this.item});
 
   final LiveSearchUserItemModel item;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final style = TextStyle(
-      fontSize: 13,
-      color: theme.colorScheme.outline,
-    );
+    final style = TextStyle(fontSize: 13, color: theme.colorScheme.outline);
     return Material(
       type: MaterialType.transparency,
       child: InkWell(
@@ -41,12 +35,7 @@ class LiveSearchUserItem extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Text(
-                      item.name!,
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
+                    Text(item.name!, style: const TextStyle(fontSize: 14)),
                     if (item.liveStatus == 1) ...[
                       const SizedBox(width: 10),
                       Image.asset(height: 14, 'assets/images/live/live.gif'),

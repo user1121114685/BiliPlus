@@ -1,19 +1,19 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/stat/stat.dart';
-import 'package:PiliPlus/common/widgets/video_popup_menu.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/stat_type.dart';
-import 'package:PiliPlus/models/model_rec_video_item.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/common/widgets/video_popup_menu.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/stat_type.dart';
+import 'package:bili_plus/models/model_rec_video_item.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:intl/intl.dart';
@@ -23,11 +23,7 @@ class VideoCardV extends StatelessWidget {
   final BaseRecVideoItemModel videoItem;
   final VoidCallback? onRemove;
 
-  const VideoCardV({
-    super.key,
-    required this.videoItem,
-    this.onRemove,
-  });
+  const VideoCardV({super.key, required this.videoItem, this.onRemove});
 
   Future<void> onPushDetail(String heroTag) async {
     String? goto = videoItem.goto;
@@ -147,9 +143,7 @@ class VideoCardV extends StatelessWidget {
                 "${videoItem.title}\n",
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  height: 1.38,
-                ),
+                style: const TextStyle(height: 1.38),
               ),
             ),
             videoStat(context, theme),
@@ -215,16 +209,10 @@ class VideoCardV extends StatelessWidget {
   Widget videoStat(BuildContext context, ThemeData theme) {
     return Row(
       children: [
-        StatWidget(
-          type: StatType.play,
-          value: videoItem.stat.view,
-        ),
+        StatWidget(type: StatType.play, value: videoItem.stat.view),
         if (videoItem.goto != 'picture') ...[
           const SizedBox(width: 4),
-          StatWidget(
-            type: StatType.danmaku,
-            value: videoItem.stat.danmu,
-          ),
+          StatWidget(type: StatType.danmaku, value: videoItem.stat.danmu),
         ],
         if (videoItem is RecVideoItemModel) ...[
           const Spacer(),

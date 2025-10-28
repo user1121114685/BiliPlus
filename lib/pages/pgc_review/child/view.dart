@@ -1,20 +1,20 @@
-import 'package:PiliPlus/common/skeleton/video_reply.dart';
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/common/widgets/custom_sliver_persistent_header_delegate.dart';
-import 'package:PiliPlus/common/widgets/dialog/dialog.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/models/common/pgc_review_type.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_review/list.dart';
-import 'package:PiliPlus/pages/pgc_review/child/controller.dart';
-import 'package:PiliPlus/pages/pgc_review/post/view.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/skeleton/video_reply.dart';
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/common/widgets/custom_sliver_persistent_header_delegate.dart';
+import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/models/common/pgc_review_type.dart';
+import 'package:bili_plus/models_new/pgc/pgc_review/list.dart';
+import 'package:bili_plus/pages/pgc_review/child/controller.dart';
+import 'package:bili_plus/pages/pgc_review/post/view.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/num_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -120,10 +120,7 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
             if (item.author!.mid == Accounts.main.mid) ...[
               ListTile(
                 dense: true,
-                title: const Text(
-                  '编辑',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('编辑', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   showModalBottomSheet(
@@ -144,10 +141,7 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '删除',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('删除', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   showConfirmDialog(
@@ -160,10 +154,7 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
             ],
             ListTile(
               dense: true,
-              title: const Text(
-                '举报',
-                style: TextStyle(fontSize: 14),
-              ),
+              title: const Text('举报', style: TextStyle(fontSize: 14)),
               onTap: () => Get
                 ..back()
                 ..toNamed(
@@ -185,10 +176,7 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
         onTap: isLongReview
             ? () => Get.toNamed(
                 '/articlePage',
-                parameters: {
-                  'id': item.articleId!.toString(),
-                  'type': 'read',
-                },
+                parameters: {'id': item.articleId!.toString(), 'type': 'read'},
               )
             : null,
         onLongPress: !isLongReview ? showMore : null,
@@ -250,23 +238,20 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
                               ),
                               const SizedBox(width: 10),
                             ],
-                            ...List.generate(
-                              5,
-                              (index) {
-                                if (index <= item.score - 1) {
-                                  return const Icon(
-                                    CustomIcons.star_favorite_solid,
-                                    size: 13,
-                                    color: Color(0xFFFFAD35),
-                                  );
-                                }
+                            ...List.generate(5, (index) {
+                              if (index <= item.score - 1) {
                                 return const Icon(
-                                  CustomIcons.star_favorite_line,
-                                  size: 14,
-                                  color: Colors.grey,
+                                  CustomIcons.star_favorite_solid,
+                                  size: 13,
+                                  color: Color(0xFFFFAD35),
                                 );
-                              },
-                            ),
+                              }
+                              return const Icon(
+                                CustomIcons.star_favorite_line,
+                                size: 14,
+                                color: Colors.grey,
+                              );
+                            }),
                           ],
                         ),
                       ],
@@ -285,10 +270,7 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
                   ),
                 ),
               if (isLongReview)
-                Text(
-                  item.content!,
-                  style: const TextStyle(height: 1.75),
-                )
+                Text(item.content!, style: const TextStyle(height: 1.75))
               else
                 SelectableText(
                   item.content!,
@@ -382,17 +364,15 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Obx(
-              () {
-                final count = _controller.count.value;
-                return count == null
-                    ? const SizedBox.shrink()
-                    : Text(
-                        '${NumUtils.numFormat(count)}条点评',
-                        style: const TextStyle(fontSize: 13),
-                      );
-              },
-            ),
+            Obx(() {
+              final count = _controller.count.value;
+              return count == null
+                  ? const SizedBox.shrink()
+                  : Text(
+                      '${NumUtils.numFormat(count)}条点评',
+                      style: const TextStyle(fontSize: 13),
+                    );
+            }),
             SizedBox(
               height: 35,
               child: TextButton.icon(

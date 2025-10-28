@@ -1,25 +1,19 @@
-import 'package:PiliPlus/models/model_avatar.dart';
-import 'package:PiliPlus/models/model_owner.dart';
-import 'package:PiliPlus/models/model_video.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/em.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models/model_avatar.dart';
+import 'package:bili_plus/models/model_owner.dart';
+import 'package:bili_plus/models/model_video.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/em.dart';
+import 'package:bili_plus/utils/extension.dart';
 
 abstract class SearchNumData<T> {
-  SearchNumData({
-    this.numResults,
-    this.list,
-  });
+  SearchNumData({this.numResults, this.list});
 
   int? numResults;
   List<T>? list;
 }
 
 class SearchAllData extends SearchNumData {
-  SearchAllData({
-    super.numResults,
-    super.list,
-  });
+  SearchAllData({super.numResults, super.list});
 
   SearchAllData.fromJson(Map<String, dynamic> json) {
     numResults = (json['numResults'] as num?)?.toInt();
@@ -50,10 +44,7 @@ class SearchAllData extends SearchNumData {
 }
 
 class SearchVideoData extends SearchNumData<SearchVideoItemModel> {
-  SearchVideoData({
-    super.numResults,
-    super.list,
-  });
+  SearchVideoData({super.numResults, super.list});
 
   SearchVideoData.fromJson(Map<String, dynamic> json) {
     numResults = (json['numResults'] as num?)?.toInt();
@@ -116,10 +107,7 @@ class SearchOwner extends Owner {
 }
 
 class SearchUserData extends SearchNumData<SearchUserItemModel> {
-  SearchUserData({
-    super.numResults,
-    super.list,
-  });
+  SearchUserData({super.numResults, super.list});
 
   SearchUserData.fromJson(Map<String, dynamic> json) {
     numResults = (json['numResults'] as num?)?.toInt();
@@ -192,10 +180,7 @@ class SearchUserItemModel {
 }
 
 class SearchLiveData extends SearchNumData<SearchLiveItemModel> {
-  SearchLiveData({
-    super.numResults,
-    super.list,
-  });
+  SearchLiveData({super.numResults, super.list});
 
   SearchLiveData.fromJson(Map<String, dynamic> json) {
     numResults = (json['numResults'] as num?)?.toInt();
@@ -270,10 +255,7 @@ class SearchLiveItemModel {
 }
 
 class SearchPgcData extends SearchNumData<SearchPgcItemModel> {
-  SearchPgcData({
-    super.numResults,
-    super.list,
-  });
+  SearchPgcData({super.numResults, super.list});
 
   SearchPgcData.fromJson(Map<String, dynamic> json) {
     numResults = (json['numResults'] as num?)?.toInt();
@@ -368,10 +350,7 @@ class SearchPgcItemModel {
 }
 
 class SearchArticleData extends SearchNumData<SearchArticleItemModel> {
-  SearchArticleData({
-    super.numResults,
-    super.list,
-  });
+  SearchArticleData({super.numResults, super.list});
 
   SearchArticleData.fromJson(Map<String, dynamic> json) {
     numResults = (json['numResults'] as num?)?.toInt();

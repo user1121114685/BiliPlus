@@ -1,25 +1,21 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/skeleton/space_opus.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/http_error.dart';
-import 'package:PiliPlus/common/widgets/refresh_indicator.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/space/space_shop/item.dart';
-import 'package:PiliPlus/pages/member_shop/controller.dart';
-import 'package:PiliPlus/pages/member_shop/widgets/item.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/waterfall.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/skeleton/space_opus.dart';
+import 'package:bili_plus/common/widgets/loading_widget/http_error.dart';
+import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/space/space_shop/item.dart';
+import 'package:bili_plus/pages/member_shop/controller.dart';
+import 'package:bili_plus/pages/member_shop/widgets/item.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/waterfall.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:waterfall_flow/waterfall_flow.dart'
     hide SliverWaterfallFlowDelegateWithMaxCrossAxisExtent;
 
 class MemberShop extends StatefulWidget {
-  const MemberShop({
-    super.key,
-    required this.heroTag,
-    required this.mid,
-  });
+  const MemberShop({super.key, required this.heroTag, required this.mid});
 
   final String? heroTag;
   final int mid;
@@ -85,15 +81,9 @@ class _MemberShopState extends State<MemberShop>
         }
         Widget sliver = SliverWaterfallFlow(
           gridDelegate: gridDelegate,
-          delegate: SliverChildBuilderDelegate(
-            (_, index) {
-              return MemberShopItem(
-                item: response[index],
-                maxWidth: _maxWidth,
-              );
-            },
-            childCount: response!.length,
-          ),
+          delegate: SliverChildBuilderDelegate((_, index) {
+            return MemberShopItem(item: response[index], maxWidth: _maxWidth);
+          }, childCount: response!.length),
         );
         if (_controller.showMoreTab == true) {
           sliver = SliverMainAxisGroup(
@@ -110,10 +100,7 @@ class _MemberShopState extends State<MemberShop>
                             clickUrl,
                           ).queryParameters['url'];
                           if (url case final url?) {
-                            Get.toNamed(
-                              '/webview',
-                              parameters: {'url': url},
-                            );
+                            Get.toNamed('/webview', parameters: {'url': url});
                           }
                         }
                       },
@@ -130,10 +117,7 @@ class _MemberShopState extends State<MemberShop>
         }
         return sliver;
       case Error(:var errMsg):
-        return HttpError(
-          errMsg: errMsg,
-          onReload: _controller.onReload,
-        );
+        return HttpError(errMsg: errMsg, onReload: _controller.onReload);
     }
   }
 }

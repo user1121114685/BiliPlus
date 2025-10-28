@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/space/space/display.dart';
+import 'package:bili_plus/models_new/space/space/display.dart';
 
 class Nft {
   String? itemName;

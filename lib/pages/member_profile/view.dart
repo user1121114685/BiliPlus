@@ -1,22 +1,22 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/loading_widget/loading_widget.dart';
-import 'package:PiliPlus/http/constants.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/member/profile_type.dart';
-import 'package:PiliPlus/models/user/info.dart';
-import 'package:PiliPlus/models_new/account_myinfo/data.dart';
-import 'package:PiliPlus/pages/mine/controller.dart';
-import 'package:PiliPlus/services/account_service.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/app_sign.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
+import 'package:bili_plus/http/constants.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/member/profile_type.dart';
+import 'package:bili_plus/models/user/info.dart';
+import 'package:bili_plus/models_new/account_myinfo/data.dart';
+import 'package:bili_plus/pages/mine/controller.dart';
+import 'package:bili_plus/services/account_service.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/app_sign.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:easy_debounce/easy_throttle.dart';
@@ -260,20 +260,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
     );
   }
 
-  Widget _sexDialogItem(
-    int sex,
-    int current,
-    String text,
-  ) {
+  Widget _sexDialogItem(int sex, int current, String text) {
     return ListTile(
       dense: true,
       enabled: current != sex,
       title: Padding(
         padding: const EdgeInsets.only(left: 10),
-        child: Text(
-          text,
-          style: const TextStyle(fontSize: 14),
-        ),
+        child: Text(text, style: const TextStyle(fontSize: 14)),
       ),
       trailing: current == sex ? const Icon(size: 22, Icons.check) : null,
       onTap: () {
@@ -342,10 +335,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
     ).whenComplete(_textController.clear);
   }
 
-  Future<void> _update({
-    required ProfileType type,
-    dynamic datum,
-  }) async {
+  Future<void> _update({required ProfileType type, dynamic datum}) async {
     final accessKey = Accounts.main.accessKey;
     if (accessKey.isNullOrEmpty) {
       SmartDialog.showToast('请退出账号后重新登录');
@@ -375,9 +365,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         .post(
           '/x/member/app/${type.name}/update',
           data: data,
-          options: Options(
-            contentType: Headers.formUrlEncodedContentType,
-          ),
+          options: Options(contentType: Headers.formUrlEncodedContentType),
         )
         .then((res) {
           if (res.data['code'] == 0) {
@@ -439,10 +427,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       dense: title != '头像',
       leading: Text(
         title,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-        ),
+        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.normal),
       ),
       title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -463,10 +448,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           else
             ?widget,
           if (needIcon)
-            Icon(
-              Icons.keyboard_arrow_right,
-              color: theme.colorScheme.outline,
-            )
+            Icon(Icons.keyboard_arrow_right, color: theme.colorScheme.outline)
           else
             const SizedBox(width: 24),
         ],
@@ -524,9 +506,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           Request()
               .post(
                 '/x/member/web/face/update',
-                queryParameters: {
-                  'csrf': Accounts.main.csrf,
-                },
+                queryParameters: {'csrf': Accounts.main.csrf},
                 data: FormData.fromMap({
                   'dopost': 'save',
                   'DisplayRank': 10000,

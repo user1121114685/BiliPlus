@@ -1,13 +1,10 @@
-import 'package:PiliPlus/models_new/pgc/pgc_index_condition/value.dart';
+import 'package:bili_plus/models_new/pgc/pgc_index_condition/value.dart';
 
 class PgcCondition {
   String? field;
   String? name;
 
-  PgcCondition({
-    this.field,
-    this.name,
-  });
+  PgcCondition({this.field, this.name});
 }
 
 class PgcConditionFilter extends PgcCondition {

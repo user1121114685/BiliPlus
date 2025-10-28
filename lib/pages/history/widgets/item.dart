@@ -1,18 +1,18 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/common/widgets/progress_bar/video_progress_indicator.dart';
-import 'package:PiliPlus/common/widgets/select_mask.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/http/user.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models_new/history/list.dart';
-import 'package:PiliPlus/pages/common/multi_select/base.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/common/widgets/progress_bar/video_progress_indicator.dart';
+import 'package:bili_plus/common/widgets/select_mask.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/http/user.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models_new/history/list.dart';
+import 'package:bili_plus/pages/common/multi_select/base.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -275,10 +275,7 @@ class HistoryItem extends StatelessWidget {
               item.showTitle?.isNotEmpty == true)
             Text(
               item.showTitle!,
-              style: TextStyle(
-                fontSize: 13,
-                color: theme.colorScheme.outline,
-              ),
+              style: TextStyle(fontSize: 13, color: theme.colorScheme.outline),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

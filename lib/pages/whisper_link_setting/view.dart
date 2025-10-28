@@ -1,19 +1,16 @@
-import 'package:PiliPlus/common/widgets/pendant_avatar.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models_new/msg/im_user_infos/datum.dart';
-import 'package:PiliPlus/models_new/msg/msg_dnd/uid_setting.dart';
-import 'package:PiliPlus/models_new/msg/session_ss/data.dart';
-import 'package:PiliPlus/pages/whisper_link_setting/controller.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/widgets/pendant_avatar.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models_new/msg/im_user_infos/datum.dart';
+import 'package:bili_plus/models_new/msg/msg_dnd/uid_setting.dart';
+import 'package:bili_plus/models_new/msg/session_ss/data.dart';
+import 'package:bili_plus/pages/whisper_link_setting/controller.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class WhisperLinkSettingPage extends StatefulWidget {
-  const WhisperLinkSettingPage({
-    super.key,
-    required this.talkerUid,
-  });
+  const WhisperLinkSettingPage({super.key, required this.talkerUid});
 
   final int talkerUid;
 
@@ -258,10 +255,7 @@ class _WhisperLinkSettingPageState extends State<WhisperLinkSettingPage> {
       child: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        child: Text(
-          errMsg ?? '',
-          textAlign: TextAlign.center,
-        ),
+        child: Text(errMsg ?? '', textAlign: TextAlign.center),
       ),
     );
   }

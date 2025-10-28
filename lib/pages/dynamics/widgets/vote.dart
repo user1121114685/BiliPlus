@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/dialog/report.dart';
-import 'package:PiliPlus/http/dynamics.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/dynamics/vote_model.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/num_utils.dart';
+import 'package:bili_plus/common/widgets/dialog/report.dart';
+import 'package:bili_plus/http/dynamics.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/dynamics/vote_model.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/num_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 
@@ -13,11 +13,7 @@ class VotePanel extends StatefulWidget {
   final VoteInfo voteInfo;
   final FutureOr<LoadingState<VoteInfo>> Function(Set<int>, bool) callback;
 
-  const VotePanel({
-    super.key,
-    required this.voteInfo,
-    required this.callback,
-  });
+  const VotePanel({super.key, required this.voteInfo, required this.callback});
 
   @override
   State<VotePanel> createState() => _VotePanelState();
@@ -75,10 +71,7 @@ class _VotePanelState extends State<VotePanel> {
             () => OutlinedButton(
               onPressed: groupValue.isNotEmpty
                   ? () async {
-                      final res = await widget.callback(
-                        groupValue,
-                        anonymity,
-                      );
+                      final res = await widget.callback(groupValue, anonymity);
                       if (res.isSuccess) {
                         if (mounted) {
                           setState(() {

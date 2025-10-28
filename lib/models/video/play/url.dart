@@ -1,9 +1,9 @@
 import 'dart:math' show max, min;
 
-import 'package:PiliPlus/models/common/video/audio_quality.dart';
-import 'package:PiliPlus/models/common/video/video_quality.dart';
-import 'package:PiliPlus/models_new/sponsor_block/segment_item.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models/common/video/audio_quality.dart';
+import 'package:bili_plus/models/common/video/video_quality.dart';
+import 'package:bili_plus/models_new/sponsor_block/segment_item.dart';
+import 'package:bili_plus/utils/extension.dart';
 
 class PlayUrlModel {
   PlayUrlModel({

@@ -1,14 +1,14 @@
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/models/common/pgc_review_type.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_index_condition/data.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_index_result/data.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_index_result/list.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_review/data.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_timeline/pgc_timeline.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_timeline/result.dart';
-import 'package:PiliPlus/utils/accounts.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/models/common/pgc_review_type.dart';
+import 'package:bili_plus/models_new/pgc/pgc_index_condition/data.dart';
+import 'package:bili_plus/models_new/pgc/pgc_index_result/data.dart';
+import 'package:bili_plus/models_new/pgc/pgc_index_result/list.dart';
+import 'package:bili_plus/models_new/pgc/pgc_review/data.dart';
+import 'package:bili_plus/models_new/pgc/pgc_timeline/pgc_timeline.dart';
+import 'package:bili_plus/models_new/pgc/pgc_timeline/result.dart';
+import 'package:bili_plus/utils/accounts.dart';
 import 'package:dio/dio.dart';
 
 class PgcHttp {
@@ -97,11 +97,7 @@ class PgcHttp {
   }) async {
     var res = await Request().get(
       Api.pgcTimeline,
-      queryParameters: {
-        'types': types,
-        'before': before,
-        'after': after,
-      },
+      queryParameters: {'types': types, 'before': before, 'after': after},
     );
     if (res.data['code'] == 0) {
       return Success(PgcTimeline.fromJson(res.data).result);
@@ -133,10 +129,7 @@ class PgcHttp {
     }
   }
 
-  static Future pgcReviewLike({
-    required mediaId,
-    required reviewId,
-  }) async {
+  static Future pgcReviewLike({required mediaId, required reviewId}) async {
     var res = await Request().post(
       Api.pgcReviewLike,
       data: {
@@ -154,10 +147,7 @@ class PgcHttp {
     }
   }
 
-  static Future pgcReviewDislike({
-    required mediaId,
-    required reviewId,
-  }) async {
+  static Future pgcReviewDislike({required mediaId, required reviewId}) async {
     var res = await Request().post(
       Api.pgcReviewDislike,
       data: {
@@ -223,10 +213,7 @@ class PgcHttp {
     }
   }
 
-  static Future pgcReviewDel({
-    required mediaId,
-    required reviewId,
-  }) async {
+  static Future pgcReviewDel({required mediaId, required reviewId}) async {
     var res = await Request().post(
       Api.pgcReviewDel,
       data: {

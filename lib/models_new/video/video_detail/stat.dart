@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/video/video_detail/stat_detail.dart';
+import 'package:bili_plus/models_new/video/video_detail/stat_detail.dart';
 
 class VideoStat extends StatDetail {
   int? aid;

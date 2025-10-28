@@ -1,16 +1,16 @@
 import 'dart:async';
 
-import 'package:PiliPlus/common/widgets/button/icon_button.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/http/danmaku.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/main.dart';
-import 'package:PiliPlus/models/common/publish_panel_type.dart';
-import 'package:PiliPlus/pages/common/publish/common_text_pub_page.dart';
-import 'package:PiliPlus/pages/danmaku/dnamaku_model.dart';
-import 'package:PiliPlus/pages/setting/slide_color_picker.dart';
-import 'package:PiliPlus/plugin/pl_player/controller.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/widgets/button/icon_button.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/http/danmaku.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/main.dart';
+import 'package:bili_plus/models/common/publish_panel_type.dart';
+import 'package:bili_plus/pages/common/publish/common_text_pub_page.dart';
+import 'package:bili_plus/pages/danmaku/dnamaku_model.dart';
+import 'package:bili_plus/pages/setting/slide_color_picker.dart';
+import 'package:bili_plus/plugin/pl_player/controller.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:canvas_danmaku/models/danmaku_content_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show LengthLimitingTextInputFormatter;
@@ -91,48 +91,44 @@ class _SendDanmakuPanelState extends CommonTextPubPageState<SendDanmakuPanel> {
   }
 
   Widget get _buildColorPanel => Expanded(
-    child: Obx(
-      () {
-        final bool isCustomColor = !_colorList.contains(_color.value);
-        final int length = _colorList.length + (isCustomColor ? 1 : 0) + 1;
-        return GridView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.zero,
-          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-            maxCrossAxisExtent: 42,
-            crossAxisSpacing: 4,
-            mainAxisSpacing: 4,
-          ),
-          itemCount: length,
-          itemBuilder: (context, index) {
-            if (index == length - 1) {
-              return GestureDetector(
-                onTap: _showColorPicker,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: themeData.colorScheme.secondaryContainer,
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(8),
-                    ),
-                  ),
-                  alignment: Alignment.center,
-                  margin: const EdgeInsets.all(2),
-                  child: Icon(
-                    size: 22,
-                    Icons.edit,
-                    color: themeData.colorScheme.onSecondaryContainer,
-                  ),
+    child: Obx(() {
+      final bool isCustomColor = !_colorList.contains(_color.value);
+      final int length = _colorList.length + (isCustomColor ? 1 : 0) + 1;
+      return GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsets.zero,
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 42,
+          crossAxisSpacing: 4,
+          mainAxisSpacing: 4,
+        ),
+        itemCount: length,
+        itemBuilder: (context, index) {
+          if (index == length - 1) {
+            return GestureDetector(
+              onTap: _showColorPicker,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: themeData.colorScheme.secondaryContainer,
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
                 ),
-              );
-            } else if (index == length - 2 && isCustomColor) {
-              return _buildColorItem(_color.value);
-            }
-            return _buildColorItem(_colorList[index]);
-          },
-        );
-      },
-    ),
+                alignment: Alignment.center,
+                margin: const EdgeInsets.all(2),
+                child: Icon(
+                  size: 22,
+                  Icons.edit,
+                  color: themeData.colorScheme.onSecondaryContainer,
+                ),
+              ),
+            );
+          } else if (index == length - 2 && isCustomColor) {
+            return _buildColorItem(_color.value);
+          }
+          return _buildColorItem(_colorList[index]);
+        },
+      );
+    }),
   );
 
   @override
@@ -229,10 +225,7 @@ class _SendDanmakuPanelState extends CommonTextPubPageState<SendDanmakuPanel> {
           borderRadius: const BorderRadius.all(Radius.circular(8)),
           border: _color.value != color
               ? null
-              : Border.all(
-                  width: 2,
-                  color: themeData.colorScheme.primary,
-                ),
+              : Border.all(width: 2, color: themeData.colorScheme.primary),
         ),
         child: DecoratedBox(
           decoration: BoxDecoration(
@@ -248,10 +241,7 @@ class _SendDanmakuPanelState extends CommonTextPubPageState<SendDanmakuPanel> {
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(6)),
                         gradient: LinearGradient(
-                          colors: [
-                            Color(0xFFDD94DA),
-                            Color(0xFF72B2EA),
-                          ],
+                          colors: [Color(0xFFDD94DA), Color(0xFF72B2EA)],
                         ),
                       ),
                     ),
@@ -331,24 +321,20 @@ class _SendDanmakuPanelState extends CommonTextPubPageState<SendDanmakuPanel> {
       padding: const EdgeInsets.only(left: 8, top: 2, right: 8),
       child: Row(
         children: [
-          Obx(
-            () {
-              final isEmoji = panelType.value == PanelType.emoji;
-              return iconButton(
-                tooltip: '弹幕样式',
-                onPressed: () {
-                  updatePanelType(
-                    isEmoji ? PanelType.keyboard : PanelType.emoji,
-                  );
-                },
-                iconSize: 24,
-                icon: const Icon(Icons.text_format),
-                iconColor: isEmoji
-                    ? themeData.colorScheme.primary
-                    : themeData.colorScheme.onSurfaceVariant,
-              );
-            },
-          ),
+          Obx(() {
+            final isEmoji = panelType.value == PanelType.emoji;
+            return iconButton(
+              tooltip: '弹幕样式',
+              onPressed: () {
+                updatePanelType(isEmoji ? PanelType.keyboard : PanelType.emoji);
+              },
+              iconSize: 24,
+              icon: const Icon(Icons.text_format),
+              iconColor: isEmoji
+                  ? themeData.colorScheme.primary
+                  : themeData.colorScheme.onSurfaceVariant,
+            );
+          }),
           const SizedBox(width: 12),
           Expanded(
             child: Form(
@@ -364,9 +350,7 @@ class _SendDanmakuPanelState extends CommonTextPubPageState<SendDanmakuPanel> {
                     controller: editController,
                     autofocus: false,
                     readOnly: readOnly.value,
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(100),
-                    ],
+                    inputFormatters: [LengthLimitingTextInputFormatter(100)],
                     onChanged: onChanged,
                     textInputAction: TextInputAction.send,
                     onSubmitted: (value) {

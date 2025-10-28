@@ -1,22 +1,22 @@
 import 'dart:convert';
 
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/badge.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/grpc/bilibili/im/interfaces/v1.pb.dart'
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/badge.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/grpc/bilibili/im/interfaces/v1.pb.dart'
     show EmotionInfo;
-import 'package:PiliPlus/grpc/bilibili/im/type.pb.dart' show Msg, MsgType;
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/models/common/badge_type.dart';
-import 'package:PiliPlus/models/common/image_preview_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/utils/app_scheme.dart';
-import 'package:PiliPlus/utils/date_utils.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/id_utils.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/grpc/bilibili/im/type.pb.dart' show Msg, MsgType;
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/models/common/badge_type.dart';
+import 'package:bili_plus/models/common/image_preview_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/utils/app_scheme.dart';
+import 'package:bili_plus/utils/date_utils.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/id_utils.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -28,12 +28,8 @@ class ChatItem extends StatelessWidget {
     return MsgType.valueOf(value) ?? MsgType.EN_INVALID_MSG_TYPE;
   }
 
-  const ChatItem({
-    super.key,
-    required this.item,
-    this.eInfos,
-    this.onLongPress,
-  }) : isOwner = onLongPress != null;
+  const ChatItem({super.key, required this.item, this.eInfos, this.onLongPress})
+    : isOwner = onLongPress != null;
 
   final Msg item;
   final List<EmotionInfo>? eInfos;
@@ -253,10 +249,7 @@ class ChatItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => Get.toNamed(
         '/articlePage',
-        parameters: {
-          'id': '${content['rid']}',
-          'type': "read",
-        },
+        parameters: {'id': '${content['rid']}', 'type': "read"},
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -264,11 +257,7 @@ class ChatItem extends StatelessWidget {
           Row(
             children: [
               for (var i in content['image_urls'])
-                NetworkImgLayer(
-                  width: 130,
-                  height: 130 * 9 / 16,
-                  src: i,
-                ),
+                NetworkImgLayer(width: 130, height: 130 * 9 / 16, src: i),
             ],
           ),
           const SizedBox(height: 6),
@@ -521,10 +510,7 @@ class ChatItem extends StatelessWidget {
         type = '专栏';
         onTap = () => Get.toNamed(
           '/articlePage',
-          parameters: {
-            'id': '${content['id']}',
-            'type': 'read',
-          },
+          parameters: {'id': '${content['id']}', 'type': 'read'},
         );
         break;
 
@@ -695,9 +681,7 @@ class ChatItem extends StatelessWidget {
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: () => PiliScheme.routePushFromUrl(uri),
-            child: Text(
-              text?.isNotEmpty == true ? text! : '查看详情',
-            ),
+            child: Text(text?.isNotEmpty == true ? text! : '查看详情'),
           ),
         ];
       }

@@ -1,20 +1,20 @@
-import 'package:PiliPlus/common/widgets/list_tile.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/http/login.dart';
-import 'package:PiliPlus/models/common/setting_type.dart';
-import 'package:PiliPlus/pages/about/view.dart';
-import 'package:PiliPlus/pages/login/controller.dart';
-import 'package:PiliPlus/pages/setting/extra_setting.dart';
-import 'package:PiliPlus/pages/setting/play_setting.dart';
-import 'package:PiliPlus/pages/setting/privacy_setting.dart';
-import 'package:PiliPlus/pages/setting/recommend_setting.dart';
-import 'package:PiliPlus/pages/setting/style_setting.dart';
-import 'package:PiliPlus/pages/setting/video_setting.dart';
-import 'package:PiliPlus/pages/setting/widgets/multi_select_dialog.dart';
-import 'package:PiliPlus/pages/webdav/view.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/common/widgets/list_tile.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/http/login.dart';
+import 'package:bili_plus/models/common/setting_type.dart';
+import 'package:bili_plus/pages/about/view.dart';
+import 'package:bili_plus/pages/login/controller.dart';
+import 'package:bili_plus/pages/setting/extra_setting.dart';
+import 'package:bili_plus/pages/setting/play_setting.dart';
+import 'package:bili_plus/pages/setting/privacy_setting.dart';
+import 'package:bili_plus/pages/setting/recommend_setting.dart';
+import 'package:bili_plus/pages/setting/style_setting.dart';
+import 'package:bili_plus/pages/setting/video_setting.dart';
+import 'package:bili_plus/pages/setting/widgets/multi_select_dialog.dart';
+import 'package:bili_plus/pages/webdav/view.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart' hide ListTile;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -25,11 +25,7 @@ class _SettingsModel {
   final String? subtitle;
   final Icon icon;
 
-  const _SettingsModel({
-    required this.type,
-    this.subtitle,
-    required this.icon,
-  });
+  const _SettingsModel({required this.type, this.subtitle, required this.icon});
 }
 
 class SettingPage extends StatefulWidget {
@@ -79,10 +75,7 @@ class _SettingPageState extends State<SettingPage> {
       type: SettingType.webdavSetting,
       icon: Icon(MdiIcons.databaseCogOutline),
     ),
-    _SettingsModel(
-      type: SettingType.about,
-      icon: Icon(Icons.info_outline),
-    ),
+    _SettingsModel(type: SettingType.about, icon: Icon(Icons.info_outline)),
   ];
 
   @override
@@ -91,19 +84,14 @@ class _SettingPageState extends State<SettingPage> {
     _isPortrait = MediaQuery.sizeOf(context).isPortrait;
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: _isPortrait ? const Text('设置') : Text(_type.title),
-      ),
+      appBar: AppBar(title: _isPortrait ? const Text('设置') : Text(_type.title)),
       body: ViewSafeArea(
         child: _isPortrait
             ? _buildList(theme)
             : Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(
-                    flex: 4,
-                    child: _buildList(theme),
-                  ),
+                  Expanded(flex: 4, child: _buildList(theme)),
                   VerticalDivider(
                     width: 1,
                     color: theme.colorScheme.outline.withValues(alpha: 0.1),
@@ -242,9 +230,7 @@ class _SettingPageState extends State<SettingPage> {
               onPressed: Get.back,
               child: Text(
                 '点错了',
-                style: TextStyle(
-                  color: theme.colorScheme.outline,
-                ),
+                style: TextStyle(color: theme.colorScheme.outline),
               ),
             ),
             TextButton(
@@ -279,11 +265,7 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   Widget _buildSearchItem(ThemeData theme) => Padding(
-    padding: const EdgeInsets.only(
-      left: 16,
-      right: 16,
-      bottom: 8,
-    ),
+    padding: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
     child: Material(
       type: MaterialType.transparency,
       child: InkWell(

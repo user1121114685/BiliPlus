@@ -1,4 +1,4 @@
-import 'package:PiliPlus/pages/setting/widgets/checkbox_num_list_tile.dart';
+import 'package:bili_plus/pages/setting/widgets/checkbox_num_list_tile.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,10 +46,7 @@ class _OrderedMultiSelectDialogState<T>
                 return OrderedCheckboxListTile(
                   dense: true,
                   value: _tempValues[i.key],
-                  title: Text(
-                    i.value,
-                    style: theme.textTheme.titleMedium!,
-                  ),
+                  title: Text(i.value, style: theme.textTheme.titleMedium!),
                   onChanged: (value) {
                     if (value == null) {
                       _tempValues[i.key] = _tempValues.length + 1;
@@ -76,12 +73,7 @@ class _OrderedMultiSelectDialogState<T>
       actions: [
         TextButton(
           onPressed: Get.back,
-          child: Text(
-            '取消',
-            style: TextStyle(
-              color: theme.colorScheme.outline,
-            ),
-          ),
+          child: Text('取消', style: TextStyle(color: theme.colorScheme.outline)),
         ),
         TextButton(
           onPressed: () {

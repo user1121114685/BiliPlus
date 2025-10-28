@@ -1,10 +1,10 @@
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models/common/avatar_badge_type.dart';
-import 'package:PiliPlus/models/common/image_type.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/image_utils.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models/common/avatar_badge_type.dart';
+import 'package:bili_plus/models/common/image_type.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/image_utils.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -110,10 +110,7 @@ class PendantAvatar extends StatelessWidget {
       isMemberAvatar
       ? DecoratedBox(
           decoration: BoxDecoration(
-            border: Border.all(
-              width: 2,
-              color: colorScheme.surface,
-            ),
+            border: Border.all(width: 2, color: colorScheme.surface),
             shape: BoxShape.circle,
           ),
           child: Padding(

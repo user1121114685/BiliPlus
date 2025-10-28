@@ -1,13 +1,13 @@
 import 'dart:async';
 
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/episode.dart';
-import 'package:PiliPlus/models_new/pgc/pgc_info_model/new_ep.dart';
-import 'package:PiliPlus/models_new/video/video_detail/episode.dart'
+import 'package:bili_plus/models_new/pgc/pgc_info_model/episode.dart';
+import 'package:bili_plus/models_new/pgc/pgc_info_model/new_ep.dart';
+import 'package:bili_plus/models_new/video/video_detail/episode.dart'
     hide EpisodeItem;
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -197,10 +197,7 @@ class _PgcPanelState extends State<PgcPanel> {
                               ),
                             TextSpan(
                               text: item.title ?? '第${index + 1}话',
-                              style: TextStyle(
-                                fontSize: 13,
-                                color: color,
-                              ),
+                              style: TextStyle(fontSize: 13, color: color),
                             ),
                           ],
                         ),
@@ -233,10 +230,7 @@ class _PgcPanelState extends State<PgcPanel> {
                   Text(
                     isPugv ? item.title! : item.longTitle!,
                     maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: color,
-                    ),
+                    style: TextStyle(fontSize: 13, color: color),
                     overflow: TextOverflow.ellipsis,
                   ),
               ],

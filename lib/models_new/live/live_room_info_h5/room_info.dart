@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/live/live_room_info_h5/pendants.dart';
+import 'package:bili_plus/models_new/live/live_room_info_h5/pendants.dart';
 
 class RoomInfo {
   int? uid;

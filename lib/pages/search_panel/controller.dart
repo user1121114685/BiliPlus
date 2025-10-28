@@ -1,14 +1,14 @@
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/search.dart';
-import 'package:PiliPlus/models/common/search/article_search_type.dart';
-import 'package:PiliPlus/models/common/search/search_type.dart';
-import 'package:PiliPlus/models/common/search/user_search_type.dart';
-import 'package:PiliPlus/models/common/search/video_search_type.dart';
-import 'package:PiliPlus/models/search/result.dart';
-import 'package:PiliPlus/pages/common/common_list_controller.dart';
-import 'package:PiliPlus/pages/search_result/controller.dart';
-import 'package:PiliPlus/utils/extension.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/search.dart';
+import 'package:bili_plus/models/common/search/article_search_type.dart';
+import 'package:bili_plus/models/common/search/search_type.dart';
+import 'package:bili_plus/models/common/search/user_search_type.dart';
+import 'package:bili_plus/models/common/search/video_search_type.dart';
+import 'package:bili_plus/models/search/result.dart';
+import 'package:bili_plus/pages/common/common_list_controller.dart';
+import 'package:bili_plus/pages/search_result/controller.dart';
+import 'package:bili_plus/utils/extension.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
@@ -42,10 +42,7 @@ class SearchPanelController<R extends SearchNumData<T>, T>
 
   SearchResultController? searchResultController;
 
-  void onSortSearch({
-    bool getBack = true,
-    String? label,
-  }) {
+  void onSortSearch({bool getBack = true, String? label}) {
     if (getBack) Get.back();
     SmartDialog.dismiss();
     if (label != null) {

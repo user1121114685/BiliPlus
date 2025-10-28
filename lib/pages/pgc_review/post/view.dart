@@ -1,6 +1,6 @@
-import 'package:PiliPlus/common/widgets/custom_icon.dart';
-import 'package:PiliPlus/http/pgc.dart';
-import 'package:PiliPlus/utils/accounts.dart';
+import 'package:bili_plus/common/widgets/custom_icon.dart';
+import 'package:bili_plus/http/pgc.dart';
+import 'package:bili_plus/utils/accounts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
@@ -84,50 +84,45 @@ class _PgcReviewPostPanelState extends State<PgcReviewPostPanel> {
               onTapDown: (details) => _onScore(details.localPosition.dx),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
-                children: List.generate(
-                  5,
-                  (index) {
-                    return Obx(
-                      () => index <= _score.value - 1
-                          ? const Icon(
-                              CustomIcons.star_favorite_solid,
-                              size: 50,
-                              color: Color(0xFFFFAD35),
-                            )
-                          : const Icon(
-                              CustomIcons.star_favorite_line,
-                              size: 50,
-                              color: Colors.grey,
-                            ),
-                    );
-                  },
-                ),
+                children: List.generate(5, (index) {
+                  return Obx(
+                    () => index <= _score.value - 1
+                        ? const Icon(
+                            CustomIcons.star_favorite_solid,
+                            size: 50,
+                            color: Color(0xFFFFAD35),
+                          )
+                        : const Icon(
+                            CustomIcons.star_favorite_line,
+                            size: 50,
+                            color: Colors.grey,
+                          ),
+                  );
+                }),
               ),
             ),
           ),
         ),
         Center(
-          child: Obx(
-            () {
-              final score = _score.value;
-              return Text(
-                switch (score) {
-                  1 => '很差',
-                  2 => '较差',
-                  3 => '还行',
-                  4 => '很好',
-                  5 => '佳作',
-                  _ => '轻触评分',
-                },
-                style: TextStyle(
-                  fontSize: 16,
-                  color: score == 0
-                      ? theme.colorScheme.outline
-                      : const Color(0xFFFFAD35),
-                ),
-              );
-            },
-          ),
+          child: Obx(() {
+            final score = _score.value;
+            return Text(
+              switch (score) {
+                1 => '很差',
+                2 => '较差',
+                3 => '还行',
+                4 => '很好',
+                5 => '佳作',
+                _ => '轻触评分',
+              },
+              style: TextStyle(
+                fontSize: 16,
+                color: score == 0
+                    ? theme.colorScheme.outline
+                    : const Color(0xFFFFAD35),
+              ),
+            );
+          }),
         ),
         Flexible(
           child: Padding(
@@ -137,9 +132,7 @@ class _PgcReviewPostPanelState extends State<PgcReviewPostPanel> {
               minLines: 5,
               maxLines: 5,
               controller: _controller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-              ),
+              decoration: const InputDecoration(border: OutlineInputBorder()),
               textInputAction: TextInputAction.done,
             ),
           ),
@@ -150,30 +143,25 @@ class _PgcReviewPostPanelState extends State<PgcReviewPostPanel> {
             child: GestureDetector(
               behavior: HitTestBehavior.opaque,
               onTap: () => _shareFeed.value = !_shareFeed.value,
-              child: Obx(
-                () {
-                  final shareFeed = _shareFeed.value;
-                  Color color = shareFeed
-                      ? theme.colorScheme.primary
-                      : theme.colorScheme.outline;
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(
-                        size: 22,
-                        shareFeed
-                            ? Icons.check_box_outlined
-                            : Icons.check_box_outline_blank_outlined,
-                        color: color,
-                      ),
-                      Text(
-                        ' 分享到动态',
-                        style: TextStyle(color: color),
-                      ),
-                    ],
-                  );
-                },
-              ),
+              child: Obx(() {
+                final shareFeed = _shareFeed.value;
+                Color color = shareFeed
+                    ? theme.colorScheme.primary
+                    : theme.colorScheme.outline;
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      size: 22,
+                      shareFeed
+                          ? Icons.check_box_outlined
+                          : Icons.check_box_outline_blank_outlined,
+                      color: color,
+                    ),
+                    Text(' 分享到动态', style: TextStyle(color: color)),
+                  ],
+                );
+              }),
             ),
           ),
         Container(

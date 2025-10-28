@@ -1,4 +1,4 @@
-import 'package:PiliPlus/models_new/follow/list.dart';
+import 'package:bili_plus/models_new/follow/list.dart';
 
 class FollowData {
   late List<FollowItemModel> list;

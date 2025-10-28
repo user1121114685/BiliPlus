@@ -1,26 +1,20 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/common/widgets/image/image_save.dart';
-import 'package:PiliPlus/common/widgets/image/network_img_layer.dart';
-import 'package:PiliPlus/models_new/space/space_archive/item.dart';
-import 'package:PiliPlus/utils/page_utils.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/common/widgets/image/image_save.dart';
+import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/models_new/space/space_archive/item.dart';
+import 'package:bili_plus/utils/page_utils.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 // 视频卡片 - 垂直布局
 class PgcCardVMemberPgc extends StatelessWidget {
-  const PgcCardVMemberPgc({
-    super.key,
-    required this.item,
-  });
+  const PgcCardVMemberPgc({super.key, required this.item});
 
   final SpaceArchiveItem item;
 
   @override
   Widget build(BuildContext context) {
-    void onLongPress() => imageSaveDialog(
-      title: item.title,
-      cover: item.cover,
-    );
+    void onLongPress() => imageSaveDialog(title: item.title, cover: item.cover);
     return Card(
       shape: const RoundedRectangleBorder(borderRadius: StyleString.mdRadius),
       child: InkWell(
@@ -48,9 +42,7 @@ class PgcCardVMemberPgc extends StatelessWidget {
               child: Text(
                 item.title,
                 textAlign: TextAlign.start,
-                style: const TextStyle(
-                  letterSpacing: 0.3,
-                ),
+                style: const TextStyle(letterSpacing: 0.3),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),

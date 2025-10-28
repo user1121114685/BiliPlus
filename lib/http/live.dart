@@ -1,29 +1,29 @@
-import 'package:PiliPlus/common/constants.dart';
-import 'package:PiliPlus/http/api.dart';
-import 'package:PiliPlus/http/init.dart';
-import 'package:PiliPlus/http/loading_state.dart';
-import 'package:PiliPlus/http/login.dart';
-import 'package:PiliPlus/http/ua_type.dart';
-import 'package:PiliPlus/models/common/account_type.dart';
-import 'package:PiliPlus/models/common/live_search_type.dart';
-import 'package:PiliPlus/models_new/live/live_area_list/area_item.dart';
-import 'package:PiliPlus/models_new/live/live_area_list/area_list.dart';
-import 'package:PiliPlus/models_new/live/live_dm_block/data.dart';
-import 'package:PiliPlus/models_new/live/live_dm_block/shield_info.dart';
-import 'package:PiliPlus/models_new/live/live_dm_info/data.dart';
-import 'package:PiliPlus/models_new/live/live_emote/data.dart';
-import 'package:PiliPlus/models_new/live/live_emote/datum.dart';
-import 'package:PiliPlus/models_new/live/live_feed_index/data.dart';
-import 'package:PiliPlus/models_new/live/live_follow/data.dart';
-import 'package:PiliPlus/models_new/live/live_room_info_h5/data.dart';
-import 'package:PiliPlus/models_new/live/live_room_play_info/data.dart';
-import 'package:PiliPlus/models_new/live/live_search/data.dart';
-import 'package:PiliPlus/models_new/live/live_second_list/data.dart';
-import 'package:PiliPlus/models_new/live/live_superchat/data.dart';
-import 'package:PiliPlus/utils/accounts.dart';
-import 'package:PiliPlus/utils/accounts/account.dart';
-import 'package:PiliPlus/utils/app_sign.dart';
-import 'package:PiliPlus/utils/wbi_sign.dart';
+import 'package:bili_plus/common/constants.dart';
+import 'package:bili_plus/http/api.dart';
+import 'package:bili_plus/http/init.dart';
+import 'package:bili_plus/http/loading_state.dart';
+import 'package:bili_plus/http/login.dart';
+import 'package:bili_plus/http/ua_type.dart';
+import 'package:bili_plus/models/common/account_type.dart';
+import 'package:bili_plus/models/common/live_search_type.dart';
+import 'package:bili_plus/models_new/live/live_area_list/area_item.dart';
+import 'package:bili_plus/models_new/live/live_area_list/area_list.dart';
+import 'package:bili_plus/models_new/live/live_dm_block/data.dart';
+import 'package:bili_plus/models_new/live/live_dm_block/shield_info.dart';
+import 'package:bili_plus/models_new/live/live_dm_info/data.dart';
+import 'package:bili_plus/models_new/live/live_emote/data.dart';
+import 'package:bili_plus/models_new/live/live_emote/datum.dart';
+import 'package:bili_plus/models_new/live/live_feed_index/data.dart';
+import 'package:bili_plus/models_new/live/live_follow/data.dart';
+import 'package:bili_plus/models_new/live/live_room_info_h5/data.dart';
+import 'package:bili_plus/models_new/live/live_room_play_info/data.dart';
+import 'package:bili_plus/models_new/live/live_search/data.dart';
+import 'package:bili_plus/models_new/live/live_second_list/data.dart';
+import 'package:bili_plus/models_new/live/live_superchat/data.dart';
+import 'package:bili_plus/utils/accounts.dart';
+import 'package:bili_plus/utils/accounts/account.dart';
+import 'package:bili_plus/utils/app_sign.dart';
+import 'package:bili_plus/utils/wbi_sign.dart';
 import 'package:dio/dio.dart';
 
 abstract final class LiveHttp {
@@ -64,15 +64,9 @@ abstract final class LiveHttp {
       }),
     );
     if (res.data['code'] == 0) {
-      return {
-        'status': true,
-        'data': res.data['data'],
-      };
+      return {'status': true, 'data': res.data['data']};
     } else {
-      return {
-        'status': false,
-        'msg': res.data['message'],
-      };
+      return {'status': false, 'msg': res.data['message']};
     }
   }
 
@@ -107,9 +101,7 @@ abstract final class LiveHttp {
   static Future liveRoomInfoH5({roomId, qn}) async {
     var res = await Request().get(
       Api.liveRoomInfoH5,
-      queryParameters: {
-        'room_id': roomId,
-      },
+      queryParameters: {'room_id': roomId},
     );
     if (res.data['code'] == 0) {
       return {
@@ -162,10 +154,7 @@ abstract final class LiveHttp {
   }) async {
     var res = await Request().get(
       Api.getLiveEmoticons,
-      queryParameters: {
-        'platform': 'pc',
-        'room_id': roomId,
-      },
+      queryParameters: {'platform': 'pc', 'room_id': roomId},
     );
     if (res.data['code'] == 0) {
       return Success(LiveEmoteData.fromJson(res.data['data']).data);
@@ -203,11 +192,7 @@ abstract final class LiveHttp {
       'statistics': Constants.statisticsApp,
       'ts': DateTime.now().millisecondsSinceEpoch ~/ 1000,
     };
-    AppSign.appSign(
-      params,
-      Constants.appKey,
-      Constants.appSec,
-    );
+    AppSign.appSign(params, Constants.appKey, Constants.appSec);
     var res = await Request().get(
       Api.liveFeedIndex,
       queryParameters: params,
@@ -289,11 +274,7 @@ abstract final class LiveHttp {
       'statistics': Constants.statisticsApp,
       'ts': DateTime.now().millisecondsSinceEpoch ~/ 1000,
     };
-    AppSign.appSign(
-      params,
-      Constants.appKey,
-      Constants.appSec,
-    );
+    AppSign.appSign(params, Constants.appKey, Constants.appSec);
     var res = await Request().get(
       Api.liveSecondList,
       queryParameters: params,
@@ -339,15 +320,8 @@ abstract final class LiveHttp {
       'statistics': Constants.statisticsApp,
       'ts': DateTime.now().millisecondsSinceEpoch ~/ 1000,
     };
-    AppSign.appSign(
-      params,
-      Constants.appKey,
-      Constants.appSec,
-    );
-    var res = await Request().get(
-      Api.liveAreaList,
-      queryParameters: params,
-    );
+    AppSign.appSign(params, Constants.appKey, Constants.appSec);
+    var res = await Request().get(Api.liveAreaList, queryParameters: params);
     if (res.data['code'] == 0) {
       return Success(
         (res.data['data']?['list'] as List?)
@@ -376,15 +350,8 @@ abstract final class LiveHttp {
       'statistics': Constants.statisticsApp,
       'ts': DateTime.now().millisecondsSinceEpoch ~/ 1000,
     };
-    AppSign.appSign(
-      params,
-      Constants.appKey,
-      Constants.appSec,
-    );
-    var res = await Request().get(
-      Api.getLiveFavTag,
-      queryParameters: params,
-    );
+    AppSign.appSign(params, Constants.appKey, Constants.appSec);
+    var res = await Request().get(Api.getLiveFavTag, queryParameters: params);
 
     if (res.data['code'] == 0) {
       return Success(
@@ -398,9 +365,7 @@ abstract final class LiveHttp {
     }
   }
 
-  static Future setLiveFavTag({
-    required String ids,
-  }) async {
+  static Future setLiveFavTag({required String ids}) async {
     final data = {
       'tags': ids,
       'access_key': Accounts.main.accessKey,
@@ -418,11 +383,7 @@ abstract final class LiveHttp {
       'statistics': Constants.statisticsApp,
       'ts': DateTime.now().millisecondsSinceEpoch ~/ 1000,
     };
-    AppSign.appSign(
-      data,
-      Constants.appKey,
-      Constants.appSec,
-    );
+    AppSign.appSign(data, Constants.appKey, Constants.appSec);
     var res = await Request().post(
       Api.setLiveFavTag,
       data: data,
@@ -458,11 +419,7 @@ abstract final class LiveHttp {
       'statistics': Constants.statisticsApp,
       'ts': DateTime.now().millisecondsSinceEpoch ~/ 1000,
     };
-    AppSign.appSign(
-      params,
-      Constants.appKey,
-      Constants.appSec,
-    );
+    AppSign.appSign(params, Constants.appKey, Constants.appSec);
     var res = await Request().get(
       Api.liveRoomAreaList,
       queryParameters: params,
@@ -501,15 +458,8 @@ abstract final class LiveHttp {
       'ts': DateTime.now().millisecondsSinceEpoch ~/ 1000,
       'type': type.name,
     };
-    AppSign.appSign(
-      params,
-      Constants.appKey,
-      Constants.appSec,
-    );
-    var res = await Request().get(
-      Api.liveSearch,
-      queryParameters: params,
-    );
+    AppSign.appSign(params, Constants.appKey, Constants.appSec);
+    var res = await Request().get(Api.liveSearch, queryParameters: params);
     if (res.data['code'] == 0) {
       return Success(LiveSearchData.fromJson(res.data['data']));
     } else {
@@ -543,12 +493,7 @@ abstract final class LiveHttp {
     final csrf = Accounts.main.csrf;
     var res = await Request().post(
       Api.liveSetSilent,
-      data: {
-        'type': type,
-        'level': level,
-        'csrf': csrf,
-        'csrf_token': csrf,
-      },
+      data: {'type': type, 'level': level, 'csrf': csrf, 'csrf_token': csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -558,17 +503,11 @@ abstract final class LiveHttp {
     }
   }
 
-  static Future addShieldKeyword({
-    required String keyword,
-  }) async {
+  static Future addShieldKeyword({required String keyword}) async {
     final csrf = Accounts.main.csrf;
     var res = await Request().post(
       Api.addShieldKeyword,
-      data: {
-        'keyword': keyword,
-        'csrf': csrf,
-        'csrf_token': csrf,
-      },
+      data: {'keyword': keyword, 'csrf': csrf, 'csrf_token': csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -578,17 +517,11 @@ abstract final class LiveHttp {
     }
   }
 
-  static Future delShieldKeyword({
-    required String keyword,
-  }) async {
+  static Future delShieldKeyword({required String keyword}) async {
     final csrf = Accounts.main.csrf;
     var res = await Request().post(
       Api.delShieldKeyword,
-      data: {
-        'keyword': keyword,
-        'csrf': csrf,
-        'csrf_token': csrf,
-      },
+      data: {'keyword': keyword, 'csrf': csrf, 'csrf_token': csrf},
       options: Options(contentType: Headers.formUrlEncodedContentType),
     );
     if (res.data['code'] == 0) {
@@ -652,9 +585,7 @@ abstract final class LiveHttp {
   ) async {
     var res = await Request().get(
       Api.superChatMsg,
-      queryParameters: {
-        'room_id': roomId,
-      },
+      queryParameters: {'room_id': roomId},
     );
     if (res.data['code'] == 0) {
       try {

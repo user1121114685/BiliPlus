@@ -2,26 +2,26 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math' show max;
 
-import 'package:PiliPlus/common/widgets/button/toolbar_icon_button.dart';
-import 'package:PiliPlus/common/widgets/text_field/controller.dart'
+import 'package:bili_plus/common/widgets/button/toolbar_icon_button.dart';
+import 'package:bili_plus/common/widgets/text_field/controller.dart'
     show RichTextType;
-import 'package:PiliPlus/common/widgets/text_field/text_field.dart';
-import 'package:PiliPlus/common/widgets/view_safe_area.dart';
-import 'package:PiliPlus/grpc/bilibili/main/community/reply/v1.pb.dart'
+import 'package:bili_plus/common/widgets/text_field/text_field.dart';
+import 'package:bili_plus/common/widgets/view_safe_area.dart';
+import 'package:bili_plus/grpc/bilibili/main/community/reply/v1.pb.dart'
     show ReplyInfo;
-import 'package:PiliPlus/http/video.dart';
-import 'package:PiliPlus/main.dart';
-import 'package:PiliPlus/models/common/publish_panel_type.dart';
-import 'package:PiliPlus/pages/common/publish/common_rich_text_pub_page.dart';
-import 'package:PiliPlus/pages/dynamics_mention/controller.dart';
-import 'package:PiliPlus/pages/emote/view.dart';
-import 'package:PiliPlus/pages/video/controller.dart';
-import 'package:PiliPlus/pages/video/reply_search_item/view.dart';
-import 'package:PiliPlus/utils/context_ext.dart';
-import 'package:PiliPlus/utils/duration_utils.dart';
-import 'package:PiliPlus/utils/grid.dart';
-import 'package:PiliPlus/utils/storage_pref.dart';
-import 'package:PiliPlus/utils/utils.dart';
+import 'package:bili_plus/http/video.dart';
+import 'package:bili_plus/main.dart';
+import 'package:bili_plus/models/common/publish_panel_type.dart';
+import 'package:bili_plus/pages/common/publish/common_rich_text_pub_page.dart';
+import 'package:bili_plus/pages/dynamics_mention/controller.dart';
+import 'package:bili_plus/pages/emote/view.dart';
+import 'package:bili_plus/pages/video/controller.dart';
+import 'package:bili_plus/pages/video/reply_search_item/view.dart';
+import 'package:bili_plus/utils/context_ext.dart';
+import 'package:bili_plus/utils/duration_utils.dart';
+import 'package:bili_plus/utils/grid.dart';
+import 'package:bili_plus/utils/storage_pref.dart';
+import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart' hide TextField;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
@@ -107,29 +107,27 @@ class _ReplyPageState extends CommonRichTextPubPageState<ReplyPage> {
   Widget? get customPanel => EmotePanel(onChoose: onChooseEmote);
 
   Widget buildImagePreview() {
-    return Obx(
-      () {
-        if (pathList.isNotEmpty) {
-          return SizedBox(
-            height: 85,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
-              child: Row(
-                spacing: 10,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: List.generate(
-                  pathList.length,
-                  (index) => buildImage(index, 75),
-                ),
+    return Obx(() {
+      if (pathList.isNotEmpty) {
+        return SizedBox(
+          height: 85,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
+            child: Row(
+              spacing: 10,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: List.generate(
+                pathList.length,
+                (index) => buildImage(index, 75),
               ),
             ),
-          );
-        } else {
-          return const SizedBox.shrink();
-        }
-      },
-    );
+          ),
+        );
+      } else {
+        return const SizedBox.shrink();
+      }
+    });
   }
 
   List<Widget> buildInputView() {
@@ -170,10 +168,7 @@ class _ReplyPageState extends CommonRichTextPubPageState<ReplyPage> {
           ),
         ),
       ),
-      Divider(
-        height: 1,
-        color: themeData.dividerColor.withValues(alpha: 0.1),
-      ),
+      Divider(height: 1, color: themeData.dividerColor.withValues(alpha: 0.1)),
       Container(
         height: 52,
         padding: const EdgeInsets.only(left: 12, right: 12),
@@ -199,42 +194,40 @@ class _ReplyPageState extends CommonRichTextPubPageState<ReplyPage> {
             moreBtn,
             Expanded(
               child: Center(
-                child: Obx(
-                  () {
-                    final syncToDynamic = _syncToDynamic.value;
-                    return TextButton(
-                      style: TextButton.styleFrom(
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                        padding: const EdgeInsets.all(13),
-                        visualDensity: VisualDensity.compact,
-                        foregroundColor: syncToDynamic
-                            ? themeData.colorScheme.secondary
-                            : themeData.colorScheme.outline,
-                      ),
-                      onPressed: () => _syncToDynamic.value = !syncToDynamic,
-                      child: Row(
-                        spacing: 4,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            syncToDynamic
-                                ? Icons.check_box
-                                : Icons.check_box_outline_blank,
-                            size: 22,
+                child: Obx(() {
+                  final syncToDynamic = _syncToDynamic.value;
+                  return TextButton(
+                    style: TextButton.styleFrom(
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      padding: const EdgeInsets.all(13),
+                      visualDensity: VisualDensity.compact,
+                      foregroundColor: syncToDynamic
+                          ? themeData.colorScheme.secondary
+                          : themeData.colorScheme.outline,
+                    ),
+                    onPressed: () => _syncToDynamic.value = !syncToDynamic,
+                    child: Row(
+                      spacing: 4,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          syncToDynamic
+                              ? Icons.check_box
+                              : Icons.check_box_outline_blank,
+                          size: 22,
+                        ),
+                        const Flexible(
+                          child: Text(
+                            '转到动态',
+                            maxLines: 1,
+                            style: TextStyle(height: 1),
+                            strutStyle: StrutStyle(leading: 0, height: 1),
                           ),
-                          const Flexible(
-                            child: Text(
-                              '转到动态',
-                              maxLines: 1,
-                              style: TextStyle(height: 1),
-                              strutStyle: StrutStyle(leading: 0, height: 1),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        ),
+                      ],
+                    ),
+                  );
+                }),
               ),
             ),
             Obx(

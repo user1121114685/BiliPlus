@@ -1,6 +1,6 @@
-import 'package:PiliPlus/models_new/space/space_season_series/archive.dart';
-import 'package:PiliPlus/models_new/space/space_season_series/stat.dart';
-import 'package:PiliPlus/utils/extension.dart';
+import 'package:bili_plus/models_new/space/space_season_series/archive.dart';
+import 'package:bili_plus/models_new/space/space_season_series/stat.dart';
+import 'package:bili_plus/utils/extension.dart';
 
 class SpaceSsModel {
   List<SpaceSsArchive>? archives;
