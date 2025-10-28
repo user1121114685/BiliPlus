@@ -56,22 +56,22 @@ jobs:
         run: flutter build linux --release -v --pub --dart-define-from-file=pili_release.json
 
       - name: Package .tar.gz
-        run: tar -zcvf BiliPlus_linux_${{ env.version }}_arm64.tar.gz -C build/linux/arm64/release/bundle .
+        run: tar -zcvf biliplus_linux_${{ env.version }}_arm64.tar.gz -C build/linux/arm64/release/bundle .
 
       - name: Packege deb
         run: |
           printf "建立构建目录...\n"
-          mkdir "BiliPlus_linux_${{ env.version }}_arm64"
-          pushd "BiliPlus_linux_${{ env.version }}_arm64"
-          mkdir -p opt/BiliPlus
+          mkdir "biliplus_linux_${{ env.version }}_arm64"
+          pushd "biliplus_linux_${{ env.version }}_arm64"
+          mkdir -p opt/biliplus
           mkdir -p usr/share/applications
           mkdir -p usr/share/icons/hicolor/512x512/apps
 
           printf "复制文件...\n"
-          cp -r ../build/linux/arm64/release/bundle/* opt/BiliPlus
+          cp -r ../build/linux/arm64/release/bundle/* opt/biliplus
           cp -r ../assets/linux/DEBIAN .
-          cp ../assets/linux/BiliPlus.desktop usr/share/applications
-          cp ../assets/images/logo/logo.png usr/share/icons/hicolor/512x512/apps/BiliPlus.png
+          cp ../assets/linux/biliplus.desktop usr/share/applications
+          cp ../assets/images/logo/logo.png usr/share/icons/hicolor/512x512/apps/biliplus.png
 
           printf "修改控制文件...\n"
           # 替换版本号
@@ -84,9 +84,9 @@ jobs:
           sed -i "9s/size_need_change/${SIZE_KB}/g" DEBIAN/control
 
           printf "生成并写入 md5sums ...\n"
-          md5sum opt/BiliPlus/BiliPlus >> DEBIAN/md5sums
-          md5sum opt/BiliPlus/lib/* >> DEBIAN/md5sums
-          md5sum opt/BiliPlus/data/icudtl.dat >> DEBIAN/md5sums
+          md5sum opt/biliplus/biliplus >> DEBIAN/md5sums
+          md5sum opt/biliplus/lib/* >> DEBIAN/md5sums
+          md5sum opt/biliplus/data/icudtl.dat >> DEBIAN/md5sums
 
           printf "设置权限...\n"
           chmod 0644 DEBIAN/control
@@ -97,8 +97,8 @@ jobs:
 
           printf "打包 deb 文件...\n"
           popd
-          dpkg-deb --build --verbose --root-owner-group "BiliPlus_linux_${{ env.version }}_arm64"
-          printf "完成: BiliPlus_linux_%s_arm64.deb\n" "${{ env.version }}"
+          dpkg-deb --build --verbose --root-owner-group "biliplus_linux_${{ env.version }}_arm64"
+          printf "完成: biliplus_linux_%s_arm64.deb\n" "${{ env.version }}"
         shell: bash
 
       - name: Packege rpm
@@ -109,46 +109,46 @@ jobs:
 
           printf "准备源码归档（仅包含运行时与元数据）...\n"
           DATE="$(date '+%a %b %d %Y')"
-          SRC_DIR="$PWD/BiliPlus-${{ env.version }}"
+          SRC_DIR="$PWD/biliplus-${{ env.version }}"
           mkdir -p "$SRC_DIR/bundle" "$SRC_DIR/assets"
           cp -r build/linux/arm64/release/bundle/* "$SRC_DIR/bundle/"
-          cp assets/linux/BiliPlus.desktop "$SRC_DIR/assets/BiliPlus.desktop"
-          cp assets/images/logo/logo.png "$SRC_DIR/assets/BiliPlus.png"
-          tar -zcvf "$RPM_BUILD_ROOT/SOURCES/BiliPlus-${{ env.version }}.tar.gz" -C "$PWD" "BiliPlus-${{ env.version }}"
+          cp assets/linux/biliplus.desktop "$SRC_DIR/assets/biliplus.desktop"
+          cp assets/images/logo/logo.png "$SRC_DIR/assets/biliplus.png"
+          tar -zcvf "$RPM_BUILD_ROOT/SOURCES/biliplus-${{ env.version }}.tar.gz" -C "$PWD" "biliplus-${{ env.version }}"
 
           printf "生成 spec 文件...\n"
-          cat > "$RPM_BUILD_ROOT/SPECS/BiliPlus.spec" <<EOF
-          Name:           BiliPlus
+          cat > "$RPM_BUILD_ROOT/SPECS/biliplus.spec" <<EOF
+          Name:           biliplus
           Version:        ${{ env.version }}
           Release:        1%{?dist}
-          Summary:        BiliPlus Linux Version
+          Summary:        biliplus Linux Version
           License:        GPL-3.0
-          Source0:        BiliPlus-${{ env.version }}.tar.gz
+          Source0:        biliplus-${{ env.version }}.tar.gz
           Requires:       desktop-file-utils, hicolor-icon-theme
 
           %description
           使用 Flutter 开发的 BiliBili 第三方客户端
 
           %prep
-          %setup -q -n BiliPlus-${{ env.version }}
+          %setup -q -n biliplus-${{ env.version }}
 
           %build
 
           %install
-          mkdir -p %{buildroot}/opt/BiliPlus
-          cp -r bundle/* %{buildroot}/opt/BiliPlus/
+          mkdir -p %{buildroot}/opt/biliplus
+          cp -r bundle/* %{buildroot}/opt/biliplus/
 
           # 二进制权限与命令行入口
-          chmod 755 %{buildroot}/opt/BiliPlus/BiliPlus
+          chmod 755 %{buildroot}/opt/biliplus/biliplus
           mkdir -p %{buildroot}/usr/bin
-          ln -sf /opt/BiliPlus/BiliPlus %{buildroot}/usr/bin/BiliPlus
+          ln -sf /opt/biliplus/biliplus %{buildroot}/usr/bin/biliplus
 
           # 桌面集成
           mkdir -p %{buildroot}/usr/share/applications
-          install -m 644 assets/BiliPlus.desktop %{buildroot}/usr/share/applications/BiliPlus.desktop
+          install -m 644 assets/biliplus.desktop %{buildroot}/usr/share/applications/biliplus.desktop
 
           mkdir -p %{buildroot}/usr/share/icons/hicolor/512x512/apps
-          install -m 644 assets/BiliPlus.png %{buildroot}/usr/share/icons/hicolor/512x512/apps/BiliPlus.png
+          install -m 644 assets/biliplus.png %{buildroot}/usr/share/icons/hicolor/512x512/apps/biliplus.png
 
           %post
           update-desktop-database -q || true
@@ -159,25 +159,25 @@ jobs:
           gtk-update-icon-cache -q -t -f %{_datadir}/icons/hicolor || true
 
           %files
-          /opt/BiliPlus
-          /usr/bin/BiliPlus
-          /usr/share/applications/BiliPlus.desktop
-          /usr/share/icons/hicolor/512x512/apps/BiliPlus.png
+          /opt/biliplus
+          /usr/bin/biliplus
+          /usr/share/applications/biliplus.desktop
+          /usr/share/icons/hicolor/512x512/apps/biliplus.png
 
           %changelog
           * DATE - ${{ env.version }}-1
           - Initial RPM release
           EOF
 
-          sed -i "s/DATE/${DATE}/g" "$RPM_BUILD_ROOT/SPECS/BiliPlus.spec"
+          sed -i "s/DATE/${DATE}/g" "$RPM_BUILD_ROOT/SPECS/biliplus.spec"
 
           printf "构建 RPM 包...\n"
-          rpmbuild --define "_topdir $RPM_BUILD_ROOT" -bb "$RPM_BUILD_ROOT/SPECS/BiliPlus.spec"
+          rpmbuild --define "_topdir $RPM_BUILD_ROOT" -bb "$RPM_BUILD_ROOT/SPECS/biliplus.spec"
 
           printf "移动生成的 RPM...\n"
-          find "$RPM_BUILD_ROOT/RPMS" -name "*.rpm" -exec mv {} "BiliPlus_linux_${{ env.version }}_arm64.rpm" \;
+          find "$RPM_BUILD_ROOT/RPMS" -name "*.rpm" -exec mv {} "biliplus_linux_${{ env.version }}_arm64.rpm" \;
 
-          printf "完成: BiliPlus_linux_%s_arm64.rpm\n" "${{ env.version }}"
+          printf "完成: biliplus_linux_%s_arm64.rpm\n" "${{ env.version }}"
         shell: bash
       
       - name: Package AppImage
@@ -187,7 +187,7 @@ jobs:
           chmod +x appimagetool-aarch64.AppImage
 
           printf "建立 AppDir 目录结构...\n"
-          APPDIR="BiliPlus.AppDir"
+          APPDIR="biliplus.AppDir"
           mkdir -p "$APPDIR/usr/bin"
           mkdir -p "$APPDIR/usr/lib"
           mkdir -p "$APPDIR/usr/share/applications"
@@ -197,10 +197,10 @@ jobs:
           cp -r build/linux/arm64/release/bundle/* "$APPDIR/usr/bin/"
           
           printf "复制桌面文件和图标...\n"
-          cp assets/linux/BiliPlus.desktop "$APPDIR/BiliPlus.desktop"
-          cp assets/linux/BiliPlus.desktop "$APPDIR/usr/share/applications/BiliPlus.desktop"
-          cp assets/images/logo/logo.png "$APPDIR/BiliPlus.png"
-          cp assets/images/logo/logo.png "$APPDIR/usr/share/icons/hicolor/512x512/apps/BiliPlus.png"
+          cp assets/linux/biliplus.desktop "$APPDIR/biliplus.desktop"
+          cp assets/linux/biliplus.desktop "$APPDIR/usr/share/applications/biliplus.desktop"
+          cp assets/images/logo/logo.png "$APPDIR/biliplus.png"
+          cp assets/images/logo/logo.png "$APPDIR/usr/share/icons/hicolor/512x512/apps/biliplus.png"
           
           printf "创建 AppRun 启动脚本...\n"
           cat > "$APPDIR/AppRun" <<'APPRUN_EOF'
@@ -209,18 +209,18 @@ jobs:
           HERE=${SELF%/*}
           export PATH="${HERE}/usr/bin:${PATH}"
           export LD_LIBRARY_PATH="${HERE}/usr/lib:${LD_LIBRARY_PATH}"
-          exec "${HERE}/usr/bin/BiliPlus" "$@"
+          exec "${HERE}/usr/bin/biliplus" "$@"
           APPRUN_EOF
           chmod +x "$APPDIR/AppRun"
 
           printf "修改桌面文件中的 Exec 路径...\n"
-          sed -i 's|Exec=BiliPlus|Exec=BiliPlus|g' "$APPDIR/BiliPlus.desktop"
-          sed -i 's|Icon=BiliPlus|Icon=BiliPlus|g' "$APPDIR/BiliPlus.desktop"
+          sed -i 's|Exec=biliplus|Exec=biliplus|g' "$APPDIR/biliplus.desktop"
+          sed -i 's|Icon=biliplus|Icon=biliplus|g' "$APPDIR/biliplus.desktop"
 
           printf "打包 AppImage...\n"
-          ARCH=aarch64 ./appimagetool-aarch64.AppImage "$APPDIR" "BiliPlus_linux_${{ env.version }}_arm64.AppImage"
+          ARCH=aarch64 ./appimagetool-aarch64.AppImage "$APPDIR" "biliplus_linux_${{ env.version }}_arm64.AppImage"
           
-          printf "完成: BiliPlus_linux_%s_arm64.AppImage\n" "${{ env.version }}"
+          printf "完成: biliplus_linux_%s_arm64.AppImage\n" "${{ env.version }}"
         shell: bash
 
       - name: Release
@@ -230,31 +230,31 @@ jobs:
           tag_name: ${{ github.event.inputs.tag }}
           name: ${{ github.event.inputs.tag }}
           files: |
-            BiliPlus_linux_*.tar.gz
-            BiliPlus_linux_*.deb
-            BiliPlus_linux_*.rpm
-            BiliPlus_linux_*.AppImage
+            biliplus_linux_*.tar.gz
+            biliplus_linux_*.deb
+            biliplus_linux_*.rpm
+            biliplus_linux_*.AppImage
 
       - name: Upload linux targz package
         uses: actions/upload-artifact@v4
         with:
           name: Linux_targz_arm64_packege
-          path: BiliPlus_linux_*.tar.gz
+          path: biliplus_linux_*.tar.gz
 
       - name: Upload linux deb package
         uses: actions/upload-artifact@v4
         with:
           name: Linux_deb_arm64_package
-          path: BiliPlus_linux_*.deb
+          path: biliplus_linux_*.deb
 
       - name: Upload linux rpm package
         uses: actions/upload-artifact@v4
         with:
           name: Linux_rpm_arm64_package
-          path: BiliPlus_linux_*.rpm
+          path: biliplus_linux_*.rpm
       
       - name: Upload linux AppImage package
         uses: actions/upload-artifact@v4
         with:
           name: Linux_AppImage_arm64_package
-          path: BiliPlus_linux_*.AppImage
+          path: biliplus_linux_*.AppImage
