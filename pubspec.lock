@@ -764,7 +764,7 @@ packages:
     source: hosted
     version: "9.0.0"
   font_awesome_flutter:
-    dependency: "direct main"
+    dependency: "direct overridden"
     description:
       name: font_awesome_flutter
       sha256: f50ce90dbe26d977415b9540400d6778bef00894aced6358ae578abd92b14b10

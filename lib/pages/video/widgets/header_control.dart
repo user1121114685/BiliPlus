@@ -47,11 +47,12 @@ import 'package:floating/floating.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart' show DateFormat;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../../../font_icon/bilibili_icons.dart';
 
 class HeaderControl extends StatefulWidget {
   const HeaderControl({
@@ -2125,8 +2126,8 @@ class HeaderControlState extends State<HeaderControl> {
                 height: 34,
                 child: IconButton(
                   tooltip: '返回',
-                  icon: const Icon(
-                    FontAwesomeIcons.arrowLeft,
+                  icon: Icon(
+                    BiliBiliIcons.arrow_left_line500,
                     size: 15,
                     color: Colors.white,
                   ),
@@ -2140,31 +2141,15 @@ class HeaderControlState extends State<HeaderControl> {
                         !isPortrait) {
                       verticalScreenForTwoSeconds();
                     } else {
-                      Get.back();
-                    }
-                  },
-                ),
-              ),
-              if (!plPlayerController.isDesktopPip &&
-                  (!isFullScreen || !isPortrait))
-                SizedBox(
-                  width: 42,
-                  height: 34,
-                  child: IconButton(
-                    tooltip: '返回主页',
-                    icon: const Icon(
-                      FontAwesomeIcons.house,
-                      size: 15,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
                       videoDetailCtr.plPlayerController
                         ..isCloseAll = true
                         ..dispose();
                       Get.until((route) => route.isFirst);
-                    },
-                  ),
+                    }
+                  },
                 ),
+              ),
+
               if (introController.videoDetail.value.title != null &&
                   (isFullScreen ||
                       ((!horizontalScreen || plPlayerController.isDesktopPip) &&
@@ -2473,11 +2458,11 @@ class HeaderControlState extends State<HeaderControl> {
                   child: Obx(
                     () => ActionItem(
                       expand: false,
-                      icon: const Icon(
-                        FontAwesomeIcons.thumbsUp,
+                      icon: Icon(
+                        BiliBiliIcons.hand_thumbsup_line500,
                         color: Colors.white,
                       ),
-                      selectIcon: const Icon(FontAwesomeIcons.solidThumbsUp),
+                      selectIcon: Icon(BiliBiliIcons.hand_thumbsup_fill500),
                       selectStatus: introController.hasLike.value,
                       semanticsLabel: '点赞',
                       animation: introController.tripleAnimation,
@@ -2501,13 +2486,11 @@ class HeaderControlState extends State<HeaderControl> {
                     child: Obx(
                       () => ActionItem(
                         expand: false,
-                        icon: const Icon(
-                          FontAwesomeIcons.thumbsDown,
+                        icon: Icon(
+                          BiliBiliIcons.hand_thumbsdown_line500,
                           color: Colors.white,
                         ),
-                        selectIcon: const Icon(
-                          FontAwesomeIcons.solidThumbsDown,
-                        ),
+                        selectIcon: Icon(BiliBiliIcons.hand_thumbsdown_fill500),
                         onTap: () => ugc.handleAction(ugc.actionDislikeVideo),
                         selectStatus: ugc.hasDislike.value,
                         semanticsLabel: '点踩',
@@ -2521,8 +2504,11 @@ class HeaderControlState extends State<HeaderControl> {
                     () => ActionItem(
                       expand: false,
                       animation: introController.tripleAnimation,
-                      icon: const Icon(FontAwesomeIcons.b, color: Colors.white),
-                      selectIcon: const Icon(FontAwesomeIcons.b),
+                      icon: Icon(
+                        BiliBiliIcons.coin_text_fill200,
+                        color: Colors.white,
+                      ),
+                      selectIcon: Icon(BiliBiliIcons.coin_text_fill200),
                       onTap: introController.actionCoinVideo,
                       selectStatus: introController.hasCoin,
                       semanticsLabel: '投币',
@@ -2536,11 +2522,11 @@ class HeaderControlState extends State<HeaderControl> {
                     () => ActionItem(
                       expand: false,
                       animation: introController.tripleAnimation,
-                      icon: const Icon(
-                        FontAwesomeIcons.star,
+                      icon: Icon(
+                        BiliBiliIcons.star_favorite_line500,
                         color: Colors.white,
                       ),
-                      selectIcon: const Icon(FontAwesomeIcons.solidStar),
+                      selectIcon: Icon(BiliBiliIcons.star_favorite_fill500),
                       onTap: () => introController.showFavBottomSheet(context),
                       onLongPress: () => introController.showFavBottomSheet(
                         context,
@@ -2556,8 +2542,8 @@ class HeaderControlState extends State<HeaderControl> {
                   height: 34,
                   child: ActionItem(
                     expand: false,
-                    icon: const Icon(
-                      FontAwesomeIcons.shareFromSquare,
+                    icon: Icon(
+                      BiliBiliIcons.arrow_share_line500,
                       color: Colors.white,
                     ),
                     onTap: () => introController.actionShareVideo(context),

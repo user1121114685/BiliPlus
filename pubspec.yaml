@@ -84,8 +84,6 @@ dependencies:
   # loading_more_list: ^7.1.0
   # 下拉刷新
   # pull_to_refresh_notification: ^3.1.0
-  # 图标
-  font_awesome_flutter: 10.9.0
   # material_design_icons_flutter: ^7.0.7296
   material_design_icons_flutter:
     git:
@@ -340,9 +338,9 @@ flutter:
     - family: digital_id_num
       fonts:
         - asset: assets/fonts/digital_id_num.ttf
-    - family: custom_icon
+    - family: BiliBiliIcons
       fonts:
-        - asset: assets/fonts/custom_icon.ttf
+        - asset: assets/fonts/bilibili.ttf
   #   - family: Jura-Bold
   #     fonts:
   #       - asset: assets/fonts/Jura-Bold.ttf

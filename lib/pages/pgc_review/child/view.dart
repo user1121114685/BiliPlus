@@ -19,6 +19,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
+import '../../../font_icon/bilibili_icons.dart';
+
 class PgcReviewChildPage extends StatefulWidget {
   const PgcReviewChildPage({
     super.key,
@@ -302,8 +304,8 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
                             ),
                             child: Icon(
                               isDislike
-                                  ? FontAwesomeIcons.solidThumbsDown
-                                  : FontAwesomeIcons.thumbsDown,
+                                  ? BiliBiliIcons.hand_thumbsdown_fill500
+                                  : BiliBiliIcons.hand_thumbsdown_line500,
                               size: 16,
                               color: isDislike ? primary : color,
                             ),
@@ -325,8 +327,8 @@ class _PgcReviewChildPageState extends State<PgcReviewChildPage>
                             children: [
                               Icon(
                                 isLike
-                                    ? FontAwesomeIcons.solidThumbsUp
-                                    : FontAwesomeIcons.thumbsUp,
+                                    ? BiliBiliIcons.hand_thumbsup_fill500
+                                    : BiliBiliIcons.hand_thumbsup_line500,
                                 size: 16,
                                 color: isLike ? primary : color,
                               ),

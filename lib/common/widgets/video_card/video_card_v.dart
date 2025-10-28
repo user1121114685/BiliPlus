@@ -72,6 +72,7 @@ class VideoCardV extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Card(
+          color: Colors.transparent,
           clipBehavior: Clip.hardEdge,
           child: InkWell(
             onTap: () => onPushDetail(Utils.makeHeroTag(videoItem.aid)),

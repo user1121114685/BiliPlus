@@ -2,6 +2,7 @@ import 'package:bili_plus/common/constants.dart';
 import 'package:bili_plus/common/widgets/badge.dart';
 import 'package:bili_plus/common/widgets/dyn/ink_well.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/grpc/bilibili/app/listener/v1.pbenum.dart'
     show PlaylistSource;
 import 'package:bili_plus/models/dynamics/result.dart';
@@ -15,7 +16,6 @@ import 'package:bili_plus/utils/extension.dart';
 import 'package:bili_plus/utils/page_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart' hide InkWell;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 Widget noneWidget(ThemeData theme, String? tips) => Row(
   spacing: 5,
@@ -46,7 +46,7 @@ Widget module(
       return Row(
         spacing: 4,
         children: [
-          const Icon(FontAwesomeIcons.ghost, size: 14),
+          Icon(BiliBiliIcons.warning_report_circle_line500, size: 14),
           Text(major!.none!.tips!),
         ],
       );

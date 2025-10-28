@@ -30,9 +30,10 @@ import 'package:expandable/expandable.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../../../../font_icon/bilibili_icons.dart';
 
 class UgcIntroPanel extends StatefulWidget {
   const UgcIntroPanel({
@@ -481,8 +482,8 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.thumbsUp),
-              selectIcon: const Icon(FontAwesomeIcons.solidThumbsUp),
+              icon: Icon(BiliBiliIcons.hand_thumbsup_line500),
+              selectIcon: Icon(BiliBiliIcons.hand_thumbsup_fill500),
               selectStatus: introController.hasLike.value,
               semanticsLabel: '点赞',
               text: !isLoading
@@ -494,8 +495,8 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
           ),
           Obx(
             () => ActionItem(
-              icon: const Icon(FontAwesomeIcons.thumbsDown),
-              selectIcon: const Icon(FontAwesomeIcons.solidThumbsDown),
+              icon: Icon(BiliBiliIcons.hand_thumbsdown_line500),
+              selectIcon: Icon(BiliBiliIcons.hand_thumbsdown_fill500),
               onTap: () => introController.handleAction(
                 introController.actionDislikeVideo,
               ),
@@ -507,8 +508,8 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.b),
-              selectIcon: const Icon(FontAwesomeIcons.b),
+              icon: Icon(BiliBiliIcons.coin_text_fill200),
+              selectIcon: Icon(BiliBiliIcons.coin_text_fill200),
               onTap: introController.actionCoinVideo,
               selectStatus: introController.hasCoin,
               semanticsLabel: '投币',
@@ -520,8 +521,8 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.star),
-              selectIcon: const Icon(FontAwesomeIcons.solidStar),
+              icon: Icon(BiliBiliIcons.star_favorite_line500),
+              selectIcon: Icon(BiliBiliIcons.star_favorite_fill500),
               onTap: () => introController.showFavBottomSheet(context),
               onLongPress: () => introController.showFavBottomSheet(
                 context,
@@ -536,8 +537,8 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
           ),
           Obx(
             () => ActionItem(
-              icon: const Icon(FontAwesomeIcons.clock),
-              selectIcon: const Icon(FontAwesomeIcons.solidClock),
+              icon: Icon(BiliBiliIcons.watch_later),
+              selectIcon: Icon(BiliBiliIcons.watch_later),
               onTap: () =>
                   introController.handleAction(introController.viewLater),
               selectStatus: introController.hasLater.value,
@@ -546,7 +547,7 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
             ),
           ),
           ActionItem(
-            icon: const Icon(FontAwesomeIcons.shareFromSquare),
+            icon: Icon(BiliBiliIcons.arrow_share_line500),
             onTap: () => introController.actionShareVideo(context),
             selectStatus: false,
             semanticsLabel: '分享',

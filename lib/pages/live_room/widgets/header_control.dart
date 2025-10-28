@@ -1,12 +1,12 @@
 import 'dart:io';
 
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/plugin/pl_player/controller.dart';
 import 'package:bili_plus/plugin/pl_player/widgets/common_btn.dart';
 import 'package:bili_plus/utils/page_utils.dart';
 import 'package:bili_plus/utils/utils.dart';
 import 'package:floating/floating.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
@@ -70,7 +70,7 @@ class LiveHeaderControl extends StatelessWidget {
           if (isFullScreen)
             ComBtn(
               tooltip: '返回',
-              icon: const Icon(FontAwesomeIcons.arrowLeft, size: 15),
+              icon: Icon(BiliBiliIcons.arrow_left_line500, size: 15),
               onTap: () => plPlayerController.triggerFullScreen(status: false),
             ),
           child,

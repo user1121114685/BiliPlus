@@ -25,8 +25,9 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
+
+import '../../font_icon/bilibili_icons.dart';
 
 class MusicDetailPage extends StatefulWidget {
   const MusicDetailPage({super.key});
@@ -251,7 +252,7 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
                         // TODO
                         // Expanded(
                         //   child: textIconButton(
-                        //     icon: FontAwesomeIcons.shareFromSquare,
+                        //     icon: BiliBiliIcons.arrow_share_line500,
                         //     text: '转发',
                         //     count: item.musicShares,
                         //     onPressed: () {
@@ -283,8 +284,9 @@ class _MusicDetailPageState extends CommonDynPageState<MusicDetailPage> {
                         Expanded(
                           child: Builder(
                             builder: (context) => textIconButton(
-                              icon: FontAwesomeIcons.thumbsUp,
-                              activitedIcon: FontAwesomeIcons.solidThumbsUp,
+                              icon: BiliBiliIcons.hand_thumbsup_line500,
+                              activitedIcon:
+                                  BiliBiliIcons.hand_thumbsup_fill500,
                               text: '点赞',
                               count: item.wishCount,
                               status: item.wishListen ?? false,

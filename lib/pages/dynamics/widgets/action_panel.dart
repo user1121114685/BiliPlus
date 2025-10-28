@@ -5,7 +5,8 @@ import 'package:bili_plus/utils/num_utils.dart';
 import 'package:bili_plus/utils/page_utils.dart';
 import 'package:bili_plus/utils/request_utils.dart';
 import 'package:flutter/material.dart' hide TextButton;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../font_icon/bilibili_icons.dart';
 
 class ActionPanel extends StatelessWidget {
   const ActionPanel({super.key, required this.item});
@@ -45,7 +46,7 @@ class ActionPanel extends StatelessWidget {
               ),
             ),
             icon: Icon(
-              FontAwesomeIcons.shareFromSquare,
+              BiliBiliIcons.arrow_share_line500,
               size: 16,
               color: outline,
               semanticLabel: "转发",
@@ -60,7 +61,7 @@ class ActionPanel extends StatelessWidget {
           child: TextButton.icon(
             onPressed: () => PageUtils.pushDynDetail(item, isPush: true),
             icon: Icon(
-              FontAwesomeIcons.comment,
+              BiliBiliIcons.bubble_comment_line500,
               size: 16,
               color: outline,
               semanticLabel: "评论",
@@ -80,8 +81,8 @@ class ActionPanel extends StatelessWidget {
             }),
             icon: Icon(
               like.status!
-                  ? FontAwesomeIcons.solidThumbsUp
-                  : FontAwesomeIcons.thumbsUp,
+                  ? BiliBiliIcons.hand_thumbsup_fill500
+                  : BiliBiliIcons.hand_thumbsup_line500,
               size: 16,
               color: like.status! ? primary : outline,
               semanticLabel: like.status! ? "已赞" : "点赞",

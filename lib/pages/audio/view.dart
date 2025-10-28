@@ -5,6 +5,7 @@ import 'package:bili_plus/common/widgets/button/icon_button.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/progress_bar/audio_video_progress_bar.dart';
 import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/grpc/bilibili/app/listener/v1.pb.dart';
 import 'package:bili_plus/models/common/image_preview_type.dart';
 import 'package:bili_plus/models/common/image_type.dart';
@@ -21,7 +22,6 @@ import 'package:bili_plus/utils/storage_key.dart';
 import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/gestures.dart' show TapGestureRecognizer;
 import 'package:flutter/material.dart' hide DraggableScrollableSheet;
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 class AudioPage extends StatefulWidget {
@@ -97,10 +97,7 @@ class _AudioPageState extends State<AudioPage> {
             },
           ),
           if (_controller.isVideo)
-            IconButton(
-              onPressed: _showMore,
-              icon: const Icon(Icons.more_vert),
-            ),
+            IconButton(onPressed: _showMore, icon: const Icon(Icons.more_vert)),
           const SizedBox(width: 5),
         ],
       ),
@@ -124,9 +121,7 @@ class _AudioPageState extends State<AudioPage> {
             : Row(
                 spacing: 12,
                 children: [
-                  Expanded(
-                    child: _buildInfo(colorScheme, isPortrait),
-                  ),
+                  Expanded(child: _buildInfo(colorScheme, isPortrait)),
                   Expanded(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -198,9 +193,7 @@ class _AudioPageState extends State<AudioPage> {
                   child: Material(
                     type: MaterialType.transparency,
                     child: Theme(
-                      data: theme.copyWith(
-                        dividerColor: Colors.transparent,
-                      ),
+                      data: theme.copyWith(dividerColor: Colors.transparent),
                       child: refreshIndicator(
                         onRefresh: () => _controller.loadPrev(context),
                         child: CustomScrollView(
@@ -361,9 +354,7 @@ class _AudioPageState extends State<AudioPage> {
                                             ),
                                             const TextSpan(text: '  '),
                                           ],
-                                          TextSpan(
-                                            text: item.arc.title,
-                                          ),
+                                          TextSpan(text: item.arc.title),
                                         ],
                                       ),
                                     ),
@@ -449,9 +440,7 @@ class _AudioPageState extends State<AudioPage> {
                     height: 3,
                     decoration: BoxDecoration(
                       color: colorScheme.outline,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(3),
-                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(3)),
                     ),
                   ),
                 ),
@@ -540,17 +529,10 @@ class _AudioPageState extends State<AudioPage> {
             child: SizedBox(
               width: 40,
               height: 40,
-              child: Icon(
-                size: 26,
-                playMode.icon,
-                color: color,
-              ),
+              child: Icon(size: 26, playMode.icon, color: color),
             ),
           ),
-          Text(
-            playMode.desc,
-            style: TextStyle(fontSize: 13, color: color),
-          ),
+          Text(playMode.desc, style: TextStyle(fontSize: 13, color: color)),
         ],
       ),
     );
@@ -605,10 +587,7 @@ class _AudioPageState extends State<AudioPage> {
               // ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '举报',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('举报', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   PageUtils.reportVideo(_controller.oid.toInt());
@@ -630,10 +609,8 @@ class _AudioPageState extends State<AudioPage> {
           Obx(
             () => ActionItem(
               animation: _controller.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.thumbsUp),
-              selectIcon: const Icon(
-                FontAwesomeIcons.solidThumbsUp,
-              ),
+              icon: Icon(BiliBiliIcons.hand_thumbsup_line500),
+              selectIcon: Icon(BiliBiliIcons.hand_thumbsup_fill500),
               selectStatus: _controller.hasLike.value,
               semanticsLabel: '点赞',
               text: NumUtils.numFormat(audioItem.stat.like),
@@ -644,58 +621,44 @@ class _AudioPageState extends State<AudioPage> {
           Obx(
             () => ActionItem(
               animation: _controller.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.b),
-              selectIcon: const Icon(FontAwesomeIcons.b),
+              icon: Icon(BiliBiliIcons.coin_text_fill200),
+              selectIcon: Icon(BiliBiliIcons.coin_text_fill200),
               onTap: _controller.actionCoinVideo,
               selectStatus: _controller.hasCoin,
               semanticsLabel: '投币',
-              text: NumUtils.numFormat(
-                audioItem.stat.coin,
-              ),
+              text: NumUtils.numFormat(audioItem.stat.coin),
             ),
           ),
           Obx(
             () => ActionItem(
               animation: _controller.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.star),
-              selectIcon: const Icon(
-                FontAwesomeIcons.solidStar,
-              ),
+              icon: Icon(BiliBiliIcons.star_favorite_line500),
+              selectIcon: Icon(BiliBiliIcons.star_favorite_fill500),
               onTap: () => _controller.showFavBottomSheet(context),
-              onLongPress: () => _controller.showFavBottomSheet(
-                context,
-                isLongPress: true,
-              ),
+              onLongPress: () =>
+                  _controller.showFavBottomSheet(context, isLongPress: true),
               selectStatus: _controller.hasFav.value,
               semanticsLabel: '收藏',
-              text: NumUtils.numFormat(
-                audioItem.stat.favourite,
-              ),
+              text: NumUtils.numFormat(audioItem.stat.favourite),
             ),
           ),
           ActionItem(
-            icon: const Icon(FontAwesomeIcons.comment),
+            icon: Icon(BiliBiliIcons.bubble_comment_line500),
             onTap: _controller.showReply,
             semanticsLabel: '评论',
-            text: NumUtils.numFormat(
-              audioItem.stat.reply,
-            ),
+            text: NumUtils.numFormat(audioItem.stat.reply),
           ),
           ActionItem(
-            icon: const Icon(
-              FontAwesomeIcons.shareFromSquare,
-            ),
+            icon: Icon(BiliBiliIcons.arrow_share_line500),
             onTap: () => _controller.actionShareVideo(context),
             selectStatus: false,
             semanticsLabel: '分享',
-            text: NumUtils.numFormat(
-              audioItem.stat.share,
-            ),
+            text: NumUtils.numFormat(audioItem.stat.share),
           ),
           if (audioItem.associatedItem.hasOid() &&
               audioItem.associatedItem.subId.isNotEmpty)
             ActionItem(
-              icon: const Icon(FontAwesomeIcons.circlePlay),
+              icon: Icon(BiliBiliIcons.play_fill500), //todo 这个不知道是那个页面的 也无法触发
               onTap: () {
                 _controller.player?.pause();
                 PageUtils.toVideoPage(
@@ -752,10 +715,7 @@ class _AudioPageState extends State<AudioPage> {
       ),
     );
     if (Utils.isDesktop) {
-      return MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: child,
-      );
+      return MouseRegion(cursor: SystemMouseCursors.click, child: child);
     }
     return child;
   }
@@ -771,18 +731,14 @@ class _AudioPageState extends State<AudioPage> {
             Obx(() {
               final position = _controller.position.value;
               if (_controller.player != null) {
-                return Text(
-                  DurationUtils.formatDuration(position.inSeconds),
-                );
+                return Text(DurationUtils.formatDuration(position.inSeconds));
               }
               return const SizedBox.shrink();
             }),
             Obx(() {
               final duration = _controller.duration.value;
               if (_controller.player != null) {
-                return Text(
-                  DurationUtils.formatDuration(duration.inSeconds),
-                );
+                return Text(DurationUtils.formatDuration(duration.inSeconds));
               }
               return const SizedBox.shrink();
             }),
@@ -799,18 +755,12 @@ class _AudioPageState extends State<AudioPage> {
         Obx(
           () => IconButton(
             onPressed: _showPlaySettings,
-            icon: Icon(
-              size: 26,
-              _controller.playMode.value.icon,
-            ),
+            icon: Icon(size: 26, _controller.playMode.value.icon),
           ),
         ),
         IconButton(
           onPressed: _controller.playPrev,
-          icon: const Icon(
-            size: 40,
-            Icons.skip_previous_rounded,
-          ),
+          icon: const Icon(size: 40, Icons.skip_previous_rounded),
         ),
         IconButton(
           onPressed: _controller.playOrPause,
@@ -822,17 +772,11 @@ class _AudioPageState extends State<AudioPage> {
         ),
         IconButton(
           onPressed: _controller.playNext,
-          icon: const Icon(
-            size: 40,
-            Icons.skip_next_rounded,
-          ),
+          icon: const Icon(size: 40, Icons.skip_next_rounded),
         ),
         IconButton(
           onPressed: _showPlaylist,
-          icon: const Icon(
-            size: 26,
-            Icons.menu_rounded,
-          ),
+          icon: const Icon(size: 26, Icons.menu_rounded),
         ),
       ],
     );
@@ -870,10 +814,7 @@ class _AudioPageState extends State<AudioPage> {
                     const SizedBox(height: 12),
                     SelectableText(
                       audioItem.arc.title,
-                      style: const TextStyle(
-                        height: 1.7,
-                        fontSize: 16,
-                      ),
+                      style: const TextStyle(height: 1.7, fontSize: 16),
                     ),
                     const SizedBox(height: 12),
                     if (audioItem.owner.hasName()) ...[
@@ -894,9 +835,7 @@ class _AudioPageState extends State<AudioPage> {
                                 height: 22,
                                 type: ImageType.avatar,
                               ),
-                            Text(
-                              audioItem.owner.name,
-                            ),
+                            Text(audioItem.owner.name),
                           ],
                         ),
                       ),

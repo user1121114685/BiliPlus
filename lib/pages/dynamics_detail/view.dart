@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:bili_plus/common/widgets/custom_icon.dart';
 import 'package:bili_plus/common/widgets/refresh_indicator.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/constants.dart';
 import 'package:bili_plus/models/dynamics/result.dart';
 import 'package:bili_plus/pages/common/dyn/common_dyn_page.dart';
@@ -256,7 +257,7 @@ class _DynamicDetailPageState extends CommonDynPageState<DynamicDetailPage> {
                           builder: (btnContext) {
                             final forward = moduleStat?.forward;
                             return textIconButton(
-                              icon: FontAwesomeIcons.shareFromSquare,
+                              icon: BiliBiliIcons.arrow_share_line500,
                               text: '转发',
                               stat: forward,
                               onPressed: () => showModalBottomSheet(
@@ -295,8 +296,9 @@ class _DynamicDetailPageState extends CommonDynPageState<DynamicDetailPage> {
                         child: Builder(
                           builder: (context) {
                             return textIconButton(
-                              icon: FontAwesomeIcons.thumbsUp,
-                              activitedIcon: FontAwesomeIcons.solidThumbsUp,
+                              icon: BiliBiliIcons.hand_thumbsup_line500,
+                              activitedIcon:
+                                  BiliBiliIcons.hand_thumbsup_fill500,
                               text: '点赞',
                               stat: moduleStat?.like,
                               onPressed: () => RequestUtils.onLikeDynamic(

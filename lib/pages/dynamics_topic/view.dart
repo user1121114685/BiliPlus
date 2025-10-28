@@ -19,11 +19,12 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:bili_plus/utils/waterfall.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:waterfall_flow/waterfall_flow.dart'
     hide SliverWaterfallFlowDelegateWithMaxCrossAxisExtent;
+
+import '../../font_icon/bilibili_icons.dart';
 
 class DynTopicPage extends StatefulWidget {
   const DynTopicPage({super.key});
@@ -67,13 +68,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
           controller: _controller.scrollController,
           physics: const AlwaysScrollableScrollPhysics(),
           slivers: [
-            Obx(
-              () => _buildAppBar(
-                theme,
-                padding,
-                _controller.topState.value,
-              ),
-            ),
+            Obx(() => _buildAppBar(theme, padding, _controller.topState.value)),
             Obx(() {
               final allSortBy = _controller.topicSortByConf.value?.allSortBy;
               if (allSortBy != null && allSortBy.isNotEmpty) {
@@ -113,10 +108,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
                             children: allSortBy.map((e) {
                               return Text(
                                 e.sortName!,
-                                style: const TextStyle(
-                                  fontSize: 13,
-                                  height: 1,
-                                ),
+                                style: const TextStyle(fontSize: 13, height: 1),
                                 strutStyle: const StrutStyle(
                                   height: 1,
                                   leading: 0,
@@ -166,9 +158,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
           flexibleSpace: Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: Image.asset(
-                  'assets/images/topic-header-bg.png',
-                ).image,
+                image: Image.asset('assets/images/topic-header-bg.png').image,
                 filterQuality: FilterQuality.low,
                 fit: BoxFit.cover,
               ),
@@ -258,8 +248,8 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
                       ),
                       onPressed: _controller.onLike,
                       icon: _controller.isLike.value == true
-                          ? const Icon(FontAwesomeIcons.solidThumbsUp, size: 13)
-                          : const Icon(FontAwesomeIcons.thumbsUp, size: 13),
+                          ? Icon(BiliBiliIcons.hand_thumbsup_fill500, size: 13)
+                          : Icon(BiliBiliIcons.hand_thumbsup_line500, size: 13),
                       label: Text(
                         NumUtils.numFormat(response.topicItem!.like),
                         style: const TextStyle(fontSize: 13),
@@ -287,8 +277,8 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
                       ),
                       onPressed: _controller.onFav,
                       icon: _controller.isFav.value == true
-                          ? const Icon(FontAwesomeIcons.solidStar, size: 13)
-                          : const Icon(FontAwesomeIcons.star, size: 13),
+                          ? Icon(BiliBiliIcons.star_favorite_fill500, size: 13)
+                          : Icon(BiliBiliIcons.star_favorite_line500, size: 13),
                       label: Text(
                         NumUtils.numFormat(response.topicItem!.fav),
                         style: const TextStyle(fontSize: 13),
@@ -337,10 +327,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
             const SizedBox(width: 4),
           ],
         ),
-      _ => SliverAppBar(
-        pinned: true,
-        title: Text(_controller.topicName),
-      ),
+      _ => SliverAppBar(pinned: true, title: Text(_controller.topicName)),
     };
   }
 
@@ -352,24 +339,21 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
             ? GlobalData().dynamicsWaterfallFlow
                   ? SliverWaterfallFlow(
                       gridDelegate: dynGridDelegate,
-                      delegate: SliverChildBuilderDelegate(
-                        (_, index) {
-                          if (index == response.length - 1) {
-                            _controller.onLoadMore();
-                          }
+                      delegate: SliverChildBuilderDelegate((_, index) {
+                        if (index == response.length - 1) {
+                          _controller.onLoadMore();
+                        }
 
-                          final item = response[index];
-                          if (item.dynamicCardItem != null) {
-                            return DynamicPanel(
-                              item: item.dynamicCardItem!,
-                              maxWidth: maxWidth,
-                            );
-                          }
+                        final item = response[index];
+                        if (item.dynamicCardItem != null) {
+                          return DynamicPanel(
+                            item: item.dynamicCardItem!,
+                            maxWidth: maxWidth,
+                          );
+                        }
 
-                          return Text(item.topicType ?? 'err');
-                        },
-                        childCount: response!.length,
-                      ),
+                        return Text(item.topicType ?? 'err');
+                      }, childCount: response!.length),
                     )
                   : SliverList.builder(
                       itemBuilder: (context, index) {

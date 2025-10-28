@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../font_icon/bilibili_icons.dart';
+
 class ZanButtonGrpc extends StatelessWidget {
   const ZanButtonGrpc({super.key, required this.replyItem});
 
@@ -126,8 +128,8 @@ class ZanButtonGrpc extends StatelessWidget {
             ),
             child: Icon(
               isDislike
-                  ? FontAwesomeIcons.solidThumbsDown
-                  : FontAwesomeIcons.thumbsDown,
+                  ? BiliBiliIcons.hand_thumbsdown_fill500
+                  : BiliBiliIcons.hand_thumbsdown_line500,
               size: 16,
               color: isDislike ? primary : outline,
               semanticLabel: isDislike ? '已踩' : '点踩',
@@ -150,8 +152,8 @@ class ZanButtonGrpc extends StatelessWidget {
               children: [
                 Icon(
                   isLike
-                      ? FontAwesomeIcons.solidThumbsUp
-                      : FontAwesomeIcons.thumbsUp,
+                      ? BiliBiliIcons.hand_thumbsup_fill500
+                      : BiliBiliIcons.hand_thumbsup_line500,
                   size: 16,
                   color: isLike ? primary : outline,
                   semanticLabel: isLike ? '已赞' : '点赞',

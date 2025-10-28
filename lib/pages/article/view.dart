@@ -28,6 +28,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:html/parser.dart' as parser;
 
+import '../../font_icon/bilibili_icons.dart';
+
 class ArticlePage extends StatefulWidget {
   const ArticlePage({super.key});
 
@@ -554,7 +556,7 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
                             final forward = stats.forward;
                             return textIconButton(
                               text: '转发',
-                              icon: FontAwesomeIcons.shareFromSquare,
+                              icon: BiliBiliIcons.arrow_share_line500,
                               stat: forward,
                               onPressed: () {
                                 if (controller.opusData == null &&
@@ -602,8 +604,8 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
                       ),
                       Expanded(
                         child: textIconButton(
-                          icon: FontAwesomeIcons.star,
-                          activitedIcon: FontAwesomeIcons.solidStar,
+                          icon: BiliBiliIcons.star_favorite_line500,
+                          activitedIcon: BiliBiliIcons.star_favorite_fill500,
                           text: '收藏',
                           stat: stats.favorite,
                           onPressed: controller.onFav,
@@ -611,8 +613,8 @@ class _ArticlePageState extends CommonDynPageState<ArticlePage> {
                       ),
                       Expanded(
                         child: textIconButton(
-                          icon: FontAwesomeIcons.thumbsUp,
-                          activitedIcon: FontAwesomeIcons.solidThumbsUp,
+                          icon: BiliBiliIcons.hand_thumbsup_line500,
+                          activitedIcon: BiliBiliIcons.hand_thumbsup_fill500,
                           text: '点赞',
                           stat: stats.like,
                           onPressed: controller.onLike,

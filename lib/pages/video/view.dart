@@ -59,9 +59,10 @@ import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:screen_brightness_platform_interface/screen_brightness_platform_interface.dart';
+
+import '../../font_icon/bilibili_icons.dart';
 
 class VideoDetailPageV extends StatefulWidget {
   const VideoDetailPageV({super.key});
@@ -673,21 +674,7 @@ class _VideoDetailPageVState extends State<VideoDetailPageV>
                                         child: IconButton(
                                           tooltip: '返回',
                                           icon: Icon(
-                                            FontAwesomeIcons.arrowLeft,
-                                            size: 15,
-                                            color:
-                                                themeData.colorScheme.onSurface,
-                                          ),
-                                          onPressed: Get.back,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 42,
-                                        height: 34,
-                                        child: IconButton(
-                                          tooltip: '返回主页',
-                                          icon: Icon(
-                                            FontAwesomeIcons.house,
+                                            BiliBiliIcons.arrow_left_line500,
                                             size: 15,
                                             color:
                                                 themeData.colorScheme.onSurface,
@@ -1157,22 +1144,8 @@ class _VideoDetailPageVState extends State<VideoDetailPageV>
                     height: 34,
                     child: IconButton(
                       tooltip: '返回',
-                      icon: const Icon(
-                        FontAwesomeIcons.arrowLeft,
-                        size: 15,
-                        color: Colors.white,
-                        shadows: [Shadow(blurRadius: 1.5, color: Colors.black)],
-                      ),
-                      onPressed: Get.back,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 42,
-                    height: 34,
-                    child: IconButton(
-                      tooltip: '返回主页',
-                      icon: const Icon(
-                        FontAwesomeIcons.house,
+                      icon: Icon(
+                        BiliBiliIcons.arrow_left_line500,
                         size: 15,
                         color: Colors.white,
                         shadows: [Shadow(blurRadius: 1.5, color: Colors.black)],

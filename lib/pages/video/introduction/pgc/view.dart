@@ -18,8 +18,9 @@ import 'package:bili_plus/utils/extension.dart';
 import 'package:bili_plus/utils/num_utils.dart';
 import 'package:bili_plus/utils/page_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+
+import '../../../../font_icon/bilibili_icons.dart';
 
 class PgcIntroPage extends StatefulWidget {
   final int? cid;
@@ -377,8 +378,8 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.thumbsUp),
-              selectIcon: const Icon(FontAwesomeIcons.solidThumbsUp),
+              icon: Icon(BiliBiliIcons.hand_thumbsup_line500),
+              selectIcon: Icon(BiliBiliIcons.hand_thumbsup_fill500),
               selectStatus: introController.hasLike.value,
               semanticsLabel: '点赞',
               text: NumUtils.numFormat(item.stat!.like),
@@ -389,8 +390,8 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.b),
-              selectIcon: const Icon(FontAwesomeIcons.b),
+              icon: Icon(BiliBiliIcons.coin_text_fill200),
+              selectIcon: Icon(BiliBiliIcons.coin_text_fill200),
               onTap: introController.actionCoinVideo,
               selectStatus: introController.hasCoin,
               semanticsLabel: '投币',
@@ -400,8 +401,8 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: const Icon(FontAwesomeIcons.star),
-              selectIcon: const Icon(FontAwesomeIcons.solidStar),
+              icon: Icon(BiliBiliIcons.star_favorite_line500),
+              selectIcon: Icon(BiliBiliIcons.star_favorite_fill500),
               onTap: () => introController.showFavBottomSheet(context),
               onLongPress: () => introController.showFavBottomSheet(
                 context,
@@ -414,8 +415,8 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
           ),
           Obx(
             () => ActionItem(
-              icon: const Icon(FontAwesomeIcons.clock),
-              selectIcon: const Icon(FontAwesomeIcons.solidClock),
+              icon: Icon(BiliBiliIcons.watch_later),
+              selectIcon: Icon(BiliBiliIcons.watch_later),
               onTap: () =>
                   introController.handleAction(introController.viewLater),
               selectStatus: introController.hasLater.value,
@@ -424,7 +425,7 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
             ),
           ),
           ActionItem(
-            icon: const Icon(FontAwesomeIcons.shareFromSquare),
+            icon: Icon(BiliBiliIcons.arrow_share_line500),
             onTap: () => introController.actionShareVideo(context),
             selectStatus: false,
             semanticsLabel: '转发',

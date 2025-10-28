@@ -21,8 +21,9 @@ import 'package:bili_plus/pages/member_shop/view.dart';
 import 'package:bili_plus/utils/utils.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+
+import '../../font_icon/bilibili_icons.dart';
 
 class MemberPage extends StatefulWidget {
   const MemberPage({super.key});
@@ -208,10 +209,10 @@ class _MemberPageState extends State<MemberPage> {
             PopupMenuItem(
               onTap: () =>
                   Get.to(const LogPage(), arguments: CoinLogController()),
-              child: const Row(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(FontAwesomeIcons.b, size: 16),
+                  Icon(BiliBiliIcons.coin_text_fill200, size: 16),
                   SizedBox(width: 10),
                   Text('硬币记录'),
                 ],
