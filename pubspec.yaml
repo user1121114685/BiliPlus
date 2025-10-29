@@ -73,7 +73,14 @@ dependencies:
   # webview_cookie_manager: ^2.0.6
   # 浏览器
   # webview_flutter: ^4.10.0
-  flutter_inappwebview: ^6.1.5
+  flutter_inappwebview:
+    git:
+      url: https://github.com/pichillilorenzo/flutter_inappwebview.git
+      ref: v6.2.0-beta.3
+      path: flutter_inappwebview
+
+  # win32 解决flutter_inappwebview 无法完全退出的问题
+  win32: ^5.15.0
   # 解决sliver滑动不同步
   # extended_nested_scroll_view: ^6.2.1
   extended_nested_scroll_view:
@@ -232,6 +239,12 @@ dependency_overrides:
   path: ^1.9.1
   mime: ^2.0.0
   rxdart: ^0.28.0
+  flutter_inappwebview_windows:
+    git:
+      url: https://github.com/pichillilorenzo/flutter_inappwebview.git
+      ref: v6.2.0-beta.3
+      path: flutter_inappwebview_windows
+
   media_kit:
     git:
       url: https://github.com/bggRGjQaUbCoE/media-kit.git
@@ -279,19 +292,24 @@ dev_dependencies:
   build_runner: ^2.9.0
   flutter_native_splash: ^2.4.6
 
+# 运行 命令 flutter pub run flutter_launcher_icons
 flutter_launcher_icons:
   android: true
   ios: true
   remove_alpha_ios: true
-  image_path: assets/images/logo/logo_2.png
-  image_path_android: assets/images/logo/logo_2.png
-  image_path_ios: assets/images/logo/logo.png
-  adaptive_icon_background: "#ffffff"
-  adaptive_icon_foreground: assets/images/logo/logo_2.png
-  adaptive_icon_monochrome: assets/images/logo/logo_2.png
+  image_path: "assets/images/logo/logo.png"
+#  image_path_android: assets/images/logo/logo_2.png
+#  image_path_ios: assets/images/logo/logo.png
+#  adaptive_icon_background: "#ffffff"
+#  adaptive_icon_foreground: assets/images/logo/logo_2.png
+#  adaptive_icon_monochrome: assets/images/logo/logo_2.png
   macos:
     generate: true
-    image_path: assets/images/logo/logo.png
+    image_path: "assets/images/logo/logo.png"
+  windows:
+    generate: true
+    image_path: "assets/images/logo/logo.png"
+    icon_size: 256 # min:48, max:256, default: 48
 
 flutter_native_splash:
   android_12:

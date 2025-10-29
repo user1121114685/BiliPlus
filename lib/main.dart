@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bili_plus/build_config.dart';
 import 'package:bili_plus/common/constants.dart';
 import 'package:bili_plus/common/widgets/custom_toast.dart';
 import 'package:bili_plus/common/widgets/mouse_back.dart';
@@ -21,7 +22,6 @@ import 'package:bili_plus/utils/storage_key.dart';
 import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:bili_plus/utils/theme_utils.dart';
 import 'package:bili_plus/utils/utils.dart';
-import 'package:bili_plus/build_config.dart';
 import 'package:catcher_2/catcher_2.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flex_seed_scheme/flex_seed_scheme.dart';
@@ -40,7 +40,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:window_manager/window_manager.dart' hide calcWindowPosition;
 
 WebViewEnvironment? webViewEnvironment;
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   MediaKit.ensureInitialized();

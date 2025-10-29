@@ -23,6 +23,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:tray_manager/tray_manager.dart';
+import 'package:win32/win32.dart';
 import 'package:window_manager/window_manager.dart';
 
 class MainApp extends StatefulWidget {
@@ -146,7 +147,11 @@ class _MainAppState extends State<MainApp>
     await GStorage.close();
     await trayManager.destroy();
     if (Platform.isWindows) {
-      const MethodChannel('window_control').invokeMethod('closeWindow');
+      // flutter_inappwebview 无法关闭程序
+      // 6.2.0-beta.2+ https://github.com/pichillilorenzo/flutter_inappwebview/issues/2482
+      // 6.1.5 https://github.com/pichillilorenzo/flutter_inappwebview/issues/2512#issuecomment-3031039587
+      final int hProcess = GetCurrentProcess();
+      TerminateProcess(hProcess, 0);
     } else {
       exit(0);
     }
@@ -210,7 +215,7 @@ class _MainAppState extends State<MainApp>
     if (Platform.isWindows) {
       await trayManager.setIcon('assets/images/logo/app_icon.ico');
     } else {
-      await trayManager.setIcon('assets/images/logo/logo_large.png');
+      await trayManager.setIcon('assets/images/logo/logo.png');
     }
     if (!Platform.isLinux) {
       await trayManager.setToolTip(Constants.appName);
