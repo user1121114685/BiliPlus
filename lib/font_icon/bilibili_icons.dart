@@ -867,4 +867,6 @@ static IconData dragVariant = const IconData(0xe807, fontFamily: _kFontFam, font
 static IconData net_cdn = const IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   /// advertisements 图标
 static IconData advertisements = const IconData(0xe6dd, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// ai_robot 图标
+static IconData ai_robot = const IconData(0xe607, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

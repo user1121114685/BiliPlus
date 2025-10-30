@@ -11,5 +11,6 @@ class HttpString {
   static const String accountBaseUrl = 'https://account.bilibili.com';
   static const String mallBaseUrl = 'https://mall.bilibili.com';
 
+  ///  sponsorBlock 空降助手，跳过广告等
   static const String sponsorBlockBaseUrl = 'https://www.bsbsb.top';
 }

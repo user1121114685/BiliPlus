@@ -74,30 +74,7 @@ class VideoPopupMenu extends StatelessWidget {
                       if (videoItem.cid != null && Pref.enableAi)
                         _VideoCustomAction(
                           'AI总结',
-                          const Stack(
-                            alignment: Alignment.center,
-                            clipBehavior: Clip.none,
-                            children: [
-                              Icon(Icons.circle_outlined, size: 16),
-                              ExcludeSemantics(
-                                child: Text(
-                                  'AI',
-                                  style: TextStyle(
-                                    fontSize: 10,
-                                    height: 1,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  strutStyle: StrutStyle(
-                                    fontSize: 10,
-                                    height: 1,
-                                    leading: 0,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  textScaler: TextScaler.noScaling,
-                                ),
-                              ),
-                            ],
-                          ),
+                          Icon(BiliBiliIcons.ai_robot, size: 16),
                           () async {
                             final res =
                                 await UgcIntroController.getAiConclusion(

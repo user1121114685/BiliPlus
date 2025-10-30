@@ -2240,7 +2240,7 @@ class HeaderControlState extends State<HeaderControl> {
                   width: 42,
                   height: 34,
                   child: IconButton(
-                    tooltip: '提交片段',
+                    tooltip: '空降助手',
                     style: const ButtonStyle(
                       padding: WidgetStatePropertyAll(EdgeInsets.zero),
                     ),

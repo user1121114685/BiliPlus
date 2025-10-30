@@ -889,11 +889,29 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
             }
           }
         },
-        child: Image.asset(
-          semanticLabel: 'AI总结',
-          'assets/images/ai.png',
-          height: 18,
-          width: 18,
+        child: SizedBox(
+          width: 90,
+          height: 20,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(6), // 按需调整圆角半径
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey.shade400, width: 1),
+                borderRadius: BorderRadius.circular(6), // 与外层保持一致
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min, // 让 Row 自适应内容宽度
+                children: [
+                  Icon(BiliBiliIcons.ai_robot, size: 16),
+                  SizedBox(width: 6),
+                  Text(
+                    'AI视频总结',
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     ),
