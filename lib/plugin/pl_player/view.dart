@@ -66,7 +66,6 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_volume_controller/flutter_volume_controller.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:media_kit_video/media_kit_video.dart';
 import 'package:screen_brightness_platform_interface/screen_brightness_platform_interface.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
@@ -450,8 +449,8 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
                 tooltip: '分段信息',
                 icon: Transform.rotate(
                   angle: math.pi / 2,
-                  child: const Icon(
-                    MdiIcons.viewHeadline,
+                  child: Icon(
+                    BiliBiliIcons.ranking_square_line500,
                     size: 22,
                     color: Colors.white,
                   ),
@@ -2275,9 +2274,9 @@ class _PLVideoPlayerState extends State<PLVideoPlayer>
               ],
               LiveDanmaku() => [
                 _dmActionItem(
-                  const Icon(
+                  Icon(
                     size: 20,
-                    MdiIcons.accountOutline,
+                    BiliBiliIcons.person_user_info_line500,
                     color: Colors.white,
                   ),
                   onTap: () => Get.toNamed('/member?mid=${extra.mid}'),

@@ -3,6 +3,7 @@ import 'package:bili_plus/common/widgets/badge.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/progress_bar/video_progress_indicator.dart';
 import 'package:bili_plus/common/widgets/select_mask.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/search.dart';
 import 'package:bili_plus/http/user.dart';
 import 'package:bili_plus/models/common/badge_type.dart';
@@ -16,7 +17,6 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HistoryItem extends StatelessWidget {
   final HistoryItemModel item;
@@ -201,8 +201,8 @@ class HistoryItem extends StatelessWidget {
                             height: 35,
                             child: Row(
                               children: [
-                                const Icon(
-                                  MdiIcons.accountCircleOutline,
+                                Icon(
+                                  BiliBiliIcons.uploader_name_square_line500,
                                   size: 16,
                                 ),
                                 const SizedBox(width: 6),

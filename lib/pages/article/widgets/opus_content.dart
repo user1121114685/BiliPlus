@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:bili_plus/common/widgets/image/cached_network_svg_image.dart';
 import 'package:bili_plus/common/widgets/image/custom_grid_view.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/constants.dart';
 import 'package:bili_plus/models/common/image_preview_type.dart';
 import 'package:bili_plus/models/common/image_type.dart';
@@ -20,7 +21,6 @@ import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss, Node;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:re_highlight/languages/all.dart';
 import 'package:re_highlight/re_highlight.dart';
 import 'package:re_highlight/styles/github-dark.dart';
@@ -199,6 +199,7 @@ class OpusContent extends StatelessWidget {
                         fadeInDuration: const Duration(milliseconds: 120),
                         fadeOutDuration: const Duration(milliseconds: 120),
                         placeholder: (context, url) =>
+                            //todo 文件位置
                             Image.asset('assets/images/loading.png'),
                       ),
                     ),
@@ -231,8 +232,8 @@ class OpusContent extends StatelessWidget {
                   children: element.list!.items?.indexed.map((entry) {
                     return TextSpan(
                       children: [
-                        const WidgetSpan(
-                          child: Icon(MdiIcons.circleMedium),
+                        WidgetSpan(
+                          child: Icon(BiliBiliIcons.more_circle_line500),
                           alignment: PlaceholderAlignment.middle,
                         ),
                         ...entry.$2.nodes!.map((item) {

@@ -855,4 +855,16 @@ static IconData dm_off = const IconData(0xe801, fontFamily: _kFontFam, fontPacka
 static IconData dm_on = const IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   /// dm_settings 图标
 static IconData dm_settings = const IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// incognito 图标
+static IconData incognito = const IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// incognitoOff 图标
+static IconData incognitoOff = const IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// skip_to 图标
+static IconData skip_to = const IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// dragVariant 图标
+static IconData dragVariant = const IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// net_cdn 图标
+static IconData net_cdn = const IconData(0xe808, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  /// advertisements 图标
+static IconData advertisements = const IconData(0xe6dd, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

@@ -18,7 +18,6 @@ import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart' hide ListTile;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class _SettingsModel {
   final SettingType type;
@@ -40,7 +39,7 @@ class _SettingPageState extends State<SettingPage> {
   final RxBool _noAccount = Accounts.account.isEmpty.obs;
   late bool _isPortrait;
 
-  final List<_SettingsModel> _items = const [
+  final List<_SettingsModel> _items = [
     _SettingsModel(
       type: SettingType.privacySetting,
       subtitle: '黑名单、无痕模式',
@@ -73,7 +72,7 @@ class _SettingPageState extends State<SettingPage> {
     ),
     _SettingsModel(
       type: SettingType.webdavSetting,
-      icon: Icon(MdiIcons.databaseCogOutline),
+      icon: Icon(Icons.phonelink_ring_outlined),
     ),
     _SettingsModel(type: SettingType.about, icon: Icon(Icons.info_outline)),
   ];

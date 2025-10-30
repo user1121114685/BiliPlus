@@ -15,8 +15,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show FilteringTextInputFormatter;
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:uuid/uuid.dart';
+
+import '../../font_icon/bilibili_icons.dart';
 
 class SponsorBlockPage extends StatefulWidget {
   const SponsorBlockPage({super.key});
@@ -536,7 +537,7 @@ class _SponsorBlockPageState extends State<SponsorBlockPage> {
                             strutStyle: const StrutStyle(height: 1, leading: 0),
                           ),
                           Icon(
-                            MdiIcons.unfoldMoreHorizontal,
+                            BiliBiliIcons.arrow_expand_vertical_double_line700,
                             size: MediaQuery.textScalerOf(context).scale(14),
                             color: isDisable
                                 ? theme.colorScheme.outline.withValues(

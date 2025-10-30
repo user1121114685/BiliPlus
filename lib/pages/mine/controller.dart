@@ -1,3 +1,4 @@
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/fav.dart';
 import 'package:bili_plus/http/loading_state.dart';
 import 'package:bili_plus/http/user.dart';
@@ -17,7 +18,6 @@ import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class MineController
     extends CommonDataController<FavFolderData, FavFolderData> {
@@ -179,7 +179,7 @@ class MineController
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      const Icon(MdiIcons.incognito, size: 20),
+                      Icon(BiliBiliIcons.incognito, size: 20),
                       const SizedBox(width: 10),
                       Text('已进入无痕模式', style: theme.textTheme.titleMedium),
                     ],
@@ -247,7 +247,7 @@ class MineController
               ),
               child: Row(
                 children: [
-                  const Icon(MdiIcons.incognitoOff, size: 20),
+                  Icon(BiliBiliIcons.incognitoOff, size: 20),
                   const SizedBox(width: 10),
                   Text('已退出无痕模式', style: theme.textTheme.titleMedium),
                 ],

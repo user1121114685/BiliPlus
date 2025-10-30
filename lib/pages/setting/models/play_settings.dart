@@ -18,7 +18,6 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 List<SettingsModel> get playSettings => [
   SettingsModel(
@@ -75,17 +74,17 @@ List<SettingsModel> get playSettings => [
     setKey: SettingBoxKey.enableQuickDouble,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '左右侧滑动调节亮度/音量',
-    leading: Icon(MdiIcons.tuneVerticalVariant),
+    leading: Icon(Icons.swipe_vertical_outlined),
     setKey: SettingBoxKey.enableSlideVolumeBrightness,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '中间滑动进入/退出全屏',
-    leading: Icon(MdiIcons.panVertical),
+    leading: Icon(Icons.swipe_up),
     setKey: SettingBoxKey.enableSlideFS,
     defaultVal: true,
   ),
@@ -247,10 +246,10 @@ List<SettingsModel> get playSettings => [
     setKey: SettingBoxKey.fullScreenGestureReverse,
     defaultVal: false,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '全屏展示点赞/投币/收藏等操作按钮',
-    leading: Icon(MdiIcons.dotsHorizontalCircleOutline),
+    leading: Icon(BiliBiliIcons.more_circle_line500),
     setKey: SettingBoxKey.showFSActionItem,
     defaultVal: true,
   ),

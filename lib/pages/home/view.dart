@@ -1,6 +1,7 @@
 import 'package:bili_plus/common/constants.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/models/common/dynamic/dynamic_badge_mode.dart';
 import 'package:bili_plus/models/common/image_type.dart';
 import 'package:bili_plus/pages/home/controller.dart';
@@ -10,7 +11,6 @@ import 'package:bili_plus/utils/extension.dart';
 import 'package:bili_plus/utils/feed_back.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage>
                                     ),
                                     child: Icon(
                                       size: 16,
-                                      MdiIcons.incognito,
+                                      BiliBiliIcons.person_me_line500,
                                       color: theme
                                           .colorScheme
                                           .onSecondaryContainer,
@@ -273,9 +273,7 @@ Widget msgBadge(MainController mainController) {
       child: IconButton(
         tooltip: '消息',
         onPressed: toWhisper,
-        icon: const Icon(
-          Icons.notifications_none,
-        ),
+        icon: const Icon(Icons.notifications_none),
       ),
     ),
   );

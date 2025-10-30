@@ -31,7 +31,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../../font_icon/bilibili_icons.dart';
 
@@ -508,8 +507,8 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: Icon(BiliBiliIcons.coin_text_fill200),
-              selectIcon: Icon(BiliBiliIcons.coin_text_fill200),
+              icon: Icon(BiliBiliIcons.coin_text_line500),
+              selectIcon: Icon(BiliBiliIcons.coin_text_fill500),
               onTap: introController.actionCoinVideo,
               selectStatus: introController.hasCoin,
               semanticsLabel: '投币',
@@ -747,7 +746,7 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
-                                MdiIcons.plus,
+                                BiliBiliIcons.plus_add_circle_line500,
                                 size: 16,
                                 color: theme.colorScheme.onSecondaryContainer,
                               ),
@@ -857,7 +856,7 @@ class _UgcIntroPanelState extends State<UgcIntroPanel> {
       ),
       if (MineController.anonymity.value)
         Icon(
-          MdiIcons.incognito,
+          BiliBiliIcons.incognito,
           size: 15,
           color: theme.colorScheme.outline,
           semanticLabel: '无痕',

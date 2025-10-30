@@ -6,6 +6,7 @@ import 'package:bili_plus/build_config.dart';
 import 'package:bili_plus/common/constants.dart';
 import 'package:bili_plus/common/widgets/dialog/dialog.dart';
 import 'package:bili_plus/common/widgets/list_tile.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/pages/mine/controller.dart';
 import 'package:bili_plus/services/logger.dart';
 import 'package:bili_plus/utils/accounts.dart';
@@ -24,7 +25,6 @@ import 'package:flutter/services.dart' show Clipboard, ClipboardData;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:intl/intl.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:re_highlight/languages/json.dart';
 import 'package:re_highlight/re_highlight.dart';
 import 'package:re_highlight/styles/github-dark.dart';
@@ -143,10 +143,7 @@ class _AboutPageState extends State<AboutPage> {
                 : () => Utils.copyText(currentVersion),
             title: const Text('当前版本'),
             leading: const Icon(Icons.commit_outlined),
-            trailing: Text(
-              currentVersion,
-              style: subTitleStyle,
-            ),
+            trailing: Text(currentVersion, style: subTitleStyle),
           ),
           ListTile(
             title: Text(
@@ -178,24 +175,16 @@ Commit Hash: ${BuildConfig.commitHash}''',
           if (Platform.isAndroid)
             ListTile(
               onTap: () => Utils.channel.invokeMethod('linkVerifySettings'),
-              leading: const Icon(MdiIcons.linkBoxOutline),
+              leading: Icon(BiliBiliIcons.chain_link_line500),
               title: const Text('打开受支持的链接'),
-              trailing: Icon(
-                Icons.arrow_forward,
-                size: 16,
-                color: outline,
-              ),
+              trailing: Icon(Icons.arrow_forward, size: 16, color: outline),
             ),
           ListTile(
             onTap: () =>
                 PageUtils.launchURL('${Constants.sourceCodeUrl}/issues'),
             leading: const Icon(Icons.feedback_outlined),
             title: const Text('问题反馈'),
-            trailing: Icon(
-              Icons.arrow_forward,
-              size: 16,
-              color: outline,
-            ),
+            trailing: Icon(Icons.arrow_forward, size: 16, color: outline),
           ),
           ListTile(
             onTap: () => Get.toNamed('/logs'),
@@ -231,10 +220,7 @@ Commit Hash: ${BuildConfig.commitHash}''',
             leading: const Icon(Icons.delete_outline),
             title: const Text('清除缓存'),
             subtitle: Obx(
-              () => Text(
-                '图片及网络缓存 ${cacheSize.value}',
-                style: subTitleStyle,
-              ),
+              () => Text('图片及网络缓存 ${cacheSize.value}', style: subTitleStyle),
             ),
           ),
           ListTile(
@@ -378,9 +364,7 @@ Future<void> showInportExportDialog<T>(
           title: Text('从剪贴板导入$title', style: style),
           onTap: () async {
             Get.back();
-            ClipboardData? data = await Clipboard.getData(
-              'text/plain',
-            );
+            ClipboardData? data = await Clipboard.getData('text/plain');
             if (data?.text?.isNotEmpty != true) {
               SmartDialog.showToast('剪贴板无数据');
               return;

@@ -1,3 +1,4 @@
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/user.dart';
 import 'package:bili_plus/http/video.dart';
 import 'package:bili_plus/models/common/account_type.dart';
@@ -14,7 +15,6 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class _VideoCustomAction {
   final String title;
@@ -58,18 +58,12 @@ class VideoPopupMenu extends StatelessWidget {
                     if (videoItem.bvid?.isNotEmpty == true) ...[
                       _VideoCustomAction(
                         videoItem.bvid!,
-                        const Stack(
-                          clipBehavior: Clip.none,
-                          children: [
-                            Icon(MdiIcons.identifier, size: 16),
-                            Icon(MdiIcons.circleOutline, size: 16),
-                          ],
-                        ),
+                        Icon(BiliBiliIcons.video_circle_line500, size: 16),
                         () => Utils.copyText(videoItem.bvid!),
                       ),
                       _VideoCustomAction(
                         '稍后再看',
-                        const Icon(MdiIcons.clockTimeEightOutline, size: 16),
+                        Icon(BiliBiliIcons.watch_later, size: 16),
                         () async {
                           var res = await UserHttp.toViewLater(
                             bvid: videoItem.bvid,
@@ -142,12 +136,15 @@ class VideoPopupMenu extends StatelessWidget {
                     if (videoItem is! SpaceArchiveItem) ...[
                       _VideoCustomAction(
                         '访问：${videoItem.owner.name}',
-                        const Icon(MdiIcons.accountCircleOutline, size: 16),
+                        Icon(
+                          BiliBiliIcons.uploader_name_square_line500,
+                          size: 16,
+                        ),
                         () => Get.toNamed('/member?mid=${videoItem.owner.mid}'),
                       ),
                       _VideoCustomAction(
                         '不感兴趣',
-                        const Icon(MdiIcons.thumbDownOutline, size: 16),
+                        Icon(BiliBiliIcons.hand_thumbsdown_line500, size: 16),
                         () {
                           String? accessKey = Accounts.get(
                             AccountType.recommend,
@@ -340,7 +337,7 @@ class VideoPopupMenu extends StatelessWidget {
                       ),
                       _VideoCustomAction(
                         '拉黑：${videoItem.owner.name}',
-                        const Icon(MdiIcons.cancel, size: 16),
+                        Icon(BiliBiliIcons.person_unfollow_line500, size: 16),
                         () => showDialog(
                           context: context,
                           builder: (context) {
@@ -386,8 +383,8 @@ class VideoPopupMenu extends StatelessWidget {
                     _VideoCustomAction(
                       "${MineController.anonymity.value ? '退出' : '进入'}无痕模式",
                       MineController.anonymity.value
-                          ? const Icon(MdiIcons.incognitoOff, size: 16)
-                          : const Icon(MdiIcons.incognito, size: 16),
+                          ? Icon(BiliBiliIcons.incognitoOff, size: 16)
+                          : Icon(BiliBiliIcons.incognito, size: 16),
                       MineController.onChangeAnonymity,
                     ),
                   ]

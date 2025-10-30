@@ -3,6 +3,7 @@ import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/keep_alive_wrapper.dart';
 import 'package:bili_plus/common/widgets/loading_widget/loading_widget.dart';
 import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/loading_state.dart';
 import 'package:bili_plus/models/common/image_type.dart';
 import 'package:bili_plus/models_new/live/live_area_list/area_item.dart';
@@ -14,7 +15,6 @@ import 'package:bili_plus/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_sortable_wrap/sortable_wrap.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class LiveAreaPage extends StatefulWidget {
   const LiveAreaPage({super.key});
@@ -287,8 +287,8 @@ class _LiveAreaPageState extends State<LiveAreaPage> {
                     size: 17,
                     iconSize: 13,
                     icon: isFav
-                        ? const Icon(MdiIcons.check)
-                        : const Icon(MdiIcons.plus),
+                        ? Icon(BiliBiliIcons.checkmark_line500)
+                        : Icon(BiliBiliIcons.plus_add_circle_line500),
                     bgColor: isFav
                         ? theme.colorScheme.onInverseSurface
                         : theme.colorScheme.secondaryContainer,
@@ -316,9 +316,7 @@ class _LiveAreaPageState extends State<LiveAreaPage> {
       children: [
         DecoratedBox(
           decoration: BoxDecoration(
-            border: Border.all(
-              color: theme.colorScheme.outline,
-            ),
+            border: Border.all(color: theme.colorScheme.outline),
             color: theme.colorScheme.surface,
             borderRadius: const BorderRadius.all(Radius.circular(4)),
           ),
@@ -326,10 +324,7 @@ class _LiveAreaPageState extends State<LiveAreaPage> {
             text: item.name!,
             fontSize: 14,
             bgColor: Colors.transparent,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
-              vertical: 4,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
             onTap: (value) {
               if (_controller.isEditing.value) {
                 onPressed();

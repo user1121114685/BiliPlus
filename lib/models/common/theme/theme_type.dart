@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 enum ThemeType {
   light('浅色'),
@@ -16,8 +15,8 @@ enum ThemeType {
   };
 
   Icon get icon => switch (this) {
-    ThemeType.light => const Icon(MdiIcons.weatherSunny),
-    ThemeType.dark => const Icon(MdiIcons.weatherNight),
-    ThemeType.system => const Icon(MdiIcons.themeLightDark),
+    ThemeType.light => const Icon(Icons.light_mode),
+    ThemeType.dark => const Icon(Icons.dark_mode),
+    ThemeType.system => const Icon(Icons.brightness_auto_rounded),
   };
 }

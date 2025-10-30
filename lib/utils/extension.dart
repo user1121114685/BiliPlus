@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bili_plus/common/widgets/dialog/dialog.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/grpc/bilibili/app/im/v1.pb.dart' show ThreeDotItem;
 import 'package:bili_plus/grpc/bilibili/app/im/v1.pbenum.dart'
     show IMSettingType, ThreeDotItemType;
@@ -12,7 +13,6 @@ import 'package:floating/floating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 extension ImageExtension on num {
   int? cacheSize(BuildContext context) {
@@ -181,7 +181,8 @@ extension ThreeDotItemTypeExt on ThreeDotItemType {
       Icons.notifications_none,
       size: 20,
     ),
-    _ => const Icon(MdiIcons.circleMedium, size: 20),
+    //消息界面的 默认图标
+    _ => Icon(BiliBiliIcons.topic_line500, size: 20),
   };
 
   void action({

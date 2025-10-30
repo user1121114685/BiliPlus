@@ -5,6 +5,7 @@ import 'package:bili_plus/common/widgets/custom_toast.dart';
 import 'package:bili_plus/common/widgets/dialog/dialog.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/scroll_physics.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/main.dart';
 import 'package:bili_plus/models/common/dynamic/dynamic_badge_mode.dart';
 import 'package:bili_plus/models/common/dynamic/up_panel_position.dart';
@@ -33,7 +34,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_auto_orientation/flutter_auto_orientation.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 List<SettingsModel> get styleSettings => [
   if (Utils.isDesktop) ...[
@@ -138,7 +138,7 @@ List<SettingsModel> get styleSettings => [
   const SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '优化平板导航栏',
-    leading: Icon(MdiIcons.soundbar),
+    leading: Icon(Icons.padding_outlined),
     setKey: SettingBoxKey.optTabletNav,
     defaultVal: true,
     needReboot: true,
@@ -295,7 +295,7 @@ List<SettingsModel> get styleSettings => [
       }
     },
     title: '消息未读标记',
-    leading: const Icon(MdiIcons.bellBadgeOutline),
+    leading: Icon(BiliBiliIcons.bubble_comment_line500),
     getSubtitle: () => '当前标记样式：${Pref.msgBadgeMode.desc}',
   ),
   SettingsModel(
@@ -326,7 +326,7 @@ List<SettingsModel> get styleSettings => [
       }
     },
     title: '消息未读类型',
-    leading: const Icon(MdiIcons.bellCogOutline),
+    leading: Icon(BiliBiliIcons.bubble_comment_setting_line500),
     getSubtitle: () =>
         '当前消息类型：${Pref.msgUnReadTypeV2.map((item) => item.title).join('、')}',
   ),

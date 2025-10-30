@@ -49,7 +49,6 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart' show DateFormat;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../font_icon/bilibili_icons.dart';
 
@@ -343,7 +342,8 @@ class HeaderControlState extends State<HeaderControl> {
                                 ),
                               ),
                               Icon(
-                                MdiIcons.unfoldMoreHorizontal,
+                                BiliBiliIcons
+                                    .arrow_expand_vertical_double_line700,
                                 size: MediaQuery.textScalerOf(
                                   context,
                                 ).scale(14),
@@ -374,7 +374,7 @@ class HeaderControlState extends State<HeaderControl> {
               ListTile(
                 dense: true,
                 title: const Text('CDN 设置', style: titleStyle),
-                leading: const Icon(MdiIcons.cloudPlusOutline, size: 20),
+                leading: Icon(BiliBiliIcons.net_cdn, size: 20),
                 subtitle: Text(
                   '当前：${CDNService.fromCode(VideoUtils.cdnService).desc}，无法播放请切换',
                   style: subTitleStyle,
@@ -540,7 +540,10 @@ class HeaderControlState extends State<HeaderControl> {
                   Get.back();
                   showSetSubtitle();
                 },
-                leading: const Icon(Icons.subtitles_outlined, size: 20),
+                leading: Icon(
+                  BiliBiliIcons.closed_caption_text_square_line500,
+                  size: 20,
+                ),
                 title: const Text('字幕设置', style: titleStyle),
               ),
               if (videoDetailCtr.subtitles.isNotEmpty)
@@ -2271,8 +2274,8 @@ class HeaderControlState extends State<HeaderControl> {
                             padding: WidgetStatePropertyAll(EdgeInsets.zero),
                           ),
                           onPressed: () => videoDetailCtr.showSBDetail(context),
-                          icon: const Icon(
-                            MdiIcons.advertisements,
+                          icon: Icon(
+                            BiliBiliIcons.advertisements,
                             size: 19,
                             color: Colors.white,
                           ),
@@ -2507,7 +2510,7 @@ class HeaderControlState extends State<HeaderControl> {
                         BiliBiliIcons.coin_text_fill200,
                         color: Colors.white,
                       ),
-                      selectIcon: Icon(BiliBiliIcons.coin_text_fill200),
+                      selectIcon: Icon(BiliBiliIcons.coin_text_fill500),
                       onTap: introController.actionCoinVideo,
                       selectStatus: introController.hasCoin,
                       semanticsLabel: '投币',

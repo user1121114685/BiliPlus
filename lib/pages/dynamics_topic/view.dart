@@ -19,7 +19,6 @@ import 'package:bili_plus/utils/waterfall.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:waterfall_flow/waterfall_flow.dart'
     hide SliverWaterfallFlowDelegateWithMaxCrossAxisExtent;
 
@@ -296,7 +295,7 @@ class _DynTopicPageState extends State<DynTopicPage> with DynMixin {
                 '${_controller.topicName} https://m.bilibili.com/topic-detail?topic_id=${_controller.topicId}',
               ),
               // https://www.bilibili.com/v/topic/detail?topic_id=${_controller.topicId}
-              icon: const Icon(MdiIcons.share),
+              icon: Icon(BiliBiliIcons.arrow_share_line500),
             ),
             PopupMenuButton(
               itemBuilder: (context) {

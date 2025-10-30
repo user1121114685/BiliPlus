@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../../../font_icon/bilibili_icons.dart';
 
 typedef PopupMenuItemSelected<T> = bool Function(T value);
 
@@ -57,18 +58,11 @@ class _PopupMenuTextState<T> extends State<PopupMenuText<T>> {
             children: [
               Text(
                 widget.getSelectTitle(select),
-                style: TextStyle(
-                  height: 1,
-                  fontSize: 14,
-                  color: secondary,
-                ),
-                strutStyle: const StrutStyle(
-                  height: 1,
-                  leading: 0,
-                ),
+                style: TextStyle(height: 1, fontSize: 14, color: secondary),
+                strutStyle: const StrutStyle(height: 1, leading: 0),
               ),
               Icon(
-                MdiIcons.unfoldMoreHorizontal,
+                BiliBiliIcons.arrow_expand_vertical_double_line700,
                 size: MediaQuery.textScalerOf(context).scale(14),
                 color: secondary,
               ),

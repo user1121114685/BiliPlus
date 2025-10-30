@@ -8,7 +8,6 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:floating/floating.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class LiveHeaderControl extends StatelessWidget {
   const LiveHeaderControl({
@@ -92,14 +91,14 @@ class LiveHeaderControl extends StatelessWidget {
                 onPlayAudio();
               },
               icon: onlyPlayAudio
-                  ? const Icon(
+                  ? Icon(
                       size: 18,
-                      MdiIcons.musicCircle,
+                      BiliBiliIcons.headset_flash_aduio_line500,
                       color: Colors.white,
                     )
-                  : const Icon(
+                  : Icon(
                       size: 18,
-                      MdiIcons.musicCircleOutline,
+                      BiliBiliIcons.headset_audio_line500,
                       color: Colors.white,
                     ),
             );

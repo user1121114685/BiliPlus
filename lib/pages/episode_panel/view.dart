@@ -9,6 +9,7 @@ import 'package:bili_plus/common/widgets/keep_alive_wrapper.dart';
 import 'package:bili_plus/common/widgets/page/tabs.dart';
 import 'package:bili_plus/common/widgets/scroll_physics.dart';
 import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/http/fav.dart';
 import 'package:bili_plus/http/loading_state.dart';
 import 'package:bili_plus/http/video.dart';
@@ -34,7 +35,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide TabBarView;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class EpisodePanel extends CommonSlidePage {
   const EpisodePanel({
@@ -580,8 +580,8 @@ class _EpisodePanelState extends State<EpisodePanel>
     iconSize: 22,
     tooltip: widget.isReversed == true ? '正序播放' : '倒序播放',
     icon: widget.isReversed == true
-        ? const Icon(MdiIcons.sortDescending)
-        : const Icon(MdiIcons.sortAscending),
+        ? Icon(BiliBiliIcons.list_sort_positive_line)
+        : Icon(BiliBiliIcons.list_sort_line5001),
     onPressed: () => widget.onReverse?.call(),
   );
 
@@ -609,13 +609,13 @@ class _EpisodePanelState extends State<EpisodePanel>
           Text(widget.type.title, style: theme.textTheme.titleMedium),
         if (_favState != null) Obx(() => _buildFavBtn(_favState!.value)),
         iconButton(
-          iconSize: 22,
+          iconSize: 20,
           tooltip: '跳至顶部',
           icon: const Icon(Icons.vertical_align_top),
           onPressed: _animToTopOrBottom,
         ),
         iconButton(
-          iconSize: 22,
+          iconSize: 20,
           tooltip: '跳至底部',
           icon: const Icon(Icons.vertical_align_bottom),
           onPressed: () => _animToTopOrBottom(top: false),
@@ -649,8 +649,8 @@ class _EpisodePanelState extends State<EpisodePanel>
             iconSize: 22,
             tooltip: _isReversed[currentTabIndex] ? '顺序' : '倒序',
             icon: !_isReversed[currentTabIndex]
-                ? const Icon(MdiIcons.sortNumericAscending)
-                : const Icon(MdiIcons.sortNumericDescending),
+                ? Icon(BiliBiliIcons.list_sort_positive_line)
+                : Icon(BiliBiliIcons.list_sort_line5001),
             onPressed: () => setState(() {
               _isReversed[currentTabIndex] = !_isReversed[currentTabIndex];
             }),

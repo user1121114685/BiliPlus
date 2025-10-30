@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/models/common/settings_type.dart';
 import 'package:bili_plus/models/common/video/audio_quality.dart';
 import 'package:bili_plus/models/common/video/cdn_type.dart';
@@ -16,7 +17,6 @@ import 'package:bili_plus/utils/storage_pref.dart';
 import 'package:bili_plus/utils/video_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 List<SettingsModel> get videoSettings => [
   const SettingsModel(
@@ -49,7 +49,7 @@ List<SettingsModel> get videoSettings => [
   SettingsModel(
     settingsType: SettingsType.normal,
     title: 'CDN 设置',
-    leading: const Icon(MdiIcons.cloudPlusOutline),
+    leading: Icon(BiliBiliIcons.net_cdn),
     getSubtitle: () =>
         '当前使用：${CDNService.fromCode(VideoUtils.cdnService).desc}，部分 CDN 可能失效，如无法播放请尝试切换',
     onTap: (setState) async {
@@ -78,7 +78,7 @@ List<SettingsModel> get videoSettings => [
     settingsType: SettingsType.sw1tch,
     title: '音频不跟随 CDN 设置',
     subtitle: '直接采用备用 URL，可解决部分视频无声',
-    leading: const Icon(MdiIcons.musicNotePlus),
+    leading: Icon(BiliBiliIcons.headset_audio_line500),
     setKey: SettingBoxKey.disableAudioCDN,
     defaultVal: true,
     onChanged: (value) {

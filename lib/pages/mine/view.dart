@@ -19,7 +19,8 @@ import 'package:bili_plus/utils/extension.dart';
 import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart' hide ListTile;
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+
+import '../../font_icon/bilibili_icons.dart';
 
 class MinePage extends StatefulWidget {
   const MinePage({super.key, this.showBackBtn = false});
@@ -167,8 +168,8 @@ class _MediaPageState extends CommonPageState<MinePage, MineController>
             tooltip: "${anonymity ? '退出' : '进入'}无痕模式",
             onPressed: MineController.onChangeAnonymity,
             icon: anonymity
-                ? const Icon(MdiIcons.incognito)
-                : const Icon(MdiIcons.incognitoOff),
+                ? Icon(BiliBiliIcons.incognitoOff)
+                : Icon(BiliBiliIcons.incognito),
           );
         }),
         IconButton(

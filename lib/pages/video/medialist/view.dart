@@ -5,6 +5,7 @@ import 'package:bili_plus/common/widgets/image/image_save.dart';
 import 'package:bili_plus/common/widgets/image/network_img_layer.dart';
 import 'package:bili_plus/common/widgets/refresh_indicator.dart';
 import 'package:bili_plus/common/widgets/stat/stat.dart';
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:bili_plus/models/common/badge_type.dart';
 import 'package:bili_plus/models/common/stat_type.dart';
 import 'package:bili_plus/models_new/media_list/media_list.dart';
@@ -15,7 +16,6 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart' hide RefreshCallback;
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class MediaListPanel extends CommonSlidePage {
   const MediaListPanel({
@@ -79,8 +79,8 @@ class _MediaListPanelState extends State<MediaListPanel>
                 iconSize: 20,
                 tooltip: widget.desc ? '顺序播放' : '倒序播放',
                 icon: widget.desc
-                    ? const Icon(MdiIcons.sortAscending)
-                    : const Icon(MdiIcons.sortDescending),
+                    ? Icon(BiliBiliIcons.list_sort_line5001)
+                    : Icon(BiliBiliIcons.list_sort_positive_line),
                 onPressed: () {
                   Get.back();
                   widget.onReverse();
@@ -100,9 +100,7 @@ class _MediaListPanelState extends State<MediaListPanel>
               ),
             ),
           ),
-          Expanded(
-            child: enableSlide ? slideList(theme) : buildList(theme),
-          ),
+          Expanded(child: enableSlide ? slideList(theme) : buildList(theme)),
         ],
       ),
     );
@@ -210,9 +208,7 @@ class _MediaListPanelState extends State<MediaListPanel>
                               },
                             ),
                           PBadge(
-                            text: DurationUtils.formatDuration(
-                              item.duration,
-                            ),
+                            text: DurationUtils.formatDuration(item.duration),
                             right: 6.0,
                             bottom: 6.0,
                             type: PBadgeType.gray,

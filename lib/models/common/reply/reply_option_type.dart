@@ -1,5 +1,5 @@
+import 'package:bili_plus/font_icon/bilibili_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 enum ReplyOptionType {
   allow('允许评论'),
@@ -10,8 +10,8 @@ enum ReplyOptionType {
   const ReplyOptionType(this.title);
 
   IconData get iconData => switch (this) {
-    ReplyOptionType.allow => MdiIcons.commentTextOutline,
-    ReplyOptionType.close => MdiIcons.commentOffOutline,
-    ReplyOptionType.choose => MdiIcons.commentProcessingOutline,
+    ReplyOptionType.allow => BiliBiliIcons.bubble_comment_line500,
+    ReplyOptionType.close => BiliBiliIcons.bubble_comment_off_line500,
+    ReplyOptionType.choose => BiliBiliIcons.bubble_comment_setting_line500,
   };
 }

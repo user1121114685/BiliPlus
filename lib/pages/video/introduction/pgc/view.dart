@@ -390,8 +390,8 @@ class _PgcIntroPageState extends State<PgcIntroPage> {
           Obx(
             () => ActionItem(
               animation: introController.tripleAnimation,
-              icon: Icon(BiliBiliIcons.coin_text_fill200),
-              selectIcon: Icon(BiliBiliIcons.coin_text_fill200),
+              icon: Icon(BiliBiliIcons.coin_text_line500),
+              selectIcon: Icon(BiliBiliIcons.coin_text_fill500),
               onTap: introController.actionCoinVideo,
               selectStatus: introController.hasCoin,
               semanticsLabel: '投币',

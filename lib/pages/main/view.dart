@@ -21,10 +21,11 @@ import 'package:bili_plus/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:win32/win32.dart';
 import 'package:window_manager/window_manager.dart';
+
+import '../../font_icon/bilibili_icons.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -515,7 +516,7 @@ class _MainAppState extends State<MainApp>
                                     ),
                                     child: Icon(
                                       size: 16,
-                                      MdiIcons.incognito,
+                                      BiliBiliIcons.incognito,
                                       color: theme
                                           .colorScheme
                                           .onSecondaryContainer,

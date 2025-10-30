@@ -62,7 +62,6 @@ import 'package:flutter_volume_controller/flutter_volume_controller.dart';
 import 'package:get/get.dart' hide ContextExtensionss;
 import 'package:get/get_navigation/src/dialog/dialog_route.dart';
 import 'package:hive/hive.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:media_kit/media_kit.dart';
 
 class VideoDetailController extends GetxController
@@ -374,9 +373,7 @@ class VideoDetailController extends GetxController
                 (sourceType == SourceType.fav && args['isOwner'] == true)
             ? (item, index) async {
                 if (sourceType == SourceType.watchLater) {
-                  var res = await UserHttp.toViewDel(
-                    aids: item.aid.toString(),
-                  );
+                  var res = await UserHttp.toViewDel(aids: item.aid.toString());
                   if (res['status']) {
                     mediaList.removeAt(index);
                   }
@@ -400,10 +397,7 @@ class VideoDetailController extends GetxController
         PageUtils.showVideoBottomSheet(
           context,
           child: plPlayerController.darkVideoPage && MyApp.darkThemeData != null
-              ? Theme(
-                  data: MyApp.darkThemeData!,
-                  child: panel(),
-                )
+              ? Theme(data: MyApp.darkThemeData!, child: panel())
               : panel(),
           isFullScreen: () => plPlayerController.isFullScreen.value,
         );
@@ -530,10 +524,7 @@ class VideoDetailController extends GetxController
             children: [
               ListTile(
                 dense: true,
-                title: const Text(
-                  '赞成票',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('赞成票', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   _vote(segment.UUID, 1);
@@ -541,10 +532,7 @@ class VideoDetailController extends GetxController
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '反对票',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('反对票', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   _vote(segment.UUID, 0);
@@ -552,10 +540,7 @@ class VideoDetailController extends GetxController
               ),
               ListTile(
                 dense: true,
-                title: const Text(
-                  '更改类别',
-                  style: TextStyle(fontSize: 14),
-                ),
+                title: const Text('更改类别', style: TextStyle(fontSize: 14)),
                 onTap: () {
                   Get.back();
                   _showCategoryDialog(context, segment);
@@ -644,7 +629,7 @@ class VideoDetailController extends GetxController
                               icon: Icon(
                                 item.skipType == SkipType.showOnly
                                     ? Icons.my_location
-                                    : MdiIcons.debugStepOver,
+                                    : Icons.skip_next_outlined,
                                 size: 18,
                                 color: Theme.of(
                                   context,
@@ -682,10 +667,7 @@ class VideoDetailController extends GetxController
     segmentProgressList.clear();
     final result = await Request().get(
       '$blockServer/api/skipSegments',
-      queryParameters: {
-        'videoID': bvid,
-        'cid': cid.value,
-      },
+      queryParameters: {'videoID': bvid, 'cid': cid.value},
       options: Options(validateStatus: (status) => true),
     );
     if (result.statusCode == 200) {
@@ -708,88 +690,84 @@ class VideoDetailController extends GetxController
                     plPlayerController.enableList.contains(item.category) &&
                     item.segment[1] >= item.segment[0],
               )
-              .map(
-                (item) {
-                  final segmentType = SegmentType.values.byName(item.category);
-                  if (item.segment[0] == 0 && item.segment[1] == 0) {
-                    videoLabel.value +=
-                        '${videoLabel.value.isNotEmpty ? '/' : ''}${segmentType.title}';
-                  }
-                  SkipType skipType;
-                  if (_isBlock) {
-                    skipType = plPlayerController
-                        .blockSettings[segmentType.index]
-                        .second;
-                    if (skipType != SkipType.showOnly) {
-                      if (item.segment[1] == item.segment[0] ||
-                          item.segment[1] - item.segment[0] <
-                              plPlayerController.blockLimit) {
-                        skipType = SkipType.showOnly;
-                      }
-                    }
-                  } else {
-                    skipType = Pref.pgcSkipType;
-                  }
-
-                  final segmentModel = SegmentModel(
-                    UUID: item.uuid,
-                    segmentType: segmentType,
-                    segment: Pair(
-                      first: item.segment[0],
-                      second: item.segment[1],
-                    ),
-                    skipType: skipType,
-                  );
-
-                  if (positionSubscription == null &&
-                      autoPlay.value &&
-                      plPlayerController.videoPlayerController != null) {
-                    final currPost =
-                        defaultST?.inMilliseconds ??
-                        plPlayerController.position.value.inMilliseconds;
-
-                    if (currPost >= segmentModel.segment.first &&
-                        currPost < segmentModel.segment.second) {
-                      _lastPos = currPost;
-
-                      switch (segmentModel.skipType) {
-                        case SkipType.alwaysSkip:
-                        case SkipType.skipOnce:
-                          segmentModel.hasSkipped = true;
-                          completer = Completer();
-                          final videoPlayerController =
-                              plPlayerController.videoPlayerController!;
-                          if (videoPlayerController.state.playing) {
-                            onSkip(
-                              segmentModel,
-                            ).whenComplete(completer!.complete);
-                          } else {
-                            videoPlayerController.stream.playing.firstWhere((
-                              e,
-                            ) {
-                              if (e) {
-                                onSkip(
-                                  segmentModel,
-                                ).whenComplete(completer!.complete);
-                                return true;
-                              }
-                              return false;
-                            });
-                          }
-
-                          break;
-                        case SkipType.skipManually:
-                          onAddItem(segmentModel);
-                          break;
-                        default:
-                          break;
-                      }
+              .map((item) {
+                final segmentType = SegmentType.values.byName(item.category);
+                if (item.segment[0] == 0 && item.segment[1] == 0) {
+                  videoLabel.value +=
+                      '${videoLabel.value.isNotEmpty ? '/' : ''}${segmentType.title}';
+                }
+                SkipType skipType;
+                if (_isBlock) {
+                  skipType = plPlayerController
+                      .blockSettings[segmentType.index]
+                      .second;
+                  if (skipType != SkipType.showOnly) {
+                    if (item.segment[1] == item.segment[0] ||
+                        item.segment[1] - item.segment[0] <
+                            plPlayerController.blockLimit) {
+                      skipType = SkipType.showOnly;
                     }
                   }
+                } else {
+                  skipType = Pref.pgcSkipType;
+                }
 
-                  return segmentModel;
-                },
-              ),
+                final segmentModel = SegmentModel(
+                  UUID: item.uuid,
+                  segmentType: segmentType,
+                  segment: Pair(
+                    first: item.segment[0],
+                    second: item.segment[1],
+                  ),
+                  skipType: skipType,
+                );
+
+                if (positionSubscription == null &&
+                    autoPlay.value &&
+                    plPlayerController.videoPlayerController != null) {
+                  final currPost =
+                      defaultST?.inMilliseconds ??
+                      plPlayerController.position.value.inMilliseconds;
+
+                  if (currPost >= segmentModel.segment.first &&
+                      currPost < segmentModel.segment.second) {
+                    _lastPos = currPost;
+
+                    switch (segmentModel.skipType) {
+                      case SkipType.alwaysSkip:
+                      case SkipType.skipOnce:
+                        segmentModel.hasSkipped = true;
+                        completer = Completer();
+                        final videoPlayerController =
+                            plPlayerController.videoPlayerController!;
+                        if (videoPlayerController.state.playing) {
+                          onSkip(
+                            segmentModel,
+                          ).whenComplete(completer!.complete);
+                        } else {
+                          videoPlayerController.stream.playing.firstWhere((e) {
+                            if (e) {
+                              onSkip(
+                                segmentModel,
+                              ).whenComplete(completer!.complete);
+                              return true;
+                            }
+                            return false;
+                          });
+                        }
+
+                        break;
+                      case SkipType.skipManually:
+                        onAddItem(segmentModel);
+                        break;
+                      default:
+                        break;
+                    }
+                  }
+                }
+
+                return segmentModel;
+              }),
         );
 
         // _segmentProgressList
@@ -1670,10 +1648,7 @@ class VideoDetailController extends GetxController
     try {
       var res = await Request().get(
         'https://bvc.bilivideo.com/pbp/data',
-        queryParameters: {
-          'bvid': bvid,
-          'cid': cid.value,
-        },
+        queryParameters: {'bvid': bvid, 'cid': cid.value},
       );
       PbpData data = PbpData.fromJson(res.data);
       int stepSec = data.stepSec ?? 0;

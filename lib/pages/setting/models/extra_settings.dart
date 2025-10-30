@@ -38,7 +38,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import '../../../font_icon/bilibili_icons.dart';
 
@@ -74,7 +73,7 @@ List<SettingsModel> get extraSettings => [
   ),
   SettingsModel(
     settingsType: SettingsType.normal,
-    leading: const Icon(MdiIcons.debugStepOver),
+    leading: Icon(BiliBiliIcons.skip_to),
     title: '番剧片头/片尾跳过类型',
     getTrailing: () => Builder(
       builder: (context) {
@@ -100,7 +99,7 @@ List<SettingsModel> get extraSettings => [
                   ),
                 ),
                 Icon(
-                  MdiIcons.unfoldMoreHorizontal,
+                  BiliBiliIcons.arrow_expand_vertical_double_line700,
                   size: MediaQuery.textScalerOf(context).scale(14),
                   color: color,
                 ),
@@ -180,29 +179,29 @@ List<SettingsModel> get extraSettings => [
     title: '显示视频分段信息',
     leading: Transform.rotate(
       angle: pi / 2,
-      child: const Icon(MdiIcons.viewHeadline),
+      child: Icon(BiliBiliIcons.ranking_square_line500),
     ),
     setKey: SettingBoxKey.showViewPoints,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '视频页显示相关视频',
-    leading: Icon(MdiIcons.motionPlayOutline),
+    leading: Icon(BiliBiliIcons.tv_data_line500),
     setKey: SettingBoxKey.showRelatedVideo,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '显示视频评论',
-    leading: Icon(MdiIcons.commentTextOutline),
+    leading: Icon(BiliBiliIcons.bubble_comment_line500),
     setKey: SettingBoxKey.showVideoReply,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '显示番剧评论',
-    leading: Icon(MdiIcons.commentTextOutline),
+    leading: Icon(BiliBiliIcons.bubble_comment_line500),
     setKey: SettingBoxKey.showBangumiReply,
     defaultVal: true,
   ),
@@ -365,11 +364,11 @@ List<SettingsModel> get extraSettings => [
     setKey: SettingBoxKey.showArgueMsg,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '分P/合集：倒序播放从首集开始播放',
     subtitle: '开启则自动切换为倒序首集，否则保持当前集',
-    leading: Icon(MdiIcons.sort),
+    leading: Icon(BiliBiliIcons.list_sort_line5001),
     setKey: SettingBoxKey.reverseFromFirst,
     defaultVal: true,
   ),
@@ -469,17 +468,17 @@ List<SettingsModel> get extraSettings => [
       }
     },
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '显示会员彩色弹幕',
-    leading: Icon(MdiIcons.gradientHorizontal),
+    leading: Icon(BiliBiliIcons.danmu_color_square_line500),
     setKey: SettingBoxKey.showVipDanmaku,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '显示高级弹幕',
-    leading: Icon(MdiIcons.paletteAdvanced),
+    leading: Icon(BiliBiliIcons.danmu_special_square_line500),
     setKey: SettingBoxKey.showSpecialDanmaku,
     defaultVal: false,
   ),
@@ -586,7 +585,7 @@ List<SettingsModel> get extraSettings => [
   SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '展示头像/评论/动态装饰',
-    leading: const Icon(MdiIcons.stickerCircleOutline),
+    leading: Icon(BiliBiliIcons.tshirt_theme_line500),
     setKey: SettingBoxKey.showDynDecorate,
     defaultVal: true,
     onChanged: (value) => PendantAvatar.showDynDecorate = value,
@@ -711,17 +710,17 @@ List<SettingsModel> get extraSettings => [
     setKey: SettingBoxKey.showDynActionBar,
     defaultVal: true,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '启用拖拽字幕调整底部边距',
-    leading: Icon(MdiIcons.dragVariant),
+    leading: Icon(BiliBiliIcons.dragVariant),
     setKey: SettingBoxKey.enableDragSubtitle,
     defaultVal: false,
   ),
-  const SettingsModel(
+  SettingsModel(
     settingsType: SettingsType.sw1tch,
     title: '展示追番时间表',
-    leading: Icon(MdiIcons.chartTimelineVariantShimmer),
+    leading: Icon(Icons.timeline_outlined),
     setKey: SettingBoxKey.showPgcTimeline,
     defaultVal: true,
     needReboot: true,

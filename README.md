@@ -5,7 +5,8 @@
 
 
 <div align="center">
-    <h1>The BiliPlus project was created for learning how to program.</h1>
+    <h1>The BiliPlus project </h1>
+    <h1>was created for learning how to program.</h1>
 <div align="center">
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/bggRGjQaUbCoE/PiliPlus)
@@ -216,7 +217,7 @@
 
 ## 声明
 
-此项目（PiliPlus）是个人为了兴趣而开发, 仅用于学习和测试，请于下载后24小时内删除。<br>
+此项目（BiliPlus）是个人为了兴趣而开发, 仅用于学习和测试，请于下载后24小时内删除。<br>
 所用API皆从官方网站收集, 不提供任何破解内容。<br>
 在此致敬原作者：[guozhigq/pilipala](https://github.com/guozhigq/pilipala)<br>
 在此致敬上游作者：[orz12/PiliPalaX](https://github.com/orz12/PiliPalaX)<br>
